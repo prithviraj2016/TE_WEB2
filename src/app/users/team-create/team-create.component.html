@@ -1,73 +1,87 @@
-<div id="container">
-    <div class="container">
-        
-            <div class="row">
-                <div class="col-5">
-                    <div class="card">
-                        <div class="card-header card-header-danger">
-                            <h1 class="card-title">NEW TEAM</h1>
-                            <mat-icon class="info">info</mat-icon>
-                            <a title="Click to start introduction guide" class="help_button">Help</a>
-                            
-                        </div>
-                        <div class="card-body">
+<div class="row ng-cloak create-event-form" data-ng-init="init()">
+  <div class='create-form-section' id="braintree-set">
+    <form name="season_form" style="width: 100%;">
+      <div class="row">
+        <div class="large-4 medium-12 small-12 columns column-first">
+          <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
+          <h1>New Team </h1>
+          <a title="Help" href=""
+            onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
+            id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+              aria-hidden="true"></i>&nbsp;<span>Help</span></a>
 
-                          <form action="" method="post" [formGroup]="newTeamForm" (submit)="createTeam()" >
-                            <div class="row">
-                                <div class="col-12" id="Teamname">
-                                    <mat-form-field  class="example-full-width">
-                                      <input matInput placeholder="Team Name" type="text" formControlName="teamname">
-                                      <mat-error *ngIf="myError('teamname', 'required')">Team Name is required</mat-error>
-    
-                                    </mat-form-field>
-                                  </div>
-                                  <div class="col-12" id="description">
-                                      <mat-label>Description</mat-label><br>
-                                    <mat-form-field  class="example-full-width">
-                                      <input matInput  type="text" formControlName="description">
-                                      <mat-error *ngIf="myError('description', 'required')">Decription is required</mat-error>
-    
-                                    </mat-form-field>
-                                  </div>
-                                  
-                                  <div class="col-12" id="location">
-                                    <mat-label>Location</mat-label><br>
-                                  <mat-form-field  class="example-full-width">
-                                    <input matInput placeholder="Search Location..." type="text" formControlName="location">
-                                    <mat-error *ngIf="myError('location', 'required')">Location is required</mat-error>
-    
-                                  </mat-form-field>
-                                </div>
-                                  
-                                    <div class="col-6" style="margin-top: 20px;" id="upload">
-                                        <mat-form-field  class="example-full-width">
-                                        <mat-label style="color: #3988ba;">Upload Picture</mat-label><br>
-                                          <input type="file" name="image" formControlName="image"/>
-                                          <mat-error *ngIf="myError('image', 'required')">Image is required</mat-error>
-                                        </mat-form-field>
-                                         </div><br>
 
-                                         <div class="col-12">
-                                        
-                                            <mat-slide-toggle>Team Spot</mat-slide-toggle>
-                                            <!-- <mat-error *ngIf="myError('teamspot', 'required')">Button should be on</mat-error> -->
-                                            
-                                            </div>
-                                    
-                            </div>
-                            <div class="col-7">
-                                <div class="">
-                                  <button routerLink="/te-dashboard-teams" class="btn btn-danger" type="submit">Cancel</button>
-                                  <button  class="btn btn-primary" type="submit">Create</button>
-                                </div>
-                              </div>
-                        </form>
-                    
-                </div>
-                
+          <div class="flex-row">
+            <div class="flex-item">
+              <div class="is-floating-label">
+                <label class="mandatory_field" data-step="1" data-intro="Name of the Event.">Team Name</label>
+                <input type="text" form="season_form_novalidated" name='season_name' placeholder="" id='season_name'
+                  minlength="3" maxlength="50" value="" required /> <span class="mandatoryfld_lbl">
+                  <span class="mandatoryfld_lbl">Team name is required.</span>
+                  <!-- <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span>
+                    <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span> -->
+                </span>
+              </div>
             </div>
+          </div>
+
+
+          <div class="flex-row">
+            <div class="flex-item image-item">
+              <div class="is-floating-label">
+                <label class="flex-label" data-step="2" data-intro="Description of the Season.">Description</label>
+                <textarea id='season_description' form="season_form_novalidated" name='season_description' placeholder=""
+                  maxlength='420' value="event description"></textarea>
+                <span>
+                  <span class="mandatoryfld_lbl">Description must be between 450 characters</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="flex-row">
+          <div class="flex-item complete">
+            <label class="flex-label"   data-step="4" data-intro="Location of your team." for="autoCompleteDivLocationForEvent_value">Location</label>
+            <input  value="" id="hdnLatLong" />
+            <input type="hidden" id="hdnformatedAdress" value="" />
         </div>
-    </div>
-    </div>
+          </div>
+          <div class="flex-row">
+            <div class="flex-item image-item">
+              <label class="flex-label" data-step="8" data-intro="Upload 400px X 400px picture" for="user_image">Upload
+                Picture</label>
+              <div class="row">
+              <div class="left-column large-4 medium-3 small-6 columns">
+                <div id="user_image">
+                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" onclick="upload_pic_box(this);">
+                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="large-6 medium-6 small-6 columns">
+                <p class="help-text">Click here to upload picture.</p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
 
+        <div class="large-7 medium-12 small-12 columns column-second">
+          <div class="flex-row">
+            <div class="" id="buttonset">
+              <button title="Cancel" type="button" class="btn-block red">
+                <span>Cancel</span>
+              </button>
+              <button title="ok" type="submit" class="btn-block">
+                <span>Ok</span>
+              </button>
+            </div>
+          </div>
 
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

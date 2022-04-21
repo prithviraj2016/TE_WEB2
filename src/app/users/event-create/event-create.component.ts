@@ -44,6 +44,7 @@ export class EventCreateComponent implements OnInit {
     }
     
     createEvent(){
+      console.log(this.newEventForm.value);
     this._service.createEvent().subscribe(data =>{
       if(data){
         alert("Event Created Successfully");

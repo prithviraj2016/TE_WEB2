@@ -1,0 +1,267 @@
+<img src="" style="display:none" id="imgforumlogin">
+<div class="row restrict_to_window" id="dashboard-container">
+    <!-- <div ng-include="'home/side_bar.html'" class="sidebar left"></div> -->
+    <!-- Column 2 -->
+    <div class="large-5 cdiv" id="step1" data-step="1"
+        data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
+        <div class="notification_column restrict_to_window">
+            <div class="toptitle">
+                <div class="small-12 columns title">
+                    <i class="fas fa-bell"></i> NOTIFICATIONS <a title="Help" href=""
+                        onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
+                        id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+                            aria-hidden="true"></i>&nbsp;<span>Help</span></a>
+                </div>
+
+            </div>
+            <div class="bar" scrolly="showMoreNotifications()">
+                <div class="" id="notification_list">
+
+                    <div class='notification'>
+                        <div class="row">
+                            <div class="small-2 columns">
+                                <a href="user/view/">
+                                    <div class="profile_user_img_sm"></div>
+                                </a>
+                            </div>
+                            <div class="small-9 medium-10 large-10 columns">
+                                <div class="bbox">
+                                    <div class="announce"></div>
+                                    <time>Notification Date</time>
+                                    <div>
+                                        <hr class="hrbbox">
+                                        <div class="row notiimgbox">
+                                            <a href="notification url">
+                                                <div class="img-content">
+                                                </div>
+                                            </a>
+                                            <div class="small-6 columns txt-content"></div>
+                                            <div>
+                                                <a class="underl btnAccept">On My Way</a>
+                                                <a class="underl btnReject"
+                                                    confirmed-click="notificationAction(notification, $index, 'disqualifyme')"
+                                                    ng-confirm-click="Are you sure you want to disqualify?">Disqualify
+                                                    Me</a>
+                                            </div>
+
+                                            <div>
+                                                <a class="underl btnAccept">Accept</a>
+                                                <a class="underl btnReject"
+                                                    confirmed-click="inviteNotificationAction(notification, $index, 'Rejected')"
+                                                    ng-confirm-click="Are you sure you want to reject?">Reject</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="shr1">
+                    </div>
+
+                </div>
+                <div id="loaders">
+                    <div id="loader_image" align="center">
+                        <img src="assets/img/ajax-loader.gif" alt="Loading next records" title="Loading next records"
+                            width="25" height="25">Loading
+                        new notifications, please wait...
+                    </div>
+                    <div id="loader_message" align="right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column 3 -->
+    <div class="large-7 dashboard_height" id="custom_rdiv">
+
+
+        <div class="info_column">
+            <!-- <ul class="tabs" id="tstyle" data-tabs>
+						<li data-step="2" data-intro="Featured Tournaments in your area that you may be interested in." data-position='right' class="tab-title is-active"><a href="#panel1" >HYPE</a></li>
+						<li data-step="3" data-intro="Upcoming tournaments in your local area." data-position='left' class="tab-title" ><a href="#panel2" >UPCOMING</a></li>
+						<li data-step="4" data-intro="List of users you are following." class="tab-title" ><a href="#panel3"  id="btnFollowing">FOLLOWING <i>count</i></a></li>
+						<li data-step="5" data-intro="List of users who are following you." class="tab-title"><a href="#panel4"  id="btnFollowers">FOLLOWERS <i>count</i></a></li>
+                    </ul> -->
+<!--
+            <tabset id="tstyle">
+                <tab heading="HYPE">
+                    <div class="bar is-active" id="panel1" scrolly="showMoreHypes()">
+                        <div class="hype_list">
+                            <div class="hype_list_child">
+                                <a href="/">
+                                    <div class="hype_card sha-box card">
+                                        <div class="">
+                                            <div class="img-event small-6"
+                                                style="background-image: url(assets/img/object1.png);">
+                                                <div class="name-event" title="hype name">hype name</div>
+                                            </div>
+                                            <div class="ribbon_parent2">
+                                                <div class="back_ribbon2 bgradient"></div>
+                                                <div class="ribbon_child2 bgsolidBlue"></div>
+                                                <div class="ribbon_content2">
+                                                    <p> hype Type</p>
+                                                </div>
+                                            </div>
+                                            <div class="txt-event column small-6">
+                                                <hr class="shr3">
+                                                <div class="tinfo">Start Date:</div>
+                                                <span class="tdata">hype startDate</span>
+                                                <div class="clear"></div>
+                                                <div class="tinfo">Participants:</div>
+                                                <span class="tdata">hype hits</span>
+                                                <div class="clear"></div>
+                                                <div class="tinfo">Location:</div>
+                                                <span class="tdata">hype venue</span>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </a>
+                            </div>
+                            <div id="loaders_hype">
+                                <div id="loader_image_hype" align="center"><img src="assets/img/ajax-loader.gif"
+                                        alt="Loading next records" title="Loading next records" width="25"
+                                        height="25">Loading new hypes, please wait...</div>
+                                <div id="loader_message_hype" align="right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <tab heading="UPCOMING">
+                    <div class="bar" id="panel2" scrolly="showMoreUpcomings()">
+                        <div class="upcoming_list">
+                            <div class="upcoming_list_child">
+                                <a href='/tournament/id/'>
+                                    <div class="event_card sha-box card">
+                                        <div class="">
+                                            <div class="img-event small-6"
+                                                style="background-image: url(assets/img/object1.png);">
+                                                <div class="name-event truncate" title="tournament name">tournament name
+                                                </div>
+                                                <div></div>
+                                            </div>
+                                            <div class="ribbon_parent2">
+                                                <div class="back_ribbon2 bgradient"></div>
+                                                <div class="ribbon_child2 bgsolidBlue"></div>
+                                                <div class="ribbon_content2">
+                                                    <p>Tournament Type</p>
+                                                </div>
+                                            </div>
+                                            <div class="txt-event small-6">
+                                                <span class="tgamename">Tournament Name</span>
+                                                <hr class="shr3">
+                                                <div class="tinfo">Start Date:</div>
+                                                <span class="tdata btxt"> tournament startDate</span>
+                                                <div class="clear"></div>
+                                                <div class="tinfo tinfo-location">Location:</div>
+                                                <span class="tdata btxt" title="">tournament venue</span>
+                                                <div class="clear"></div>
+                                                <div class="clear"></div>
+                                                <div class="tinfo">Open:</div>
+                                                <span class="tdata">
+                                                    <div class="blue-slider-sm"></div>
+                                                    <div class="red-slider-sm"></div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </a>
+                            </div>
+                            <div id="loaders_upcoming">
+                                <div id="loader_image_upcoming" align="center">
+                                    <img src="assets/img/ajax-loader.gif" alt="Loading next records"
+                                        title="Loading next records" width="25" height="25">Loading
+                                    new tournaments, please wait...
+                                </div>
+                                <div id="loader_message_upcoming" align="right"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </tab>
+                <tab heading="FOLLOWING">
+                    <div class="bar" id="panel3" scrolly="showMoreFollowing()">
+                        <div class="following_list">
+                            <div class="following_list_child">
+                                <ul id="followingList" class="followList">
+
+                                    <li class="sha-box small-card">
+                                        <div class="row collapse">
+                                            <div class="small-1 columns">
+                                                <p class="order_no">1</p>
+                                            </div>
+                                            <div class="small-1 thumb-box columns">
+                                                <div class="profile_user_img_sm"></div>
+                                            </div>
+                                            <div class="small-9 follower-card-name columns">
+                                                <p class="player_name" title="followingPerson name">followingPerson name
+                                                </p>
+                                                <span class="player_name_lower">@ followingPerson username</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="loaders_following">
+                                <div id="loader_image_following" align="center">
+                                    <img src="assets/img/ajax-loader.gif" alt="Loading next records"
+                                        title="Loading next records" width="25" height="25">Loading
+                                    more person, please wait...
+                                </div>
+                                <div id="loader_message_following" align="right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <tab heading="FOLLOWERS">
+                    <div class="bar" id="panel4" scrolly="showMoreFollower()">
+                        <div class="follower_list">
+                            <div class="follower_list_child">
+                                <div>
+                                    <ul id="followingList" class="followList">
+
+                                        <li class="sha-box small-card">
+                                            <div class="row collapse">
+                                                <div class="small-1 columns">
+                                                    <p class="order_no">1</p>
+                                                </div>
+                                                <div class="small-1 thumb-box columns">
+                                                    <div class="profile_user_img_sm"></div>
+                                                </div>
+                                                <div class="small-9 follower-card-name columns">
+                                                    <p class="player_name" title="followingPerson name">followingPerson
+                                                        name</p>
+                                                    <span class="player_name_lower">@followingPerson username}}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="loaders_follower">
+                                <div id="loader_image_follower" align="center" style="padding: 20px 0 5px 0;">
+                                    <img src="assets/img/ajax-loader.gif" alt="Loading next records"
+                                        title="Loading next records" width="25" height="25"
+                                        style="padding-right: 10px;">Loading
+                                    more person, please wait...
+                                </div>
+                                <div id="loader_message_follower" align="right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+            </tabset> -->
+
+            <!--
+			<div class="tabs-content detailElementHeight" data-tabs-content="tstyle" id="custom-pt65">
+
+
+
+
+			</div> -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,275 @@
+.row {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 100%;
+  }
+  #list-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .cdiv {
+    height: 100%;
+  }
+  .cdiv {
+    background: url(../../../assets/img/img-noise.png) repeat;
+   
+    box-shadow: inset -5px 0 15px 0 rgba(0,0,0,.75);
+   
+    overflow: hidden;
+    width: 40%;
+    z-index: 1;
+  }
+  .control_box {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    height: 205px !important;
+  }
+  .sha-box.control_box .row {
+    background-color: #121619;
+    padding: 25px 0;
+    margin: 0;
+  }
+  .row .row {
+    width: auto;
+    
+    max-width: none;
+  }
+  .ribbon_parent {
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    max-width: 220px;
+    width: 100%;
+    z-index: 15;
+  }
+  .ribbon_content {
+    font-style: italic;
+    position: absolute;
+    top: 5px;
+    left: 6px;
+    width: 100%;
+    height: 100%;
+  }
+  .ribbon_content {
+    display: flex;
+    align-items: center;
+  }
+  .control_box .ribbon_content > p {
+    font-size: 23px;
+    text-transform: uppercase;
+    font-style: normal;
+    margin: 0;
+  }
+  .ribbon_content p {
+    float: left;
+    padding-top: 12px;
+  }
+  [class*="column"] + [class*="column"]:last-child {
+    float: right;
+  }
+  .searchb input {
+    border: 2px solid #3988ba;
+    font-size: 16px;
+    font-family: robotolight,sans-serif;
+    background: #121619 url(../../../assets/img/dashboard_search_icon.png) 8px 6px no-repeat !important;
+    margin: 0;
+    height: 36px;
+    padding-left: 35px;
+    color: #a7a7a8;
+    text-transform: inherit;
+  }
+  .tabs-bar {
+    height: 50%;
+  }
+  .control_box #myListMenu {
+    text-align: center;
+    padding-top: 3%;
+  }
+  .control_box #myListMenu a:last-child {
+    border-right: 0;
+    color: #3896d0;
+  }
+  .control_box #myListMenu a img {
+    display: inline-block;
+  }
+  .control_box #myListMenu a {
+   
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+  
+    margin: 0 auto;
+    
+  }
+  .create-new {
+    margin-top: 10px !important;
+    display: block !important;
+  }
+  a img {
+    border: none;
+  }
+  #myListMenu a.ng-scope i {
+    font-style: normal;
+    margin-bottom: 10px;
+    display: block;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  #myListMenu a.ng-scope i {
+    font-style: normal;
+    margin-bottom: 10px;
+    display: block;
+  }
+  @media only screen and (min-width: 1025px) and (max-width: 1600px)
+{#list-container .bar {
+  height: 75%;}
+}
+#general_list_for_all {
+    flex: 1;
+  }
+  .bar {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  #panel1{
+    padding-top: 0;
+  }
+  .sha-box.card-active {
+    background-color: #131c22;
+  }
+  .card-active {
+    box-shadow: 0 0 14px -5px #3896D0 !important;
+    position: relative;
+    border-radius: 8px;
+    
+  }
+  .card {
+   
+    width: 95%;
+    min-height: 165px;
+    padding: 15px 0 0 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+   
+  }
+  .card-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 1px solid #3896d0;
+    border-radius: 8px;
+  }
+  .img-event {
+    
+    height: 132px;
+    background-color: #141a1e;
+    overflow: hidden;
+    
+    background-position: center center;
+    float: left;
+    position: relative;
+  }
+  .img-event {
+    line-height: 1.2;
+    font-size: 14px;
+    padding-right: 0;
+  }
+  .card .name-event, .tourna-head {
+    background: rgba(0,0,0,.4) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAG0lEQVQIW2NkYGD4z8DAwMgABXAGNgGwSgwVAFbmAgXxvZSoAAAAAElFTkSuQmCC);
+    font-size: 16px;
+    padding: 4px 10px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+    width: 100%;
+  
+    word-wrap: break-word;
+  }
+  .truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+    font-weight: 700;
+   
+    font-family: robotolight,sans-serif;
+  }
+  .card .txt-event {
+    background-size: cover;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .txt-event {
+   
+    min-width: 132px;
+    line-height: 10px;
+    
+    padding-left: 6px;
+  }
+  .card .tgamename {
+    font-size: 12px;
+    line-height: 1;
+  }
+  .shr3 {
+    border: 1px solid #373a41;
+      
+    border-bottom: 1px solid #15181d;
+    margin: 5px 0;
+  }
+  .event_card.card .tinfo {
+    border-right: 0;
+  }
+  .card .tinfo {
+    float: left;
+    width: 40%;
+  }
+  .card .tinfo {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1;
+    margin-top: 8px;
+  }
+  .tmpgcard.event_card.card-active .tdata {
+    position: relative;
+  }
+  .card .tdata {
+    float: left;
+    margin: 8px 0 0 -4px;
+    width: 60%;
+  }
+  .card .tdata{
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .btxt {
+    color: #3896d0;
+  }
+  .event_card.card .tinfo {
+    border-right: 0;
+  }
+  .card .tinfo {
+    float: left;
+    width: 40%;
+  }
+  .card-active{
+      display:block;
+
+  }
+  .card{
+      display: block;
+  }
+ 
+  .tournament_btns{
+    margin-top: 83.7%;
+  }

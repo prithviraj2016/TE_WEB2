@@ -1,0 +1,117 @@
+<div class="wrapper">
+    <div class="heading">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                <h1>Contact Us</h1>
+            </div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="map">
+            <div class="row">
+                <div class="map-one col-lg-6 col-md-12 col-xs-12 col-sm-12">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6086.991971892514!2d-74.567326!3d40.286945!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbc1233dedb3cb112!2sV%20Group%20Inc.!5e0!3m2!1sen!2sus!4v1646829707410!5m2!1sen!2sus"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                </div>
+                <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12">
+                    <div class="form">
+
+                        <h3>Leave us a message</h3>
+                        <p>Fill out the form! We always respond!</p>
+
+                        <form [formGroup]='contactForm' novalidate (submit)="submit()">
+                            <input type="text" name="fname" id="name" formControlName="fname" placeholder="Full Name *"  (submit)="submit()"><br>
+                         
+                            <div *ngIf="(submitted || f['fname'].touched)  && f['fname'].invalid">
+                              <div class="validation"*ngIf="f['fname'].errors && f['fname'].errors['required']">
+                                <br>Minimun 3 characters requireds !
+                              </div>
+                            </div>
+                            <br>
+                            <input type="email" name="email" id="email" formControlName="email"placeholder="Email *" required>
+                            <br>
+                            <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                                <div class="validation"*ngIf="f['email'].errors && f['email'].errors['required']">
+                                <br> Please Enter Email !
+                                </div>
+                                </div>
+                                <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                                    <div class="validation"*ngIf="f['email'].errors && f['email'].errors['email']">
+                                  <br> Enter  vaild Email !
+                                    </div>
+                                    </div>
+                                    <br>
+                            <input type="text" name="contact" id="contact" formControlName="contact" placeholder="Contact No."><br>
+                            <div *ngIf="(submitted || f['contact'].touched)  && f['contact'].invalid">
+                                <div class="validation"*ngIf="f['contact'].errors && f['contact'].errors['required']">
+                              <br>   Enter valid contact !
+                                </div>
+                                </div>
+                                <div *ngIf="(submitted || f['contact'].touched)  && f['contact'].invalid">
+                                    <div class="validation"*ngIf="f['contact'].errors && f['contact'].errors['minLength']">
+                                  <br>   Minimun 6 characters required
+                                    </div>
+                                    </div>
+                            <br>
+                            <textarea class="form-control"  formControlName="message"name="message"id="message" rows="3"
+                                placeholder="Message"></textarea>
+                                <div *ngIf="(submitted || f['message'].touched)  && f['message'].invalid">
+                                    <div class="validation"*ngIf="f['message'].errors && f['message'].errors['required']">
+                                 <br> Minimun 10 characters required
+                                    </div>
+                                    </div>
+                                    <br>
+
+                            <button type="submit" >SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="footer_first">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12">
+                        <h1>Headquarters</h1>
+                        <h4>New Jersey</h4>
+                        <ul>
+                            <li>
+                                379 Princeton Hightstown Road
+                            </li>
+                            <li>Cranbury, NJ 08512</li>
+                            <li>
+                                Tel:
+                                <a href="tel:609 371 5400">609 371 5400</a>
+                            </li>
+                            <li>Fax: 877 874 8942</li>
+                            <li>
+                                Email:
+                                <a href="mailto:info@tournamentedition.com">info(at)Tournamentedition.com</a>
+                            </li>
+                            <li class="socialmedia-icons">
+                                Follow us on:
+                                <a target="_blank" href="https://www.facebook.com/tournamenteditionapp/"> <i
+                                        class="fab fa-facebook" aria-hidden="true"></i> </a>
+                                <a target="_blank" href="https://twitter.com/te_app"> <i class="fab fa-twitter"
+                                        aria-hidden="true"></i> </a>
+                                <a target="_blank" href="https://www.instagram.com/tournamentedition/"> <i
+                                        class="fab fa-instagram" aria-hidden="true"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-xs-12 col-sm-12">
+                        <div class="footer_two">
+                            <h2>Global presence</h2>
+                            <h4>Pune, India</h4>
+                            <h4>Bhopal, India</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+    </div>
+</div>
+
+

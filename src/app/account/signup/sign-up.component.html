@@ -1,0 +1,154 @@
+<div class="content-box singin_signup  grid-x grid-padding-x">
+  <div class="cell align-self-middle">
+  <div class="sign-in-logo"><a routerLink="/" title="Tournament Edition"><img src="/assets/img/bar_logo.png" /></a></div>
+  <h1>CREATE ACCOUNT</h1>
+  <!-- <h1>Forgot Password?</h1>
+  <h1>Resend Verification Mail</h1> -->
+
+  <div class="login_box ng-cloak" id="login_box">
+    <div class="login_box_body">
+      <div class="row">
+        <div class="login_box_login">
+
+          <div class="register-form">
+            <form [formGroup]="signupForm" (ngSubmit)="createUser()">
+             
+                <div class="form-group">
+               
+                <input
+                  type="text"
+                  formControlName="username"
+                  class="form-control"
+                  placeholder="User Name"
+                  [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+                />
+                <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                  <div *ngIf="f['username'].errors['required']">Username is required</div>
+                  <div *ngIf="f['username'].errors['minlength']">
+                    Username must be at least 6 characters
+                  </div>
+                  <div *ngIf="f['username'].errors['maxlength']">
+                    Username must not exceed 20 characters
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+               
+                <input
+                  type="text"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Eamil Id"
+                  [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                />
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">Email is required</div>
+                  <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                </div>
+              </div>
+              <div class="form-group">
+                
+                <input
+                  type="password"
+                  formControlName="password"
+                  class="form-control"
+                  placeholder="Password"
+                  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                />
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                  <div *ngIf="f['password'].errors['required']">Password is required</div>
+                  <div *ngIf="f['password'].errors['minlength']">
+                    Password must be at least 8 characters
+                  </div>
+                  <div *ngIf="f['password'].errors['maxlength']">
+                    Username must not exceed 40 characters
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                
+                <input
+                  type="password"
+                  formControlName="cpassword"
+                  class="form-control"
+                  placeholder="Confirm Password"
+                  [ngClass]="{ 'is-invalid': submitted && f['cpassword'].errors }"
+                />
+                <div
+                  *ngIf="submitted && f['cpassword'].errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="f['cpassword'].errors['required']">
+                    Confirm Password is required
+                  </div>
+                  <div *ngIf="f['cpassword'].errors['matching']">
+                    Confirm Password does not match
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-check">
+                <input
+                  type="checkbox"
+                  formControlName="acceptTerms"
+                  class="form-check-input"
+                  [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }"
+                />
+                <p class="terms-conditions">
+                  I agree to the <a href="" target="_blank" routerLink="/terms">Terms and Conditions</a> <br>and <a href="" target="_blank" routerLink="/privacy">Privacy Policy</a></p>
+                <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+                  Accept Terms is required
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                
+              </div>
+            </form>
+          </div>
+
+               
+                
+                     
+                   
+
+          <h2 class="hr-seperator"><span>OR</span></h2>
+          <div id="login-social">
+            <div class="social_login">
+              <a title="Facebook" href="/network/login/facebook">
+                <div class="login_fb"><i class="fab fa-facebook-f"></i>Log In with Facebook</div>
+              </a>
+            </div>
+            <div class="social_login">
+              <a title="Google" href="/network/login/google">
+                <div class="login_gplus"><i class="fab fa-google"></i>Log In with Google</div>
+              </a>
+            </div>
+            <!--<div class="social_login">
+                          <a title="Twitch" ng-href="/network/login/twitch">
+                              <div class="login_twitch"><i class="fab fa-twitch"></i>Log In with Twitch</div>
+                          </a>
+                      </div>-->
+          </div>
+
+          <p class="privacy">
+            By continuing you agree to the <a title="Terms &amp; conditions" routerLink="/terms">Terms &amp; Conditions</a>
+            and <a routerLink="/privacy" title="Privacy Policy">Privacy Policy</a>. TE may send you newsletters; you can
+            always change your preferences in your profile.
+          </p>
+
+        </div>
+
+        <div class="sign-in-bottom-text">
+
+          <p class="sign-new-account-text">Already have an account? <a routerLink="/signin">Login</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div id="background-overlay"></div>
+<div id="background-img"></div>

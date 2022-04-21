@@ -1,0 +1,300 @@
+<div class="restrict_to_window ng-scope" id="round-robin-pool">
+	<div>
+	<div class="tbl_frm_row row">
+   <!-- <div ng-if="$storage">
+	   <div ng-include="'home/side_bar.html'" class="sidebar left sbl-pool"></div>
+	</div> -->
+	<div class="large-4 medium-12 small-12 columns  column-first" id="pools-lists-block">
+		<!-- columns 1.1 and 1.2 -->
+		<div class="row">
+			<div class="large-6 medium-6 small-12 columns first-sub-col">
+						<div class="ribbon_dummy"></div>
+						<div class="ribbon_parent">
+							<div class="back_ribbon bgradient"></div>
+							<div class="ribbon_child bgradient"></div>
+							<div class="ribbon_content">
+								<div class="listimg trophy"></div>
+							</div>
+						</div>
+						<div class="pbtmno">
+							<h1>RESULT</h1>	<!-- Old text - Round Robin Serise -->
+							<h2>Tournament Info.</h2>	
+							<div class="event-name">
+								<span>tournament.name</span><br>
+								<i>tournament</i>
+							</div>
+							<div class="event-image"
+								style="background-image:url(assets/img/default.jpg)">
+								<div class="name-event-bg btmtxt"></div>
+							</div>
+							<hr class="shr1">
+							<div class="bdates ">
+								<div class="display-label">Start Date:</div>
+								<div class="display-output date-start">20/20/2020</div>
+							</div>
+							<div class="bdates ">
+								<div class="display-label">End Date:</div>
+								<div class="display-output date-end">20/20/2020</div>
+							</div>
+							<div class="bdates ">
+								<div class="display-label">Game:</div>
+								<div class="display-output btxt" title="Cricket" >
+							Cricket</div>
+							</div>
+							<hr class="shr1">
+							
+							<div id="pool-back-button">
+									<a title="Back" href="/tournament/id/tournamentID"  id="step5"
+										class="">&#171; Back</a>
+								</div>
+						</div>
+					
+				</div>
+				<!-- Column 3 -->
+				<div class="large-6 medium-6 small-12 columns  column-second" id="pool-block-contianer">
+					<div class="sha-box searchb mbot20 pt45 prelative minh360">
+							<div class="pushdown-section"></div>
+						<div class="ribbon_parent">
+							<div class="back_ribbon bgradient3"></div>
+							<div class="ribbon_child bgradient3"></div>
+							<div class="ribbon_content">
+								<!--<div class="listimg list"></div> -->
+								<h2>Pools <a title="Help" href="" (click)="StartRoundRobinHelp()" id="login_box_button" class="help_button"><i class="fa fa-info-circle" aria-hidden="true"></i><span>&nbsp;Help</span></a></h2>
+							</div>
+						</div>
+
+						<form autocomplete="off" class="ng-pristine ng-valid">
+							<input type="search" name="bracketsSearch" id="search" ng-change="selectedBracketsSearch();" ng-model="query" class="player_search brackets_search step2 ng-pristine ng-valid ng-empty ng-touched" placeholder="Search">
+							</form>
+
+
+						<div class="groups_wrapper bar"  id="step1" >
+							<div class="groups border_box">
+								<div class="group mbot20 brout bgradient ">
+									<a href="" class="btn-pool">Pool A</a>
+								</div>
+								<div class="group mbot20 brout">
+									<a href="" class="btn-pool bgradient3">Pool B</a>
+								</div>
+								<div class="group mbot20 brout">
+									<a href="" class="btn-pool bgradient3">Pool C</a>
+								</div>
+							</div>
+							
+						</div>
+						<div class="sha-box pb20 pt45 prelative scoreboard_bottom" id="step2">
+							<a href="" id="btn_show_scoreboards"
+								(click)="showScoreboardRS()">
+								<div class="ribbon_parent">
+									<div class="back_ribbon bgradient3"></div>
+									<div class="ribbon_child bgradient3"></div>
+									<div class="ribbon_content" title="Scoreboard">
+										<!--<div class="listimg list"></div> -->
+										<h2>Standings</h2>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		
+	
+	
+	<!-- Column 4 -->
+	<div class="large-8 medium-12 small-12 columns  column-third" id="pools-bracket-block">
+		<div class="sha-box prelative w100 score-board-pad pb20" id="brackets-result-header">
+			<div class="pushdown-section"></div>
+			<div class="bracket_upper_menu">
+				<div class="row collapse">
+					<div class="small-6 large-5 columns prelative ">
+						<div class="ribbon_parent">
+							<div class="back_ribbon bgradient3"></div>
+							<div class="ribbon_child bgradient3"></div>
+							<div class="ribbon_content">
+								<!-- <div class="listimg list"></div>-->
+								<h2>showScores</h2>
+							</div>
+						</div>
+					</div>
+                    <div class="step3" id="pool-brackets-header">
+                        <!--
+    <div class="tddate pool-button-right" id="toggle">
+            <div class="float-bnt">
+        <button  id="toggle-expand" class="expand" title="Expand"><i
+            class="fas fa-expand"></i></button>
+       <a href="" id="toggle-expand" class="expand" title="Expand"><i
+            class="fas fa-expand"></i></a> 	 -->
+                        <!--</div>
+    </div>-->
+                        <!--	<div id="tm-button" style="display: block;">
+            <div class="tddate  pool-button-right" id="toggle">
+                <span id="btn_add_players" class="highlight_color" title="Theater Mode" onclick="launchFullscreen(document.documentElement);pool_theater_mode();brackets_result_header();msFullscreen(document.documentElement);">
+                <div class="float-bnt">
+                <i class="fas fa-arrows-alt"></i>
+                </div>
+                </span>
+            </div>
+            </div>
+
+	-->
+	
+	<div class="float-bnt pool-button-right div-reset-pool">
+		<a id="btn_reset_pool" class="tip-top" title="Reset Pool" (click)="resetPool()"><i class="fas fa-sync"></i></a>
+	</div>
+
+                        <div class="float-bnt  pool-button-right" id="toggle">
+                            <a href="" id="toggle-expand" (click)="toggleExpandScreen()" class="expand" title="Expand"><i class="fa fa-expand"></i></a>
+                            <!--<a style="display: none !important;" href="" id="toggle-expand" class="expand" title="Expand"><i class="fas fa-expand"></i></a>-->
+						</div>
+						
+                        <div id="tm-button" class="float-bnt pool-button-right">
+                            <div id="toggle" class="btnTheaterMode">
+                                <span class="highlight_color" title="Theater Mode" (click)="launchFullscreen()">
+                                    <a href="javascript:;"><i class="fas fa-arrows-alt"></i></a>
+                                </span>
+                            </div>
+                        </div>
+
+                    
+                        <div class="tddate  pool-button-right">
+                            <a id="btn_add_players" href=""
+                               (click)="showMixer()"
+                               class="highlight_color">
+                                <div class="float-bnt" id="mixer">
+                                    <i class="fas fa-angle-right" title="Mixer"
+                                       aria-hidden="true">
+                                        <!--	<img alt="Mixer" src="assets/images/mixer_icon.png">-->
+                                    </i>
+                                    <i class="fas fa-angle-left" title="Mixer"
+                                       aria-hidden="true">
+                                        <!--	<img alt="Mixer" src="assets/images/mixer_icon.png">-->
+                                    </i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="bordr-rs psides10 hide" id="share_social">
+                            <div class="float-bnt">
+                                <a href="" target="_blank" id="share_twitter" class="highlight_color">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                            <div class="float-bnt">
+                                <a href="" id="share_facebook" class="highlight_color">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </div>
+						</div>
+						
+						<div class="float-bnt pool-button-right div-add-players">
+							<a href="" id="btn_bracket_manage_players" class="linkHover" title="Manage Players" (click)="openManagePlayer()">
+									<i class="fa fa-users"></i>
+							</a>
+						</div>
+
+						<div class="float-bnt pool-button-right div-swap">
+							<a href="" id="btn_swap_players" title="Swap Players" class="linkHover" (click)="ToggleSwapMode()" data-type="NORMAL">
+									<i class="fas fa-exchange-alt"></i>
+							</a>
+						</div>
+						<div class="float-bnt pool-button-right div-start-tournament">
+							<a href="" id="btn_start_tournament" class="linkHover" title="Start Tournament" (click)="startTournament()">
+									<i class="fas fa-play"></i>
+							</a>
+						</div>
+
+                        
+                        <div  class="tddate  pool-button-right">
+                            <button id="print_screen" (click)="PrintRoundScreen()" class="highlight_color">
+                                <div class="float-bnt">
+                                    <i class="fas fa-print" aria-hidden="true" title="Print"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+				</div>
+			</div>
+			<!-- brackets -->
+			<div class="scrolldrag brackets blue-bar h100 border_box mtop-10" id="step4">
+				<div id="brackets">
+					<div class="brakg-robin">
+						<!-- Column width 218px -->
+						Brackets will render here
+					</div>
+					<!-- <div class="brakg-score">
+						<ul class="scoreboard_list no-bullet followList ">
+							<li class="sha-box small-card" data-profile="">
+								<div class="row collapse">
+									<div class="left sha-box large-4 small-4 columns  player first-clmn">
+										<div class="score_item" id="rb-sw-scoreboard-sitm">1</div>
+										<div class="scoreboardPic pt20">
+											<div (click)="spotClicked()" class="profile_user_img_sm bulkNoTo" style="background-image:url(assets/img/guest.png"></div>
+										</div> 
+										<div class="scoreboardName pt20">
+											<p class="player_name tip-right" data-tooltip=""
+												aria-haspopup="true" data-selector="tooltip-iya7f2274"
+												aria-describedby="tooltip-iya7f2274" title="">
+												<a (click)="spotClicked()" href
+													title="player name">John Doe</a><br> <a href
+													(click)="spotClicked()"><span
+													class="player_username" title="player.player.username">player username
+														</span></a>
+											</p>
+										</div>
+									</div>
+									<div class="right large-8 small-8 columns sha-box player scnd-clmn" id="rr-ss-points">
+										<div class="score_item sb1" title="Played">
+											<p class="score_heading btxt score_large">Played</p>
+											<p class="score_heading btxt score_small">P</p>
+											<p class="score_value">10</p>
+										</div>
+										<div class="score_item sb2" title="Remaining">
+											<p class="score_heading btxt score_large">Remaining</p>
+											<p class="score_heading btxt score_small">R</p>
+											<p class="score_value">5</p>
+										</div>
+										<div class="score_item sb3" title="Match W-L-T">
+											<p class="score_heading btxt score_large">Match W-L-T</p>
+											<p class="score_heading btxt score_small">W-L-T</p>
+											<p class="score_value">1</p>
+										</div>
+										<div class="score_item sb4" title="Tie Breaker">
+											<p class="score_heading btxt">TB</p>
+											<p class="score_value">0</p>
+										</div>
+										<div class="score_item sb5" title="Set Wins" >
+											<p class="score_heading btxt score_large">Set Wins</p>
+											<p class="score_heading btxt score_small">SW</p>
+											<p class="score_value">2</p>
+										</div>
+										<div class="score_item sb6" title="Set Ties" >
+											<p class="score_heading btxt score_large">Set Ties</p>
+											<p class="score_heading btxt score_small">ST</p>
+											<p class="score_value">1</p>
+										</div>
+										<div class="score_item sb2" title="Byes" >
+											<p class="score_heading btxt">Byes</p>
+											<p class="score_value">2</p>
+										</div>
+										<div class="score_item sb3" title="Pts Diff" >
+											<p class="score_heading btxt">Pts. Diff</p>
+											<p class="score_value">2</p>
+										</div>
+										<div class="score_item_pts bgradient" id="rr-ss-pb-pts" title="Points">
+											<p class="score_heading">Pts.</p>
+											<p class="score_value">12</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+	</div>

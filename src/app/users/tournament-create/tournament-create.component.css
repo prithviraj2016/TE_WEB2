@@ -1,0 +1,239 @@
+.container .card-header h1{
+    color: #fff;
+    font-size: 25px;
+    
+}
+.card-body .col-4 .col-5{
+    background-color: #0a1218;
+}
+.container .card-header h3{
+    color: #3988ba;
+    font-size: 22px;
+}
+.container .card-header mat-icon{
+    font-size: 17px;
+    padding-left: 7px;
+    
+}
+.container .card-header a{
+    font-size: 15px;
+    text-decoration: none;
+    padding-left: 170px;
+}
+#container{
+    background-color:#070c10;
+}
+.card{
+    background-color: #0e161b;
+    margin-right: 26px;
+    margin-left: -123px;
+    margin-bottom: 40px;
+}
+.container .card-body mat-label{
+    /* color: #fff; */
+    color: #4d4d4d;
+}
+img{
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 23px;
+    width: 57px;
+}
+#tournament input{
+   
+    font-size: 18px;
+    font-family: robotobold;
+    /* color: #4d4d4d; */
+    text-align: center;
+    /* display: flex; */
+    letter-spacing: 1px;
+    padding-top: 20px;
+    box-shadow: none;
+    background: none;
+    border: none;
+    border-bottom: #676d75 solid 1px;
+    padding-left: 127px;
+    
+}
+
+.container .row{
+   display:flex;
+   justify-content: center;
+}
+.col-4 .card{
+    background-color: #0a1218;
+    margin-left: -57px;
+    margin-right: -34px;
+   
+}
+.col-5 .card{
+    background-color: #0a1218;
+    margin-left: 3px;
+    margin-right: -118px;
+}
+.btn-danger{
+    width: 123px;
+    margin-top: 62px;
+    margin-left: 40px;
+    height: 45px;
+}
+.btn-primary{
+    width: 123px;
+    margin-top: 62px;
+    margin-left: 40px;
+    height: 45px;
+}
+.col-4 .card h1{
+    font-size: 22px;
+    color: #3988ba;
+    padding-left: 20px;
+    padding-top: 39px;
+
+}
+#features mat-label{
+    color: #3988ba;
+    font-size: 16px;
+    padding-left: 21px;
+    font-weight: bold;
+}
+#features input{
+    
+    color: #4d4d4d;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    box-shadow: none;
+    background: none;
+    border: none;
+    border-bottom: #676d75 solid 1px;
+    margin-left: 24px;
+    margin-top: -42px;
+    padding-right: 213px;
+}
+
+
+#features h6{
+    color: rgb(232, 232, 232);
+    font-size: 14px;
+    background: transparent;
+    font-family: 'robotolight', sans-serif;
+    padding-left: 23px;
+    padding-top: 13px;
+}
+/* ::placeholder{
+    color: #4d4d4d;
+    opacity: 1;
+    font-size: 20px;
+    width: 100%;
+} */
+#settings h2{
+    color: #3988ba;
+    font-size: 25px;
+    padding-left: 38px;
+    padding-top: 40px;
+    font-family: 'robotolight', sans-serif;
+}
+#settings mat-label{
+    color: #747f85;
+    font-size: 15px;
+    font-family: 'robotolight';
+    font-weight: normal;
+    line-height: 1.5;
+    padding-left: 32px;
+    /* font-weight: bold; */
+    
+}
+#settings mat-slide-toggle{
+    padding-left: 81px;
+    padding-bottom: 49px;
+    padding-block: 12px;
+}
+#payment1 mat-label{
+    color: #3988ba;
+    font-size: 17px;
+    font-family: 'robotolight';
+    padding-left: 32px; 
+    font-weight: bold; 
+}
+#registration1 mat-label{
+    color: #3988ba;
+    font-size: 17px;
+    font-family: 'robotolight';
+    padding-left: 32px; 
+    font-weight: bold;  
+    margin-top: 22px;
+}
+#payment1 select{
+    box-shadow: none;
+    background: none;
+    border: none;
+    border-bottom: #676d75 solid 1px;
+    margin-left: 32px;
+    margin-top: 20px;
+    width: 106%;
+    color: #4d4d4d;
+}
+#registration1 input{
+    box-shadow: none;
+    background: none;
+    border: none;
+    border-bottom: #676d75 solid 1px;
+    margin-left: 32px;
+    margin-top: 0px;
+    width: 106%;
+    color: #4d4d4d;
+    text-align: left; 
+    padding-top: 20px;
+
+}
+#check-in-time select{
+    box-shadow: none;
+    background: none;
+    border: none;
+    border-bottom: #676d75 solid 1px;
+    margin-left: 32px;
+    margin-top: 20px;
+    width: 106%;
+    color: #4d4d4d;
+    
+}
+#check mat-label{
+    color: #3988ba;
+    font-weight: bold;  
+    margin-left: 1px;
+    margin-top: 22px;
+}
+#check select{
+    box-shadow: none;
+    background: none;
+    border: none;
+    border-bottom: #676d75 solid 1px;
+    margin-left: 29px;
+    width: 106%;
+    color: #4d4d4d;
+
+}
+#advance #player-score mat-label{
+    color: #3988ba;
+    font-weight: bold; 
+}
+option{
+    color: #4d4d4d;
+    background-color: #1D262C;
+}
+#tournament-style select{
+    box-shadow: none;
+    background: none;
+    border: none;
+    border-bottom: #676d75 solid 1px;
+    margin-left: 29px;
+    width: 106%;
+    color: #4d4d4d;
+    margin-left: 0;
+    width: 171%;
+
+}
+

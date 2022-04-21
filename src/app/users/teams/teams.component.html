@@ -1,0 +1,151 @@
+<div class="row restrict_to_window ng-scope">
+   
+    <div  id="list-container" class="cdiv small-5 left">
+        <div class="sha-box control_box">
+            <div class="row">
+                <div class="ribbon_parent">
+                  
+                    <div class="ribbon_content small-4 medium-4 columns">
+                      
+                        <p class="ng-binding">TEAMS</p>
+                    </div>
+                </div>
+                <div class="small-6 columns"></div>
+                <div class="small-7 medium-7 large-5 searchb pt15 columns">
+                    <form class="ng-pristine ng-valid">
+                        <input  type="search" id="search" placeholder="Search team" >
+                    </form>
+                </div>
+            </div>
+            <div class="tabs-bar">
+                <div id="myListMenu" >
+                  <a class="create-new" ><img src="../../../assets/img/icon_create.svg"><i>CREATE NEW</i></a>
+
+                </div>
+            </div>
+        </div>
+
+        <div data-step="3" data-intro="Click to see relevant information about your team." class="bar small-12 resized-tab-content list_wrapper" scrolly="loadMore(profile.person.userID)" id="general_list_for_all">
+            <div class="content active" id="panel1">
+
+                <!-- ngInclude: template.url --><div ng-show="hasobjects" ng-include="template.url" class="ng-scope"><!-- ngRepeat: team in teams --><div ng-repeat="team in teams" class="ng-scope">
+<div class="tmpgcard event_card sha-box card card-active" ng-class="{'card-active' : $index == selectedIndex}" ng-click="showDetails($index)">
+    <div class="img-event blankImage" ng-style="team.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + team.imageKey +')'} || {'background-image':'url(assets/images/object1.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/ac9285bd-72fc-44d1-b2ca-cd5f6fbc7b93-1649757467711&quot);;">
+        <div class="name-event truncate ng-binding" title="team12">team12</div>
+    </div>
+    <div class="txt-event" style="margin-top:0; font-size: 14px;">
+        <span class="tgamename">TEAM INFO.</span>
+        <hr class="shr3">
+        <div class="clear"></div>
+        <div class="tinfo">Location:</div>
+        <span class="tdata ng-binding btxt" ng-class="team.completed ? 'rtxt' : 'btxt'" title="India">India</span>
+        <div class="clear"></div>
+        <div class="tinfo tinfo-location">Members:</div>
+        <span class="tdata ng-binding btxt" ng-class="team.completed ? 'rtxt' : 'btxt'">1</span>
+        
+    </div>
+    <br>
+</div>
+<hr class="shr1">
+
+
+
+
+
+
+
+               
+            </div>
+
+            <div id="mylist_loader_image" style="display: none;">
+                <div id="loader_image_upcoming" class="ng-binding" align="center">
+                    <img src="assets/images/ajax-loader.gif" alt="Loading next records" title="Loading next records" width="25" height="25">Loading teams, please wait...
+                </div>
+                <div id="loader_message_upcoming" align="right"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Column 3 -->
+    <div  id="detail-container" class="rdiv large-7 left">
+        <div class="detail_loader_image" style="display: none;" align="center">
+            <img src="assets/images/ajax-loader.gif" alt="Loading next records" width="25" height="25">
+        </div>
+       <div  id="detail"  class="ng-scope"><div class="detail sha-box p15 flex_box_column tmdetail ng-scope" id="tdetail-container" >
+    <div class="img-event-bg mbot-15" >
+        <div ng-show="viewLevel > 0" class="">
+	        <a class="bgradient-red delete_tournament" ><i class="fa fa-trash"></i></a>
+            <a class="follow_icon followed follow_adminView"  style="cursor:text;"><i class="fa fa-heart"></i></a>
+            <span class="follow_num ng-binding">0</span>
+        </div>
+        <div class="detail_title">
+            <div class="w64p truncate ng-binding" title="team12">TEAM12</div>
+        </div>
+
+      
+    </div>
+    <div class="row flex_item flex_box" id="season-detail-col2">
+       
+        <div class="medium-8 bordr flex_item flex_box_column teamDetails" id="tournament-detail">
+            <div class="name-event-bg mbot-15">
+                <a title="Click to start introduction guide." href="" id="login_box_button" class="help_button"><i class="fa fa-info-circle" aria-hidden="true"></i><span>&nbsp;Help</span></a>
+            </div> 
+
+           
+            <div class="bar flex_item_jscrollpane tinfotitle">
+                <div class="description_title btxt">Admin</div>
+                <div  class="player-sm" data-step="4" data-intro="See your admin list for your team">
+                    <a href="/#!/user/view/86192">
+                        <div class="profile_user_img_sm playerimg" style="background-image: url(../../../assets/img/guest.png);"></div>
+                    </a> <span class="pname" title="priyanshi_test"><a href="/#!/user/view/86192" class="ng-binding">priyanshi_test</a></span>
+                </div>
+                <div class="description_title btxt" >About Team</div>
+                <div ng-show="sTeam.description" class="word-wrap description">
+                    <p class="info_box_mp pre ng-binding">team12 is the good team</p>
+                </div>
+            </div>
+            <div class="tournament_btns" ng-show="viewLevel > 0">
+                <div class="ctrlpnl tournament_btns_gradient">
+                   <ul ng-if="!enableViewLevel" class="ng-scope"> 
+                        <li><a class="blkbkg" href="/#!/team/edit/86387" title="Edit" data-step="6" data-intro="Click here to edit your team information."><i class="fas fa-edit"></i> Edit</a></li>
+                        <li><a class="blkbkg event_btn deleteSeason deleteEvent" data-step="7" data-intro="Delete this team" confirmed-click="DeleteTeam(sTeam.teamID)" ng-confirm-click="Are you sure you want to delete team?" title="Delete"><i class="fas fa-trash-alt"></i> Delete</a> </li>
+                    </ul>
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+        <div class="medium-4 left pl15 columns flex_box_column" id="season-detail-list">
+            <!-- Count -->
+            <div class="name-event-bg">
+                <span class="btxt ">Players</span>
+                <span class="flrt ng-binding">1 </span>
+            </div>
+             <div class="flex_item flex_box_column" data-step="9" data-intro="See your team players. Click to take to their profile">
+                <div class="bar flex_item_jscrollpane playerslist tmplaylist">
+                    <div class="list_box_mp">
+                        <!-- ngRepeat: playerInfo in sTeam.players --><div class="player-sm ng-scope" ng-repeat="playerInfo in sTeam.players">
+                            <div>
+                                <a href="/#!/user/view/86192">
+                                    <div class="profile_user_img_sm playerimg"  style="background-image: url(../../../assets/img/guest.png);"></div>
+                                </a>
+                                    <span class="pname" title="priyanshi_test"><a href="/#!/user/view/86192" class="ng-binding">priyanshi_te...</a></span>
+                            </div>
+                        </div><!-- end ngRepeat: playerInfo in sTeam.players -->
+                    </div>
+                </div>
+            </div>           
+            <!-- ngIf: (viewLevel > 0) --><div ng-if="(viewLevel > 0)" ng-show="viewLevel > 0" data-step="10" data-intro="Manage your players" class="ng-scope">
+                <a href="/#!/team/players/86387"> 
+                    <div class="poolsb bgradient bordr-all mp-btn" title="Manage Player">Manage Player</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+    </div>
+</div>

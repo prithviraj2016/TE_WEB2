@@ -1,0 +1,827 @@
+
+<div class="banner-img" id="banner-img1">
+
+
+  <div class="fixwidth-large bracket">
+
+<div class="row">
+    <div class="slider-container large-8 medium-12 small-12 columns">
+
+       <div class="client-thumbnails slider-nav">
+          <ngx-slick-carousel
+             class="carousel thumbs"
+             #slickModal="slick-carousel"
+             [config]="thumbnailsSlider ">
+
+
+             <div ngxSlickItem class="slider-tabs slide tab-1">
+              <h3>Brackets</h3>
+            </div>
+            <div ngxSlickItem class="slider-tabs tab-2">
+              <h3>Offline Mode <span class="patent-ftr">Patented</span></h3>
+            </div>
+
+            <div ngxSlickItem class="slider-tabs tab-4">
+              <h3>Assign Staff</h3>
+            </div>
+            <div ngxSlickItem class="slider-tabs tab-5">
+              <h3>Push Notification <span class="patent-ftr">Patented</span></h3>
+            </div>
+
+         </ngx-slick-carousel>
+     </div>
+      <div class="feedback-slides">
+        <div class="client-feedback">
+             <ngx-slick-carousel
+                 class="carousel feedback"
+                 #slickModal="slick-carousel"
+                 [config]="imagesSlider" >
+
+
+                 <div ngxSlickItem class="slider-content content-1">
+                  <div class="cnt-copy row">
+                  <div class="large-12 medium-12 small-12 columns">
+                    <img src="./assets/img/brackets_home.png">
+                    <span class="btn-action">
+                      <a href="" class=" btn-ghost-white" title="Create a Tournament" routerLink="/signin">Create a
+                        Tournament</a>
+                    </span>
+                  </div>
+                </div>
+                </div>
+
+                <div ngxSlickItem class="slider-content content-2">
+                  <div class="cnt-copy row">
+                    <div class="large-8 medium-8 small-12 columns textsection">
+                      <h3>No Wifi no problem!</h3>
+                      <p>Remember printing the brackets? No more! TE now works offline without the need to
+                        print anything!
+                        You save trees and look good while doing so. Oh did we forget to say it can be
+                        re-synced by you
+                        later on? <sup class="highlight">*</sup>
+                      </p>
+                      <i><span class="far fa-star"></span> Patented Feature</i><br>
+                      <em><span class="fa fa-info-circle"></span>  This feature only applies for the TE App.
+                        :(</em>
+                    </div>
+                    <div class="large-3 medium-3 small-12 columns left  hide-smalldevices">
+                      <img src="./assets/img/slider-icon-offline.png">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div ngxSlickItem class="slider-content content-4">
+
+                  <div class="cnt-copy row">
+                    <div class="large-3 medium-3 small-12 columns  hide-smalldevices">
+                      <img src="./assets/img/home-banner-icon-addstaff.png">
+                    </div>
+                    <div class="large-8 medium-8 small-12 columns textsection">
+                      <h3>Can’t run a big tournament without any help?</h3>
+                      <p>Tournament Edition (TE) allows for you to have your friends and volunteers help
+                        run the event directly
+                        from the website or our app!</p>
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div ngxSlickItem class="slider-content content-5">
+
+                  <div class="cnt-copy row">
+                    <div class="large-8 medium-8 small-12 columns textsection">
+                      <h3>Real Time Push Notifications FTW</h3>
+                      <p>Never be late to tournaments again! Need to make a last minute change? No more
+                        losing your voice
+                        from screaming for players to check in. Simply receive notifications straight on
+                        your phone! <sup class="highlight">*</sup>
+                      </p>
+                      <i><span class="far fa-star"></span> Patented Feature</i><br>
+                      <em><span class="fa fa-info-circle"></span> This feature only applies for the TE App.
+                        :(</em>
+                    </div>
+                    <div class="large-3 medium-3 small-12 columns left  hide-smalldevices">
+                      <img src="./assets/img/home-banner-icon-notifications.png">
+                    </div>
+                  </div>
+                </div>
+
+             </ngx-slick-carousel>
+         </div>
+     </div>
+    </div>
+
+    <div class="form  large-4 medium-4 small-12 columns">
+
+      <!-- <div class="w3-bar w3-black">
+        <a class="tablink active-tab" (click)="openTab($event, 'SignIn_Section')">Sign In</a>
+        <a class="tablink" (click)="openTab($event, 'SignUp_Section')">Sign Up</a>
+      </div> -->
+
+      <!-- <div id="SignIn_Section" class="section_login">
+
+        <div id="sign-in-form" class="contents">
+          <div class="login_box ng-cloak" id="login_box">
+            <div class="login_box_body">
+              <div class="">
+                <div class="login_box_login">
+
+                  <form name="loginform" ng-submit="login()" id="login-form" autocomplete="off">
+
+                    <table class="register_table">
+                      <tr>
+                        <td colspan="2">
+                          <input form="login_form_home_novalidated"
+                            placeholder="Username or Email" type="text"
+                            id="login_username" class="hp-fields" name="login_username"
+                            ng-model="username" required autocomplete="false" />
+
+                          <input form="login_form_home_novalidated" placeholder="Password"
+                            type="password" id="login_password" name="login_password"
+                            required autocomplete="false" />
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <a title="Forgot Password" class="left forgot_password">Forgot Password</a>
+                        </td>
+                        <td>
+                          <a title="Resend Verification Mail" class="left forgot_password"
+                            >Resend Verification Mail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="checkbox" id="login_remember_me"
+                            ng-model="teRemenberMe">&nbsp;Remember Me
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2">
+                          <input title="Login" type="submit" value="Login"
+                            class="right msg_button right no_margin login_link"
+                            id="change-password-btn" />
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td colspan="2">
+                          <label class="custom-label">OR USE</label>
+                          <div id="login-social">
+                            <div class="social_login">
+                              <a title="Facebook"
+                                >
+                                <div class="login_fb"></div>
+                              </a>
+                            </div>
+                            <div class="social_login">
+                              <a title="Google"
+                                >
+                                <div class="login_gplus"></div>
+                              </a>
+                            </div>
+
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <p id="login_error"></p>
+                  </form>
+
+
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> -->
+
+      <!-- <div id="SignUp_Section" class="section_login" style="display:none">
+        <div id="sign-up-form" class="contents">
+          <div class="login_box_registration">
+            <div class="large-12" id="form">
+
+              <form id="register_form" data-abide="ajax" name="myForm" submit="signUp()"
+                autocomplete="off">
+                <div id="user-not-found"></div>
+                <table class="register_table no_margin home_section">
+
+                  <tr>
+                    <td>
+                      <input form="register_form_home_novalidated" type="text"
+                        id="register_username" autocomplete="false" placeholder="Username"
+                        name="register_username" ng-pattern="/^[a-zA-Z0-9._]*$/"
+                        ng-minlength="3" ng-maxlength="30"
+                        required />
+
+
+                      <input form="register_form_home_novalidated" type="email"
+                        id="register_email" placeholder="Email"
+                        ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                        name="register_email" ng-model="newUser.email" disallow-spaces
+                        required autocomplete="false" />
+
+
+
+                      <input form="register_form_home_novalidated" type="password"
+                        id="register_password" placeholder="Password"
+                        name="register_password" ng-minlength="6"
+                        ng-model="newUser.password" disallow-spaces required
+                        autocomplete="false" />
+
+
+                      <input form="register_form_home_novalidated" type="password"
+                        ng-minlength="6" placeholder="Confirm Password"
+                        id="register_confirmpassword" name='register_confirmpassword'
+                         data-password-verify="newUser.password"
+                        disallow-spaces required autocomplete="false" />
+
+
+
+
+
+                      <input title="Sign Up" type="submit" value="Sign Up" class="right"
+                        id="register_sign_up_button"/>
+
+                      <div style="clear:both"></div>
+                      <label class="custom-label">OR USE</label>
+                      <div id="login-social">
+                        <div class="social_login">
+                          <a title="Facebook"
+                            >
+                            <div class="login_fb"></div>
+                          </a>
+                        </div>
+                        <div class="social_login">
+                          <a title="Google +"
+                            >
+                            <div class="login_gplus"></div>
+                          </a>
+                        </div>
+
+                      </div>
+
+
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td id="terms_con" colspan="2">
+                      <div class="terms-div">
+
+                        continuing you agree to the
+                        <a href="/#!/terms" target="_blank">Terms and Conditions</a> and
+                        <a href="/#!/privacy" target="_blank">Privacy Policy</a>. TE may
+                        send you newsletters; you can always change your preferences in your
+                        profile.
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2">
+                      <div id="register_error"></div>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
+      <!-- Nav tabs -->
+
+      <ul class = "tabs" data-tabs id = "tabs_example">
+        <li class = "tabs-title is-active"><a href = "#tab1">Sign In</a></li>
+        <li class = "tabs-title"><a href = "#tab2">Sign Up</a></li>
+
+     </ul>
+
+     <div class = "tabs-content" data-tabs-content = "tabs_example">
+        <div class = "tabs-panel is-active" id = "tab1">
+
+          <div id="sign-in-form" class="contents">
+            <div class="login_box ng-cloak" id="login_box">
+              <div class="login_box_body">
+                <div class="">
+                  <div class="login_box_login">
+
+                    <form action="" [formGroup]="signinForm"  id="login-form"  (submit)="onSigninFormSubmit()">
+
+                      <table class="register_table">
+                        <tr>
+                          <td colspan="2">
+                            <input form="login_form_home_novalidated"
+                              placeholder="Username or Email" type="text"
+                              id="login_username" class="hp-fields" name="login_username"
+                              ng-model="username" required autocomplete="false" formControlName="UserName" />
+                              <div *ngIf="submitted && f['UserName'].errors" class="invalid-feedback">
+                                <div *ngIf="f['UserName'].errors['required']">Username is required</div>
+                                </div>
+                            <input form="login_form_home_novalidated" placeholder="Password"
+                              type="password" id="login_password" name="login_password"
+                              required autocomplete="false" formControlName="Password"/>
+                              <div *ngIf="submitted && f['Password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['Password'].errors['required']"> Password is required</div>
+                                
+                                </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <!-- <td>
+                            <a title="Forgot Password" class="left forgot_password">Forgot Password</a>
+                          </td> -->
+                          <td>
+                            <a title="Forgot Password" class="left forgot_password" (click)="open(mymodal)">Forgot Password</a>
+                          </td>
+
+                          <td>
+                            <a title="Resend Verification Mail" class="left forgot_password"
+                            (click)="triggerModal2(resend_mail)">Resend Verification Mail</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <input type="checkbox" id="login_remember_me"
+                              ng-model="teRemenberMe">&nbsp;Remember Me
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            <input title="Login" type="submit" value="Login"
+                              class="right msg_button right no_margin login_link"
+                              id="change-password-btn" />
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td colspan="2">
+                            <label class="custom-label">OR USE</label>
+                            <div id="login-social">
+                              <div class="social_login">
+                                <a title="Facebook"
+                                  >
+                                  <div class="login_fb"></div>
+                                </a>
+                              </div>
+                              <div class="social_login">
+                                <a title="Google"
+                                  >
+                                  <div class="login_gplus"></div>
+                                </a>
+                              </div>
+
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <p id="login_error"></p>
+                    </form>
+
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class = "tabs-panel " id = "tab2">
+          <div id="sign-up-form" class="contents">
+            <div class="login_box_registration">
+              <div class="large-12" id="form">
+
+                <form [formGroup]="signupForm" (ngSubmit)="createUser()" id="register_form">
+                  <div id="user-not-found"></div>
+                  <table class="register_table no_margin home_section">
+
+                    <tr>
+                      <td>
+                        <input  form="register_form_home_novalidated" type="text"
+                          id="register_username" autocomplete="false" placeholder="Username"
+                          name="register_username" formControlName="username"/>
+                          <div *ngIf="submitted && fs['username'].errors" class="invalid-feedback">
+                            <div *ngIf="fs['username'].errors['required']">Username is required</div>
+                            <div *ngIf="fs['username'].errors['minlength']">
+                              Username must be at least 6 characters
+                            </div>
+                            <div *ngIf="fs['username'].errors['maxlength']">
+                              Username must not exceed 20 characters
+                            </div>
+                          </div>
+
+                        <input form="register_form_home_novalidated" type="email"
+                          id="register_email" placeholder="Email"
+                          ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"
+                          name="register_email" ng-model="newUser.email" disallow-spaces
+                          required autocomplete="false" formControlName="email"/>
+                          <div *ngIf="submitted && fs['email'].errors" class="invalid-feedback">
+                            <div *ngIf="fs['email'].errors['required']">Email is required</div>
+                            <div *ngIf="fs['email'].errors['email']">Email is invalid</div>
+                          </div>
+
+
+                        <input form="register_form_home_novalidated" type="password"
+                          id="register_password" placeholder="Password"
+                          name="register_password" ng-minlength="6"
+                          ng-model="newUser.password" disallow-spaces required
+                          autocomplete="false" formControlName="password"/>
+                          <div *ngIf="submitted && fs['password'].errors" class="invalid-feedback">
+                            <div *ngIf="fs['password'].errors['required']">Password is required</div>
+                            <div *ngIf="fs['password'].errors['minlength']">
+                              Password must be at least 8 characters
+                            </div>
+                            <div *ngIf="fs['password'].errors['maxlength']">
+                              Username must not exceed 40 characters
+                            </div>
+                          </div>
+
+                        <input form="register_form_home_novalidated" type="password"
+                          ng-minlength="6" placeholder="Confirm Password"
+                          id="register_confirmpassword" name='register_confirmpassword'
+                           data-password-verify="newUser.password"
+                          disallow-spaces required autocomplete="false"formControlName="cpassword" />
+
+                          
+                          <div *ngIf="submitted && fs['cpassword'].errors"
+                          class="invalid-feedback">
+                        
+                          <div *ngIf="fs['cpassword'].errors['required']">
+                            Confirm Password is required
+                          </div>
+                          <div *ngIf="fs['cpassword'].errors['matching']">
+                            Confirm Password does not match
+                          </div>
+                        </div>
+
+
+
+                        <input title="Sign Up" type="submit" value="Sign Up" class="right"
+                          id="register_sign_up_button"/>
+
+                        <div style="clear:both"></div>
+                        <label class="custom-label">OR USE</label>
+                        <div id="login-social">
+                          <div class="social_login">
+                            <a title="Facebook"
+                              >
+                              <div class="login_fb"></div>
+                            </a>
+                          </div>
+                          <div class="social_login">
+                            <a title="Google +"
+                              >
+                              <div class="login_gplus"></div>
+                            </a>
+                          </div>
+
+                        </div>
+
+
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td id="terms_con" colspan="2">
+                        <div class="terms-div">
+
+                          continuing you agree to the
+                          <a href="/#!/terms" target="_blank">Terms and Conditions</a> and
+                          <a href="/#!/privacy" target="_blank">Privacy Policy</a>. TE may
+                          send you newsletters; you can always change your preferences in your
+                          profile.
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td colspan="2">
+                        <div id="register_error"></div>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+     </div>
+
+
+    </div>
+  </div>
+  </div>
+
+<!-- Fixed Home menu -->
+		<ul id="navbar_account_menu_moving">
+
+			<li class="icon-signup">
+				<a title="SIGN UP" routerLink="/signup" id="login_box_button">Sign Up</a>
+			</li>
+
+			<li class="ng-cloak icon-features">
+				<a title="FEATURES" routerLink="/features" id="login_box_button">Features</a>
+			</li>
+
+			<li class="ng-cloak icon-forum">
+				<a title="FORUM" href="https://tournamentedition.discussion.community/" id="login_box_button"
+					target="_blank">Forum</a>
+			</li>
+		</ul>
+  </div>
+<div class="main-content">
+
+
+  <div class="col-md-12">
+    <div id="intro-wrapper" ng-include="'home/aboutus_intro.html'" class="ng-scope">
+      <div class="intro-content ng-scope">
+        <h1>Tournament Edition</h1>
+        <p>
+          Tournament Edition (TE as we like to call it) is a free, multi-platform tournament management tool that is
+          geared towards
+          bringing Players, Tournament Organizers, and Fans closer together. We at TE are passionate about bringing
+          people together
+          while providing easy to use, innovative tools that help you take your tournaments to the next level. Create a
+          tournament
+          in 30 seconds! Bad signal? No problem! TE works offline so you don’t have to. Just resync later! Spend less
+          time planning
+          and more time playing. Need help? Find us on
+          <a target="_blank" href="https://www.facebook.com/tournamenteditionapp/" title="Facebook">Facebook</a>,
+          <a target="_blank" href="https://twitter.com/te_app" title="Twitter">Twitter</a>,
+          <a target="_blank" href="#" title="Discord">Discord</a> or
+          <a title="Contact Us" href="" routerLink="/contactus">Contact Us</a>.
+        </p>
+
+        <a href="" title="Read More" class="btn-ghost-white" routerLink="/aboutus">Read More</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="fixwidth-large ng-scope" id="recent-tournament">
+    <div class="block2">
+      <h1>RECENT TOURNAMENTS</h1>
+    </div>
+
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel">
+      <div ngxSlickItem class="slider-content content-1 slide inner-col" *ngFor="let item of tournamentList1" [ngStyle]="{'background-image':'url(' + item.src + ')'}">
+        <div class="tour-title">
+          <span class="no_margin ng-binding">{{item.name}}</span>
+          <span id="head-title" class="ng-binding">{{item.startDate}}</span>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+
+  <div class="fixwidth-large ng-scope">
+    <div class="block2">
+      <h1>TOURNAMENT EDITION INTRO VIDEO</h1>
+    </div>
+
+    <div class="intro-video">
+      <div class="row">
+        <div class="large-6 medium-6 small-12 columns">
+          <iframe style="margin-right:2%;" width="100%" src="https://www.youtube.com/embed/zJdAvQa0usU" frameborder="0"
+            allowfullscreen=""></iframe>
+        </div>
+        <div class="large-6 medium-6 small-12 columns">
+          <iframe width="100%" src="https://www.youtube.com/embed/2eTjMw---bE" frameborder="0"
+            allowfullscreen=""></iframe>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-6 medium-6 small-12 columns">
+          <iframe style="margin-right:2%;" width="100%" src="https://www.youtube.com/embed/g-5QZmgxzi0" frameborder="0"
+            allowfullscreen=""></iframe>
+        </div>
+        <div class="large-6 medium-6 small-12 columns">
+          <iframe width="100%" src="https://www.youtube.com/embed/wHHQTjedkfE" frameborder="0"
+            allowfullscreen=""></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="fixwidth-large ng-scope" id="recent-tournament">
+    <div class="block2">
+      <h1>TRUSTED BY</h1>
+    </div>
+
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig2">
+      <div ngxSlickItem class="text-center" *ngFor="let tlogo of trusted">
+        <a [href]="tlogo.logosource" [title]="tlogo.logotitle" target="_blank"><img [src]="tlogo.logosrc" class="float-center" [alt]="tlogo.logotitle"></a>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+
+
+</div>
+                    
+                          <!-- forgetForm -->
+
+                          
+                          <ng-template #mymodal let-modal  >
+                            <div id="myModal-forgotPass-home"  class="customeNgdialog reveal-modal content-color ng-pristine ng-untouched ng-valid ng-empty open"style="display: block; opacity: 1; visibility: visible; top: 100px;" >
+                              <div class="login_box_forgot">
+                                  <div class="row heading_color bottom_shadow">
+                                      <div class="large-10 medium-10 small-10 columns">
+                                          <h6 id="modalTitle">Forgot Password</h6>
+                                      </div>
+                                      <div class="small-2 columns">
+                                          <a class="btn-close-modal" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                              <div title="Close" class="close-reveal-modal closebtn mtop-5 right" aria-label="Close" id="close"></div>
+                                          </a>
+                                      </div>
+                                  </div>
+                                  <form [formGroup]='forgetForm' novalidate (submit)="forgetpassword()" id="forgot_password_form_home" name="forgot_password_form" ng-submit="forgotPassword(forgot_password_form)" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" >
+                                    
+                                      <div class="large-12 columns">
+                                          <input type="email" formControlName="email" placeholder="Email Address" class="reset_email ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="reset_email" ng-model="resetUsername" required="">
+                                          <div class="error" >
+                                            {{_errorTxt}}
+                                          </div>
+                                           <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                                          <div class="validation"*ngIf="f['email'].errors && f['email'].errors['required']">
+                                          <br> Please Enter Email !
+                                          </div>
+                                          </div>
+                                          <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                                              <div class="validation"*ngIf="f['email'].errors && f['email'].errors['email']">
+                                            <br> Enter  vaild Email !
+                                              </div>
+                                              </div>
+                                              <input title="Submit" type="submit" value="Submit" ng-disabled="forgot_password_form.reset_email.$invalid" class="right msg_button forget_button"  formControlName="email"  (click)="modal.dismiss('Cross click')" placeholder="Submit" (click)="triggerModal(modalData)" >
+                                          <input title="Cancel" type="reset" aria-label="Close" class="right close-reveal-modal msg_button forgot_password_cancel" value="Cancel" (click)="modal.dismiss('Cross click')"  >
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                        </ng-template>
+                        <ng-template #modalData let-modal>
+                         <div class="ngdialog ngdialog-customDialog-theme ng -scope" id="forgetpassworddialog-dialog">
+                           <div class="ngdialog-overlay"></div>
+                           <div class="ngdialog-content">
+                             <div id="registerMessageModal" class="windowModal">
+                               <div class="row heading_color bottom_shadow">
+                                 <div class="large-10 columns">
+                                  <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="!errorShow">Message</h2>
+                                  <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="errorShow">error</h2>
+                                 </div>
+                               
+                               </div>
+                               <div class="large-12 columns">
+                                <br>
+                                
+                               <div  class="error_msg" *ngIf="errorShow">
+                                  {{_errorTxt}}
+                                </div>
+                                <div *ngIf="!errorShow">
+                               Password reset link has been sent to registered email
+                               </div>
+                                
+                              </div>
+                              <a title="Close" (click)="modal.dismiss('Cross click')">
+                                <div class="closebtn ngdialog-close">
+
+                                </div>
+                              </a>
+                             </div>
+                           </div>
+
+                         </div>
+                        </ng-template>
+                        <ng-template #modalData let-modal>
+                         <div class="ngdialog ngdialog-customDialog-theme ng -scope" id="forgetpassworddialog-dialog">
+                           <div class="ngdialog-overlay"></div>
+                           <div class="ngdialog-content">
+                             <div id="registerMessageModal" class="windowModal">
+                               <div class="row heading_color bottom_shadow">
+                                 <div class="large-10 columns">
+                                  <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="!errorShow">Message</h2>
+                                  <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="errorShow">error</h2>
+                                 </div>
+                               
+                               </div>
+                               <div class="large-12 columns">
+                                <br>
+                                
+                               <div  class="error_msg" *ngIf="errorShow">
+                                  {{_errorTxt}}
+                                </div>
+                                <div *ngIf="!errorShow">
+                               Password reset link has been sent to registered email
+                               </div>
+                                
+                              </div>
+                              <a title="Close" (click)="modal.dismiss('Cross click')">
+                                <div class="closebtn ngdialog-close">
+
+                                </div>
+                              </a>
+                             </div>
+                           </div>
+
+                         </div>
+                        </ng-template>
+                        <ng-template #resend_mail let-modal let-d="dismiss" class="modal-dialog"  >
+                          <div id="myModal-forgotPass-home" ng-model="closeWin" class="customeNgdialog reveal-modal content-color ng-pristine ng-untouched ng-valid ng-empty open" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="display: block; opacity: 1; visibility: visible; top: 100px;" >
+                            <div class="login_box_forgot">
+                                <div class="row heading_color bottom_shadow">
+                                    <div class="large-10 medium-10 small-10 columns">
+                                        <h6 id="modalTitle">Resend Verification Mail</h6>
+                                    </div>
+                                    <div class="small-2 columns">
+                                        <a class="btn-close-modal" aria-label="Close"  (click)="modal.dismiss('Cross click')" >
+                                            <div title="Close" class="close-reveal-modal closebtn mtop-5 right" aria-label="Close" id="close"></div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <form [formGroup]='forgetForm' novalidate (submit)="resendVerification()" id="forgot_password_form_home" name="forgot_password_form" ng-submit="forgotPassword(forgot_password_form)" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" >
+                    
+                                    <div class="large-12 columns">
+                                        <input type="email" formControlName="email" placeholder="Email Address" class="reset_email ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" name="reset_email" ng-model="resetUsername" disallow-spaces="" required="">
+                                        <div class="error" >
+                                          {{_errorTxt}}
+                                        </div>
+                                         <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                                        <div class="validation"*ngIf="f['email'].errors && f['email'].errors['required']">
+                                        <br> Please Enter Email !
+                                        </div>
+                                        </div>
+                                        <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                                            <div class="validation"*ngIf="f['email'].errors && f['email'].errors['email']">
+                                          <br> Enter  vaild Email !
+                                            </div>
+                                            </div>
+                                            <input title="Submit" type="submit" value="Submit" class="right msg_button forget_button"  formControlName="email" placeholder="Submit" (click)="triggerModal3(resend_mail2)" >
+                                            <input title="Cancel" type="reset" aria-label="Close" class="right close-reveal-modal msg_button forgot_password_cancel" value="Cancel"  (click)="modal.dismiss('Cross click')" >
+                                          </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                        
+                         
+                        
+                          
+                        
+                        </ng-template>
+
+
+                        <ng-template #resend_mail2 let-modal>
+                          <div class="ngdialog ngdialog-customDialog-theme ng -scope" id="forgetpassworddialog-dialog">
+                            <div class="ngdialog-overlay"></div>
+                            <div class="ngdialog-content">
+                              <div id="registerMessageModal" class="windowModal">
+                                <div class="row heading_color bottom_shadow">
+                                  <div class="large-10 columns">
+                                  
+                                   <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" >Error</h2>
+                                  </div>
+                                
+                                </div>
+                                <div class="large-12 columns">
+                                 <br>
+                                 
+                                <div  class="error_msg">
+                                   {{_re_errorTxt}}
+                                 </div>
+                                
+                                 
+                               </div>
+                               <a title="Close" (click)="modal.dismiss('Cross click')">
+                                 <div class="closebtn ngdialog-close">
+ 
+                                 </div>
+                               </a>
+                              </div>
+                            </div>
+ 
+                          </div>
+                         </ng-template>
+
+

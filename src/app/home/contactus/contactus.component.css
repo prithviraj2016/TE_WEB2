@@ -1,0 +1,247 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    margin-bottom: -6px;
+  }
+  .center {
+    background-color: #1d262c;
+    height: 924px;
+  
+  }
+  .heading {
+    background-image: url("../../../assets/img/mainbanner.jpg");
+    padding-top: 160px;
+  }
+  .heading h1 {
+    font-size: 70px;
+    color: #fff;
+    font-weight: normal;
+    padding-left: 20px;
+    font-style: italic;
+  }
+  .map {
+    padding: 80px 30px;
+  }
+  .map .form {
+    background-color: #293035;
+    padding-left: 20px;
+    padding: 3% 4% 4% 14%;
+    width: 624px;
+    height: 451px;
+  }
+  .map h3 {
+    color: #fff;
+    font-size: 28px;
+  }
+  .map p {
+    color: #fff;
+    font-size: 15px;
+  }
+  form {
+  }
+  form input {
+    font-size: 17px;
+    border: none;
+    border-radius: 0px;
+    background-color: #494f53;
+    padding: 5px;
+    color: #ccc;
+    width: 80%;
+    
+    margin-top: 9px;
+    margin-bottom: -35px;
+
+  }
+  #message {
+    font-size: 17px;
+    background-color: #494f53;
+    border: none;
+    border-radius: 0px;
+    width: 80%;
+  
+  }
+  form button {
+    right: 100px;
+    font-size: 18px;
+    width: 30%;
+    background: #2172b9;
+    font-family: "roboto", sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    height: 41px;
+    padding: 0;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+  }
+  .footer_first {
+    color: #979797;
+    padding-left: 14%;
+    margin: 0px;
+  }
+  .footer_first h1 {
+    color: #fff;
+    font-size: 34px;
+    margin: 12px 0 8px;
+  }
+  .footer_first h2 {
+    color: #fff;
+    margin: 12px 0 8px;
+  }
+  .footer_first h4 
+  {background: url("../../../assets/img/TE_contact_location_icon.png") 0 7px no-repeat;
+    
+    padding-left: 30px;
+    font-size: 24px;
+    color: #fff;
+    margin: 12px 0 8px;
+  }
+  .footer_first ul li {
+    list-style-type: none;
+    font-size: 15px;
+    color: #979797;
+    list-style: none;
+    line-height: 22px;
+    padding: 0px;
+  }
+  .footer_first .socialmedia-icons i{
+    padding-top: 20px;
+    padding-left: 20px;
+    }
+  .footer_first ul li a {
+    text-decoration: none;
+    color: #979797;
+  }
+  .footer_two {
+    padding: 0 6% 0 20.2%;
+    border-left: #60676b solid 1px;
+  }
+  @media only screen and (max-width: 576px) {
+    .heading {
+      max-width: 250px;
+      padding: 0;
+    }
+    .heading h1 {
+      margin-top: 10px;
+      font-size: 20px;
+      font-style: italic;
+    }
+    .map {
+      padding: 0px;
+      height: auto;
+      width: auto;
+    }
+    iframe {
+      height: 200%;
+      max-width: 250px;
+      font-size: 14px;
+    }
+    .form {
+      font-size: 14px;
+      max-width: 250px;
+      background: #293035;
+    }
+    .map .form {
+      background-color: #293035;
+      padding-left: 20px;
+    }
+    .map .form form input {
+      font-size: 12px;
+      background: #494f53;
+      border: none;
+      color: #797d7f;
+      border-radius: 0;
+      margin-top: 0;
+      font-family: "robotoregular", sans-serif;
+    }
+   .form form textarea {
+      font-size: 12px;
+    }
+    .form {
+      height: 430px;
+    }
+    form {
+      padding: 0;
+      margin: 0;
+    }
+    .form h3 {
+      font-size: 18px;
+    }
+    .form p {
+      font-size: 12px;
+    }
+    .form form button {
+      font-size: 14px;
+    }
+    .footer_first {
+      max-width: 250px;
+      padding-left: 30px;
+    }
+    .footer_first h1 {
+      font-size: 22px;
+    }
+    .footer_first h4 {
+      font-size: 16px;
+      background: url("../../../assets/img/TE_contact_location_icon.png") 0 0px no-repeat;
+      color: #fff;
+      margin: 12px 0 8px;
+    }
+    .footer_first ul {
+      padding-left: 25px;
+    }
+    .footer_first ul li {
+      font-size: 12px;
+      line-height: 16px;
+      padding-left: 10px;
+    }
+    .footer_two {
+      padding: 0%;
+      border-left: none;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+  
+    
+  }
+  @media only screen and (max-width: 991px) {
+  }
+  input.ng.invalid.ng-touched{
+    border-color: 1px solid red;
+  }
+  .validation{
+   color: red;
+   font-size: 11px;
+  }
+  button {
+    cursor: pointer;
+
+  }
+  .swal2-show[data-animation='pop']{
+animation: swal2-show 0.3s;
+  }
+  .swal2-show{
+    margin-top: -158px;
+  }
+  .swal2-modal {
+    border-radius: 0 !important;
+font-family: 'robotoregular', sans-serif !important;
+z-index: 999999;
+background-color: #273036;
+
+width: 357px;
+padding: 11px;
+border-radius: 8px;
+text-align: center;
+position: fixed;
+left: 50%;
+top: 50%;
+margin-left: -184px;
+
+overflow: hidden;
+
+
+box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.50);
+border-top: solid 1px #43464d;
+border-left: solid 1px #43464d;
+  } 
+ 

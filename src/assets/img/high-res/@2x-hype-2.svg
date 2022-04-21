@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="26.214px" height="26.214px" viewBox="-1.315 -2.214 26.214 26.214" enable-background="new -1.315 -2.214 26.214 26.214"
+	 xml:space="preserve">
+<title>@2x-listicon</title>
+<g opacity="0.7" enable-background="new    ">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="-1.158" y="-2.05" width="26" height="26"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_2_)">
+			<defs>
+				<rect id="SVGID_3_" x="-0.979" y="-1.488" width="25" height="25"/>
+			</defs>
+			<clipPath id="SVGID_4_">
+				<use xlink:href="#SVGID_3_"  overflow="visible"/>
+			</clipPath>
+			<path clip-path="url(#SVGID_4_)" fill="#3896D0" d="M24.021,11.012c0,6.902-5.596,12.5-12.5,12.5c-6.902,0-12.5-5.598-12.5-12.5
+				s5.598-12.5,12.5-12.5C18.426-1.488,24.021,4.11,24.021,11.012"/>
+		</g>
+		<g clip-path="url(#SVGID_2_)">
+			<defs>
+				<path id="SVGID_5_" d="M24.021,11.012c0,6.904-5.596,12.5-12.5,12.5c-6.904,0-12.5-5.596-12.5-12.5
+					c0-6.902,5.596-12.5,12.5-12.5C18.426-1.487,24.021,4.11,24.021,11.012"/>
+			</defs>
+			<clipPath id="SVGID_6_">
+				<use xlink:href="#SVGID_5_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_6_)">
+				<defs>
+					<rect id="SVGID_7_" x="-0.979" y="-1.488" width="25" height="25"/>
+				</defs>
+				<clipPath id="SVGID_8_">
+					<use xlink:href="#SVGID_7_"  overflow="visible"/>
+				</clipPath>
+				<defs>
+					<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+						<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+					</filter>
+				</defs>
+				<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_9_">
+					<g filter="url(#Adobe_OpacityMaskFilter)">
+						<g>
+							<g>
+								<defs>
+									<rect id="SVGID_10_" x="-0.979" y="-1.489" width="25" height="25"/>
+								</defs>
+								<clipPath id="SVGID_11_" clip-path="url(#SVGID_8_)">
+									<use xlink:href="#SVGID_10_"  overflow="visible"/>
+								</clipPath>
+								<g transform="matrix(1 0 0 1 -5.960464e-08 0)" clip-path="url(#SVGID_11_)">
+									
+										<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFE8.jpg"  transform="matrix(0.24 0 0 0.24 -0.979 -1.4888)">
+									</image>
+								</g>
+							</g>
+						</g>
+					</g>
+				</mask>
+				<g clip-path="url(#SVGID_8_)" mask="url(#SVGID_9_)">
+					<defs>
+						<filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+							<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+						</filter>
+					</defs>
+					<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_9_">
+						<g filter="url(#Adobe_OpacityMaskFilter_1_)">
+							<rect x="-1.979" y="-2.489" width="27" height="27"/>
+							<g enable-background="new    ">
+								<g>
+									<defs>
+										<rect id="SVGID_12_" x="-0.979" y="-1.489" width="25" height="25"/>
+									</defs>
+									<clipPath id="SVGID_13_">
+										<use xlink:href="#SVGID_12_"  overflow="visible"/>
+									</clipPath>
+									<g transform="matrix(1 0 0 1 -5.960464e-08 0)" clip-path="url(#SVGID_13_)">
+										
+											<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFE9.jpg"  transform="matrix(0.24 0 0 0.24 -0.979 -1.4888)">
+										</image>
+									</g>
+								</g>
+							</g>
+						</g>
+					</mask>
+					<g>
+						<g>
+							<defs>
+								<rect id="SVGID_14_" x="-0.979" y="-1.489" width="25" height="25"/>
+							</defs>
+							<clipPath id="SVGID_15_">
+								<use xlink:href="#SVGID_14_"  overflow="visible"/>
+							</clipPath>
+							<defs>
+								<filter id="Adobe_OpacityMaskFilter_2_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+									<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+								</filter>
+							</defs>
+							<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_9_">
+								<g filter="url(#Adobe_OpacityMaskFilter_2_)">
+									<g>
+										<defs>
+											<rect id="SVGID_16_" x="-0.979" y="-1.489" width="25" height="25"/>
+										</defs>
+										<clipPath id="SVGID_17_" clip-path="url(#SVGID_15_)">
+											<use xlink:href="#SVGID_16_"  overflow="visible"/>
+										</clipPath>
+										<g transform="matrix(1 0 0 1 -5.960464e-08 0)" clip-path="url(#SVGID_17_)">
+											
+												<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFEF.jpg"  transform="matrix(0.24 0 0 0.24 -0.979 -1.4888)">
+											</image>
+										</g>
+									</g>
+								</g>
+							</mask>
+							<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_15_)">
+								
+									<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFEA.jpg"  transform="matrix(0.24 0 0 0.24 -0.9785 -1.4888)">
+								</image>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+		<g clip-path="url(#SVGID_2_)">
+			<defs>
+				<path id="SVGID_18_" d="M24.021,11.012c0,6.904-5.596,12.5-12.5,12.5c-6.904,0-12.5-5.596-12.5-12.5
+					c0-6.902,5.596-12.5,12.5-12.5C18.426-1.487,24.021,4.11,24.021,11.012"/>
+			</defs>
+			<clipPath id="SVGID_19_">
+				<use xlink:href="#SVGID_18_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_19_)">
+				<defs>
+					<rect id="SVGID_20_" x="-0.979" y="-1.488" width="25" height="25"/>
+				</defs>
+				<clipPath id="SVGID_21_">
+					<use xlink:href="#SVGID_20_"  overflow="visible"/>
+				</clipPath>
+				<defs>
+					<filter id="Adobe_OpacityMaskFilter_3_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+						<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+					</filter>
+				</defs>
+				<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_22_">
+					<g filter="url(#Adobe_OpacityMaskFilter_3_)">
+						<g>
+							<g>
+								<defs>
+									<rect id="SVGID_23_" x="-0.979" y="-1.489" width="25" height="25"/>
+								</defs>
+								<clipPath id="SVGID_24_" clip-path="url(#SVGID_21_)">
+									<use xlink:href="#SVGID_23_"  overflow="visible"/>
+								</clipPath>
+								<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_24_)">
+									
+										<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFEB.jpg"  transform="matrix(0.24 0 0 0.24 -0.9785 -1.4888)">
+									</image>
+								</g>
+							</g>
+						</g>
+					</g>
+				</mask>
+				<g clip-path="url(#SVGID_21_)" mask="url(#SVGID_22_)">
+					<defs>
+						<filter id="Adobe_OpacityMaskFilter_4_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+							<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+						</filter>
+					</defs>
+					<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_22_">
+						<g filter="url(#Adobe_OpacityMaskFilter_4_)">
+							<rect x="-1.979" y="-2.489" width="27" height="27"/>
+							<g enable-background="new    ">
+								<g>
+									<defs>
+										<rect id="SVGID_25_" x="-0.979" y="-1.489" width="25" height="25"/>
+									</defs>
+									<clipPath id="SVGID_26_">
+										<use xlink:href="#SVGID_25_"  overflow="visible"/>
+									</clipPath>
+									<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_26_)">
+										
+											<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFE6.jpg"  transform="matrix(0.24 0 0 0.24 -0.9785 -1.4888)">
+										</image>
+									</g>
+								</g>
+							</g>
+						</g>
+					</mask>
+					<g>
+						<g>
+							<defs>
+								<rect id="SVGID_27_" x="-0.979" y="-1.489" width="25" height="25"/>
+							</defs>
+							<clipPath id="SVGID_28_">
+								<use xlink:href="#SVGID_27_"  overflow="visible"/>
+							</clipPath>
+							<defs>
+								<filter id="Adobe_OpacityMaskFilter_5_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+									<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+								</filter>
+							</defs>
+							<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_22_">
+								<g filter="url(#Adobe_OpacityMaskFilter_5_)">
+									<g>
+										<defs>
+											<rect id="SVGID_29_" x="-0.977" y="-1.489" width="25" height="25"/>
+										</defs>
+										<clipPath id="SVGID_30_" clip-path="url(#SVGID_28_)">
+											<use xlink:href="#SVGID_29_"  overflow="visible"/>
+										</clipPath>
+										<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_30_)">
+											
+												<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFE7.jpg"  transform="matrix(0.24 0 0 0.24 -0.9771 -1.4888)">
+											</image>
+										</g>
+									</g>
+								</g>
+							</mask>
+							<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_28_)">
+								
+									<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFF8.jpg"  transform="matrix(0.24 0 0 0.24 -0.9785 -1.4888)">
+								</image>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+		<g clip-path="url(#SVGID_2_)">
+			<defs>
+				<rect id="SVGID_31_" x="-0.979" y="-1.488" width="25" height="25"/>
+			</defs>
+			<clipPath id="SVGID_32_">
+				<use xlink:href="#SVGID_31_"  overflow="visible"/>
+			</clipPath>
+			<path clip-path="url(#SVGID_32_)" fill="#3896D0" d="M21.416,11.012c0,5.464-4.43,9.894-9.895,9.894
+				c-5.465,0-9.896-4.43-9.896-9.894c0-5.464,4.431-9.895,9.896-9.895C16.986,1.117,21.416,5.548,21.416,11.012"/>
+		</g>
+		<g clip-path="url(#SVGID_2_)">
+			<defs>
+				<path id="SVGID_33_" d="M21.416,11.012c0,5.464-4.428,9.894-9.895,9.894c-5.466,0-9.896-4.43-9.896-9.894
+					c0-5.463,4.43-9.895,9.896-9.895C16.988,1.118,21.416,5.549,21.416,11.012"/>
+			</defs>
+			<clipPath id="SVGID_34_">
+				<use xlink:href="#SVGID_33_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_34_)">
+				<defs>
+					<rect id="SVGID_35_" x="-0.979" y="-1.488" width="25" height="25"/>
+				</defs>
+				<clipPath id="SVGID_36_">
+					<use xlink:href="#SVGID_35_"  overflow="visible"/>
+				</clipPath>
+				<defs>
+					<filter id="Adobe_OpacityMaskFilter_6_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+						<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+					</filter>
+				</defs>
+				<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_37_">
+					<g filter="url(#Adobe_OpacityMaskFilter_6_)">
+						<g>
+							<g>
+								<defs>
+									<rect id="SVGID_38_" x="-0.979" y="-1.489" width="25" height="25"/>
+								</defs>
+								<clipPath id="SVGID_39_" clip-path="url(#SVGID_36_)">
+									<use xlink:href="#SVGID_38_"  overflow="visible"/>
+								</clipPath>
+								<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_39_)">
+									
+										<image overflow="visible" width="105" height="105" xlink:href="BE40E339FF9DFFB.jpg"  transform="matrix(0.24 0 0 0.24 -0.9785 -1.4888)">
+									</image>
+								</g>
+							</g>
+						</g>
+					</g>
+				</mask>
+				<g clip-path="url(#SVGID_36_)" mask="url(#SVGID_37_)">
+					<defs>
+						<filter id="Adobe_OpacityMaskFilter_7_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+							<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+						</filter>
+					</defs>
+					<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_37_">
+						<g filter="url(#Adobe_OpacityMaskFilter_7_)">
+							<rect x="-1.979" y="-2.489" width="27" height="27"/>
+							<g enable-background="new    ">
+								<g>
+									<defs>
+										<rect id="SVGID_40_" x="-0.979" y="-1.489" width="25" height="25"/>
+									</defs>
+									<clipPath id="SVGID_41_">
+										<use xlink:href="#SVGID_40_"  overflow="visible"/>
+									</clipPath>
+									<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_41_)">
+										
+											<image overflow="visible" width="105" height="105" xlink:href="B7F60D761F1D5CD7.jpg"  transform="matrix(0.24 0 0 0.24 -0.9785 -1.4888)">
+										</image>
+									</g>
+								</g>
+							</g>
+						</g>
+					</mask>
+					<g>
+						<g>
+							<defs>
+								<rect id="SVGID_42_" x="-0.979" y="-1.489" width="25" height="25"/>
+							</defs>
+							<clipPath id="SVGID_43_">
+								<use xlink:href="#SVGID_42_"  overflow="visible"/>
+							</clipPath>
+							<defs>
+								<filter id="Adobe_OpacityMaskFilter_8_" filterUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2">
+									<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+								</filter>
+							</defs>
+							<mask maskUnits="userSpaceOnUse" x="-0.979" y="-1.489" width="25.2" height="25.2" id="SVGID_37_">
+								<g filter="url(#Adobe_OpacityMaskFilter_8_)">
+									<g>
+										<defs>
+											<rect id="SVGID_44_" x="-0.977" y="-1.489" width="25" height="25"/>
+										</defs>
+										<clipPath id="SVGID_45_" clip-path="url(#SVGID_43_)">
+											<use xlink:href="#SVGID_44_"  overflow="visible"/>
+										</clipPath>
+										<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_45_)">
+											
+												<image overflow="visible" width="105" height="105" xlink:href="B7F60D761F1D5CD5.jpg"  transform="matrix(0.24 0 0 0.24 -0.9771 -1.4888)">
+											</image>
+										</g>
+									</g>
+								</g>
+							</mask>
+							<g transform="matrix(1 0 0 1 5.960464e-08 0)" clip-path="url(#SVGID_43_)">
+								
+									<image overflow="visible" width="105" height="105" xlink:href="B7F60D761F1D5CD3.jpg"  transform="matrix(0.24 0 0 0.24 -0.9785 -1.4888)">
+								</image>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+		<g clip-path="url(#SVGID_2_)">
+			<defs>
+				<rect id="SVGID_46_" x="-0.979" y="-1.488" width="25" height="25"/>
+			</defs>
+			<clipPath id="SVGID_47_">
+				<use xlink:href="#SVGID_46_"  overflow="visible"/>
+			</clipPath>
+			<g opacity="0.2" clip-path="url(#SVGID_47_)" enable-background="new    ">
+				<g>
+					<defs>
+						<rect id="SVGID_48_" x="-0.158" y="-0.05" width="23" height="22"/>
+					</defs>
+					<clipPath id="SVGID_49_">
+						<use xlink:href="#SVGID_48_"  overflow="visible"/>
+					</clipPath>
+					<g clip-path="url(#SVGID_49_)">
+						<defs>
+							<rect id="SVGID_50_" x="0.583" y="0.075" width="21.875" height="21.875"/>
+						</defs>
+						<clipPath id="SVGID_51_">
+							<use xlink:href="#SVGID_50_"  overflow="visible"/>
+						</clipPath>
+						<path clip-path="url(#SVGID_51_)" d="M11.521,0.075c-6.041,0-10.938,4.899-10.938,10.938c0,6.041,4.896,10.937,10.938,10.937
+							c6.043,0,10.938-4.896,10.938-10.937C22.459,4.974,17.564,0.075,11.521,0.075 M11.521,20.955
+							c-5.492,0-9.941-4.451-9.941-9.943c0-5.49,4.449-9.942,9.941-9.942c5.493,0,9.942,4.452,9.942,9.942
+							C21.463,16.504,17.014,20.955,11.521,20.955"/>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<path fill="#FFFFFF" d="M9.943,4.373c0,0,1.676,0.879,1.602,2.597c0,0.689-0.574,1.147-0.574,2.219c0,1.074,0.83,1.188,1.173,1.188
+	s1.23-0.343,1.23-1.386c0-1.045-0.645-1.831-0.645-1.831s2.988,2.088,2.988,5.833c0,3.746-2.67,4.66-4.172,4.66
+	c-1.504,0-4.22-1.201-4.22-4.604c0-3.402,2.89-4.404,2.89-6.705C10.214,5.429,9.943,4.373,9.943,4.373"/>
+</svg>

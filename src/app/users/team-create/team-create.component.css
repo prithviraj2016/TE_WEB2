@@ -1,0 +1,59 @@
+.container .card-header h1{
+    color: #fff;
+    font-size: 26px;
+    
+}
+#container{
+    background-color:#070c10;
+}
+.card{
+    background-color: #0e161b;
+    margin: 0 126px 0 -124px;
+    height: auto;
+}
+.container .card-body mat-label{
+    color: #fff;
+}
+input{
+   
+    font-size: 18px;
+    font-family: robotobold;
+    color: #4d4d4d;
+    text-align: center;
+   
+    letter-spacing: 1px;
+    padding-top: 20px;
+    border-bottom: 1px solid #676d75;
+    
+}
+.btn-danger{
+    margin-left: 558px;
+    margin-top: -828px;
+    border-radius: 0;
+}
+.btn-primary{
+    margin-left: 702px;
+    margin-top: -885px;
+    border-radius: 0;
+}
+.help_button{
+    padding-left: 24px;
+  text-decoration: none;
+  font-size: 14px;
+}
+.info{
+    padding-left: 333px;
+    color: #1161ee;
+    font-size: 15px;
+}
+
+.mat-form-field{
+    width: 100%;
+}
+#description, #location, #upload{
+    padding-top: 20px;
+}
+.row mat-error{
+    color: red;
+    font-size: 14px;
+}

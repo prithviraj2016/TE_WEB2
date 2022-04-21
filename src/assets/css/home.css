@@ -1,0 +1,586 @@
+#onLoadPopupModal {
+	background-color: rgba(39, 48, 54, 1) !important;
+	border: none;
+	border-left: 1px solid rgba(255, 255, 255, .3) !important;
+	border-radius: 8px;
+	border-top: 1px solid rgba(255, 255, 255, .3) !important;
+	min-height: 125px;
+	left: 50%;
+	margin-left: -165px;
+	margin-top: -130px;
+	overflow: hidden;
+	padding: 0px;
+	position: fixed;
+	top: 50%;
+	width: 332px;
+	z-index: 999;
+	display: none;
+	box-shadow: 0 0 30px 5px rgba(0, 0, 0, .55)
+}
+
+#onLoadPopupModal a {
+	float: right;
+	margin: 10px;
+}
+
+#onLoadPopupModal .large-10 {
+	width: 109px;
+}
+
+#onLoadPopupModal.startOrEndNo p {
+	margin-bottom: 6px;
+    line-height: 19px;
+    margin-top: 17px;
+}
+
+#registerMessageModal {
+	background-color: rgba(39, 48, 54, 1) !important;
+	border: none;
+	border-left: 1px solid rgba(255, 255, 255, .3) !important;
+	border-radius: 8px;
+	border-top: 1px solid rgba(255, 255, 255, .3) !important;
+	min-height: 170px;
+	left: 50%;
+	margin-left: -230px;
+	margin-top: -130px;
+	overflow: hidden;
+	padding: 0px;
+	position: fixed;
+	top: 50%;
+	width: 550px;
+	z-index: 999;
+	box-shadow: 0 0 30px 5px rgba(0, 0, 0, .55)
+}
+
+#registerMessageModal.startOrEndNo p {
+	margin-bottom: 6px;
+    line-height: 19px;
+    margin-top: 10px;
+}
+
+img#closebtn {
+	margin: 8px 8px 7px 0
+}
+
+select::-ms-expand {
+	display: none
+}
+
+.ie8-fix {
+	float: none;
+	padding: 0;
+	width: 100%
+}
+
+.dropdown-arrow {
+	/*right: 22px !important;*/
+}
+
+.popup-content .popup-innergray {
+	float: left;
+	width: 100%
+}
+
+.ie8-fix {
+	float: left\9 !important;
+	overflow: hidden\9 ;
+	width: 100%\9 ;
+	border-radius: 4px\9 ;
+	border-right: #171d20solid1px\9 ;
+	height: 37px\9 
+}
+
+.ie8-fix select {
+	width: 520px\9 
+}
+
+.ie8-fix .dropdown-arrow {
+	right: 14px\9 
+}
+
+.ie8-fix select option {
+	background: none
+}
+
+.fixwidth-large#recent-tournament {
+	width: 100%;
+}
+
+.fixwidth-large.social_network {
+	background-color: #131c22;
+	padding-top: 87px;
+	padding-bottom: 20px;
+	margin-top: 50px;
+}
+
+.fixwidth-large.social_network .row{ max-width:1200px;}
+.trusted-by.fixwidth-large {
+    margin-bottom: 75px;
+}	
+
+#slider .fixwidth-large {
+	width: 1878px;
+	margin: 103px auto 0 auto;
+}
+
+.main_banner_container {
+    width: 100%;
+    position: absolute;
+}
+
+.gray_box {
+	background-color: #273036
+}
+
+.sha-box-header-1 {
+	line-height: 1.2;	
+}
+
+#feature-te .sha-box-header-1 {
+    background: transparent;
+    border-bottom: 0;
+}
+
+filter: progid:DXImageTransform.Microsoft.gradient ( startColorstr ='#000000', endColorstr ='#a6000000 ', GradientType =0 ); /* IE6-9 */
+	.sha-box-header-2 {
+	background-color: #3d454a;
+	width: 100%;
+	border-radius: 4px 4px 0 0;
+	height: 60px;
+	box-shadow: 0 4px 6px #13181c
+}
+
+.features_block {
+	padding: 40px 0;
+	position: relative;
+	height: 460px;
+	margin-top: 30px;
+	width: 900px;
+	float: left
+}
+
+.features_absolute {
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.download_app {
+	box-shadow: inset -5px 0px 15px 0px rgba(0, 0, 0, .75);
+	/* background-image: url(assets/images/img-noise.png) */
+}
+
+.light_hr {
+	height: 1px;
+	width: 100%;
+	background-color: #2c2d2e;
+	margin-bottom: 20px
+}
+
+.download_app {
+	padding: 40px 0
+}
+
+.small_font {
+	font-size: .8em
+}
+
+.phone_pics {
+	width: 272px;
+	height: 307px;
+	background-repeat: no-repeat;
+	background-position: center -68px;
+	background-size: cover
+}
+
+.custom_frontpage_button {
+	min-width: 60px;
+	font-weight: bold;
+	font-size: 1.2em;
+	padding: 3px 0 0
+}
+
+.features_navigation {
+	width: 100%;
+	height: 40px;
+	border-left: 1px solid #43464d;
+	border-radius: 0 0 5px 5px;
+	border-top: 0;
+	background-color: #2c363c
+}
+
+.features_big_container {
+	border-radius: 5px 5px 0 0;
+	width: 900px;
+	height: 548px
+}
+
+.sphere {
+	width: 20px;
+	background-color: #293238;
+	height: 20px;
+	float: left;
+	border-radius: 10px;
+	margin: 12px 10px 0px;
+	cursor: pointer;
+	border-top: 3px solid #43464d;
+	-webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, .50);
+	-moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, .50);
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, .50)
+}
+
+.sphere_selected {
+	background-color: #21282d
+}
+
+.features_movable_window {
+	width: 2000px;
+	position: absolute;
+	height: 460px;
+	left: 0
+}
+
+.features_window {
+	overflow: hidden;
+	height: 517px;
+	position: relative
+}
+
+.features_block h5 {
+	line-height: normal;
+	min-height: 49px
+}
+
+.ribbon_dummy {
+	width: 220px;
+	height: 35px
+}
+
+.ribbon_parent {
+	position: absolute;
+	top: 10px;
+	left: -10px;
+	max-width: 220px;
+	width: 100%;
+	z-index: 15
+}
+
+.back_ribbon {
+	position: absolute;
+	border-radius: 5px 0px 0px 5px;
+	height: 0;
+	left: -8px;
+	top: 12px;
+	min-height: 35px;
+	width: 20px;
+	border: none;
+	-webkit-transform: skew(-10deg);
+	-moz-transform: skew(-10deg);
+	-o-transform: skew(-10deg)
+}
+
+.ribbon_child {
+	position: absolute;
+	min-height: 35px;
+	border-radius: 0px 5px 10px 0px;
+	line-height: 35px;
+	-webkit-transform: skew(-10deg);
+	-moz-transform: skew(-10deg);
+	-o-transform: skew(-10deg);
+	-webkit-box-shadow: 2px 2px 4px #242424;
+	-moz-box-shadow: 2px 2px 4px #242424;
+	box-shadow: 2px 2px 4px #242424;
+	max-width: 220px;
+	width: 100%
+}
+
+.ribbon_content {
+	font-style: italic;
+	position: absolute;
+	top: 5px;
+	left: 6px;
+	width: 100%;
+	height: 100%
+}
+
+.ribbon_content img {
+	float: left
+}
+
+.ribbon_content p {
+	float: left;
+	padding-top: 2px
+}
+
+#errorModal {
+	background-color: rgba(39, 48, 54, 1) !important;
+	border: none;
+	border-left: 1px solid rgba(255, 255, 255, .3) !important;
+	border-radius: 8px;
+	border-top: 1px solid rgba(255, 255, 255, .3) !important;
+	min-height: 225px;
+	left: 50%;
+	margin-left: -230px;
+	margin-top: -130px;
+	overflow: hidden;
+	padding: 0px;
+	position: fixed;
+	top: 50%;
+	width: 550px;
+	z-index: 999;
+	box-shadow: 0 0 30px 5px rgba(0, 0, 0, .55)
+}
+
+img#closebtn {
+	margin: 8px 8px 7px 0
+}
+
+select::-ms-expand {
+	display: none
+}
+
+.ie8-fix {
+	float: none;
+	padding: 0;
+	width: 100%
+}
+
+.dropdown-arrow {
+	right: 15px
+}
+
+.popup-content .popup-innergray {
+	float: left;
+	width: 100%
+}
+
+.ie8-fix {
+	float: left\9 !important;
+	overflow: hidden\9 ;
+	width: 100%\9 ;
+	border-radius: 4px\9 ;
+	border-right: #171d20solid1px\9 ;
+	height: 37px\9 
+}
+
+.ie8-fix select {
+	width: 520px\9 
+}
+
+.ie8-fix .dropdown-arrow {
+	right: 14px\9 
+}
+
+.ie8-fix select option {
+	background: none
+}
+
+.msg_button {
+	margin-bottom: 0
+}
+
+
+/* forgetform css */
+.customeNgdialog.reveal-modal{
+    background: #333;
+    max-width: 400px;
+padding: 0;
+z-index: 99999;
+}
+.reveal-modal {
+    border-radius: 0 !important;
+  }
+  .content-color {
+    background-color: rgba(39,48,54,1) !important;
+  }
+  @media only screen and (min-width: 40.063em)
+  {
+    .reveal-modal {
+        width: 80%;
+       
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+  }
+  }
+  .reveal-modal {
+    position: absolute;
+    border: solid 1px #666;
+box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+  .reveal-modal > :last-child {
+    margin-bottom: 0;
+  }
+  .reveal-modal > :first-child {
+    margin-top: 0;
+  }
+  .login_box_forgot {
+    padding-bottom: 20px;
+  }
+  .bottom_shadow {
+    
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,.1);
+  }
+  .heading_color {
+    background-color: #384046 !important;
+    border-radius: 0;
+  }
+  .row {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 100%;
+  }
+  .row::before, .row::after {
+    content: " ";
+    display: table;
+  }
+  .reveal-modal .columns {
+    min-width: 0;
+  }
+  @media only screen and (min-width: 64.063em)
+ {
+    .large-10 {
+        width: 83.33333%;
+ } 
+  }
+  @media only screen and (min-width: 64.063em)
+  {
+    .columns {
+        position: relative;
+        padding-left: 0.9375em;
+        padding-right: 0.9375em;
+        float: left;
+  } 
+  }
+  #modalTitle {
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+    font-family: robotoregular,sans-serif;
+    margin: 10px 0;
+  }
+  [class*="column"] + [class*="column"]:last-child {
+    float: right;
+  }
+  .reveal-modal .columns {
+    min-width: 0;
+  }
+  @media only screen and (min-width: 64.063em)
+{
+    .columns {
+        position: relative;
+        padding-left: 0.9375em;
+        padding-right: 0.9375em;
+        float: left;
+}
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .customeNgdialog.reveal-modal .close-reveal-modal {
+    top: .125rem;
+    right: .375rem;
+  }
+  .reveal-modal .close-reveal-modal {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 0.625rem;
+    right: 1.375rem;
+    color: #aaa;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .closebtn {
+    background: url("../../assets/img/@2x-close_button.svg") 0 0 no-repeat;
+    width: 30px;
+    height: 30px;
+    display: block;
+  }
+  .mtop-5 {
+    margin-top: 5px;
+  }
+  .right {
+    float: right !important;
+  }
+  .row::after {
+    clear: both;
+  }
+  .customeNgdialog.reveal-modal form {
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+  }
+  .reveal-modal .columns {
+    min-width: 0;
+  }  
+  @media only screen and (min-width: 64.063em)
+  {
+    .large-12 {
+        width: 100%;
+  }
+  }
+  input[placeholder].reset_email {
+    background: #8c8c8c;
+  }
+  input[type="email"]{
+    font-family: robotolight,sans-serif;
+    width: 100%;
+   
+    
+    outline: 0;
+    margin: 0 0 10px;
+    resize: none;
+    font-size: 14px;
+  }
+  input[type="email"]{
+    -webkit-appearance: none;
+    border-radius: 0;
+   
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccc;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+   
+    display: block;
+   
+    padding: 0.5rem;
+    height: 2.3125rem;
+   
+    box-sizing: border-box;
+    transition: all 0.15s linear;
+  }
+  .reset_email {
+    font-weight: 400;
+    color: #fff !important;
+border: 0;
+  }
+  .msg_button{
+    padding: 7px 10px;
+    margin: 5px 0 0 5px;
+     
+    background: #3c95cd;
+  }
+  .msg_button {
+    color: #fff !important;
+  }
+  .msg_button {
+    margin-bottom: 0;
+  }
+  .forget_button{
+    font-family: robotoregular,sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .right {
+    float: right !important;
+  }
+  /* .customeNgdialog.reveal-modal input.close-reveal-modal {
+    font-size: 18px;
+    position: static !important;
+    font-weight: 400;
+  }
+   */

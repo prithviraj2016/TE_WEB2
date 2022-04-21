@@ -1,0 +1,352 @@
+<div class="content-box singin_signup grid-x grid-padding-x">
+    <div class="cell align-self-middle">
+        <div class="sign-in-logo"><a routerLink="/" title="Tournament Edition"><img src="/assets/img/bar_logo.png" /></a>
+        </div>
+        <h1>Welcome Back!</h1>
+        <!-- <h1>Forgot Password?</h1>
+  <h1>Resend Verification Mail</h1> -->
+
+        <div class="login_box ng-cloak" id="login_box">
+            <div class="login_box_body">
+                <div class="row">
+                    <div class="login_box_login">
+                        <div class="login_box_login">
+                            <form name="loginform" id="login-form" [formGroup]="signinForm" (submit)=" onSigninFormSubmit()" >
+                                <!-- <div>Success message go here</div> -->
+                                <table class="register_table">
+                                    <tr>
+                                        <td><input formControlName="UserName" placeholder="Username or Email"
+                                                type="text" id="login_username" autocomplete="false" required />
+                                            <div *ngIf="f.UserName.errors && ( submitted ||f.UserName.dirty || f.UserName.touched)"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f.UserName.errors.required" class="msg-error">Username or
+                                                    Email is required
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input placeholder="Password" type="password" id="login_password"
+                                                formControlName="Password" autocomplete="false" required />
+                                            <div *ngIf="( submitted || f.UserName.dirty || f.UserName.touched) &&  f.Password.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="f.Password.errors.required" class="msg-error">Password is
+                                                    required</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>
+                                            <span class="remember_me">
+                                                <input type="checkbox" [checked]="rememberMe"
+                                                    formControlName="RememberMe"
+                                                    (change)="checkValue(rememberMe?true:false)">Remember Me</span>
+
+                                        </td>
+                                    </tr> -->
+                                    <tr>
+                                        <td> <input title="Login" type="submit" value="Login"
+                                            class="msg_button float-right login_link padding-top-3" id="change-password-btn" /></td>
+                                    </tr>
+
+                                </table>
+
+                                <p id="login_error"></p>
+                            </form>
+                            <div class="Forgot-Password-text">
+                                <p><a (click)="open(mymodal)" title="Forgot Password"
+                                        class="left forgot_password">Forgot Password?</a></p>
+                                <p><a title="Resend Verification Mail" class="left forgot_password" (click)="triggerModal2(resend_mail)" >Resend Verification
+                                        Email</a></p>
+
+                            </div>
+                            <h2 class="hr-seperator"><span>OR</span></h2>
+                            <div id="login-social">
+                                <div class="social_login">
+                                    <a title="Facebook" href="/network/login/facebook">
+                                        <div class="login_fb"><i class="fab fa-facebook-f"></i>Log In with Facebook
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="social_login">
+                                    <a title="Google" href="/network/login/google">
+                                        <div class="login_gplus"><i class="fab fa-google"></i>Log In with Google</div>
+                                    </a>
+                                </div>
+                                <!--<div class="social_login">
+                                    <a title="Twitch" ng-href="/network/login/twitch">
+                                        <div class="login_twitch"><i class="fab fa-twitch"></i>Log In with Twitch</div>
+                                    </a>
+                                </div>-->
+                            </div>
+
+                            <p class="privacy">
+                                By continuing you agree to the <a title="Terms &amp; conditions" routerLink="/terms">Terms
+                                    &amp; Conditions</a> and <a routerLink="/privacy" title="Privacy Policy">Privacy
+                                    Policy</a>. TE may send you newsletters; you can always change your preferences in
+                                your profile.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="sign-in-bottom-text">
+
+                        <p class="sign-new-account-text">Need an account? <a routerLink="/signup">Register</a></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="background-overlay"></div>
+<div id="background-img"></div>
+
+<ng-template #forgetPassword>
+    <h4>Forgot Password</h4>
+
+    <button class="close-button"  aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    <form name="forgetpassword-form" id="forgetpassword-form" autocomplete="off"
+        >
+        <div class="form-group">
+            <label for="email" class="sr-only">Email Address</label>
+            <input formControlName="email" type="text" placeholder="Email Address"
+                autocomplete="new-password">
+            <!-- <span *ngIf="!signupForm.get('UserName').value && signupForm.get('UserName').touched">User Name is required</span>   -->
+            <div *ngIf="submittedF && fp.email.errors" class="invalid-feedback">
+                <div *ngIf="fp.email.errors.required">Email is required</div>
+                <div *ngIf="fp.email.errors.pattern">Email is not valid</div>
+            </div>
+        </div>
+        <div class="button-group float-right">
+
+            <button type="button" class="button danger">Cancel</button>
+            <button class="button primary">Submit</button>
+        </div>
+
+    </form>
+
+
+</ng-template>
+
+<ng-template #resendVerification>
+    <h4>Resend Verification Email</h4>
+
+    <button class="close-button" aria-label="Close modal" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+
+    <form name="forgetpassword-form" id="forgetpassword-form"  autocomplete="off"
+       >
+        <div class="form-group">
+            <label for="email" class="sr-only">Email Address</label>
+            <input formControlName="email" type="text" placeholder="Email Address"
+                autocomplete="new-password">
+            <!-- <span *ngIf="!signupForm.get('UserName').value && signupForm.get('UserName').touched">User Name is required</span>   -->
+            <div *ngIf="submittedF && fp.email.errors" class="invalid-feedback">
+                <div *ngIf="fp.email.errors.required">Email is required</div>
+                <div *ngIf="fp.email.errors.pattern">Email is not valid</div>
+            </div>
+        </div>
+        <div class="button-group float-right">
+
+            <button type="button" class="button secondary">Cancel</button>
+            <button class="button primary">Submit</button>
+        </div>
+
+    </form>
+
+
+</ng-template>
+
+<ng-template #mymodal let-modal  >
+    <div id="myModal-forgotPass-home"  class="customeNgdialog reveal-modal content-color ng-pristine ng-untouched ng-valid ng-empty open"style="display: block; opacity: 1; visibility: visible; top: 100px;" >
+      <div class="login_box_forgot">
+          <div class="row heading_color bottom_shadow">
+              <div class="large-10 medium-10 small-10 columns">
+                  <h6 id="modalTitle">Forgot Password</h6>
+              </div>
+              <div class="small-2 columns">
+                  <a class="btn-close-modal" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <div title="Close" class="close-reveal-modal closebtn mtop-5 right" aria-label="Close" id="close"></div>
+                  </a>
+              </div>
+          </div>
+          <form [formGroup]='forgetPasswordForm' novalidate (submit)="forgetpassword()" id="forgot_password_form_home" name="forgot_password_form" ng-submit="forgotPassword(forgot_password_form)" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" >
+            
+              <div class="large-12 columns">
+                  <input type="email" formControlName="email" placeholder="Email Address" class="reset_email ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="reset_email" ng-model="resetUsername" required="">
+                  <div class="error" >
+                    {{_errorTxt}}
+                  </div>
+                   <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                  <div class="validation"*ngIf="f['email'].errors && f['email'].errors['required']">
+                  <br> Please Enter Email !
+                  </div>
+                  </div>
+                  <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                      <div class="validation"*ngIf="f['email'].errors && f['email'].errors['email']">
+                    <br> Enter  vaild Email !
+                      </div>
+                      </div>
+                      <input title="Submit" type="submit" value="Submit" ng-disabled="forgot_password_form.reset_email.$invalid" class="right msg_button forget_button"  formControlName="email"  (click)="modal.dismiss('Cross click')" placeholder="Submit" (click)="triggerModal(modalData)" >
+                  <input title="Cancel" type="reset" aria-label="Close" class="right close-reveal-modal msg_button forgot_password_cancel" value="Cancel" (click)="modal.dismiss('Cross click')"  >
+              </div>
+          </form>
+      </div>
+  </div>
+</ng-template>
+<ng-template #modalData let-modal>
+ <div class="ngdialog ngdialog-customDialog-theme ng -scope" id="forgetpassworddialog-dialog">
+   <div class="ngdialog-overlay"></div>
+   <div class="ngdialog-content">
+     <div id="registerMessageModal" class="windowModal">
+       <div class="row heading_color bottom_shadow">
+         <div class="large-10 columns">
+          <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="!errorShow">Message</h2>
+          <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="errorShow">error</h2>
+         </div>
+       
+       </div>
+       <div class="large-12 columns">
+        <br>
+        
+       <div  class="error_msg" *ngIf="errorShow">
+          {{_errorTxt}}
+        </div>
+        <div *ngIf="!errorShow">
+       Password reset link has been sent to registered email
+       </div>
+        
+      </div>
+      <a title="Close" (click)="modal.dismiss('Cross click')">
+        <div class="closebtn ngdialog-close">
+
+        </div>
+      </a>
+     </div>
+   </div>
+
+ </div>
+</ng-template>
+<ng-template #modalData let-modal>
+ <div class="ngdialog ngdialog-customDialog-theme ng -scope" id="forgetpassworddialog-dialog">
+   <div class="ngdialog-overlay"></div>
+   <div class="ngdialog-content">
+     <div id="registerMessageModal" class="windowModal">
+       <div class="row heading_color bottom_shadow">
+         <div class="large-10 columns">
+          <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="!errorShow">Message</h2>
+          <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="errorShow">error</h2>
+         </div>
+       
+       </div>
+       <div class="large-12 columns">
+        <br>
+        
+       <div  class="error_msg" *ngIf="errorShow">
+          {{_errorTxt}}
+        </div>
+        <div *ngIf="!errorShow">
+       Password reset link has been sent to registered email
+       </div>
+        
+      </div>
+      <a title="Close" (click)="modal.dismiss('Cross click')">
+        <div class="closebtn ngdialog-close">
+
+        </div>
+      </a>
+     </div>
+   </div>
+
+ </div>
+</ng-template>
+<ng-template #resend_mail let-modal let-d="dismiss" class="modal-dialog"  >
+  <div id="myModal-forgotPass-home" ng-model="closeWin" class="customeNgdialog reveal-modal content-color ng-pristine ng-untouched ng-valid ng-empty open" data-reveal="" aria-labelledby="modalTitle" aria-hidden="true" role="dialog" style="display: block; opacity: 1; visibility: visible; top: 100px;" >
+    <div class="login_box_forgot">
+        <div class="row heading_color bottom_shadow">
+            <div class="large-10 medium-10 small-10 columns">
+                <h6 id="modalTitle">Resend Verification Mail</h6>
+            </div>
+            <div class="small-2 columns">
+                <a class="btn-close-modal" aria-label="Close"  (click)="modal.dismiss('Cross click')" >
+                    <div title="Close" class="close-reveal-modal closebtn mtop-5 right" aria-label="Close" id="close"></div>
+                </a>
+            </div>
+        </div>
+        <form [formGroup]='forgetPasswordForm' novalidate  id="forgot_password_form_home" name="forgot_password_form" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" >
+
+            <div class="large-12 columns">
+                <input type="email" formControlName="email" placeholder="Email Address" class="reset_email ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" name="reset_email" ng-model="resetUsername" disallow-spaces="" required="">
+                <div class="error" >
+                  {{_errorTxt}}
+                </div>
+                 <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                <div class="validation"*ngIf="f['email'].errors && f['email'].errors['required']">
+                <br> Please Enter Email !
+                </div>
+                </div>
+                <div *ngIf="(submitted || f['email'].touched)  && f['email'].invalid">
+                    <div class="validation"*ngIf="f['email'].errors && f['email'].errors['email']">
+                  <br> Enter  vaild Email !
+                    </div>
+                    </div>
+                    <input title="Submit" type="submit" value="Submit" class="right msg_button forget_button"  formControlName="email" placeholder="Submit" (click)="triggerModal3(resend_mail2)" >
+                    <input title="Cancel" type="reset" aria-label="Close" class="right close-reveal-modal msg_button forgot_password_cancel" value="Cancel"  (click)="modal.dismiss('Cross click')" >
+                  </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+ 
+
+  
+
+</ng-template>
+
+
+<ng-template #resend_mail2 let-modal>
+  <div class="ngdialog ngdialog-customDialog-theme ng -scope" id="forgetpassworddialog-dialog">
+    <div class="ngdialog-overlay"></div>
+    <div class="ngdialog-content">
+      <div id="registerMessageModal" class="windowModal">
+        <div class="row heading_color bottom_shadow">
+          <div class="large-10 columns">
+          
+           <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" >Error</h2>
+          </div>
+        
+        </div>
+        <div class="large-12 columns">
+         <br>
+         
+        <div  class="error_msg">
+           {{_re_errorTxt}}
+         </div>
+        
+         
+       </div>
+       <a title="Close" (click)="modal.dismiss('Cross click')">
+         <div class="closebtn ngdialog-close">
+
+         </div>
+       </a>
+      </div>
+    </div>
+
+  </div>
+ </ng-template>

@@ -1,0 +1,86 @@
+<div id="container">
+    <div class="container">
+        
+            <div class="row">
+                <div class="col-5">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h1 class="card-title">NEW SEASON</h1>
+                            <div class="help">
+                                <a href="#" class="start-steps"><li><mat-icon>info</mat-icon></li>
+                                <li>Help</li></a>
+                              </div>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="post" [formGroup]="newSeasonsForm" (submit)="createSeasons()">
+                            <div class="row">
+                                <div class="col-12" id="seasons">
+                                    <mat-form-field  class="example-full-width">
+                                      <input id="step-one" matInput placeholder="Season Name" type="text" formControlName="seasonname"  data-intro="Hello World!" >
+                                      <mat-error *ngIf="myError('seasonname', 'required')">Season Name is required</mat-error>
+    
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-12" id="description">
+                                      <mat-label>Description</mat-label><br>
+                                    <mat-form-field  class="example-full-width">
+                                      <input  id="step-two" matInput type="text" formControlName="description">
+                                      <mat-error *ngIf="myError('description', 'required')">Description is required</mat-error>
+    
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-12" id="customurl">
+                                      <mat-label style="color: #3988ba;">Custom URL</mat-label>
+                                      <mat-icon style="margin-left: 364px;">file_copy</mat-icon><br>
+                                     <mat-form-field  class="example-full-width">
+                                      <input id="step-three" matInput placeholder="Tournamentedition.com/event/" type="text" formControlName="customurl">
+                                      <mat-error *ngIf="myError('customurl', 'required')">Custom URL is required</mat-error>
+    
+                                    </mat-form-field>
+                                  </div>
+                                  
+                                  <div class="col-12" id="sdate">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Start Date</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="sdate">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                        <mat-error *ngIf="myError('sdate', 'required')">Start Date is required</mat-error>
+                                      </mat-form-field>
+                                </div>
+                                <div class="col-12" id="edate">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>End Date</mat-label>
+                                        <input matInput [matDatepicker]="picker1" formControlName="edate">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1 ></mat-datepicker>
+                                        <mat-error *ngIf="myError('edate', 'required')">End Date is required</mat-error>
+                                      </mat-form-field>
+                                </div>
+                               
+                                    <div class="col-12" style="margin-top: 20px;" id="image">
+                                        <mat-label style="color: #3988ba;">Upload Picture</mat-label><br>
+                                        <!-- <img class="square" [src]="urllink" ><br> -->
+                                          <input type="file" name="image" formControlName="image" (change)="selectFile($event)"/>
+                                          <mat-error *ngIf="myError('image', 'required')">Image is required</mat-error>
+                                         </div>
+                                    
+                            </div>
+                            <div class="col-7">
+                                <div class="">
+                                  <button routerLink="/te-dashboard-seasons" class="btn btn-danger" type="submit">Cancel</button>
+                                  <button  class="btn btn-primary" type="submit" [disabled]="!newSeasonsForm.valid">Create</button>
+                                </div>
+                              </div>
+                        </form>
+                        </div>
+                        
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+

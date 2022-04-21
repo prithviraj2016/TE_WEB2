@@ -1,0 +1,115 @@
+
+<div class="row">
+    <div>
+        <div class="large-12 columns">
+            <ul class="breadcrumbs mp_breadcrumbs">
+                <li><a href="entityId">Manage Staff</a></li>
+                <li class="current">breadcrumbs</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="sha-box manage_players_wrapper" id="addStaffSection">
+    <div class="row ribbonheighfix">
+        <div class="manage_players_ribbon_parent">
+            <div class="manage_players_back_ribbon bgradient"></div>
+            <div class="manage_players_ribbon_child bgradient"></div>
+            <div class="manage_players_ribbon_content">
+                <div class="listimg list-icon"></div>
+                <p class="ng-binding">CSK</p>
+            </div>
+        </div>
+    </div>
+    <div class="manage_players_content">
+        
+        <div class="row">
+            <div class="small-6 columns info_column">
+                <div class="dark_grey margin_right_0">
+                    <div class="team-head custhead">
+                        <div class="teambnr-box"> <img src="assets/img/dv_tournament.png"></div>
+                        <div class="teamname-box">
+                            <h6 title="entity Name">Enity Name</h6>
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="large-12 columns padding0">
+                        <div class="player-search dark_grey">
+                            <div class="row collapse">
+                                <div class="large-12 columns">
+                                    <form autocomplete="off">
+                                        <input type="text" name="player_search" id="search" class="name manage_players_search" maxlength="50"  placeholder="place Holder Value" />
+                                        <span class="mandatoryfld_lbl">Maximum 50 characters are allowed</span>
+                                     </form>
+                                        </div>
+                            </div>
+                        </div>
+
+                      <div>
+                            <div class='addList padding0'>
+                            <div class="blue-bar players_wrapper">
+                                <div align="center">Search Staff Ressult Empty</div>
+                                <div class="loading hide padding20" style="position: absolute;">Loading...</div>
+                                <ul class="searchList no-bullet" scrolly="showMoreStaffResult();">
+                                    <li class="sha-box small-card  player ng-scope" >
+                                        <div class="row collapse">
+                                            <div id="invite-list-detail" class="small-7 columns">
+                                                <a href="/user/view/userID" class="float-left">
+                                                    <div class="profile_user_img_sm left" style="background-image:url(assets/images/guest.png)"></div>
+                                                </a>
+                                                <p class="player_name left ng-binding" title="Name">Name <br>
+                                                    <a href="/user/view/userID">
+                                                        <span class="player_username ng-binding" title="Name">Username</span>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div id="invite-list-button" class="small-5 columns"><a class="button btn-manage mr20 float-right add postfix bgradient" (click)="addStaffAction()" title="Add">Add</a></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div id="loaders_staff">
+                                    <div id="loader_image_search" align="center"><img src="assets/img/ajax-loader.gif" alt="Loading next records" title="Loading next records" width="25" height="25">Loading more search results, please wait...</div>
+                                    <div id="loader_message_search" align="right"></div>
+                                </div>
+                            </div>
+                            </div>
+                        </div> 
+                   
+                </div>
+            </div>
+
+            <div id="paticipating-players" class="small-6 columns">
+                <div class="row dark_grey pplayers extraheight">
+                    <div class="large-6 small-6 columns">
+                    <div class="pplayers-title" id="paticate-title">
+                        <h6 class="ng-binding">PARTICIPATING MEMBERS</h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="paticipating-pl" class="row dark_grey pl15 pad-top-0">
+                    <div class="bar dradAndDrop">
+                        <ul class="player_entry">
+                            <li class="sha-box small-card  ng-scope">
+                                <div class="row collapse">
+                                    <div id="invite-list-detail" class="small-7 columns">
+                                        <a href="/user/view/userID"  class="float-left">
+                                            <div class="profile_user_img_sm left" style="background-image:url(assets/images/guest.png)"></div>
+                                        </a>
+                                        <p class="player_name left ng-binding" title="name">Name<br>
+                                            <a href="/user/viewuserID">
+                                                <span class="player_username ng-binding" title="name">Username</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <div id="invite-list-button" class="small-5 columns"><a class="button remove btn-manage bgradient-red float-right mr20" (click)="removeStaffAction()" title="Remove">Remove</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>

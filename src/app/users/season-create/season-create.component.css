@@ -1,0 +1,66 @@
+.container .card-header h1{
+    color: #fff;
+    font-size: 26px;
+    
+}
+#container{
+    background-color:#070c10;
+}
+.card{
+    background-color: #0e161b;
+    margin-right: 82px;
+    margin-left: -123px;
+}
+.container .card-body mat-label{
+    color: #fff;
+}
+input{
+   
+    font-size: 18px;
+    font-family: robotobold;
+    color: #4d4d4d;
+    text-align: center;
+   
+    letter-spacing: 1px;
+    padding-top: 20px;
+    border-bottom: 1px solid #676d75;
+    position: relative;
+    
+}
+.btn-danger{
+    margin-left: 509px;
+    margin-top: -1012px;
+    border-radius: 0;
+}
+.btn-primary{
+    margin-left: 649px;
+    margin-top: -1074px;
+    border-radius: 0;
+}
+mat-form-field{
+    width: 100%;
+}
+.help a{
+    display: flex;
+    color: blue;
+    padding-left: 381px;
+    text-decoration: none;
+    font-size: 14px;
+    
+}
+.help mat-icon{
+    font-size: 18px;
+}
+li{
+    list-style: none;
+    
+}
+
+.row mat-error{
+    color: red;
+    font-size: 14px;
+}
+#description, #customurl, #location, #upload{
+    padding-top: 20px;
+}
+

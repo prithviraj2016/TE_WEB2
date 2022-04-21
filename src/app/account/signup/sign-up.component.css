@@ -1,0 +1,31 @@
+/* .form-group input{
+    width: 297px;
+    height: 41px;
+    margin-left: 250px;
+    background: rgba(146, 146, 146, 0.4);
+    border-radius: 0;
+    border: none;
+    margin-top: -9px;
+    
+}
+.btn-primary{
+    margin-left: 442px;
+   border-radius: 0;
+} */
+.form-control {
+    background: transparent;
+    border: 1px solid transparent;
+    box-shadow: inset 0px 0px 6px -3px transparent;
+    height: 29px;
+    border-radius: 2px;
+}
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], input[type="text"][readonly], textarea {
+    font-family: 'Roboto Light', sans-serif;
+    width: 100%;
+    background-color: white;
+    color: #ffffff;
+    outline: none;
+    margin: 0 0 10px;
+    resize: none;
+    font-size: 14px;
+}

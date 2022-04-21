@@ -1,0 +1,73 @@
+<div id="container">
+    <div class="container">
+        
+            <div class="row">
+                <div class="col-5">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h1 class="card-title">NEW TEAM</h1>
+                            <mat-icon class="info">info</mat-icon>
+                            <a title="Click to start introduction guide" class="help_button">Help</a>
+                            
+                        </div>
+                        <div class="card-body">
+
+                          <form action="" method="post" [formGroup]="newTeamForm" (submit)="createTeam()" >
+                            <div class="row">
+                                <div class="col-12" id="Teamname">
+                                    <mat-form-field  class="example-full-width">
+                                      <input matInput placeholder="Team Name" type="text" formControlName="teamname">
+                                      <mat-error *ngIf="myError('teamname', 'required')">Team Name is required</mat-error>
+    
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-12" id="description">
+                                      <mat-label>Description</mat-label><br>
+                                    <mat-form-field  class="example-full-width">
+                                      <input matInput  type="text" formControlName="description">
+                                      <mat-error *ngIf="myError('description', 'required')">Decription is required</mat-error>
+    
+                                    </mat-form-field>
+                                  </div>
+                                  
+                                  <div class="col-12" id="location">
+                                    <mat-label>Location</mat-label><br>
+                                  <mat-form-field  class="example-full-width">
+                                    <input matInput placeholder="Search Location..." type="text" formControlName="location">
+                                    <mat-error *ngIf="myError('location', 'required')">Location is required</mat-error>
+    
+                                  </mat-form-field>
+                                </div>
+                                  
+                                    <div class="col-6" style="margin-top: 20px;" id="upload">
+                                        <mat-form-field  class="example-full-width">
+                                        <mat-label style="color: #3988ba;">Upload Picture</mat-label><br>
+                                          <input type="file" name="image" formControlName="image"/>
+                                          <mat-error *ngIf="myError('image', 'required')">Image is required</mat-error>
+                                        </mat-form-field>
+                                         </div><br>
+
+                                         <div class="col-12">
+                                        
+                                            <mat-slide-toggle>Team Spot</mat-slide-toggle>
+                                            <!-- <mat-error *ngIf="myError('teamspot', 'required')">Button should be on</mat-error> -->
+                                            
+                                            </div>
+                                    
+                            </div>
+                            <div class="col-7">
+                                <div class="">
+                                  <button routerLink="/te-dashboard-teams" class="btn btn-danger" type="submit">Cancel</button>
+                                  <button  class="btn btn-primary" type="submit">Create</button>
+                                </div>
+                              </div>
+                        </form>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+

@@ -1,0 +1,369 @@
+<div class="main" style="background: #1d262c;
+font-family: 'Roboto', sans-serif;">
+<form style="padding: 0px;" [formGroup]="userprofileupdateForm" (ngSubmit)="updateUserProfile()">
+  <div class="row" style=" --bs-gutter-x: 0rem;">
+    
+    <div class="col-lg-2" style="    width: 20%;">
+      <div class="col_one" style="color: #fff;
+      background-color: #0e161b;
+      padding: 20px;">
+        <h1 style=" font-size: 20px;
+        text-transform: uppercase;
+        font-weight: normal;">Settings</h1>
+        <h2 style=" font-size: 22px;
+        color: #3988ba;
+        margin-bottom: 42px;">Account
+          <a href="#" style="  float: right;">
+            <mat-icon style="color:#3988ba;">info</mat-icon>
+          </a>
+        </h2>
+        
+        <div class="flex-item" style=" padding: 10px 0 32px;">
+          <label style="font-size: 0.875rem;
+          color: #4d4d4d;
+          cursor: pointer;
+          display: block;
+          font-weight: normal;
+          line-height: 1.5;
+          margin-bottom: 0;
+          margin-bottom: 20px;">User Name:
+            <b class="ng-binding">
+              {{userName}}
+            </b>
+          </label>
+        </div>
+
+        <div class="flex-item" style=" padding: 10px 0 10px;">
+          <div class="is-floating-label is-focused">
+            <label style="  font-size: 0.875rem;
+            color: #4d4d4d;
+            cursor: pointer;
+            display: block;
+            font-weight: normal;
+            line-height: 1.5;
+            margin-bottom: 0;
+            margin-bottom: 20px;
+            transform: translateY(-15px) scale(0.7);">Display Name</label>
+            <br>
+            <input type="text" name="profile_name" id="profile_name" required="" style=" box-shadow: none;
+            background: 0 0;
+            border: 0;
+            border-bottom: #676d75 solid 1px;" formControlName="name">
+          </div>
+        </div>
+        <div class="flex-item" style=" padding: 10px 0 10px;">
+          <div class="is-floating-label is-focused" style="   position: relative;
+          height: 54px;">
+            <label style="  font-size: 0.875rem;
+            color: #4d4d4d;
+            cursor: pointer;
+            display: block;
+            font-weight: normal;
+            line-height: 1.5;
+            margin-bottom: 0;
+            margin-bottom: 20px;
+            transform: translateY(-15px) scale(0.7);" class="flex-label">Email</label>
+            <br>
+            <input type="text" name="profile_email" id="profile_email" required="" style=" box-shadow: none;
+            background: 0 0;
+            border: 0;
+            border-bottom: #676d75 solid 1px;" formControlName="email" >
+          </div>
+        </div>
+        <div class="flex-item" style=" padding: 10px 0 10px;">
+          <div class="is-floating-label is-focused" style="   position: relative;
+          height: 54px;">
+            <label style="  font-size: 0.875rem;
+            color: #4d4d4d;
+            cursor: pointer;
+            display: block;
+            font-weight: normal;
+            line-height: 1.5;
+            margin-bottom: 0;
+            margin-bottom: 20px;
+            transform: translateY(-15px) scale(0.7);" class="flex-label">Phone Number</label>
+            <br>
+            <input type="text" name="profile_phoneNumber" id="profile_phoneNumber" style=" box-shadow: none;
+            background: 0 0;
+            border: 0;
+            border-bottom: #676d75 solid 1px;" formControlName="phoneNumber">
+          </div>
+        </div>
+        <div class="flex-item" style=" padding: 10px 0 10px;">
+          <div class="is-floating-label" style="   position: relative;
+          height: 54px;">
+            <label style="  font-size: 0.875rem;
+            color: #4d4d4d;
+            cursor: pointer;
+            display: block;
+            font-weight: normal;
+            line-height: 1.5;
+            margin-bottom: 0;
+            margin-bottom: 20px;" class="flex-label">Age</label>
+            <br>
+            <input type="text" name="profile_age" id="profile_age" placeholder="Enter your age" style=" box-shadow: none;
+            background: 0 0;
+            border: 0;
+            border-bottom: #676d75 solid 1px;" formControlName="age">
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class=" image-item large-6 medium-6 small-6 columns">
+            <label style="font-size: 16px;
+            color: #3988ba;
+            cursor: default;"
+            class="flex-label">User Picture</label>
+            <br>
+            <div class="flex-row image-row">
+              <div id="user_image" style=" border: 1px solid transparent;
+              border-radius: 10px;">
+
+                <img alt="Choose a picture" 
+                  src="../../../assets/img/user.png" title="Choose a picture" class="image_profile_user"
+                  id="my-account-profile-image" style="height: 120px;
+                  border: 1px solid;
+                  border-radius: 10px;" formControlName="imageUrl" (click)="open1(mymodal1)">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-row flex-row">
+          <label class="label-custom" style="font-size: 16px;
+          color: #3988ba;
+          cursor: default;padding-top: 20px;">Share with</label>
+          <ul class="social-item" style="display: flex;
+          padding:0px">
+          <a href="https://www.facebook.com/">
+            <li title="Facebook" style=" list-style-type: none;">
+              <img src="../../../assets/img/high-res/@2x-facebook.svg">
+            </li>
+          </a>
+            <a href="https://www.google.com/">
+            <li title="Google" style=" list-style-type: none;">
+              <img src="../../../assets/img/@2x-gplus.png">
+            </li>
+          </a>
+            <a href="https://twitter.com/">
+            <li title="Twitter" style=" list-style-type: none;">
+              <img src="../../../assets/img/high-res/@2x-twitter.svg">
+            </li>
+          </a>
+          </ul>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item">
+            <div data-step="7" data-intro="Set location so you would be notified of any tournaments in your area.">
+              <label class="flex-label" style="font-size: 0.875rem;
+              color: #4d4d4d;
+              cursor: pointer;
+              display: block;
+              font-weight: normal;
+              line-height: 1.5;
+              margin-bottom: 0;
+              margin-bottom: 20px;">Location</label>
+              <input type="text" name="location" id="location" style=" box-shadow: none;
+              background: 0 0;
+              border: 0;
+              border-bottom: #676d75 solid 1px;" formControlName="location">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4" style="width: 30%;">
+      <div class="col_two" style=" background-color: #070c10;
+      color: #fff;
+      padding: 20px;
+      height: 100%;
+      box-shadow: inset 5px 0 5px rgb(0 0 0 / 50%);">
+        <h1></h1>
+        <h2>Notification</h2>
+        <div class="men_toggle" style="display: flex;     justify-content: space-between;">
+          <label style="
+          font-size: 16px;
+          font-family: robotobold;
+          color: #3988ba;
+          cursor: default;
+          
+      ">Messaging</label>
+          <material-slide-toggle (change)="toggle()" style="float:right;" formControlName="messagingSetting"></material-slide-toggle>
+         
+        </div>
+        <hr>
+        <div class="toggle" *ngIf="show" style="display: grid;">
+          <label>
+            New followers
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+          <br>
+          <label>Registration approvals
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+
+          <br>
+          <label>Messages from members
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+
+          <br>
+          <label>Replies from match notifications
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+
+          <br>
+          <label>Match notifications
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+
+          <br>
+          <label>Tournament messages
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+
+          <br>
+          <label>Players added to tournament
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+
+          <br>
+          <label>Tournament start
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+
+        </div>
+        <div class="delete" style="padding-top: 30px;">
+          <a href="#">
+            <i class="fa-solid fa-ban"></i>
+            Block/Unblock Users
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4" style="width:35%;">
+      <div class="col_three" style="  background-color: #0e161b;
+      color: #fff;
+      height: 100%;
+      padding-top: 25px;
+      padding:19px;">
+        <div class="example-button-row" style=" display: flex;">
+          <button id="changePwd" class="btn btn-block red" (click)="open(mymodal)">
+            <span style="  padding: 4px 20px 0;
+            height: 34px;
+            font-size: .975rem;
+            font-size: 15px;
+            color: #fff;">Change Password</span>
+          </button>
+
+
+          <ng-template #mymodal let-modal>
+            <div class="popup-box">
+              <div class="form-item">
+                <div class="main_container">
+                  <div class="heading">
+                    <div class="modal-header">
+                      <h1>Change password</h1>
+                      <a class="close-reveal-modal" title="Close" aria-label="Close"  (click)="modal.dismiss('Cross click')">
+                        <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                    </a>
+                    </div>
+                  </div>
+                  <form style="margin-top: 20px!important;">
+                    <label>Old password</label><br>
+                    <i alt="show" class="far fa-eye eye-show"
+                     (click)="showPassword = !showPassword"
+                      [class.hide]="!showPassword"></i>
+                    <i alt="hide" class="far fa-eye-slash eye-hide"
+                      (click)="showPassword = !showPassword"
+                      [class.hide]="showPassword" ></i>
+                    <input [type]="showPassword ? 'text' : 'password'" name="changePwd" placeholder="Old Password">
+                    <label>Password</label>
+                      <br>
+                      <i alt="show" class="far fa-eye eye-show"
+                     (click)="showPassword1 = !showPassword1"
+                      [class.hide]="!showPassword1"></i>
+                    <i alt="hide" class="far fa-eye-slash eye-hide"
+                      (click)="showPassword1 = !showPassword1"
+                      [class.hide]="showPassword1"></i>
+                      <input [type]="showPassword1 ? 'text' : 'password'" name="password" placeholder="Password" required>
+                    <label>Confirm password</label>
+                      <br>
+                      <i alt="show" class="far fa-eye eye-show"
+                     (click)="showPassword2 = !showPassword2"
+                      [class.hide]="!showPassword2"></i>
+                    <i alt="hide" class="far fa-eye-slash eye-hide"
+                      (click)="showPassword2 = !showPassword2"
+                      [class.hide]="showPassword2"></i>
+                      <input [type]="showPassword2 ? 'text' : 'password'" name="Confirm password" placeholder="Confirm Password" required>
+                    <input type="button" name="submit" value="Submit" class="btn-one">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+  
+          <ng-template #mymodal1 let-modal>
+            <div class="popup-box">
+              <div class="container">
+                <div class="heading">
+                  <div class="modal-heading">
+                    <h6>Upload Picture</h6>
+                    <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                    </a>
+                  </div>
+                </div>
+                <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                  border: dashed 1px #43464d;">
+                  <img src="../../../assets/img/user.png" style=" height: 50%;
+      width: 90%;
+      margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+                  <div class="cr-boundary" aria-dropeffect="none">
+  
+                    <div class="cr-viewport cr-vp-square" tabindex="0">
+                      <div class="slide-container">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
+                      </div>
+                      <div class="file">
+                        <input type="file" name="file" class="file"
+                          style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
+                        <input type="submit" class="done" value="Done" onclick="show()">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+          
+          &nbsp;&nbsp;&nbsp;
+          <button id="cancel" class="btn btn-block red">
+            <span style="  padding: 4px 20px 0;
+            height: 34px;
+            font-size: .975rem;
+            font-size: 15px;
+            color: #fff;">Cancel</span>
+          </button>&nbsp;&nbsp;&nbsp;
+          <button id="save" class="btn btn-block " >
+            <span style="  padding: 4px 20px 0;
+    height: 34px;
+    font-size: .975rem;
+    font-size: 15px;
+    color: #fff;">Save</span>
+          </button>&nbsp;&nbsp;&nbsp;
+        </div>
+      </div>
+    
+    </div>
+  
+    <div class="col-lg-2">
+
+    </div>
+  </div>
+</form>
+</div>
+
+
+
+
+ 

@@ -1,0 +1,209 @@
+<img src="" style="display:none" id="imgforumlogin">
+<div class="row restrict_to_window" id="dashboard-container">
+  <!-- <div ng-include="'home/side_bar.html'" class="sidebar left"></div> -->
+
+
+  <!-- Column 2 -->
+  <div class="large-5 cdiv" id="step1" data-step="1" data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
+    <div class="notification_column restrict_to_window">
+      <div class="sha-box control_box">
+        <div class="row">
+          <div class="ribbon_parent small-6">
+            <div class="back_ribbon bgradient"></div>
+            <div class="ribbon_child bgradient"></div>
+            <div class="ribbon_content small-4 medium-4 columns">
+              <div class="listimg trophy"></div>
+              <p class="ng-binding">TOURNAMENTS</p>
+            </div>
+          </div>
+
+          <div class="small-6 medium-6 large-6 searchb pt15 columns">
+            <form autocomplete="off" class="ng-pristine ng-valid">
+              <input autocomplete="off" data-step="1" data-intro="Type here to search for your tournaments in your list."
+                type="search" id="search" placeholder="Search tournaments">
+            </form>
+          </div>
+        </div>
+        
+        <div class="tabs-bar">
+          <div id="myListMenu" data-tab="">
+            <a class="create-new ng-scope" data-step="2" data-intro="Create new tournament." title="Create New" routerLink="/event-tournament"><img src="assets/img/icon_create.svg"><i>CREATE NEW</i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="season-card">
+        <div class="event_card sha-box card">
+          <div class="row">
+            <div class="img-event medium-5 blankImage" style="background-image:url(assets/img/object1.png)">
+              <div class="name-event truncate" title=" Event Name">Event Name</div>
+            </div>
+            <div class="txt-event medium-5">
+              <span class="tgamename">EVENT INFO.</span>
+              <hr class="shr3">
+              <div class="clear"></div>
+              <div class="tinfo">Start Date:</div>
+              <span class="tdata date_start">10/10/2020</span>
+              <div class="clear"></div>
+              <div class="tinfo">End Date:</div>
+              <span class="tdata rtxt date_end">10/10/2020</span>
+            </div>
+            <div ng-show="event.hype" class="hype-ribbon-blue"></div>
+            <br>
+          </div>
+        </div>
+        <hr class="shr1">
+      </div>
+      <div style="text-align: center;">No records found</div>
+    </div>
+  </div>
+  
+  <!-- Column 3 -->
+  <div class="large-7 dashboard_height" id="detail-container">
+    <div class="main-content" id="detail">
+      <div class="detail sha-box p15 flex_box_column eventboxouter" id="tdetail-container">
+        <!-- Ribbion -->
+        <div class="img-event-bg mbot-15" data-step="4"
+          data-intro="Allow you to report, name, follow, and see what platforms is being used for the tournament.">
+          <div>
+            <a class="follow_icon followed" href="" title="Event Follower(s)" style="cursor:text;"><i
+                class="fas fa-heart"></i></a>
+            <span class="follow_num">22</span>
+          </div>
+          <div class="detail_title">
+            <div class="truncate" title="Event Name">Event Name</div>
+          </div>
+          <div id="icons-block">
+            <div>
+              <a class="follow_icon followed" href="" title="Click to Unfollow this Event"><i
+                  class="fa fa-heart"></i></a>
+              <a class="follow_icon followicon_heart" href=""><i class="fa fa-heart"
+                  title="Click to Follow this Event"></i></a> <span class="follow_num">22</span>
+            </div>
+            <a class="generate-report-modal-event report-exlamation bgradient-orange"
+              title="Report Inappropriate Content"><i class="fa fa-exclamation"></i></a>
+          </div>
+        </div>
+        <!-- Main Body -->
+        <div class="row flex_box" id="tourna-detail-col2">
+          <!-- First Column -->
+          <div id="tournament-detail" class="medium-6 bordr flex_item flex_box_column eventDetails">
+            <div class="name-event-bg mbot-15 evepdfix">
+              <div class="tddate">
+                Start Date: <span class="btxt">12/11/2020</span>
+              </div>
+              <div class="tddate">
+                End Date: <span class="rtxt">12/22/2020</span>
+              </div>
+              <a title="Help" href="" onclick="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+                  aria-hidden="true"></i><span>&nbsp;Help</span></a>
+            </div>
+            <!-- Description -->
+            <!-- Staff -->
+            <div class="bar flex_item_jscrollpane tinfotitle" tabindex="0">
+              <div class="description_title btxt">Admin</div>
+              <div data-step="5" data-intro="Admin list for the event." class="player-sm">
+                <a href="/#!/user/view/sEvent.creatorUserId">
+                  <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png">
+                  </div>
+                </a>
+
+                <a href="/#!/user/view/sEvent.creatorUserId"> <span class="pname" title="Event Admin Details Name">Event
+                    Admin Details Name</span>
+                </a>
+              </div>
+              <hr>
+              <div>
+                <div class="description_title btxt" data-step="6"
+                  data-intro="Event information provided by event organizer.">About Event</div>
+                <div class="word-wrap description">
+                  <p class="info_box_mp pre" title="Event description">
+                    this is test event for testing molude this is test event for testing molude this is test event
+                    for testing molude this is test event for testing molude
+                  </p>
+                </div>
+                <div class="description_title btxt">Staff</div>
+                <div class="player-sm">
+                  <a href="/#!/user/view/staffInfo.userID">
+                    <div class="profile_user_img_sm playerimg"></div>
+                  </a> <a href="/#!/user/view/taffInfo.userID"> <span class="pname"
+                      title="staffInfo name">staffInfo.name</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- The Buttons -->
+            <div data-step="7"
+              data-intro="Advertise event with the Hype Feature, Edit event, add staff, delete event, register for the event, Participants and see who registered for the event."
+              class="tournament_btns">
+              <div class="ctrlpnl tournament_btns_gradient pbt5">
+                <a class="orange get-hype" href="javascript:;" data-reveal-id="hype" title="Hype Event"><i class="fas fa-fire"></i>
+                  <span>Hype</span></a>
+              </div>
+              <div class="ctrlpnl tournament_btns_gradient">
+                <ul class="wrapbtnbox">
+                  <li><a title="Edit Event" class="blkbkg event_btn" href="/#!/event/edit/sEvent.eventID"><i
+                        class="fas fa-edit"></i> <span> Edit</span></a></li>
+                  <li><a title="Manage Staff" class="blkbkg event_btn" href="/#!/event/staff/sEvent.eventID"><i
+                        class="fas fa-users"></i> <span> Staff</span></a>
+                  </li>
+
+                  <!-- <li><a class="blkbkg event_btn" title="Manage Participants"
+                    href="/#!/event/participants/{{sEvent.eventID}}"><i class="fas fa-users"></i> <span>Participants</span></a>
+                  </li>-->
+                  <li><a title="Delete Event" class="blkbkg event_btn deleteEvent"
+                      confirmed-click="DeleteEvent(sEvent.eventID)"><i class="fi-x tip-top" data-tooltip=""
+                        aria-haspopup="true" data-selector="tooltip-ixa6tvjm6"
+                        aria-describedby="tooltip-ixa6tvjm6"></i><i class="fas fa-trash-alt"></i>
+                      <span> Delete</span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
+                <a class="white-link orange paid-register" title="Register"> Register</a>
+              </div>
+              <!-- <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
+                    <a class="white-link orange paid-register already-registered" title="Already registered">Already
+                      registered</a>
+                  </div> -->
+            </div>
+          </div>
+          <!-- Second Column -->
+          <div class="medium-6 left pl15 columns flex_box_column eventdetaillist detailElementHeight"
+            id="season-detail-list">
+            <div class="name-event-bg">
+              <span class="btxt ">Tournaments</span> <span class="flrt"> 12
+              </span>
+            </div>
+            <div data-step="8"
+              data-intro="List of tournaments in the event that can be clicked to go to that tournament."
+              class="flex_item flex_box_column">
+              <div class="bar flex_item_jscrollpane playerslist" tabindex="0">
+
+                <div class="list_box_mp nobtn_override">
+                  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
+                    <li class="tournament_list_item">
+                      <a class="tour_item img-event" href="/#!/tournament/id/tournament.tournamentID">
+                        <div class="name-event" title=" tournament name ">TOURNAMENT NAME</div>
+                        <div class="name-event">10/10/2020</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div data-step="9" data-intro="Add tournaments to this event if this is your event.">
+              <a class="btm" href="/#!/event/add/tournaments/EventeventID">
+                <div class="poolsb bgradient bordr-all mp-btn" title="Add Tournaments"><i>+</i> Add Tournaments
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

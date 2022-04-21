@@ -1,0 +1,193 @@
+<!-- Start Top Bar -->
+<section class="top-bar-section loggedInNav" id="nav_bar">
+  <div class="top-bar new_navbar">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="" id="main_page_logo"><a href="/" class="company-logo" title="Tournament Edition"><img
+              src="../../../assets/img/bar_logo.png"></a></li>
+      </ul>
+    </div>
+    <div class="menu_icon_one" (click)="openMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="top-bar-right" [class.menuClass]="menuVariable">
+      <ul class="right" id="navbar_main_menu">
+
+        <li id="search-bar" class="ng-cloak" click-outside="closeThis()" outside-if-not="loaderOverlay">
+          <form autocomplete="off">
+            <input placeholder="Search" class="search-style globalSearch" type="text" maxlength="50">
+          </form>
+          <div class="search_pop small_shadow ng-cloak hide">
+            <div class="search_pop_header">
+              <a class="search_type" href="" data-id="1">
+                Players
+              </a>
+              <a class="search_type" href="" data-id="2" routerLink="/tournaments">
+                Tournaments
+              </a>
+              <a class="search_type" href="" data-id="3" routerLink="/events">
+                Events
+              </a>
+              <a class="search_type" href="" data-id="4" routerLink="/seasons">
+                Seasons
+              </a>
+              <a class="search_type" href="" data-id="5" routerLink="/teams">
+                Teams
+              </a>
+            </div>
+            <div class="bar jspScrollable" scrolly="showMoreSearchResult();" id="search_box_global">
+              <div class="jspPane">
+                <div id="panel3items">
+                  <h5>searchRessultEmpty</h5>
+                </div>
+                <ul class="search_results">
+                  <li>
+                    <a href="">i.name</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="loaders_search">
+              <div id="loader_image_search" align="center">
+                <img src="assets/img/ajax-loader.gif" alt="Loading next records" title="Loading next records" width="25"
+                  height="25">Loading more search results, please wait...
+              </div>
+              <div id="loader_message_search" align="right"></div>
+            </div>
+          </div>
+        </li>
+
+        <li class="navbar_profile_item ng-cloak">
+          <a title="Dashboard" routerLink="/dashboard" class="menu_item_long" routerLinkActive="active">Dashboard</a>
+          <a class="menu_item_short tip-bottom " routerLink="/dashboard" data-tooltip aria-haspopup="true"
+            title="Dashboard">
+            <i class="fas fa-tachometer-alt"></i>
+          </a>
+        </li>
+
+        <li class="ng-cloak">
+          <a title="Forum" href="https://tournamentedition.discussion.community/" target="_blank" class="menu_item_long"
+            id="login_box_button">Forum</a>
+          <a class="menu_item_short tip-bottom " data-tooltip aria-haspopup="true" title="Forum">
+            <i class="fas fa-comment-alt"></i>
+          </a>
+        </li>
+        <li>
+          <a title="Tournaments" routerLink="/tournaments" class="menu_item_long" routerLinkActive="active">Tournaments</a>
+          <a class="menu_item_short tip-bottom " data-tooltip aria-haspopup="true" routerLink="/tournaments"
+            title="Tournaments">
+            <i class="fas fa-trophy"></i>
+          </a>
+        </li>
+
+        <li>
+          <a title="Events" routerLink="/events" class="menu_item_long" routerLinkActive="active">Events</a>
+          <a class="menu_item_short tip-bottom" routerLink="/events" data-tooltip aria-haspopup="true" title="Events">
+            <i class="fas fa-calendar"></i>
+          </a>
+        </li>
+        <li>
+          <a title="Seasons" routerLink="/seasons" class="menu_item_long" routerLinkActive="active">Seasons</a>
+          <a class="menu_item_short tip-bottom" routerLink="/seasons" data-tooltip aria-haspopup="true" title="Seasons">
+            <i class="fas fa-list-alt"></i>
+          </a>
+        </li>
+        <li id="team">
+          <a title="Teams" routerLink="/teams" class="menu_item_long" routerLinkActive="active">Teams</a>
+          <a class="menu_item_short tip-bottom" routerLink="/teams" data-tooltip aria-haspopup="true" title="Teams">
+            <i class="fas fa-users"></i>
+          </a>
+        </li>
+        <li id="user-profile">
+          <a class="act-avatar">
+          </a>
+          <ul>
+            <li title="" > <span class="user-name" *ngIf="loggedin()" >
+               {{userName}}
+                <br>@{{userID}}
+              </span></li>
+            <li ><a title="Edit Profile"  href="" (click)="updateProfile(userID)">Edit Profile</a></li>
+            <li><a title="Message Followers" class="" routerLink="/manage-followers"> Message Followers </a></li>
+            <li class="navbar_profile_item ng-cloak"> <a (click)="Logout()" title="Logout" href>Logout</a> </li>
+          </ul>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="header-margin"></div>
+<!-- End Top Bar -->
+
+<router-outlet></router-outlet>
+
+<!-- footer -->
+
+
+<footer>
+  <div id="footer" class="bbtm0">
+    <div id="footer-container">
+      <div class="row">
+        <div class="copyright large-5 medium-8 small-12 columns">
+          <p>
+            © 2022 Tournament Edition <span class="ftr-hori-sep">|</span>
+            <a routerLink="/privacy" title="Privacy">Privacy</a> <span class="ftr-hori-sep">|</span>
+            <a routerLink="/terms" title="Terms">Terms</a>
+            <!-- <span class="ftr-hori-sep">|</span><span ng-show="$storage.loggedInUser" class="ng-hide"> <a href="javascript:;" title="Useful Links"
+              onclick="show_imp_links()">Useful Links</a></span> -->
+          </p>
+        </div>
+        <div class="large-3  medium-4  small-12 columns">
+          <ul class="footer-social">
+            <li>
+              <a target="_blank" href="https://www.facebook.com/tournamenteditionapp/" title="facebook">
+                <i class="fab fa-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" href="https://twitter.com/te_app" title="twitter">
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.instagram.com/tournamentedition/" title="instagram">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.youtube.com/channel/UC2-UNdm76OpWCclmzIuP1Pw" title="youtube">
+                <i class="fab fa-youtube" aria-hidden="true"></i>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+        <div class="large-4  medium-12  small-12 columns">
+          <div class="newsletter" id="list-wrap-custom">
+            <div id="mc_embed_signup">
+              <form
+                action="//Tournamentedition.us16.list-manage.com/subscribe/post?u=4f3309baa36b6e14ecb4f317f&amp;id=b87c4efa49"
+                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                class="validate ng-pristine ng-valid" target="_blank" novalidate="">
+                <div id="mc_embed_signup_scroll">
+                  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
+                    placeholder="Enter your e-mail address" required="">
+                  <input type="submit" title="Subscribe" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
+                    class="button">
+                  <div class="hidden" aria-hidden="true">
+                    <input type="text" name="b_4f3309baa36b6e14ecb4f317f_b87c4efa49" tabindex="-1" value="">
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

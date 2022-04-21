@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-5">
+        <div class="cdiv  small-5 left" id="list-container ">
+            <div class="sha-box control_box">
+                <div class="row">
+                    <div class="ribbon-parent">
+                        <div class="ribbon_content small-4 medium-4 columns">
+                            <p class="ng-binding">SEASONS</p>
+                        </div>
+                    </div>
+                    <div class="small-7 medium-7 large-5 searchb pt15 columns">
+                        <form class="ng-pristine ng-valid" autocomplete="off">
+                            <input autocomplete="off" data-step="1"
+                                data-intro="Type here to search for your events in your list." type="search" id="search"
+                                placeholder="Search event">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tabs-bar">
+                <div id="myListMenu">
+                    <a routerLink="/season-create" href="">
+                        <img src="../../../assets/img/icon_create.svg" style="margin-top: 31px;">
+                        <i>CREATE NEW</i>
+                    </a>
+                </div>
+            
+        </div>
+        <div id="deatil-container" class="rdiv large-7 left">
+            <div id="detail" class="ng-scope">
+                <div id="tdetail-container" class=" deatil sha-box p15 flex_box_column eventboxouter ng-scope">
+                    <div class="img-event-bg mbot-15">
+                        <div class="">
+                            <a class="follow_icon followed" style="cursor:text;"><i class="fas fa-heart"></i></a>
+                            <span class="follow_num ng-binding">0</span>
+                        </div>
+                        <div class="detail_title">
+                            <div class="truncate ng-binding">COMMON WEALTH SEA...</div>
+                        </div>
+
+                    </div>
+                    <div id="tourna-detail-col2" class="row flex_box">
+                        <div class="name-event-bg mbot-15 evepdfix">
+                            <div class="tddate">
+                                Start Date: <span class="btxt ng-binding">Feb 25, 2022</span>
+                            </div>
+                            <div class="tddate">
+                                End Date: <span class="rtxt ng-binding">Feb 28, 2022</span>
+                            </div>
+                            <a title="Click to start introduction guide." href="" id="login_box_button"
+                                class="help_button"><i class="fa fa-info-circle"
+                                    aria-hidden="true"></i><span>&nbsp;Help</span></a>
+                        </div>
+                        <div class="bar flex_item_jscrollpane tinfotitle" tabindex="0">
+
+                            <div class="description_title btxt">Admin</div>
+                            <div data-step="5" data-intro="Admin list for the event." class="player-sm">
+                                <a href="/#!/user/view/86192">
+                                    <div class="profile_user_img_sm playerimg"
+                                        style="background-image: url(../../../assets/img/guest.png);"></div>
+                                </a>
+
+                                <a id="pname" href="/#!/user/view/86192"> <span class="pname ng-binding"
+                                        title="priyanshi_test">priyanshi_test</span>
+                                </a>
+                            </div>
+                            <hr>
+                            <div>
+                                <div class="description_title btxt" data-step="6"
+                                    data-intro="Event information provided by event organizer.">About Season</div>
+                                <div class="word-wrap description ng-scope" ng-if="sEvent.description.length != 0">
+                                    <p class="info_box_mp pre ng-binding" title="adding all tournament in one event">
+                                    first season</p>
+                                </div>
+
+                            </div>
+                            <div class="tournament_btns">
+
+                                <div class="ctrlpnl tournament_btns_gradient" style="  width: 449px;">
+                                    <!-- <div class="ctrlpnl tournament_btns_gradient pbt5 ng-scope">
+                                        <a class="orange get-hype">
+                                            &nbsp;
+                                            <i class="fas fa-fire"></i>
+                                            <span>Hype</span></a>
+                                    </div> -->
+                                    <ul class="wrapbtnbox">
+                                        <li class="ng-scope"><a title="Edit Event" class="blkbkg event_btn"><i
+                                                    class="fas fa-trophy"> &nbsp;</i> <span> Manage Tournaments</span></a></li>
+
+                                        <li class="ng-scope"><a class="blkbkg event_btn"><i
+                                                    class="fas fa-calendar"></i>&nbsp;<span>Manage Events</span></a>
+                                        </li>
+                                    </ul>
+                                    <div>
+                                        <ul>
+                                            <li><a title="Edit" class="blkbkg event_btn" href="/">
+                                                <i class="fas fa-edit">Edit</i>
+                                            </a></li>
+                                            <li class="ng-scope"><a title="Delete Event"
+                                                class="blkbkg event_btn deleteEvent"
+                                                confirmed-click="DeleteEvent(sEvent.eventID)"
+                                                ng-confirm-click="Are you sure you want to delete event?"><i
+                                                    class="fi-x tip-top" data-tooltip="" aria-haspopup="true"
+                                                    data-selector="tooltip-ixa6tvjm6"
+                                                    ng-confirm-click="Are you sure you want to delete event?"
+                                                    aria-describedby="tooltip-ixa6tvjm6"></i><i
+                                                    class="fas fa-trash-alt"></i> &nbsp;<span>Delete</span></a>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                        
+                                    
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="medium-5 left pl15 columns flex_box_column eventdetaillist detailElementHeight"
+                            id="season-detail-list">
+                            <div class="name-event-bg" style="margin-left: -20px;
+                            width: 324px;
+                            height: 34px;">
+                                <span class="btxt ">Events List</span> <span class="flrt ng-binding">0
+                                </span>
+                                <ng-template>
+                                    <div>
+
+                                    </div>
+
+                                </ng-template>
+                            </div>
+                            <div class="name-event-bg">
+                                <span class="btxt">TOURNAMENTS LIST</span>
+                                <span class="flrt">2</span>
+                            </div>
+                            <div data-step="8"
+                                data-intro="List of tournaments in the event that can be clicked to go to that tournament."
+                                class="flex_item flex_box_column">
+                                <div class="bar flex_item_jscrollpane playerslist" style="width: 360px;
+                                margin-left: -15px;
+                                margin-top: -2px;" tabindex="0">
+
+                                    <div class="list_box_mp nobtn_override">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- <div ng-if="(viewLevel > 0)" data-step="9" data-intro="Add tournaments to this event if this is your event." class="ng-scope" style="margin-top: -27px;
+                                margin-left: -14px;">
+                                <a class="btm" ng-show="viewLevel > 0" href="/#!/event/add/tournaments/930">
+                                    <div class="poolsb bgradient bordr-all mp-btn" title="Add Tournaments"><i>+</i> Add Tournaments </div>
+                                </a>
+                            </div> -->
+                        </div>
+
+                    </div>

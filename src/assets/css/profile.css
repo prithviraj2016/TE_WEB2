@@ -117,9 +117,9 @@ mat-slide-toggle {
   pointer-events: all;
   padding: 20px;
 }
-form {
+/* form {
   padding: 25px;
-}
+} */
 form label {
   float: left;
   color: #949494;

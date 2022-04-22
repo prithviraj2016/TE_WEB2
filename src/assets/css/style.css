@@ -136,7 +136,9 @@ label.label-custom { position: relative;cursor: default;}
 background: none !important;
 padding: 0;
 }
-.removeOldImage i { color:red; font-size: 12px;}
+.removeOldImage i { visibility: hidden;
+    color: red;
+    font-size: 12px;}
 .removeOldImage span { font-size: 12px; display: block;}
 .create-form-section hr {
     margin: 5px !important;
@@ -246,7 +248,7 @@ padding: 0;
 
 @media only screen and (min-width: 1025px){
 .content-box.singin_signup { width:600px;  }
-#buttonset { position: absolute; bottom: 20px;}
+#buttonset { position: absolute;    padding: 20px;}
 #buttonset.fixbuttonset{ position: absolute; bottom:20px; }
 }
 
@@ -7657,7 +7659,12 @@ label.mandatory_field.non-floatfld:after{ color: #ef050b; font-size: 13px;}
 }
 .flex-item input:focus, .flex-item textarea:focus, .flex-item input[type='checkbox']:focus, .flex-item select:focus { border-bottom:#ffffff solid 1px;}
 
-#braintree-set input, #braintree-set textarea{ padding: 12px 0; }
+#braintree-set input, #braintree-set textarea{     padding: 12px 0;
+    box-shadow: none;
+    background: 0 0;
+    border: 0;
+    border-bottom: #676d75 solid 1px;
+    color: white;}
 #braintree-set textarea{padding-top: 9px;}
 span.prefix, label.prefix { background: transparent; border: none; border-bottom: #676d75 solid 1px; height: 40px; text-align: left; font-family: '"Roboto"', sans-serif;color: rgba(255, 255, 255, 0.25);}
 .prefix-input-field .columns { padding: 0;}
@@ -9139,7 +9146,7 @@ button[disabled].btn-block {
 button[disabled].btn-block,
 .btn-block button[disabled]:hover {
     line-height: normal;
-    /* margin: 10px 7px; */
+    margin: 10px 7px;
     padding: 0;
     float: left;
     text-shadow: none !important;
@@ -10126,7 +10133,9 @@ span.fill-required {
     padding: 4px 20px 0px 20px;
     height: 34px;
     font-size: 0.975rem;
+    color: white;
 }
+
 
 .left-aligned {
     float: left;

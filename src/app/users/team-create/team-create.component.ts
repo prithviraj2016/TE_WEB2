@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-team-create',
   templateUrl: './team-create.component.html',
-  styleUrls: ['./team-create.component.css']
+  styleUrls: [ '../../../assets/css/profile.css']
 })
 export class TeamCreateComponent implements OnInit {
   newTeamForm: FormGroup = new FormGroup({});

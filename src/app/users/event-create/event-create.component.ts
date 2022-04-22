@@ -17,6 +17,7 @@ export class EventCreateComponent implements OnInit {
   newEventForm: FormGroup = new FormGroup({});
   imageURL: string;
   uploadImage: FormGroup;
+  submitted = false;
   constructor(private formBuilder: FormBuilder,
     private _router: Router,
     private http:HttpClient,
@@ -36,6 +37,7 @@ export class EventCreateComponent implements OnInit {
       'location':new FormControl('',[Validators.required] ),
       'sdate':new FormControl('',[Validators.required]),
       'edate':new FormControl('',[Validators.required]),
+      'paidevent':new FormControl('',[Validators.required]),
       'image':new FormControl('', [Validators.required])
     });
   }

@@ -1,4 +1,4 @@
-import { DashboardService } from './../../common/services/dashboard.service';
+import { DashboardService } from '../dashboard/dashboard.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -17,8 +17,8 @@ export class EventCreateComponent implements OnInit {
   newEventForm: FormGroup = new FormGroup({});
   imageURL: string;
   uploadImage: FormGroup;
-  constructor(private formBuilder: FormBuilder, 
-    private _router: Router, 
+  constructor(private formBuilder: FormBuilder,
+    private _router: Router,
     private http:HttpClient,
     private modalService: NgbModal,
     private _service:DashboardService) { }
@@ -28,7 +28,7 @@ export class EventCreateComponent implements OnInit {
       avatar: [null],
       name: ['']
     })
-    
+
     this.newEventForm=this.formBuilder.group({
       'eventname':new FormControl('', [Validators.required]),
       'description':new FormControl('', [Validators.required]),
@@ -42,7 +42,7 @@ export class EventCreateComponent implements OnInit {
   public myError = (controlName: string, errorName: string) =>{
     return this.newEventForm.controls[controlName].hasError(errorName);
     }
-    
+
     createEvent(){
       console.log(this.newEventForm.value);
     this._service.createEvent().subscribe(data =>{
@@ -52,7 +52,7 @@ export class EventCreateComponent implements OnInit {
       alert("Something Went Wrong");
     })
 
-    
+
       // console.log(this.newEventForm.value);
     }
     showPreview(event:any) {
@@ -78,32 +78,32 @@ export class EventCreateComponent implements OnInit {
     open(content:any) {
 
       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    
+
         this.closeResult = `Closed with: ${result}`;
-    
+
       }, (reason) => {
-    
+
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    
+
       });
-    
-    } 
+
+    }
     private getDismissReason(reason: any): string {
-    
+
       if (reason === ModalDismissReasons.ESC) {
-    
+
         return 'by pressing ESC';
-    
+
       } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-    
+
         return 'by clicking on a backdrop';
-    
+
       } else {
-    
+
         return  `with: ${reason}`;
-    
+
       }
-    
-  } 
+
+  }
 
 }

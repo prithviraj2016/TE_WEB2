@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormsModule, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ContactusService } from 'src/app/shared/services/contactus.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import swal from 'sweetalert2';
 import { __values } from 'tslib';
+import { ContactusService } from './contactus.service';
 
 @Component({
   selector: 'app-contactus',
@@ -15,12 +15,12 @@ import { __values } from 'tslib';
 export class ContactusComponent implements OnInit {
   [x: string]: any;
   closeResult: string = '';
-  
+
   contactForm:any;
   submitted=false;
 
-  constructor(private frmbuilder: FormBuilder, 
-    private router:Router, 
+  constructor(private frmbuilder: FormBuilder,
+    private router:Router,
     private service: ContactusService,
     private http:HttpClient,
     private cd:ChangeDetectorRef,
@@ -33,20 +33,20 @@ export class ContactusComponent implements OnInit {
       'contact':new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(12)]),
       'message':new FormControl('',[Validators.required,Validators.minLength(100)])
 
-    
+
 
     })
    }
-  
+
    get f(){return this.contactForm.controls;}
-  
-  
+
+
  async submit(){
     this.submitted=true;
-   
-   
+
+
     await  this.service.create(this.contactForm.value).subscribe((res)=>{
-        
+
       console.log(this.contactForm.value)
     },err=>{
       console.log(err);
@@ -64,7 +64,7 @@ export class ContactusComponent implements OnInit {
          alert("Please enter email");
          return;
        };
-       
+
        if( this.contactForm.value.contact.length!= 10 ){
          alert("Please enter atleast 10 numbers in contact no..");
          return;
@@ -74,8 +74,8 @@ export class ContactusComponent implements OnInit {
          return;
        };
 
- 
-   
+
+
 
   };
 
@@ -95,7 +95,7 @@ export class ContactusComponent implements OnInit {
     return `with: ${reason}`;
   }
 }
- 
+
     localError() {
       throw Error("The app component has thrown an error!");
     };

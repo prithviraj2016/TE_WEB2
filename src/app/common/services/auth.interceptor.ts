@@ -1,11 +1,18 @@
 import { Injectable } from "@angular/core";
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from "@angular/common/http";
+import {
+  HttpEvent,
+  HttpInterceptor,
+  HttpHandler,
+  HttpRequest,
+  HttpErrorResponse,
+  HttpHeaders
+} from "@angular/common/http";
 import { throwError, Observable, BehaviorSubject, of } from "rxjs";
 import { catchError, filter, finalize, take, switchMap } from "rxjs/operators";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  private AUTH_HEADER = "Authorization";
+  private AUTH_HEADER = "AUTH-KEY";
   private refreshTokenInProgress = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
     null
@@ -24,12 +31,12 @@ export class AuthInterceptor implements HttpInterceptor {
         headers: req.headers.set("Content-Type", "application/json")
       });
     }
-    // const clientTimeZone=moment.tz.guess();
-    // req = req.clone({
-    //     headers: req.headers.set("timezone", clientTimeZone)
-    // });
+    req = req.clone({
+      headers: req.headers.set("api-version", "TE_Web_1.0"),
+    });
 
     req = this.addAuthenticationToken(req);
+   // console.log(req)
 
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -47,7 +54,7 @@ export class AuthInterceptor implements HttpInterceptor {
             );
           } else {
             this.refreshTokenInProgress = true;
-
+            console.log('here')
             // Set the refreshTokenSubject to null so that subsequent API calls will wait until the new token has been retrieved
             this.refreshTokenSubject.next(null);
 
@@ -78,10 +85,10 @@ export class AuthInterceptor implements HttpInterceptor {
     if (loggedUser != "" && loggedUser != null) {
       var obj = JSON.parse(loggedUser);
       return request.clone({
-        headers: request.headers.set(this.AUTH_HEADER, "Bearer " + obj.key)
+        headers: request.headers.set(this.AUTH_HEADER, obj.key)
       });
     }
     return request;
-  }
 
+  }
 }

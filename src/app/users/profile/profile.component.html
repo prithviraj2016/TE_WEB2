@@ -2,7 +2,7 @@
 font-family: 'Roboto', sans-serif;">
 <form style="padding: 0px;" [formGroup]="userprofileupdateForm" (ngSubmit)="updateUserProfile()">
   <div class="row" style=" --bs-gutter-x: 0rem;">
-    
+
     <div class="col-lg-2" style="    width: 20%;">
       <div class="col_one" style="color: #fff;
       background-color: #0e161b;
@@ -17,7 +17,7 @@ font-family: 'Roboto', sans-serif;">
             <mat-icon style="color:#3988ba;">info</mat-icon>
           </a>
         </h2>
-        
+
         <div class="flex-item" style=" padding: 10px 0 32px;">
           <label style="font-size: 0.875rem;
           color: #4d4d4d;
@@ -118,7 +118,7 @@ font-family: 'Roboto', sans-serif;">
               <div id="user_image" style=" border: 1px solid transparent;
               border-radius: 10px;">
 
-                <img alt="Choose a picture" 
+                <img alt="Choose a picture"
                   src="../../../assets/img/user.png" title="Choose a picture" class="image_profile_user"
                   id="my-account-profile-image" style="height: 120px;
                   border: 1px solid;
@@ -184,10 +184,10 @@ font-family: 'Roboto', sans-serif;">
           font-family: robotobold;
           color: #3988ba;
           cursor: default;
-          
+
       ">Messaging</label>
           <material-slide-toggle (change)="toggle()" style="float:right;" formControlName="messagingSetting"></material-slide-toggle>
-         
+
         </div>
         <hr>
         <div class="toggle" *ngIf="show" style="display: grid;">
@@ -300,7 +300,7 @@ font-family: 'Roboto', sans-serif;">
               </div>
             </div>
           </ng-template>
-  
+
           <ng-template #mymodal1 let-modal>
             <div class="popup-box">
               <div class="container">
@@ -318,7 +318,7 @@ font-family: 'Roboto', sans-serif;">
       width: 90%;
       margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
                   <div class="cr-boundary" aria-dropeffect="none">
-  
+
                     <div class="cr-viewport cr-vp-square" tabindex="0">
                       <div class="slide-container">
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
@@ -335,7 +335,7 @@ font-family: 'Roboto', sans-serif;">
             </div>
           </ng-template>
 
-          
+
           &nbsp;&nbsp;&nbsp;
           <button id="cancel" class="btn btn-block red">
             <span style="  padding: 4px 20px 0;
@@ -353,9 +353,9 @@ font-family: 'Roboto', sans-serif;">
           </button>&nbsp;&nbsp;&nbsp;
         </div>
       </div>
-    
+
     </div>
-  
+
     <div class="col-lg-2">
 
     </div>
@@ -366,4 +366,3 @@ font-family: 'Roboto', sans-serif;">
 
 
 
- 

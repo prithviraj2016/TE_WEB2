@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { SignInComponent } from './account/signin/sign-in.component';
 import { SignUpComponent } from './account/signup/sign-up.component';
+import { AuthGuard } from './common/services/auth-guard.service';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
-import { AuthGuard } from './shared/services/auth-guard.service';
 
 const routes: Routes = [
 
@@ -44,7 +44,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'signin'
   },
- 
+
 
 ];
 

@@ -9,7 +9,8 @@ import {AccountService} from 'src/app/account/account-service/account.service';
 import { Placement as PopperPlacement, Options } from '@popperjs/core';
 import { get } from 'http';
 import Validation from 'src/app/shared/helper/validation';
-import { DashboardService } from 'src/app/common/services/dashboard.service';
+import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
+import Swal from 'sweetalert2';
 declare var $:any
 
 @Component({
@@ -27,7 +28,7 @@ export class IndexComponent implements OnInit {
   rememberMe=false;
   submitted = false;
   submittedF=false;
-  massage = null;
+  errorMessage:string = '';
   signupForm:any;
   tournamentList1:any;
   [x: string]: any;
@@ -35,9 +36,9 @@ export class IndexComponent implements OnInit {
   _errorTxt: string;
   _re_errorTxt: string;
   closeModal: string;
-  
+
   forgetForm:any;
-  
+
 
 
   tournamentList: any = [
@@ -94,12 +95,12 @@ export class IndexComponent implements OnInit {
   };
 
   constructor(private modalService: NgbModal,
-    private frmbuilder: FormBuilder, 
-    private router:Router , 
+    private frmbuilder: FormBuilder,
+    private router:Router ,
     private  service:AccountService,
     private _service:DashboardService,
     private http:HttpClient) { }
-   
+
 
   ngOnInit(){
       $(document).foundation();
@@ -124,17 +125,17 @@ export class IndexComponent implements OnInit {
       'password': new FormControl('', [Validators.required,
       Validators.minLength(8),
       Validators.maxLength(40)],
-      ), 
+      ),
       'cpassword': new FormControl('', [Validators.required]),
-     
+
       // isAgreeCheckbox:new FormControl(false, [Validators.requiredTrue]),
     },{
       validators: [Validation.match('password', 'cpassword')]
     }
-    
+
      );
   }
-  
+
   get f(): { [key: string]: AbstractControl } {
     return this.signinForm.controls;}
     get fs(): { [key: string]: AbstractControl } {
@@ -146,28 +147,45 @@ export class IndexComponent implements OnInit {
 
 
 
-  async  onSigninFormSubmit() {
+    onSigninFormSubmit() {
       console.log(this.signinForm.value);
-      // var loggedUser = localStorage.getItem('loggeduser');
-      // if(loggedUser !="" || loggedUser !=null)
-      // {
-      //   localStorage.removeItem('loggeduser');
-      // }
- 
- 
-     await this.service.LoginUser(this.signinForm.value).subscribe(data =>{
+      this.submitted = true;
+      if (this.signinForm.invalid) {
+        return false;
+      }else{
+        var loggedUser = localStorage.getItem('loggeduser');
+          if(loggedUser !="" || loggedUser !=null)
+          {
+            localStorage.removeItem('loggeduser');
+          }
+
+        this.service.LoginUser(this.signinForm.value).subscribe(data =>{
         if(data){
-          
+
           var user = JSON.stringify(data);
           localStorage.setItem("loggeduser",user);
           //this._router.navigateByUrl('/dashboard');
           this.router.navigate(['/dashboard']);
-        }else((err: any)=>err)
+        }
         // alert ("Something Went Wrong");
-      });
+      },(error:any)=>{
+        console.log(error)
 
+        if(error && typeof(error.error) !="undefined")
+        {
+          this.errorMessage = '';
+          error.error.errorMessages.forEach((msg:any)=>{
+              this.errorMessage +=msg 
+            });
+
+        }
+
+      });
+      return true;
     }
-      createUser(){
+    }
+
+    createUser(){
         console.log(this.signupForm.value);
         this.submitted = true;
         this.service.Signup(this.signupForm.value).subscribe(data =>{
@@ -176,21 +194,21 @@ export class IndexComponent implements OnInit {
           }else((err: any)=>err)
           alert ("Something Went Wrong");
         })
-      
+
       }
 
 
-    
 
 
-  
-  
-  
- 
-    
-  
-    
-  
+
+
+
+
+
+
+
+
+
   //   let i, x, tablink;
 
   //   x = document.getElementsByClassName('section_login');
@@ -207,55 +225,55 @@ export class IndexComponent implements OnInit {
   //   evt.currentTarget.className += ' active-tab';
   //  }
 
-    
-  
+
+
     open(content: any) {
 
       this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-  
+
         this.closeResult = `Closed with: ${result}`;
-  
+
       }, (reason) => {
-  
+
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  
+
       });
-  
-  
+
+
     }
     private getDismissReason(reason: any): string {
-  
+
       if (reason === ModalDismissReasons.ESC) {
-  
+
         return 'by pressing ESC';
-  
+
       } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  
+
         return 'by clicking on a backdrop';
-  
+
       } else {
-  
+
         return `with: ${reason}`;
-  
+
       }
-  
+
     }
     forgetpassword() {
-  
+
       if (this.forgetForm.value.email != "" || this.forgetForm.value.email != undefined) {
         this.service.ForgetPassword(this.forgetForm.value.email).subscribe(data => {
           if (data) {
-  
+
             console.log(data);
           } else {
             console.log("err");
           }
-  
-  
+
+
         },
           err => {
             console.log(err);
-  
+
             if (err.status == 500) {
               if (typeof (err.error) != 'undefined' && typeof (err.error.errorMessages) != 'undefined' && err.error.errorMessages.length > 0) {
                 this._errorTxt = '';
@@ -263,24 +281,24 @@ export class IndexComponent implements OnInit {
                 err.error.errorMessages.forEach((errorTxt: string) => {
                   this._errorTxt += errorTxt + ' ';
                 });
-  
+
                 // Swal.fire("Error",_errorTxt,"error");
-  
-  
+
+
               } else {
                 //Swal.fire("Error","Internal server error","error");
               }
-  
+
             }
-  
+
             // check error status code is 500, if so, do some action
           });
-  
-  
+
+
       }
     }
-  
-  
+
+
     resendVerification() {
       debugger
       if (this.forgetForm.value.email != "" || this.forgetForm.value.email != undefined) {
@@ -291,8 +309,8 @@ export class IndexComponent implements OnInit {
           } else {
             console.log("err");
           }
-  
-  
+
+
         },
           err => {
             console.log(err);
@@ -300,41 +318,41 @@ export class IndexComponent implements OnInit {
             if (err.status) {
               if (typeof (err.error) != 'undefined' && typeof (err.error.errorMessages) != 'undefined' && err.error.errorMessages.length > 0) {
                 this._re_errorTxt = '';
-  
+
                 this._re_errorTxt += err.error.errorMessages[0];
-  
-  
+
+
                 // Swal.fire("Error",_errorTxt,"error");
-  
-  
+
+
               } else {
                 // Swal.fire("Error","Internal server error","error");
               }
-  
+
             }
-  
+
             // check error status code is 500, if so, do some action
           });
-  
-  
+
+
       }
     }
-  
+
     open1(content: any) {
-  
+
       this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result: any) => {
-  
+
         this.closeResult = `Closed with: ${result}`;
-  
+
       }, (reason: any) => {
-  
+
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  
+
       });
-  
-  
-  
-  
+
+
+
+
     }
     triggerModal(content: any) {
       this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((res) => {
@@ -343,7 +361,7 @@ export class IndexComponent implements OnInit {
         this.closeModal = `Dismissed ${this.getDismissReason2(res)}`;
       });
     }
-  
+
     public getDismissReason2(reason: any): string {
       if (reason === ModalDismissReasons.ESC) {
         return 'by pressing ESC';
@@ -376,12 +394,12 @@ export class IndexComponent implements OnInit {
         this.closeModal = `Dismissed ${this.getDismissReason3(res)}`;
       });
     }
-  
-  
-  
-  
+
+
+
+
   }
- 
+
 
 
 

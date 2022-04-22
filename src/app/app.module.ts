@@ -17,8 +17,8 @@ import { SignUpComponent } from './account/signup/sign-up.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { GlobalErrorHandler } from './shared/services/globalErrorHandler';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AuthGuard } from './shared/services/auth-guard.service';
-import { httpInterceptorProviders } from './shared/services/httpInterceptorProviders';
+import { httpInterceptorProviders } from './common/services/httpInterceptorProviders';
+import { AuthGuard } from './common/services/auth-guard.service';
 
 
 
@@ -33,7 +33,7 @@ import { httpInterceptorProviders } from './shared/services/httpInterceptorProvi
     SignUpComponent,
     HomeLayoutComponent,
     UserLayoutComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -47,9 +47,10 @@ import { httpInterceptorProviders } from './shared/services/httpInterceptorProvi
     ReactiveFormsModule,
     FontAwesomeModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
   ],
-  providers: [
+  providers:[
     {provide: ErrorHandler, useClass: GlobalErrorHandler},
     AuthGuard,
     httpInterceptorProviders

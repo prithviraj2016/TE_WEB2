@@ -22,7 +22,7 @@ export class UserLayoutComponent implements OnInit {
   openMenu(){
     this.menuVariable= !this.menuVariable;
   }
-  
+
   constructor(
     public location: Location,
     private router: Router,
@@ -30,8 +30,8 @@ export class UserLayoutComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    
-  
+
+
   }
 
   ngAfterViewInit() {
@@ -92,12 +92,12 @@ export class UserLayoutComponent implements OnInit {
 
   updateProfile(userID:String) {
  ///   this.loggedinUser = localStorage.getItem('userID');
-    this.router.navigate(['/profile/'+userID]); 
-   
+    this.router.navigate(['/profile/'+userID]);
+
     }
     Logout() {
      this.loggedinUser = localStorage.removeItem('loggeduser');
-     this.router.navigate(['/signin']);
+     this.router.navigate(['/']);
     }
     loggedin(){
        this.loggedinUser = localStorage.getItem('loggeduser');
@@ -106,5 +106,5 @@ export class UserLayoutComponent implements OnInit {
       console.log(this.userName);
       return this.loggedinUser;
     }
- 
+
 }

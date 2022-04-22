@@ -316,9 +316,12 @@
                 <div class="">
                   <div class="login_box_login">
 
-                    <form action="" [formGroup]="signinForm"  id="login-form"  (submit)="onSigninFormSubmit()">
+                    <form action="" [formGroup]="signinForm"  id="login-form"  (ngSubmit)="onSigninFormSubmit()">
 
                       <table class="register_table">
+                        <tr *ngIf="errorMessage !=''">
+                          <td colspan="2" style="color:red">{{errorMessage}}</td>
+                        </tr>
                         <tr>
                           <td colspan="2">
                             <input form="login_form_home_novalidated"
@@ -333,7 +336,7 @@
                               required autocomplete="false" formControlName="Password"/>
                               <div *ngIf="submitted && f['Password'].errors" class="invalid-feedback">
                                 <div *ngIf="f['Password'].errors['required']"> Password is required</div>
-                                
+
                                 </div>
                           </td>
                         </tr>
@@ -457,10 +460,10 @@
                            data-password-verify="newUser.password"
                           disallow-spaces required autocomplete="false"formControlName="cpassword" />
 
-                          
+
                           <div *ngIf="submitted && fs['cpassword'].errors"
                           class="invalid-feedback">
-                        
+
                           <div *ngIf="fs['cpassword'].errors['required']">
                             Confirm Password is required
                           </div>
@@ -637,10 +640,10 @@
 
 
 </div>
-                    
+
                           <!-- forgetForm -->
 
-                          
+
                           <ng-template #mymodal let-modal  >
                             <div id="myModal-forgotPass-home"  class="customeNgdialog reveal-modal content-color ng-pristine ng-untouched ng-valid ng-empty open"style="display: block; opacity: 1; visibility: visible; top: 100px;" >
                               <div class="login_box_forgot">
@@ -655,7 +658,7 @@
                                       </div>
                                   </div>
                                   <form [formGroup]='forgetForm' novalidate (submit)="forgetpassword()" id="forgot_password_form_home" name="forgot_password_form" ng-submit="forgotPassword(forgot_password_form)" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" >
-                                    
+
                                       <div class="large-12 columns">
                                           <input type="email" formControlName="email" placeholder="Email Address" class="reset_email ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" name="reset_email" ng-model="resetUsername" required="">
                                           <div class="error" >
@@ -688,18 +691,18 @@
                                   <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="!errorShow">Message</h2>
                                   <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="errorShow">error</h2>
                                  </div>
-                               
+
                                </div>
                                <div class="large-12 columns">
                                 <br>
-                                
+
                                <div  class="error_msg" *ngIf="errorShow">
                                   {{_errorTxt}}
                                 </div>
                                 <div *ngIf="!errorShow">
                                Password reset link has been sent to registered email
                                </div>
-                                
+
                               </div>
                               <a title="Close" (click)="modal.dismiss('Cross click')">
                                 <div class="closebtn ngdialog-close">
@@ -721,18 +724,18 @@
                                   <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="!errorShow">Message</h2>
                                   <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" *ngIf="errorShow">error</h2>
                                  </div>
-                               
+
                                </div>
                                <div class="large-12 columns">
                                 <br>
-                                
+
                                <div  class="error_msg" *ngIf="errorShow">
                                   {{_errorTxt}}
                                 </div>
                                 <div *ngIf="!errorShow">
                                Password reset link has been sent to registered email
                                </div>
-                                
+
                               </div>
                               <a title="Close" (click)="modal.dismiss('Cross click')">
                                 <div class="closebtn ngdialog-close">
@@ -758,7 +761,7 @@
                                     </div>
                                 </div>
                                 <form [formGroup]='forgetForm' novalidate (submit)="resendVerification()" id="forgot_password_form_home" name="forgot_password_form" ng-submit="forgotPassword(forgot_password_form)" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" >
-                    
+
                                     <div class="large-12 columns">
                                         <input type="email" formControlName="email" placeholder="Email Address" class="reset_email ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required ng-valid-pattern" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" name="reset_email" ng-model="resetUsername" disallow-spaces="" required="">
                                         <div class="error" >
@@ -784,11 +787,11 @@
 
 
 
-                        
-                         
-                        
-                          
-                        
+
+
+
+
+
                         </ng-template>
 
 
@@ -799,28 +802,28 @@
                               <div id="registerMessageModal" class="windowModal">
                                 <div class="row heading_color bottom_shadow">
                                   <div class="large-10 columns">
-                                  
+
                                    <h2 id="forgetpassworddialog-dialog-aria-labelledby" class="ng-binding"  style="outline: 0px;" >Error</h2>
                                   </div>
-                                
+
                                 </div>
                                 <div class="large-12 columns">
                                  <br>
-                                 
+
                                 <div  class="error_msg">
                                    {{_re_errorTxt}}
                                  </div>
-                                
-                                 
+
+
                                </div>
                                <a title="Close" (click)="modal.dismiss('Cross click')">
                                  <div class="closebtn ngdialog-close">
- 
+
                                  </div>
                                </a>
                               </div>
                             </div>
- 
+
                           </div>
                          </ng-template>
 

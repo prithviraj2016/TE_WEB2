@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://apis.vgroupinc.com/tournamentapis/web/srf/'
+  apiUrl: 'https://te-uatapi.vgroupinc.com/tournamentapis/web/srf/'
 };
 
 /*

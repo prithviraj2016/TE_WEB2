@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { AccountService } from 'src/app/account/account-service/account.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { DashboardService } from 'src/app/common/services/dashboard.service';
+import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
 
 @Component({
   selector: 'app-profile',
@@ -27,44 +25,52 @@ loggedinUser:any;
   email: any;
 
 
-  constructor(private activatedRoute:ActivatedRoute,
-    private _Service:DashboardService,
+  constructor(
     private formBuilder:FormBuilder,
     private modalService: NgbModal) {}
 
   ngOnInit(): void {
+    debugger;
     this.loggedinUser = localStorage.getItem('loggeduser');
-    this.userName=JSON.parse(this.loggedinUser).username;
-    this.email=JSON.parse(this.loggedinUser).email;
-    this.userID=JSON.parse(this.loggedinUser).userID;
-    this.activatedRoute.params.subscribe(data=>{
-      console.log(data['userID']);
-      this.userID=data['userID'];
-    });
-    if(this.userID!==''){
-     
-      console.log(this.userID)
-      this._Service.userProfile(this.userID).subscribe( data=>{
-       
+    this.loggedinUser = JSON.parse(this.loggedinUser);
+    this.userName=this.loggedinUser.username;
+    this.email=this.loggedinUser.email;
+    this.userID=this.loggedinUser.userID;
 
-    this.userprofileupdateForm=this.formBuilder.group({
+    console.log(this.userID)
+    // this._Service.userProfile(this.userID).subscribe( data=>{
 
-      // 'id':new FormControl(""),
-      // 'username': new FormControl(this.userDetails.username),
-      'name': new FormControl(this.userDetails.name),
-      'email': new FormControl(this.userDetails.email),
-      'phoneNumber':new FormControl(this.userDetails.phonenumber),
-      'location':new FormControl(this.userDetails.location),
-      'age':new FormControl(this.userDetails.age),
-      'imagimageUrleUrl':new FormControl(this.userDetails.imageUrl),
-      'messagingSetting':new FormControl(this.userDetails.messagingSetting),
-        })
-      });
-// console.log(FormControl);
-      
-    }
-  }
-  
+    // });
+
+  //   this.userprofileupdateForm=this.formBuilder.group({
+
+  //     // 'id':new FormControl(""),
+  //     // 'username': new FormControl(this.userDetails.username),
+  //     'name': new FormControl(this.userDetails.name),
+  //     'email': new FormControl(this.userDetails.email),
+  //     'phoneNumber':new FormControl(this.userDetails.phonenumber),
+  //     'location':new FormControl(this.userDetails.location),
+  //     'age':new FormControl(this.userDetails.age),
+  //     'imagimageUrleUrl':new FormControl(this.userDetails.imageUrl),
+  //     'messagingSetting':new FormControl(this.userDetails.messagingSetting),
+  //  });
+
+
+//    this.userprofileupdateForm=this.formBuilder.group({
+
+//     // 'id':new FormControl(""),
+//     // 'username': new FormControl(this.userDetails.username),
+//     'name': [''],
+//     'email': [''],
+//     'phoneNumber':[''],
+//     'location':[''],
+//     'age':[''],
+//     'imagimageUrleUrl':[''],
+//     'messagingSetting':[''],
+//  });
+
+}
+
 updateUserProfile(){
   console.log(this.userprofileupdateForm.value);
 //  this._Service.updateProfile(this.userID, this.userprofileupdateForm.value).subscribe(data =>{
@@ -76,36 +82,36 @@ updateUserProfile(){
 //      alert("User not updated");
 //    }
 //  })
- 
- 
+
+
 
 
 }
 // getToken() {
 //   return localStorage.getItem('access_token');
 // }
-  
+
   toggle() {
     this.show = !this.show;
 
 }
 onFileChange(event:any) {
   const reader = new FileReader();
-  
+
   if(event.target.files && event.target.files.length) {
     const [file] = event.target.files;
     reader.readAsDataURL(file);
-  
+
     reader.onload = () => {
- 
+
       this.imageSrc = reader.result as string;
-   
+
       this.userprofileupdateForm.patchValue({
         fileSource: reader.result
       });
- 
+
     };
- 
+
   }
 }
 
@@ -122,7 +128,7 @@ open(content:any) {
 
   });
 
-} 
+}
 private getDismissReason(reason: any): string {
 
   if (reason === ModalDismissReasons.ESC) {
@@ -139,7 +145,7 @@ private getDismissReason(reason: any): string {
 
   }
 
-  
+
 
 }
 open1(content:any) {
@@ -154,7 +160,7 @@ open1(content:any) {
 
   });
 
-} 
+}
 private getDismissReason1(reason: any): string {
 
   if (reason === ModalDismissReasons.ESC) {

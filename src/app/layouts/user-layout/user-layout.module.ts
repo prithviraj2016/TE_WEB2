@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
- 
+
 import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,11 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule, } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { MatTabsModule } from '@angular/material/tabs';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DashboardComponent } from 'src/app/users/dashboard/dashboard.component';
-import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-script-load-service';
-import { TabsModule } from 'ngx-foundation';
+import { ModalModule, TabsModule } from 'ngx-foundation';
 import { TournamentsComponent } from 'src/app/users/tournaments/tournaments.component';
 import { EventsComponent } from 'src/app/users/events/events.component';
 import { SeasonsComponent } from 'src/app/users/seasons/seasons.component';
@@ -33,6 +31,7 @@ import { EditTournamentComponent } from 'src/app/users/edit-tournament/edit-tour
 import { EditEventComponent } from 'src/app/users/edit-event/edit-event.component';
 import { EditSeasonComponent } from 'src/app/users/edit-season/edit-season.component';
 import { EditTeamComponent } from 'src/app/users/edit-team/edit-team.component';
+import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-script-load-service';
 
 // import { IconImportModule } from 'mat-icon-import';
 //import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
@@ -59,7 +58,7 @@ import { EditTeamComponent } from 'src/app/users/edit-team/edit-team.component';
     MatDatepickerModule,
     SlideToggleModule,
     MatNativeDateModule,
-  
+    ModalModule.forRoot()
     // MatTabsModule
   ],
   declarations: [

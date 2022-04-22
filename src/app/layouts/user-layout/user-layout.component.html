@@ -109,7 +109,7 @@
                {{userName}}
                 <br>@{{userID}}
               </span></li>
-            <li ><a title="Edit Profile"  href="" (click)="updateProfile(userID)">Edit Profile</a></li>
+            <li ><a title="Edit Profile" routerLink="/profile/{{userID}}"  href="" >Edit Profile</a></li>
             <li><a title="Message Followers" class="" routerLink="/manage-followers"> Message Followers </a></li>
             <li class="navbar_profile_item ng-cloak"> <a (click)="Logout()" title="Logout" href>Logout</a> </li>
           </ul>

@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http'
 import { HttpHeaders } from "@angular/common/http";
 import { Observable, from } from 'rxjs';
 import { SignIn } from '../signin/sign-in';
-import { ServerConstant } from 'src/app/common/server-constant';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -26,42 +26,42 @@ export class AccountService {
 
     }
      LoginUser(signin:SignIn): Observable<[]> {
-  
+
     const signinObj = {
         "username": signin.UserName,
         "password": signin.Password
       };
 
-     
 
-      
-      return this.http.post<[]>(ServerConstant.apiUrl + 'services/network/login',signinObj, this.httpOptions);
+
+
+      return this.http.post<[]>(environment.apiUrl + 'services/network/login',signinObj, this.httpOptions);
     }
-   
-  
-    
+
+
+
     LogoutUser(): Observable<[]> {
 
-     return this.http.get<[]>(ServerConstant.apiUrl + '/network/logout',this.httpOptions);
+     return this.http.get<[]>(environment.apiUrl + '/network/logout',this.httpOptions);
 
     }
     Signup(signupObj:any): Observable<[]> {
 
-    
-      return this.http.post<[]>(ServerConstant.apiUrl + 'services/network/user/register',signupObj,this.httpOptions);
+
+      return this.http.post<[]>(environment.apiUrl + 'services/network/user/register',signupObj,this.httpOptions);
 
     }
     ForgetPassword(email:string): Observable<[]> {
-    
-      return this.http.get<[]>(ServerConstant.apiUrl + 'unauthenticated/user/reset/password?username='+email,this.httpOptions);
+
+      return this.http.get<[]>(environment.apiUrl + 'unauthenticated/user/reset/password?username='+email,this.httpOptions);
 
     }
     resendverification(email:string): Observable<[]> {
-       
-      return this.http.get<[]>(ServerConstant.apiUrl+'unauthenticated//resend/verification?email='+email,this.httpOptions);
-   
-    }
-   
+
+      return this.http.get<[]>(environment.apiUrl+'unauthenticated//resend/verification?email='+email,this.httpOptions);
+
     }
 
-  
+    }
+
+

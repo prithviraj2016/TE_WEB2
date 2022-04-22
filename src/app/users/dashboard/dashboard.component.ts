@@ -1,6 +1,6 @@
 import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from 'src/app/common/services/dashboard.service';
+import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
 declare var introJs: any;
 
 
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
       // this.tournamentList.forEach((a:any) =>{
       //   Object.assign(a, {});
       });
-    
+
    }
 helpbutton(){
   var intro1 = introJs();

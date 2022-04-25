@@ -28,14 +28,9 @@
                       </div>
                     </div>
                 </span>
-<<<<<<< Updated upstream
-              <!-- </div> -->
-=======
-                  
               </div>
->>>>>>> Stashed changes
             </div>
-          </div>
+     
 
 
           <div class="flex-row">
@@ -176,7 +171,7 @@
                   <div id="user_image">
                     <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture" formControlName="image" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
-                      width="150" height="150" id="my-account-profile-image" onclick="upload_pic_box(this);">
+                      width="100px" height="100px" id="my-account-profile-image" onclick="upload_pic_box(this);">
                       <span class="mandatoryfld_lbl">
                 
                         <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
@@ -196,8 +191,9 @@
             </div>
           </div>
         </div>
+      <!-- </div> -->
 
-        <div class="large-7 medium-12 small-12 columns column-second">
+        <div class="large-4 medium-12 small-12 columns column-second">
           <div class="flex-row">
             <div class="" id="buttonset">
               <button title="Cancel" type="button" class="btn-block red "  (click)="onReset()">

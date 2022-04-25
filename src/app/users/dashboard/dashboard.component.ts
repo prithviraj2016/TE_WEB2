@@ -13,7 +13,7 @@ declare var introJs: any;
 
 export class DashboardComponent implements OnInit {
   //introJS = introJs(); // assigning it to variable
-  public tournamentList:any;
+  public tournamentList:any=[];
   constructor(private _service:DashboardService) {
 
     //console.log(this.introJS)
@@ -24,14 +24,18 @@ export class DashboardComponent implements OnInit {
    }
 
    ngOnInit() {
-    this._service.getTournament().subscribe(res =>{
-      this.tournamentList=res;
-      console.log(this.tournamentList);
-      // this.tournamentList.forEach((a:any) =>{
-      //   Object.assign(a, {});
-      });
+    this.getTournamentdetails();
 
    }
+   getTournamentdetails(){
+    this._service.getTournament().subscribe(res=>{
+      this.tournamentList=Object.values(res);
+      console.log(this.tournamentList);
+      
+        
+      });
+  
+    }
 helpbutton(){
   var intro1 = introJs();
       intro1.setOptions({

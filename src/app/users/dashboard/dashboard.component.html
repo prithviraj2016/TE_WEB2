@@ -128,11 +128,11 @@
                         <div class="upcoming_list">
                             <div class="upcoming_list_child">
                                 <a href='/tournament/id/'>
-                                    <div class="event_card sha-box card">
+                                    <div class="event_card sha-box card" *ngFor="let item of tournamentList">
                                         <div class="">
-                                            <div class="img-event small-6"
-                                                style="background-image: url(assets/img/object1.png);">
-                                                <div class="name-event truncate" title="tournament name">tournament name
+                                            <div class="img-event small-6">
+                                                <img src="{{item.imageKey}}">
+                                                <div class="name-event truncate" title="tournament name">{{item.name}}
                                                 </div>
                                                 <div></div>
                                             </div>
@@ -144,13 +144,13 @@
                                                 </div>
                                             </div>
                                             <div class="txt-event small-6" *ngFor="let item of tournamentList"> 
-                                                <span class="tgamename">Tournament Name</span>
+                                                <span class="tgamename">{{item.name}}</span>
                                                 <hr class="shr3">
-                                                <div class="tinfo">Start Date:</div>
-                                                <span class="tdata btxt">{{item.startdate}}</span>
+                                                <div class="tinfo">Start Date:{{item.startDate}}</div>
+                                                <span class="tdata btxt"></span>
                                                 <div class="clear"></div>
-                                                <div class="tinfo tinfo-location">Location:</div>
-                                                <span class="tdata btxt" title="">{{item.venue}}</span>
+                                                <div class="tinfo tinfo-location" style="color: #fff;">Location:{{item.venue}}</div>
+                                                <span class="tdata btxt" title=""></span>
                                                 <div class="clear"></div>
                                                 <div class="clear"></div>
                                                 <div class="tinfo">Open:</div>

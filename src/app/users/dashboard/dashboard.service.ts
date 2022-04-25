@@ -41,4 +41,7 @@ getTournament(){
    return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/tournament', this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
+// getEvent(){
+//   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/events', this.httpOptions);
+// }
 }

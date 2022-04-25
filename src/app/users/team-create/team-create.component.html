@@ -1,9 +1,9 @@
 <div class="row ng-cloak create-event-form" data-ng-init="init()">
   <div class='create-form-section' id="braintree-set">
-    <form name="season_form" style="width: 100%;">
+    <form name="season_form" style="width: 100%;" [formGroup]="newTeamForm" (ngSubmit)=" createTeam()" >
       <div class="row">
         <div class="large-4 medium-12 small-12 columns column-first">
-          <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
+          <input type="radio"  class="hidden" checked="checked" name="sign" id="new-season">
           <h1>New Team </h1>
           <a title="Help" href=""
             onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
@@ -12,29 +12,55 @@
           <div class="flex-row">
             <div class="flex-item">
                 <label class="mandatory_field">Team Name</label>
-                <input type="text" form="season_form_novalidated" name='season_name' placeholder="" id='season_name'
-                  minlength="3" maxlength="50" value="" required /> <span class="mandatoryfld_lbl">
-                  <span class="mandatoryfld_lbl">Team name is required.</span>
-                  <!-- <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span>
-                    <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span> -->
+                <input type="text"  formControlName="teamname" form="season_form_novalidated" name='season_name' placeholder="" id='season_name' class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['teamname'].errors }"
+                  minlength="3" maxlength="50" value="" required /> 
+                  <span class="mandatoryfld_lbl">
+                
+                    <div *ngIf="submitted && f['teamname'].errors" class="invalid-feedback">
+                      <div *ngIf="f['teamname'].errors['required']">Teamname is required</div>
+                      <div *ngIf="f['teamname'].errors['minlength']">Teamname must be at least 6 characters</div>
+                      <div *ngIf="f['teamname'].errors['maxlength']">
+                        Teamname must not exceed 20 characters
+                      </div>
+                    </div>
                 </span>
             </div>
           </div>
           <div class="flex-row">
             <div class="flex-item image-item">
                 <label class="flex-label" data-step="2" data-intro="Description of the Season.">Description</label>
-                <textarea id='season_description' form="season_form_novalidated" name='season_description' placeholder=""
+                <textarea id='season_description' formControlName="description" form="season_form_novalidated" name='season_description' placeholder="" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
                   maxlength='420' value="event description"></textarea>
-                <span>
-                  <span class="mandatoryfld_lbl">Description must be between 450 characters</span>
+                  <span class="mandatoryfld_lbl">
+                
+                    <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                      <div *ngIf="f['description'].errors['required']">Description is required</div>
+                      <div *ngIf="f['description'].errors['minlength']">Description must be at least 20 characters</div>
+                      <div *ngIf="f['description'].errors['maxlength']">
+                        Teamname must not exceed 100 characters
+                      </div>
+                    </div>
                 </span>
+               
             </div>
           </div>
           <div class="flex-row">
           <div class="flex-item complete">
             <label class="flex-label"   data-step="4" data-intro="Location of your team." for="autoCompleteDivLocationForEvent_value">Location</label>
-            <input  value="" id="hdnLatLong" />
-            <input type="hidden" id="hdnformatedAdress" value="" />
+            <input  value="" id="hdnLatLong"  formControlName="location" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['location'].errors }"/>
+            <span class="mandatoryfld_lbl">
+                
+              <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
+                <div *ngIf="f['location'].errors['required']">Location is required</div>
+                <div *ngIf="f['location'].errors['minlength']">Location must be at least 6 characters</div>
+                <div *ngIf="f['location'].errors['maxlength']">
+                 Location must not exceed 20 characters
+                </div>
+              </div>
+          </span>
         </div>
           </div>
           <div class="flex-row">
@@ -43,10 +69,18 @@
                 Picture</label>
               <div class="row">
               <div class="left-column large-4 medium-3 small-6 columns">
-                <div id="user_image">
-                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
-                    width="150" height="150" id="my-account-profile-image" onclick="upload_pic_box(this);">
-                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                <div id="user_image" enctype="multipart/form-data"   >
+                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" ng2FileSelect formControlName="image" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
+                    <span class="mandatoryfld_lbl">
+                
+                      <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                        <div *ngIf="f['image'].errors['required']">Image is required</div>
+                      
+                      </div> -->
+                  </span>
+                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" >
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -59,13 +93,52 @@
           </div>
         </div>
 
+        <ng-template #mymodal1 let-modal>
+          <div class="popup-box">
+            <div class="container">
+              <div class="heading">
+                <div class="modal-heading">
+                  <h6>Upload Picture</h6>
+                  <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                  </a>
+                </div>
+              </div>
+              <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                border: dashed 1px #43464d;">
+                <img src="../../../assets/img/user.png" style=" height: 50%;
+        width: 90%;
+        margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+                <div class="cr-boundary" aria-dropeffect="none">
+        
+                  <div class="cr-viewport cr-vp-square" tabindex="0">
+                    <div class="slide-container">
+                      <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
+                    </div>
+                    <div class="file">
+                      <input type="file" name="file" class="file"
+                        style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
+                      <input type="submit" class="done" value="Done" onclick="show()"  >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
         <div class="large-7 medium-12 small-12 columns column-second">
           <div class="flex-row">
             <div class="" id="buttonset">
-              <button title="Cancel" type="button" class="btn-block red" style="color:white;">
+              <button title="Cancel" type="button" class="btn-block red" style="color:white;" (click)="onReset()">
                 <span>Cancel</span>
+
               </button>
               <button title="ok" type="submit" class="btn-block" style="color:white;">
+
+              </button> &nbsp;&nbsp;
+              <button title="ok" type="submit" class="btn-block">
+
                 <span>Create</span>
               </button>
             </div>

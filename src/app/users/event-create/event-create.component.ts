@@ -1,20 +1,39 @@
 import { DashboardService } from '../dashboard/dashboard.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+<<<<<<< Updated upstream
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+=======
+import {  AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+>>>>>>> Stashed changes
 import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-event-create',
   templateUrl: './event-create.component.html',
+<<<<<<< Updated upstream
   styleUrls: ['../../../assets/css/profile.css']
+=======
+  styleUrls: ['./event-create.component.css', '../../../assets/css/profile.css']
+>>>>>>> Stashed changes
 })
 export class EventCreateComponent implements OnInit {
   showMe:boolean=false;
   title = 'appBootstrap';
   closeResult: string = '';
-  newEventForm: FormGroup = new FormGroup({});
+  newEventForm: FormGroup = new FormGroup({
+    eventname:new FormControl(''),
+    description:new FormControl(''),
+    customurl:new FormControl(''),
+      image:new FormControl(''),
+      sdate:new FormControl(''),
+      edate:new FormControl(''),
+      location:new FormControl(''),
+      paidevent:new FormControl('')
+  });
   imageURL: string;
   imageSrc: string = '';
   imageSrc1:string;
@@ -33,9 +52,15 @@ export class EventCreateComponent implements OnInit {
     })
 
     this.newEventForm=this.formBuilder.group({
+<<<<<<< Updated upstream
       'eventname':new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       'description':new FormControl('', [Validators.required, Validators.minLength(50), Validators.maxLength(450)]),
       'customurl':new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+=======
+      'eventname':new FormControl('', [Validators.required , Validators.minLength(6),Validators.maxLength(20)]),
+      'description':new FormControl('', [Validators.required ,Validators.minLength(20),Validators.maxLength(100)] ),
+      'customurl':new FormControl('', [Validators.required]),
+>>>>>>> Stashed changes
       'location':new FormControl('',[Validators.required] ),
       'sdate':new FormControl('',[Validators.required]),
       'edate':new FormControl('',[Validators.required]),
@@ -46,18 +71,23 @@ export class EventCreateComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.newEventForm.controls;
   }
+<<<<<<< Updated upstream
+=======
+ 
+>>>>>>> Stashed changes
 
     createEvent(){
       console.log(this.newEventForm.value);
-    this._service.createEvent().subscribe(data =>{
-      if(data){
-        alert("Event Created Successfully");
-      }else((err:any)=>err)
-      alert("Something Went Wrong");
-    })
-
-
+      this.submitted = true;
+         if (this.newEventForm.invalid) {
+       return;
+      }
+       console.log(JSON.stringify(this.newEventForm.value, null, 2));
       // console.log(this.newEventForm.value);
+    }
+    onReset(): void {
+      this.submitted = false;
+      this.newEventForm.reset();
     }
     showPreview(event:any) {
       const file = (event.target).files[0];

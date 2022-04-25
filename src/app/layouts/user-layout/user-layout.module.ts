@@ -32,6 +32,8 @@ import { EditEventComponent } from 'src/app/users/edit-event/edit-event.componen
 import { EditSeasonComponent } from 'src/app/users/edit-season/edit-season.component';
 import { EditTeamComponent } from 'src/app/users/edit-team/edit-team.component';
 import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-script-load-service';
+import { AngularFileUploaderModule } from "angular-file-uploader";
+
 
 // import { IconImportModule } from 'mat-icon-import';
 //import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
@@ -58,7 +60,12 @@ import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-scri
     MatDatepickerModule,
     SlideToggleModule,
     MatNativeDateModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AngularFileUploaderModule,
+
+   
+
+    
     // MatTabsModule
   ],
   declarations: [

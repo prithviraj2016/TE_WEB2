@@ -16,12 +16,24 @@
               <!-- <div class="is-floating-label"> -->
                 <label class="mandatory_field" data-step="1" data-intro="Name of the Event." style="    color: #747f85;">Event Name</label>
                 <input type="text" form="event_form_novalidated" name='event_name' placeholder="" id='event_name'
-                  minlength="3" maxlength="50" value="" required  formControlName="eventname" /> <span class="mandatoryfld_lbl">
-                  <span class="mandatoryfld_lbl">Event name is required.</span>
-                  <!-- <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span>
-                    <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span> -->
+                  minlength="3" maxlength="50" value=""  formControlName="eventname" form="season_form_novalidated" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['eventname'].errors } "required   /> 
+                  <span class="mandatoryfld_lbl">
+                
+                    <div *ngIf="submitted && f['eventname'].errors" class="invalid-feedback">
+                      <div *ngIf="f['eventname'].errors['required']">Eventname is required</div>
+                      <div *ngIf="f['eventname'].errors['minlength']">Eventname must be at least 6 characters</div>
+                      <div *ngIf="f['eventname'].errors['maxlength']">
+                        Eventname must not exceed 20 characters
+                      </div>
+                    </div>
                 </span>
+<<<<<<< Updated upstream
               <!-- </div> -->
+=======
+                  
+              </div>
+>>>>>>> Stashed changes
             </div>
           </div>
 
@@ -30,10 +42,17 @@
             <div class="flex-item image-item">
               <!-- <div class="is-floating-label"> -->
                 <label class="flex-label" data-step="2" data-intro="Description of the Event.">Description</label>
-                <textarea id='event_description' form="event_form_novalidated" name='event_description' placeholder=""
-                  maxlength='420' value="event description" formControlName="description"></textarea>
-                <span>
-                  <span class="mandatoryfld_lbl">Description must be between 450 characters</span>
+                <textarea id='event_description' formControlName="description" form="event_form_novalidated" name='event_description' placeholder=""  [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+                  maxlength='420' value="event description" ></textarea>
+                  <span class="mandatoryfld_lbl">
+                
+                    <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                      <div *ngIf="f['description'].errors['required']">Description is required</div>
+                      <div *ngIf="f['description'].errors['minlength']">Description must be at least 20 characters</div>
+                      <div *ngIf="f['description'].errors['maxlength']">
+                        Teamname must not exceed 100 characters
+                      </div>
+                    </div>
                 </span>
               <!-- </div> -->
             </div>
@@ -46,11 +65,17 @@
               <div class="input-field">
                 <div class="input-group">
                   <label class="input-group-label" for="event_webUrl">Tournamentedition.com/event/</label>
-                  <input type="text" form="event_form_novalidated" class="input-group-field" minlength="3"
+                  <input type="text" formControlName="customurl"    [ngClass]="{ 'is-invalid': submitted && f['customurl'].errors }"form="event_form_novalidated" class="input-group-field" minlength="3"
                     maxlength="100" placeholder="" name="event_webUrl" id="event_webUrl" disallow-spaces formControlName="customurl">
                 </div>
-                <span class="mandatoryfld_lbl"></span>
-                <span class="mandatoryfld_lbl">Web Url must be at least 3 characters</span>
+                <span class="mandatoryfld_lbl">
+                 
+                
+                  <div *ngIf="submitted && f['customurl'].errors" class="invalid-feedback">
+                    <div *ngIf="f['customurl'].errors['required']">Web Url must be at least 3 characters</div>
+                   
+                  </div>
+              </span>
               </div>
             </div>
           </div>
@@ -60,7 +85,15 @@
               <label class="flex-label" data-step="4" data-intro="Location of your event."
                 for="autoCompleteDivLocationForEvent_value">Location</label>
               <input type="hidden" value="event latLong" id="hdnLatLong" />
-              <input type="input" class="input-group-field" id="hdnformatedAdress" placeholder="Search Location..." formControlName="location" />
+              <input type="input" class="input-group-field" id="hdnformatedAdress" placeholder="Search Location..." formControlName="location"  [ngClass]="{ 'is-invalid': submitted && f['customurl'].errors }" />
+              <span class="mandatoryfld_lbl">
+                 
+                
+                <div *ngIf="submitted && f['customurl'].errors" class="invalid-feedback">
+                  <div *ngIf="f['customurl'].errors['required']">Loaction is required</div>
+                 
+                </div>
+            </span>
             </div>
           </div>
 
@@ -71,10 +104,18 @@
                 
               <div class="is-floating-label">
 
-                <input type="date" form="event_form_novalidated"  placeholder="MM-DD-YYYY"
+                <input type="date"  formControlName="sdate"    [ngClass]="{ 'is-invalid': submitted && f['sdate'].errors }"form="event_form_novalidated"  placeholder="MM-DD-YYYY"
                   class="date_calender" name="event_startDate" id="event_startDate" ng-model="startDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" future-only required />
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+                <span class="mandatoryfld_lbl">
+                 
+                
+                  <div *ngIf="submitted && f['sdate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['sdate'].errors['required']">Start Date is required</div>
+                   
+                  </div>
+              </span>
               </div>
             </div>
 
@@ -82,11 +123,19 @@
               <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Event"
                 for="event_endDate">End Date</label>
               <div class="is-floating-label">
-                <input type="date" form="event_form_novalidated"  placeholder="MM-DD-YYYY"
+                <input type="date" form="event_form_novalidated"   formControlName="edate"    [ngClass]="{ 'is-invalid': submitted && f['edate'].errors } "placeholder="MM-DD-YYYY"
                   class="date_calender" name="event_endDate" id="event_endDate" ng-model="endDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" required />
 
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+                <span class="mandatoryfld_lbl">
+                 
+                
+                  <div *ngIf="submitted && f['edate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['edate'].errors['required']">Start Date is required</div>
+                   
+                  </div>
+              </span>
               </div>
             </div>
           </div>
@@ -97,10 +146,18 @@
               <label class="flex-label" data-step="7" data-intro="Enter price if paid event. Leave off if free"
                 for="paid">Paid Event</label>
               <div class="switch round tiny">
-                <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+                <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch" formControlName="paidevent" [ngClass]="{ 'is-invalid': submitted && f['paidevent'].errors }" >
                 <label class="switch-paddle" for="exampleSwitch">
                   <span class="show-for-sr">Download Kittens</span>
                 </label>
+                <span class="mandatoryfld_lbl">
+                 
+                
+                  <div *ngIf="submitted && f['paidevent'].errors" class="invalid-feedback">
+                    <div *ngIf="f['paidevent'].errors['required']">Download Kittens</div>
+                   
+                  </div>
+              </span>
               </div>
             </div>
             <div class="right-column input-block large-6 medium-6 small-12 columns"></div>
@@ -117,8 +174,16 @@
               <div class="row">
                 <div class="left-column large-4 medium-3 small-6 columns">
                   <div id="user_image">
-                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
+                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture" formControlName="image" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
                       width="150" height="150" id="my-account-profile-image" onclick="upload_pic_box(this);">
+                      <span class="mandatoryfld_lbl">
+                
+                        <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                          <div *ngIf="f['image'].errors['required']">Image is required</div>
+                        
+                        </div> -->
+                    </span>
                     <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
                       <i class="fas fa-trash-alt"></i>
                     </button>
@@ -135,7 +200,7 @@
         <div class="large-7 medium-12 small-12 columns column-second">
           <div class="flex-row">
             <div class="" id="buttonset">
-              <button title="Cancel" type="button" class="btn-block red">
+              <button title="Cancel" type="button" class="btn-block red "  (click)="onReset()">
                 <span>Cancel</span>
               </button>
               <button title="ok" type="submit" class="btn-block">

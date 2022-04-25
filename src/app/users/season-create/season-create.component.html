@@ -1,6 +1,6 @@
 <div class="row ng-cloak create-event-form" data-ng-init="init()">
   <div class='create-form-section' id="braintree-set">
-    <form name="season_form" style="width: 100%;">
+    <form name="season_form" style="width: 100%;" [formGroup]="newSeasonsForm" (ngSubmit)=" createSeasons()">
       <div class="row">
         <div class="large-4 medium-12 small-12 columns column-first">
           <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
@@ -15,11 +15,17 @@
             <div class="flex-item">
               <div class="is-floating-label">
                 <label class="mandatory_field" data-step="1" data-intro="Name of the Event.">Season Name</label>
-                <input type="text" form="season_form_novalidated" name='season_name' placeholder="" id='season_name'
-                  minlength="3" maxlength="50" value="" required /> <span class="mandatoryfld_lbl">
-                  <span class="mandatoryfld_lbl">Season name is required.</span>
-                  <!-- <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span>
-                    <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span> -->
+                <input type="text" formControlName="seasonname" form="season_form_novalidated" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['seasonname'].errors } "name='season_name' placeholder="" id='season_name'
+                  minlength="3" maxlength="50" value="" required /> <  <span class="mandatoryfld_lbl">
+                
+                    <div *ngIf="submitted && f['seasonname'].errors" class="invalid-feedback">
+                      <div *ngIf="f['seasonname'].errors['required']">Seasonname is required</div>
+                      <div *ngIf="f['seasonname'].errors['minlength']">Seasonname must be at least 6 characters</div>
+                      <div *ngIf="f['seasonname'].errors['maxlength']">
+                        Seasonname must not exceed 20 characters
+                      </div>
+                    </div>
                 </span>
               </div>
             </div>
@@ -30,10 +36,18 @@
             <div class="flex-item image-item">
               <div class="is-floating-label">
                 <label class="flex-label" data-step="2" data-intro="Description of the Season.">Description</label>
-                <textarea id='season_description' form="season_form_novalidated" name='season_description' placeholder=""
+                <textarea formControlName="description" id='season_description' form="season_form_novalidated" name='season_description' placeholder="" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
                   maxlength='420' value="event description"></textarea>
-                <span>
-                  <span class="mandatoryfld_lbl">Description must be between 450 characters</span>
+                  <span class="mandatoryfld_lbl">
+                
+                    <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                      <div *ngIf="f['description'].errors['required']">Description is required</div>
+                      <div *ngIf="f['description'].errors['minlength']">Description must be at least 20 characters</div>
+                      <div *ngIf="f['description'].errors['maxlength']">
+                        Teamname must not exceed 100 characters
+                      </div>
+                    </div>
                 </span>
               </div>
             </div>
@@ -45,11 +59,19 @@
               <div class="input-field">
                 <div class="input-group">
                   <label class="input-group-label" for="season_webUrl">Tournamentedition.com/season/</label>
-                  <input type="text" form="season_form_novalidated" class="input-group-field" minlength="3"
+                  <input type="text"  formControlName="customurl"    [ngClass]="{ 'is-invalid': submitted && f['customurl'].errors }" form="season_form_novalidated" class="input-group-field" minlength="3"
                     maxlength="100" placeholder="" name="season_webUrl" id="season_webUrl" disallow-spaces>
                 </div>
-                <span class="mandatoryfld_lbl"></span>
-                <span class="mandatoryfld_lbl">Web Url must be at least 3 characters</span>
+                <span class="mandatoryfld_lbl">
+                 
+                
+                    <div *ngIf="submitted && f['customurl'].errors" class="invalid-feedback">
+                      <div *ngIf="f['customurl'].errors['required']">Web Url must be at least 3 characters</div>
+                     
+                    </div>
+                </span>
+                
+               
               </div>
             </div>
 
@@ -63,10 +85,19 @@
                 for="season_startDate">Start Date</label>
               <div class="is-floating-label">
 
-                <input type="text" form="season_form_novalidated" readonly="readonly" placeholder="MM-DD-YYYY"
+                <input type="date"  formControlName="sdate"    [ngClass]="{ 'is-invalid': submitted && f['sdate'].errors }"form="season_form_novalidated"  placeholder="MM-DD-YYYY"
                   class="date_calender" name="season_startDate" id="season_startDate" ng-model="startDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" future-only required />
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+                <span class="mandatoryfld_lbl">
+                 
+                
+                  <div *ngIf="submitted && f['sdate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['sdate'].errors['required']">Start Date is required</div>
+                   
+                  </div>
+              </span>
+              
               </div>
             </div>
           </div>
@@ -76,11 +107,19 @@
               <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Season"
                 for="season_endDate">End Date</label>
               <div class="is-floating-label">
-                <input type="text" form="season_form_novalidated" readonly="readonly" placeholder="MM-DD-YYYY"
+                <input type="date" formControlName="edate"    [ngClass]="{ 'is-invalid': submitted && f['edate'].errors } "form="season_form_novalidated"  placeholder="MM-DD-YYYY"
                   class="date_calender" name="season_endDate" id="season_endDate" ng-model="endDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" required />
 
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+                <span class="mandatoryfld_lbl">
+                 
+                
+                  <div *ngIf="submitted && f['edate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['edate'].errors['required']">Start Date is required</div>
+                   
+                  </div>
+              </span>
               </div>
             </div>
           </div>
@@ -94,7 +133,15 @@
               <div class="left-column large-4 medium-3 small-6 columns">
                 <div id="user_image">
                   <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
-                    width="150" height="150" id="my-account-profile-image" onclick="upload_pic_box(this);">
+                    width="150" height="150" id="my-account-profile-image"  formControlName="image" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }" (click)="open1(mymodal1)">
+                    <span class="mandatoryfld_lbl">
+                
+                      <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
+                        <div *ngIf="f['image'].errors['required']">Image is required</div>
+                      
+                      </div> -->
+                  </span>
                   <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
                     <i class="fas fa-trash-alt"></i>
                   </button>
@@ -108,10 +155,44 @@
           </div>
         </div>
 
+        <ng-template #mymodal1 let-modal>
+          <div class="popup-box">
+            <div class="container">
+              <div class="heading">
+                <div class="modal-heading">
+                  <h6>Upload Picture</h6>
+                  <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                  </a>
+                </div>
+              </div>
+              <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                border: dashed 1px #43464d;">
+                <img src="../../../assets/img/user.png" style=" height: 50%;
+        width: 90%;
+        margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+                <div class="cr-boundary" aria-dropeffect="none">
+        
+                  <div class="cr-viewport cr-vp-square" tabindex="0">
+                    <div class="slide-container">
+                      <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
+                    </div>
+                    <div class="file">
+                      <input type="file" name="file" class="file"
+                        style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
+                      <input type="submit" class="done" value="Done" onclick="show()"  >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
         <div class="large-7 medium-12 small-12 columns column-second">
           <div class="flex-row">
             <div class="" id="buttonset">
-              <button title="Cancel" type="button" class="btn-block red">
+              <button title="Cancel" type="button" class="btn-block red"  (click)="onReset()">
                 <span>Cancel</span>
               </button>
               <button title="ok" type="submit" class="btn-block">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-event',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-event.component.css']
 })
 export class EditEventComponent implements OnInit {
+  modalService: any;
+  closeResult: string;
+  getDismissReason: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

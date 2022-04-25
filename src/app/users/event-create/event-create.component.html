@@ -13,29 +13,29 @@
 
           <div class="flex-row">
             <div class="flex-item">
-              <div class="is-floating-label">
-                <label class="mandatory_field" data-step="1" data-intro="Name of the Event.">Event Name</label>
+              <!-- <div class="is-floating-label"> -->
+                <label class="mandatory_field" data-step="1" data-intro="Name of the Event." style="    color: #747f85;">Event Name</label>
                 <input type="text" form="event_form_novalidated" name='event_name' placeholder="" id='event_name'
                   minlength="3" maxlength="50" value="" required  formControlName="eventname" /> <span class="mandatoryfld_lbl">
                   <span class="mandatoryfld_lbl">Event name is required.</span>
                   <!-- <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span>
                     <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span> -->
                 </span>
-              </div>
+              <!-- </div> -->
             </div>
           </div>
 
 
           <div class="flex-row">
             <div class="flex-item image-item">
-              <div class="is-floating-label">
+              <!-- <div class="is-floating-label"> -->
                 <label class="flex-label" data-step="2" data-intro="Description of the Event.">Description</label>
                 <textarea id='event_description' form="event_form_novalidated" name='event_description' placeholder=""
                   maxlength='420' value="event description" formControlName="description"></textarea>
                 <span>
                   <span class="mandatoryfld_lbl">Description must be between 450 characters</span>
                 </span>
-              </div>
+              <!-- </div> -->
             </div>
           </div>
           <div class="flex-row">

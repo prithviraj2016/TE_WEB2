@@ -1,1 +1,121 @@
-<p>edit-season works!</p>
+<div class="row ng-cloak create-event-form" data-ng-init="init()">
+    <div class='create-form-section' id="braintree-set">
+      <form name="season_form" style="width: 100%;">
+        <div class="row">
+          <div class="large-4 medium-12 small-12 columns column-first">
+            <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
+            <h1>Edit Season </h1>
+            <a title="Help" href=""
+              onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
+              id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+                aria-hidden="true"></i>&nbsp;<span>Help</span></a>
+  
+  
+            <div class="flex-row">
+              <div class="flex-item">
+                <!-- <div class="is-floating-label"> -->
+                  <label class="mandatory_field" data-step="1" data-intro="Name of the Event." style="color: #747f85;">Season Name</label>
+                  <input type="text" form="season_form_novalidated" name='season_name' placeholder="" id='season_name'
+                    minlength="3" maxlength="50" value="" required />
+                <!-- </div> -->
+              </div>
+            </div>
+  
+  
+            <div class="flex-row">
+              <div class="flex-item image-item">
+                <!-- <div class="is-floating-label"> -->
+                  <label class="flex-label" data-step="2" data-intro="Description of the Season.">Description</label>
+                  <textarea id='season_description' form="season_form_novalidated" name='season_description' placeholder=""
+                    maxlength='420' value="event description"></textarea>
+                
+                <!-- </div> -->
+              </div>
+  
+              <div class="flex-item">
+                <label class="label-custom" data-step="3" data-intro="URL of Event to share on social media."
+                  for="season_webUrl">Custom URL <i onclick="copyToClipboard('season_webUrl')" title="Copy URL"
+                    class="icon-copy" aria-hidden="true"><img src="../assets/img/icon_copy_url.png"></i></label>
+                <div class="input-field">
+                  <div class="input-group">
+                    <label class="input-group-label" for="season_webUrl">Tournamentedition.com/season/</label>
+                    <input type="text" form="season_form_novalidated" class="input-group-field" minlength="3"
+                      maxlength="100" placeholder="" name="season_webUrl" id="season_webUrl" disallow-spaces>
+                  </div>
+                 
+                </div>
+              </div>
+  
+  
+            </div>
+  
+  
+            <div class="flex-row">
+              <div class="flex-item">
+                <label class="mandatory_field fixed-label" data-step="5" data-intro="Start date of Season"
+                  for="season_startDate">Start Date</label>
+                <div class="is-floating-label">
+  
+                  <input type="text" form="season_form_novalidated" readonly="readonly" placeholder="MM-DD-YYYY"
+                    class="date_calender" name="season_startDate" id="season_startDate" ng-model="startDate" datetime-picker
+                    date-only date-format="MM-dd-yyyy" future-only required />
+                  <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+                </div>
+              </div>
+            </div>
+  
+            <div class="flex-row">
+              <div class="flex-item">
+                <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Season"
+                  for="season_endDate">End Date</label>
+                <div class="is-floating-label">
+                  <input type="text" form="season_form_novalidated" readonly="readonly" placeholder="MM-DD-YYYY"
+                    class="date_calender" name="season_endDate" id="season_endDate" ng-model="endDate" datetime-picker
+                    date-only date-format="MM-dd-yyyy" required />
+  
+                  <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+                </div>
+              </div>
+            </div>
+  
+  
+            <div class="flex-row">
+              <div class="flex-item image-item">
+                <label class="flex-label" data-step="8" data-intro="Upload 400px X 400px picture" for="user_image">Upload
+                  Picture</label>
+                <div class="row">
+                <div class="left-column large-4 medium-3 small-6 columns">
+                  <div id="user_image">
+                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
+                      width="150" height="150" id="my-account-profile-image" onclick="upload_pic_box(this);">
+                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="large-6 medium-6 small-6 columns">
+                  <p class="help-text">Click here to upload picture.</p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="large-7 medium-12 small-12 columns column-second">
+            <div class="flex-row">
+              <div class="" id="buttonset">
+                <button title="Cancel" type="button" class="btn-block red">
+                  <span>Cancel</span>
+                </button>
+                <button title="ok" type="submit" class="btn-block">
+                  <span>Save</span>
+                </button>
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+      </form>
+    </div>
+  </div>

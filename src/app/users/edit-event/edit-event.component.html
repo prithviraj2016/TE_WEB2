@@ -1,1 +1,150 @@
+<div class="row ng-cloak create-event-form" data-ng-init="init()">
+  <div class='create-form-section' id="braintree-set">
+    <form name="event_form" style="width: 100%;">
+      <div class="row">
+        <div class="large-4 medium-12 small-12 columns column-first">
+          <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
+          <h1>Edit Event </h1>
+          <a title="Help" href=""
+            onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
+            id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+              aria-hidden="true"></i>&nbsp;<span>Help</span></a>
 
+
+          <div class="flex-row">
+            <div class="flex-item">
+              <!-- <div class="is-floating-label"> -->
+              <label class="mandatory_field" data-step="1" data-intro="Name of the Event."
+                style="    color: #747f85;">Event Name</label>
+              <input type="text" form="event_form_novalidated" name='event_name' placeholder="" id='event_name'
+                minlength="3" maxlength="50" value="" required formControlName="eventname" />
+              <!-- </div> -->
+            </div>
+          </div>
+
+
+          <div class="flex-row">
+            <div class="flex-item image-item">
+              <!-- <div class="is-floating-label"> -->
+              <label class="flex-label" data-step="2" data-intro="Description of the Event.">Description</label>
+              <textarea id='event_description' form="event_form_novalidated" name='event_description' placeholder=""
+                maxlength='420' value="event description" formControlName="description"></textarea>
+             
+              <!-- </div> -->
+            </div>
+          </div>
+          <div class="flex-row">
+            <div class="flex-item">
+              <label class="label-custom" data-step="3" data-intro="URL of Event to share on social media."
+                for="event_webUrl">Custom URL <i onclick="copyToClipboard('event_webUrl')" title="Copy URL"
+                  class="icon-copy" aria-hidden="true"><img src="../assets/img/icon_copy_url.png"></i></label>
+              <div class="input-field">
+                <div class="input-group">
+                  <label class="input-group-label" for="event_webUrl">Tournamentedition.com/event/</label>
+                  <input type="text" form="event_form_novalidated" class="input-group-field" minlength="3"
+                    maxlength="100" placeholder="" name="event_webUrl" id="event_webUrl" disallow-spaces
+                    formControlName="customurl">
+                </div>
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-row">
+            <div class="flex-item  input-block complete">
+              <label class="flex-label" data-step="4" data-intro="Location of your event."
+                for="autoCompleteDivLocationForEvent_value">Location</label>
+              <input type="hidden" value="event latLong" id="hdnLatLong" />
+              <input type="input" class="input-group-field" id="hdnformatedAdress" placeholder="Search Location..."
+                formControlName="location" />
+            </div>
+          </div>
+
+          <div class="flex-row row">
+            <div class="flex-item left-column large-6 medium-6 small-12 columns">
+              <label class="mandatory_field fixed-label" data-step="5" data-intro="Start date of Event"
+                for="event_startDate">Start Date</label>
+
+              <div class="is-floating-label">
+
+                <input type="date" form="event_form_novalidated" placeholder="MM-DD-YYYY" class="date_calender"
+                  name="event_startDate" id="event_startDate" ng-model="startDate" datetime-picker date-only
+                  date-format="MM-dd-yyyy" future-only required />
+                <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+              </div>
+            </div>
+
+            <div class="flex-item right-column large-6 medium-6 small-12 columns">
+              <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Event"
+                for="event_endDate">End Date</label>
+              <div class="is-floating-label">
+                <input type="date" form="event_form_novalidated" placeholder="MM-DD-YYYY" class="date_calender"
+                  name="event_endDate" id="event_endDate" ng-model="endDate" datetime-picker date-only
+                  date-format="MM-dd-yyyy" required />
+
+                <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="flex-row row">
+            <div class="left-column input-block large-6 medium-6 small-12 columns">
+              <label class="flex-label" data-step="7" data-intro="Enter price if paid event. Leave off if free"
+                for="paid">Paid Event</label>
+              <div class="switch round tiny">
+                <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+                <label class="switch-paddle" for="exampleSwitch">
+                  <span class="show-for-sr">Download Kittens</span>
+                </label>
+              </div>
+            </div>
+            <div class="right-column input-block large-6 medium-6 small-12 columns"></div>
+          </div>
+          <!-- <div ng-show="stripe.paid">
+            <div class="smallheadwidth" ng-include="'te_tournament/paidStripe.html'"></div>
+          </div> -->
+
+
+          <div class="flex-row">
+            <div class="flex-item image-item">
+              <label class="flex-label" data-step="8" data-intro="Upload 400px X 400px picture" for="user_image">Upload
+                Picture</label>
+              <div class="row">
+                <div class="left-column large-4 medium-3 small-6 columns">
+                  <div id="user_image">
+                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
+                      width="150" height="150" id="my-account-profile-image" >
+                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </div>
+
+
+                
+
+                <div class="large-6 medium-6 small-6 columns">
+                  <p class="help-text">Click here to upload picture.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="large-7 medium-12 small-12 columns column-second">
+          <div class="flex-row">
+            <div class="" id="buttonset">
+              <button title="Cancel" type="button" class="btn-block red">
+                <span>Cancel</span>
+              </button>
+              <button title="ok" type="submit" class="btn-block">
+                <span>Save</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

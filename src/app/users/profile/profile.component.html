@@ -269,6 +269,7 @@ font-family: 'Roboto', sans-serif;">
                   </div>
                   <form style="margin-top: 20px!important;">
                     <label>Old password</label><br>
+                    <div class="icon_input">
                     <i alt="show" class="far fa-eye eye-show"
                      (click)="showPassword = !showPassword"
                       [class.hide]="!showPassword"></i>
@@ -276,6 +277,7 @@ font-family: 'Roboto', sans-serif;">
                       (click)="showPassword = !showPassword"
                       [class.hide]="showPassword" ></i>
                     <input [type]="showPassword ? 'text' : 'password'" name="changePwd" placeholder="Old Password">
+                    </div>
                     <label>Password</label>
                       <br>
                       <i alt="show" class="far fa-eye eye-show"

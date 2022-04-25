@@ -225,3 +225,15 @@ h6 {
    background: linear-gradient(to bottom,#3c95cd 10%,#2989d8 30%,#207cca 51%,#285588 100%);
    cursor: pointer;
 }
+
+
+
+
+
+form{
+  padding: 20px;
+}
+form i{
+float: right;
+color:#207cca;
+}

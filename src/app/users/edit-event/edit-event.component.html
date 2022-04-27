@@ -114,7 +114,7 @@
                 <div class="left-column large-4 medium-3 small-6 columns">
                   <div id="user_image">
                     <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
-                      width="150" height="150" id="my-account-profile-image" >
+                      width="150" height="150" (click)="open1(mymodal1)" id="my-account-profile-image" >
                     <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
                       <i class="fas fa-trash-alt"></i>
                     </button>
@@ -123,6 +123,53 @@
 
 
                 
+
+
+
+
+
+
+                <ng-template #mymodal1 let-modal>
+                  <div class="popup-box">
+                    <div class="container">
+                      <div class="heading">
+                        <div class="modal-heading">
+                          <h6>Upload Picture</h6>
+                          <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                        border: dashed 1px #43464d;">
+                        <img src="../../../assets/img/user.png" style=" height: 50%;
+                width: 90%;
+                margin: 10px;">
+                        <div class="cr-boundary" aria-dropeffect="none">
+                
+                          <div class="cr-viewport cr-vp-square" tabindex="0">
+                            <div class="slide-container">
+                              <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
+                            </div>
+                            <div class="file">
+                              <input type="file" name="file" class="file"
+                                style="border: solid 1px #43464d; border-radius: 0px;" >
+                              <input type="submit" class="done" value="Done"   >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+
+
+
+
+
+
+
+
 
                 <div class="large-6 medium-6 small-6 columns">
                   <p class="help-text">Click here to upload picture.</p>

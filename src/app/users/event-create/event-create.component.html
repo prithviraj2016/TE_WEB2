@@ -80,15 +80,8 @@
               <label class="flex-label" data-step="4" data-intro="Location of your event."
                 for="autoCompleteDivLocationForEvent_value">Location</label>
               <input type="hidden" value="event latLong" id="hdnLatLong" />
-              <input type="input" class="input-group-field" id="hdnformatedAdress" placeholder="Search Location..." formControlName="location"  [ngClass]="{ 'is-invalid': submitted && f['customurl'].errors }" />
-              <span class="mandatoryfld_lbl">
-                 
-                
-                <div *ngIf="submitted && f['customurl'].errors" class="invalid-feedback">
-                  <div *ngIf="f['customurl'].errors['required']">Loaction is required</div>
-                 
-                </div>
-            </span>
+              <input type="input" class="input-group-field" id="hdnformatedAdress" placeholder="Search Location..."
+                formControlName="location" />
             </div>
           </div>
 
@@ -105,6 +98,46 @@
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
                 <span class="mandatoryfld_lbl">
                  
+
+
+
+
+                  <ng-template #mymodal1 let-modal>
+                    <div class="popup-box">
+                      <div class="container">
+                        <div class="heading">
+                          <div class="modal-heading">
+                            <h6>Upload Picture</h6>
+                            <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                              <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                            </a>
+                          </div>
+                        </div>
+                        <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                          border: dashed 1px #43464d;">
+                          <img src="../../../assets/img/user.png" style=" height: 50%;
+                  width: 90%;
+                  margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+                          <div class="cr-boundary" aria-dropeffect="none">
+                  
+                            <div class="cr-viewport cr-vp-square" tabindex="0">
+                              <div class="slide-container">
+                                <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
+                              </div>
+                              <div class="file">
+                                <input type="file" name="file" class="file"
+                                  style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
+                                <input type="submit" class="done" value="Done" onclick="show()"  >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+
+
+
                 
                   <div *ngIf="submitted && f['sdate'].errors" class="invalid-feedback">
                     <div *ngIf="f['sdate'].errors['required']">Start Date is required</div>
@@ -171,7 +204,7 @@
                   <div id="user_image">
                     <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture" formControlName="image" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
-                      width="100px" height="100px" id="my-account-profile-image" onclick="upload_pic_box(this);">
+                      width="100px" height="100px"  (click)="open1(mymodal1)" id="my-account-profile-image" onclick="upload_pic_box(this);">
                       <span class="mandatoryfld_lbl">
                 
                         <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">

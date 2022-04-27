@@ -1,0 +1,64 @@
+<div class="row">
+    <div>
+        <div class="large-12 columns">
+            <ul class="breadcrumbs mp_breadcrumbs">
+                <li><a href="entityId">SEASON1</a></li>
+                <li class="current">ADD TOURNAMENTS
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="sha-box manage_players_wrapper" id="addStaffSection">
+    <div class="row ribbonheighfix">
+        <div class="manage_players_ribbon_parent">
+            <div class="manage_players_back_ribbon bgradient"></div>
+            <div class="manage_players_ribbon_child bgradient"></div>
+            <div class="manage_players_ribbon_content">
+                <div class="trophy"></div>
+                <p class="ng-binding">ADD TOURNAMENT</p>
+            </div>
+        </div>
+    </div>
+    <div class="manage_players_content">
+        <div class="row">
+            <div class="small-6 columns info_column">
+                <div class="small-12 columns addtour-topbox">
+                    <h6 class="custheadh6 ng-binding">MY TOURNAMENTS</h6>
+                    <a data-step="2" data-intro="Create a new tournament to be added for tournament."
+                        ng-show="showCreateNewOption" href="" routerLink="/tournament-create" class="action-link">CREATE
+                        NEW</a>
+                    <div class="small-6 searchb pt15 columns">
+                        <form autocomplete="off" class="ng-pristine ng-valid">
+                            <input data-step="3" data-intro="Search your tournament to be added." id="search"
+                                placeholder="Search" ng-model="search.name" type="text"
+                                class="ng-pristine ng-untouched ng-valid ng-empty">
+                        </form>
+                    </div>
+                </div>
+                <div class="" style="border-bottom: 1px solid #6196CC;">
+                    <h5 class="subsubhead ng-binding">User is currently not part of any tournaments</h5>
+                    <div class="small-12 columns tabs-content m0">
+                    </div>
+                    <div class="border"></div>
+                </div>
+            </div>
+            <div id="paticipating-players" class="small-6 columns">
+                <div class="row dark_grey pplayers extraheight">
+                    <div class="large-6 small-6 columns">
+                        <div class="pplayers-title" id="paticate-title">
+                            <h6 class="ng-binding">ADDED TOURNAMENTS</h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="paticipating-pl" class="row dark_grey pl15 pad-top-0">
+                    <div class="bar dradAndDrop">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>

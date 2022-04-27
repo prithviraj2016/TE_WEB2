@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-event-create',
   templateUrl: './event-create.component.html',
-  styleUrls: ['./event-create.component.css']
+  styleUrls: ['./event-create.component.css','../../../assets/css/profile.css']
 })
 export class EventCreateComponent implements OnInit {
   showMe:boolean=false;

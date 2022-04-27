@@ -19,6 +19,8 @@ import { GlobalErrorHandler } from './shared/services/globalErrorHandler';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { httpInterceptorProviders } from './common/services/httpInterceptorProviders';
 import { AuthGuard } from './common/services/auth-guard.service';
+import { ManageTournamentsComponent } from './users/manage-tournaments/manage-tournaments.component';
+import { ManageEventComponent } from './users/manage-event/manage-event.component';
 
 
 
@@ -33,6 +35,8 @@ import { AuthGuard } from './common/services/auth-guard.service';
     SignUpComponent,
     HomeLayoutComponent,
     UserLayoutComponent,
+    ManageEventComponent,
+  
 
   ],
   imports: [

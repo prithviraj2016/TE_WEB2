@@ -1,0 +1,20 @@
+.trophy{
+    
+    width: 25px;
+    height: 25px;
+    background: url(../../../assets/img/@2x-trophy.svg) 0 0 no-repeat;
+    float: left;
+    margin: 0 7px;
+}
+.info_column{
+    border-bottom: 1px solid #6196CC;
+    height: 77px;
+
+}
+input::placeholder{
+    color:aliceblue;
+}
+.addtour-topbox{
+    margin-top: 10px;
+  
+}

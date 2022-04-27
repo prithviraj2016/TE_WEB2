@@ -1,0 +1,36 @@
+.trophy{
+    width: 25px;
+    height: 25px;
+    background: url(../../../assets/img/@2x-trophy.svg) 0 0 no-repeat;
+    float: left;
+    margin: 0 7px;
+}
+
+.addtour-topbox .small-6.searchb.pt15 {
+    float: right;
+    padding: 0 0 0 0px;
+    max-width: 200px;
+    margin: 0 0px 0 0;
+    width: auto;
+}
+.addtour-topbox{
+    margin-top: 10px;
+  
+}
+.info_column{
+    border-bottom: 1px solid #6196CC;
+    height: 77px;
+
+}
+.pl15{
+    padding-left: 0px;
+    padding-right: 0px;
+    border-left: 0px ;
+   
+}
+input::placeholder{
+    color:aliceblue;
+}
+.border{
+   border-right: 1px solid wheat; 
+}

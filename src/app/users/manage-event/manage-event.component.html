@@ -1,0 +1,60 @@
+<div class="row">
+    <div>
+        <div class="large-12 columns">
+            <ul class="breadcrumbs mp_breadcrumbs">
+                <li><a href="entityId">SEASON1</a></li>
+                <li class="current">ADD EVENT
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="sha-box manage_players_wrapper" id="addStaffSection">
+    <div class="row ribbonheighfix">
+        <div class="manage_players_ribbon_parent">
+            <div class="manage_players_back_ribbon bgradient"></div>
+            <div class="manage_players_ribbon_child bgradient"></div>
+            <div class="manage_players_ribbon_content">
+                <div class="trophy"></div>
+                <p class="ng-binding">ADD EVENT</p>
+            </div>
+        </div>
+    </div>
+    <div class="manage_players_content">
+        <div class="row">
+            <div class="small-6 columns info_column">
+                <div class="small-12 columns addtour-topbox">
+                    <h6 class="custheadh6 ng-binding">MY TOURNAMENTS</h6>
+                    <a data-step="2" data-intro="Create a new tournament to be added for tournament."
+                        ng-show="showCreateNewOption" href="" routerLink="/event-create" class="action-link">CREATE
+                        NEW</a>
+                    <div class="small-6 searchb pt15 columns">
+                        <form autocomplete="off" class="ng-pristine ng-valid">
+                            <input data-step="3" data-intro="Search your tournament to be added." id="search"
+                                placeholder="Search" ng-model="search.name" type="text"
+                                class="ng-pristine ng-untouched ng-valid ng-empty">
+                        </form>
+                    </div>
+                </div>
+                <br> 
+                <div class="event_card sha-box card"><div class="row"><div class="img-event medium-5 blankImage" style="background-image: url(assets/img/object1.png);"><div title=" Event Name" class="name-event truncate">Tournament Name</div></div><div class="txt-event medium-5"><span class="tgamename">Tournament INFO.</span><hr class="shr3"><div class="clear"></div><div class="tinfo">Start Date:</div><span class="tdata date_start">10/10/2020</span><div class="clear"></div><div class="tinfo">End Date:</div><span class="tdata rtxt date_end">10/10/2020</span></div><div ng-show="event.hype" class="hype-ribbon-blue"></div><br></div></div>
+            </div>
+            <div id="paticipating-players" class="small-6 columns">
+                <div class="row dark_grey pplayers extraheight">
+                    <div class="large-6 small-6 columns">
+                        <div class="pplayers-title" id="paticate-title">
+                            <h6 class="ng-binding">ADDED TOURNAMENTS</h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="paticipating-pl" class="row dark_grey pl15 pad-top-0">
+                    <div class="bar dradAndDrop">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>

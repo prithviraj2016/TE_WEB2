@@ -32,6 +32,7 @@ import { EditEventComponent } from 'src/app/users/edit-event/edit-event.componen
 import { EditSeasonComponent } from 'src/app/users/edit-season/edit-season.component';
 import { EditTeamComponent } from 'src/app/users/edit-team/edit-team.component';
 import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-script-load-service';
+import { ManageTournamentsComponent } from 'src/app/users/manage-tournaments/manage-tournaments.component';
 // import { AngularFileUploaderModule } from "angular-file-uploader";
 
 
@@ -87,6 +88,7 @@ import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-scri
     EditEventComponent,
     EditSeasonComponent,
     EditTeamComponent,
+    ManageTournamentsComponent
   ],
   providers: [
     DynamicScriptLoaderService

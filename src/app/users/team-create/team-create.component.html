@@ -11,7 +11,7 @@
               aria-hidden="true"></i>&nbsp;<span>Help</span></a>
           <div class="flex-row">
             <div class="flex-item">
-                <label class="mandatory_field">Team Name</label>
+                <label class="mandatory_field"style="color: #747f85;">Team Name</label>
                 <input type="text"  formControlName="teamname" form="season_form_novalidated" name='season_name' placeholder="" id='season_name' class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f['teamname'].errors }"
                   minlength="3" maxlength="50" value="" required /> 
@@ -48,8 +48,8 @@
           </div>
           <div class="flex-row">
           <div class="flex-item complete">
-            <label class="flex-label"   data-step="4" data-intro="Location of your team." for="autoCompleteDivLocationForEvent_value">Location</label>
-            <input  value="" id="hdnLatLong"  formControlName="location" class="form-control"
+            <label class="flex-label"   data-step="4" data-intro="Location of your team." for="autoCompleteDivLocationForEvent_value"style="color: #747f85;">Location</label>
+            <input  value="" id="hdnLatLong" placeholder="Search Location..."  formControlName="location" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f['location'].errors }"/>
             <span class="mandatoryfld_lbl">
                 

@@ -16,6 +16,8 @@ import { ManageStaffComponent } from 'src/app/users/tournaments/manage-staff/man
 import { PoolsComponent } from 'src/app/users/tournaments/pools/pools.component';
 import { TournamentsComponent } from 'src/app/users/tournaments/tournaments.component';
 import { EditTeamComponent } from 'src/app/users/edit-team/edit-team.component';
+import { ManageTournamentsComponent } from 'src/app/users/manage-tournaments/manage-tournaments.component';
+import { ManageEventComponent } from 'src/app/users/manage-event/manage-event.component';
 
 
 
@@ -35,6 +37,8 @@ export const UserLayoutRoutes: Routes = [
     { path:'edit-event', component:EditEventComponent},
     { path:'edit-season', component:EditSeasonComponent},
     { path:'edit-team', component:EditTeamComponent},
-    { path:'edit-tournament', component:EditTournamentComponent}
+    { path:'edit-tournament', component:EditTournamentComponent},
+    {path:'manage-tournaments',component:ManageTournamentsComponent},
+    {path:'manage-event',component:ManageEventComponent}
 
 ];

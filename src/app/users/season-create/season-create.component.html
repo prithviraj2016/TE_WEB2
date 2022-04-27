@@ -13,11 +13,11 @@
 
           <div class="flex-row">
             <div class="flex-item">
-              <div class="is-floating-label">
-                <label class="mandatory_field" data-step="1" data-intro="Name of the Event.">Season Name</label>
+              <!-- <div class="is-floating-label"> -->
+                <label class="mandatory_field" data-step="1" data-intro="Name of the Event." style="color: #747f85;">Season Name</label>
                 <input type="text" formControlName="seasonname" form="season_form_novalidated" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f['seasonname'].errors } "name='season_name' placeholder="" id='season_name'
-                  minlength="3" maxlength="50" value="" required /> <  <span class="mandatoryfld_lbl">
+                  minlength="3" maxlength="50" value="" required />  <span class="mandatoryfld_lbl" >
                 
                     <div *ngIf="submitted && f['seasonname'].errors" class="invalid-feedback">
                       <div *ngIf="f['seasonname'].errors['required']">Seasonname is required</div>
@@ -27,14 +27,14 @@
                       </div>
                     </div>
                 </span>
-              </div>
+              <!-- </div> -->
             </div>
           </div>
 
 
           <div class="flex-row">
             <div class="flex-item image-item">
-              <div class="is-floating-label">
+              <!-- <div class="is-floating-label"> -->
                 <label class="flex-label" data-step="2" data-intro="Description of the Season.">Description</label>
                 <textarea formControlName="description" id='season_description' form="season_form_novalidated" name='season_description' placeholder="" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
@@ -49,7 +49,7 @@
                       </div>
                     </div>
                 </span>
-              </div>
+              <!-- </div> -->
             </div>
 
             <div class="flex-item">

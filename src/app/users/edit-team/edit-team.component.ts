@@ -18,15 +18,15 @@ export class EditTeamComponent implements OnInit {
   open1(content:any) {
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
-
+  
       this.closeResult = `Closed with: ${result}`;
-
+  
     }, (reason: any) => {
-
+  
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-
+  
     });
-
+  
   } 
   getDismissReason(reason: any) {
     throw new Error('Method not implemented.');
@@ -48,6 +48,5 @@ export class EditTeamComponent implements OnInit {
     }
   
   }
-  
 
 }

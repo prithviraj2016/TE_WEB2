@@ -300,7 +300,7 @@ export class IndexComponent implements OnInit {
 
 
     resendVerification() {
-      debugger
+      // debugger
       if (this.forgetForm.value.email != "" || this.forgetForm.value.email != undefined) {
         this.service.resendverification(this.forgetForm.value.email).subscribe(data => {
           this._re_errorTxt = "Account is already Active";
@@ -314,7 +314,7 @@ export class IndexComponent implements OnInit {
         },
           err => {
             console.log(err);
-            debugger
+            // debugger
             if (err.status) {
               if (typeof (err.error) != 'undefined' && typeof (err.error.errorMessages) != 'undefined' && err.error.errorMessages.length > 0) {
                 this._re_errorTxt = '';

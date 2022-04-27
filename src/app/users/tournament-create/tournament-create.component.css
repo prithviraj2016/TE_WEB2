@@ -1,0 +1,176 @@
+.main {
+    background: #1d262c;
+    font-family: 'Roboto', sans-serif;
+}
+
+form {
+    padding: 0px;
+}
+
+.col_one {
+    color: #fff;
+    background-color: #0e161b;
+    padding: 20px;
+}
+
+.col_one h1 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.col_one h2 {
+    font-size: 22px;
+    color: #3988ba;
+    margin-bottom: 42px;
+}
+
+h2 a {
+    float: right;
+}
+
+h2 a mat-icon {
+    color: #3988ba;
+}
+
+.flex-item label {
+    font-size: 14px;
+    color: #747f85;
+    transform: translate3d(0, 0, 0) scale(1);
+    transform-origin: left top;
+    transition: 100ms;
+    top: 5px;
+
+}
+
+input {
+    color: #98a3b3 !important;
+    padding: 12px 0 !important;
+    box-shadow: none !important;
+    background: 0 0 !important;
+    border: 0 !important;
+    border-bottom: #676d75 solid 1px !important;
+    color: white !important;
+}
+
+input::placeholder {
+    color: #243341 !important;
+}
+
+textarea::placeholder {
+    color: #243341 !important;
+}
+
+textarea {
+    padding: 12px 0 !important;
+    box-shadow: none !important;
+    background: 0 0 !important;
+    border: 0 !important;
+    border-bottom: #676d75 solid 1px !important;
+    color: white !important;
+}
+
+.col_two {
+    background-color: #070c10;
+    color: #fff;
+    padding: 20px;
+    height: 100%;
+    box-shadow: inset 5px 0 5px rgb(0 0 0 50%);
+}
+
+.col_two h2 {
+    padding-top: 40px;
+    font-size: 22px;
+    color: #3988ba;
+    margin-bottom: 42px;
+}
+
+.men_toggle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.toggle {
+    display: flex;
+}
+
+.men_toggle {
+    padding-left: 96px;
+    padding-top: 50px;
+}
+
+.col_three {
+    background-color: #0e161b !important;
+    color: #fff;
+    height: 100%;
+    padding-top: 25px;
+    padding: 19px;
+}
+
+.example-button-row {
+    display: flex;
+}
+
+#cancel span {
+    padding: 4px 20px 0;
+    height: 34px;
+    font-size: .975rem;
+    font-size: 15px;
+    color: #fff;
+}
+
+select {
+    padding: 12px 0;
+    box-shadow: none;
+    background: 0 0;
+    border: 0;
+    border-bottom: #676d75 solid 1px;
+    color: white;
+}
+
+#save span {
+    padding: 4px 20px 0;
+    height: 34px;
+    font-size: .975rem;
+    font-size: 15px;
+    color: #fff;
+}
+
+.col_three h2 {
+    padding-top: 40px;
+    font-size: 22px;
+    color: #3988ba;
+    margin-bottom: 42px;
+}
+
+.flex-label-one {
+    color: #3988ba;
+}
+
+h5 {
+    color: #747f85;
+    font-size: 14px;
+}
+
+.slider-one {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.slider-two {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.slider-one material-slide-toggle {
+    padding-left: 50%;
+}
+
+
+.flex-items {
+    font-size: 16px;
+    color: #3988ba;
+    cursor: default
+}

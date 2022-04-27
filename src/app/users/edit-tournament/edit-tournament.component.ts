@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditTournamentComponent implements OnInit {
 
+  showMe:boolean=false;
+  showMe2:boolean=false;
+  showMe1:boolean=true;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+  toogleTag(){
+    this.showMe=!this.showMe;
+    
+  }
+  toogleTag1(){
+    this.showMe1=!this.showMe1;
+    
+  }
+  toogleTag2(){
+    this.showMe2=!this.showMe2;
+    
   }
 
 }

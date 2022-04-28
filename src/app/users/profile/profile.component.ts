@@ -13,6 +13,7 @@ show:boolean = false;
 userID:any;
 userName:any;
 userDetails:any;
+image_url: any;
 
 title = 'appBootstrap';
 closeResult: string = '';
@@ -22,7 +23,8 @@ public showPassword1: boolean;
 public showPassword2: boolean;
 imageSrc: string = '';
 loggedinUser:any;
-  email: any;
+email: any;
+  
 
 
   constructor(

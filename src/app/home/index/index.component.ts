@@ -105,8 +105,9 @@ export class IndexComponent implements OnInit {
   ngOnInit(){
       $(document).foundation();
       this._service.getTournament().subscribe(res =>{
-        this.tournamentList=res;
-        console.log(this.tournamentList);
+      this.tournamentList=Object.values(res);
+       for (var i=2; i<this.tournamentList.length; i++);
+      console.log(this.tournamentList[i]);
       });
      this.signinForm = this.frmbuilder.group({
       'UserName':new FormControl ('', [Validators.required]),

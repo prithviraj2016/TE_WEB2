@@ -122,7 +122,7 @@ font-family: 'Roboto', sans-serif;">
                   src="../../../assets/img/user.png" title="Choose a picture" class="image_profile_user"
                   id="my-account-profile-image" style="height: 120px;
                   border: 1px solid;
-                  border-radius: 10px;" formControlName="imageUrl" (click)="open1(mymodal1)">
+                  border-radius: 10px;" formControlName="imageUrl" (click)="open1(mymodal1)" [src]="imageSrc">
               </div>
             </div>
           </div>
@@ -318,7 +318,7 @@ font-family: 'Roboto', sans-serif;">
                   border: dashed 1px #43464d;">
                   <img src="../../../assets/img/user.png" style=" height: 50%;
       width: 90%;
-      margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+      margin: 10px;" [src]="imageSrc" *ngIf="imageSrc" >
                   <div class="cr-boundary" aria-dropeffect="none">
 
                     <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -328,7 +328,7 @@ font-family: 'Roboto', sans-serif;">
                       <div class="file">
                         <input type="file" name="file" class="file"
                           style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                        <input type="submit" class="done" value="Done" onclick="show()">
+                        <input type="submit" class="done" value="Done" (click)="onFileChange($event)">
                       </div>
                     </div>
                   </div>

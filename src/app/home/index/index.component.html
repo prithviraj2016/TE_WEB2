@@ -585,10 +585,12 @@
     </div>
 
     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel">
-      <div ngxSlickItem class="slider-content content-1 slide inner-col" *ngFor="let item of tournamentList1" [ngStyle]="{'background-image':'url(' + item.src + ')'}">
+      <div ngxSlickItem class="slider-content content-1 slide inner-col" *ngFor="let item of tournamentList; let i = index">
+        
+        <img src="{{i}}/{{tournamentList.length}}.{{item.imageKey}}">
         <div class="tour-title">
-          <span class="no_margin ng-binding">{{item.name}}</span>
-          <span id="head-title" class="ng-binding">{{item.startDate}}</span>
+          <span class="no_margin ng-binding">{{i+2}}{{item.i.game}}</span>
+          <span id="head-title" class="ng-binding">{{i+2}}{{item.i.startDate}}</span>
         </div>
       </div>
     </ngx-slick-carousel>

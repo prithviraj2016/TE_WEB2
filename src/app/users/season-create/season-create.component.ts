@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
+import { HttpClient, HttpEvent, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/account/account-service/account.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-season-create',
@@ -13,37 +15,45 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SeasonCreateComponent implements OnInit {
   [x: string]: any;
-  newSeasonsForm: FormGroup = new FormGroup({
+  selectedFiles?: FileList;
+  progressInfos: any[] = [];
+  message: string[] = [];
+  previews: string[] = [];
+  imageInfos?: Observable<any>;
+  uploadimageSrc:string;
+  upload1=false;
+  
+
+  newSeasonsForm: FormGroup = new FormGroup({});
     
-    seasonname:new FormControl(''),
-    description:new FormControl(''),
-    customurl:new FormControl(''),
-      image:new FormControl(''),
-      sdate:new FormControl(''),
-      edate:new FormControl('')
+  //   seasonname:new FormControl(''),
+  //   description:new FormControl(''),
+  //   customurl:new FormControl(''),
+  //     image:new FormControl(''),
+  //     sdate:new FormControl(''),
+  //     edate:new FormControl('')
    
-  });
+  // });
   closeResult: string = '';
   imageSrc:string;
   submitted=false;
   private title: string;
 
   constructor(private formBuilder: FormBuilder, 
-    private _router: Router, public _Service: AccountService, 
-    private http:HttpClient
-    ,
+    private _router: Router, public service:DashboardService, 
+    private http:HttpClient,
     private activatedRoute:ActivatedRoute,
     private modalService: NgbModal,) { }
 
   ngOnInit(): void {
   
   this.newSeasonsForm=this.formBuilder.group({
-    'seasonname':new FormControl('', [Validators.required , Validators.minLength(6),Validators.maxLength(20)]),
+    'name':new FormControl('', [Validators.required , Validators.minLength(6),Validators.maxLength(20)]),
     'description':new FormControl('', [Validators.required ,Validators.minLength(20),Validators.maxLength(100)]),
-    'customurl':new FormControl('', [Validators.required]),
-    'sdate':new FormControl('',[Validators.required]),
-    'edate':new FormControl('',[Validators.required]),
-    'image':new FormControl('', [Validators.required])
+    'webURL':new FormControl('', [Validators.required]),
+    'startDate':new FormControl('',[Validators.required]),
+    'endDate':new FormControl('',[Validators.required]),
+    'imageKey':new FormControl('',[Validators.required])
   });
   
   
@@ -51,31 +61,56 @@ export class SeasonCreateComponent implements OnInit {
 get f(): { [key: string]: AbstractControl } {
   return this.newSeasonsForm.controls;
 }
-public myError = (controlName: string, errorName: string) =>{
-return this.newSeasonsForm.controls[controlName].hasError(errorName);
-  }
+
 
   createSeasons(){
-    console.log(this.newSeasonsForm.value);
-    this.submitted = true;
+    const formData = new FormData();
+    formData.append('name', this.newSeasonsForm.value.seasonname);
+    formData.append('description', this.newSeasonsForm.value.description);
+    formData.append('webURL', this.newSeasonsForm.value.customurl);
+    formData.append('startDate', this.newSeasonsForm.value.sdate);
+    formData.append('endDate', this.newSeasonsForm.value.edate);
+    formData.append('file', this['file']);
+    formData.append('imageKey',this.newSeasonsForm.value.image);
+    
        if (this.newSeasonsForm.invalid) {
-     return;
+      console.log(this.newSeasonsForm.value);
+     this.service.createSeason(JSON.stringify(this.newSeasonsForm.value)).subscribe(data =>{
+      if(data) {
+         alert("Season Created Successfully");
+       }else(err: any)=>{
+         alert("Something went wrong");
+       }
+     });
     }
-     console.log(JSON.stringify(this.newSeasonsForm.value, null, 2));
   }
+     
+  
   onReset(): void {
     this.submitted = false;
     this.newSeasonsForm.reset();
   }
   
-  selectFile(event: any) {
-    if (event.target.files.length > 0) {
-console.log(event.target);
-     this['file'] = event.target.files[0];
 
-     
-   }
-}
+
+// onFileChange(event:any) {
+//   this.message = [];
+//   this.progressInfos = [];
+//   this.selectedFiles = event.target.files;
+//   this.previews = [];
+//   if (this.selectedFiles && this.selectedFiles[0]) {
+//     const numberOfFiles = this.selectedFiles.length;
+//     for (let i = 0; i < numberOfFiles; i++) {
+//       const reader = new FileReader();
+//       reader.onload = (e: any) => {
+//         console.log(e.target.result);
+//         this.previews.push(e.target.result);
+//       };
+//       reader.readAsDataURL(this.selectedFiles[i]);
+//     }
+//   }
+//}
+
 onFileChange(event:any) {
   const reader = new FileReader();
   
@@ -84,17 +119,24 @@ onFileChange(event:any) {
     reader.readAsDataURL(file);
   
     reader.onload = () => {
- 
+
       this.imageSrc = reader.result as string;
    
       this.newSeasonsForm.patchValue({
         fileSource: reader.result
       });
  
-    };
- 
+    }
   }
 }
+
+show(){
+ 
+  this.uploadimageSrc=this.imageSrc;
+  this.upload1=true;
+  
+}
+  
 open1(content:any) {
 
   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -128,5 +170,42 @@ private getDismissReason1(reason: any): string {
   }
 
 }
-
+// selectImage(event: any) {
+//   this.message = [];
+//   if (this.selectedFiles) {
+//     for (let i = 0; i < this.selectedFiles.length; i++) {
+//       this.upload(i, this.selectedFiles[i]);
+//     }
+//   }
+// }
+uploadFiles(): void {
+  this.message = [];
+  if (this.selectedFiles) {
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      this.upload(i, this.selectedFiles[i]);
+    }
+  }
 }
+ 
+
+upload(idx: number, file: File): void {
+  this.progressInfos[idx] = { value: 0, fileName: file.name };
+  if (file) {
+    this.service.uploadImage(file).subscribe({
+      next: (event: any) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          const msg = 'Uploaded the file successfully: ' + file.name;
+          this.message.push(msg);
+          // this.imageInfos = this.service.getFiles();
+        }
+      },
+      error: (err: any) => {
+        this.progressInfos[idx].value = 0;
+        const msg = 'Could not upload the file: ' + file.name;
+        this.message.push(msg);
+      }});
+  }
+}
+  }

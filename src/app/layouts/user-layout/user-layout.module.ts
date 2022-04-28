@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TournamentCreateComponent} from 'src/app/users/tournament-create/tournament-create.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -62,6 +63,7 @@ import { ManageTournamentsComponent } from 'src/app/users/manage-tournaments/man
     SlideToggleModule,
     MatNativeDateModule,
     ModalModule.forRoot(),
+    HttpClientModule
     // AngularFileUploaderModule,
 
    

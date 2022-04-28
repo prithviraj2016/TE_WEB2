@@ -16,12 +16,12 @@ import { DashboardService } from '../dashboard/dashboard.service';
   styleUrls: [ '../../../assets/css/profile.css']
 })
 export class TeamCreateComponent implements OnInit {
-  newTeamForm: FormGroup = new FormGroup({
-    teamname:new FormControl(''),
-    description:new FormControl(''),
-    location:new FormControl(''),
-    image:new FormControl('')
-  });
+  newTeamForm: FormGroup = new FormGroup({});
+  //   teamname:new FormControl(''),
+  //   description:new FormControl(''),
+  //   location:new FormControl(''),
+  //   image:new FormControl('')
+  // });
   closeResult: string = '';
   imageSrc:string;
   submitted=false;
@@ -55,9 +55,7 @@ export class TeamCreateComponent implements OnInit {
 get f(): { [key: string]: AbstractControl } {
   return this.newTeamForm.controls;
 }
-  public myError = (controlName: string, errorName: string) =>{
-    return this.newTeamForm.controls[controlName].hasError(errorName);
-}
+
 // onSubmit(): void {
 //   this.submitted = true;
 //   if (this.newTeamForm.invalid) {

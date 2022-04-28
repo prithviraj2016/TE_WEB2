@@ -27,6 +27,9 @@ export class SeasonCreateComponent implements OnInit {
   imageSrc:string;
   submitted=false;
   private title: string;
+  // this on
+  uploadimageSrc:string;
+  upload=false;
 
   constructor(private formBuilder: FormBuilder, 
     private _router: Router, public _Service: AccountService, 
@@ -71,6 +74,7 @@ return this.newSeasonsForm.controls[controlName].hasError(errorName);
   selectFile(event: any) {
     if (event.target.files.length > 0) {
 console.log(event.target);
+
      this['file'] = event.target.files[0];
 
      
@@ -84,7 +88,7 @@ onFileChange(event:any) {
     reader.readAsDataURL(file);
   
     reader.onload = () => {
- 
+
       this.imageSrc = reader.result as string;
    
       this.newSeasonsForm.patchValue({
@@ -94,6 +98,13 @@ onFileChange(event:any) {
     };
  
   }
+}
+// this one
+show(){
+ 
+  this.uploadimageSrc=this.imageSrc;
+  this.upload=true;
+  
 }
 open1(content:any) {
 

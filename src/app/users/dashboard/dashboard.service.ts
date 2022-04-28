@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable } from 'rxjs';
+import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -20,11 +20,14 @@ export class DashboardService {
   createEvent() {
     return this.http.post<[]>(environment.apiUrl + 'services/main/event', this.httpOptions);
   }
-  createSeason(){
-    return this.http.post<[]>(environment.apiUrl + 'services/main/season', this.httpOptions);
+  createSeason(userObj:any){
+    return this.http.post<[]>(environment.apiUrl + 'services/main/season',userObj, this.httpOptions);
+     
   }
-  createTeam(){
-    return this.http.post<[]>(environment.apiUrl + 'services/team', this.httpOptions);
+  
+  createTeam(data:any): Observable<[]>{
+
+    return this.http.post<[]>(environment.apiUrl + 'https://te-uatapi.vgroupinc.com/uat_tournamentapis/web/srf/services/team',data, this.httpOptions);
   }
   createTournament(){
     return this.http.post<[]>(environment.apiUrl + 'services/main/tournament', this.httpOptions);
@@ -41,7 +44,18 @@ getTournament(){
    return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/tournament', this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
+uploadImage(file: File){
+  const formData: FormData = new FormData();
+  formData.append('file', file);
+  return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson', formData ,this.httpOptions);
+}
 // getEvent(){
 //   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/events', this.httpOptions);
 // }
+
+
 }
+function throwError(err: any): any {
+  throw new Error('Function not implemented.');
+}
+

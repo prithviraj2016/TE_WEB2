@@ -30,7 +30,7 @@ loggedinUser:any;
     private modalService: NgbModal) {}
 
   ngOnInit(): void {
-    debugger;
+ 
     this.loggedinUser = localStorage.getItem('loggeduser');
     this.loggedinUser = JSON.parse(this.loggedinUser);
     this.userName=this.loggedinUser.username;

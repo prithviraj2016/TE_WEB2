@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from '@an
 import { FormBuilder, FormsModule, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import swal from 'sweetalert2';
+
 import { __values } from 'tslib';
 import { ContactusService } from './contactus.service';
 

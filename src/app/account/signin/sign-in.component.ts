@@ -200,7 +200,7 @@ export class SignInComponent implements OnInit {
     
     
       resendVerification(){
-        debugger
+   
         if (this.forgetPasswordForm.value.email != "" || this.forgetPasswordForm.value.email != undefined) {
           this._service.resendverification(this.forgetPasswordForm.value.email).subscribe(data => {
             this._re_errorTxt = "Account is already Active";
@@ -214,7 +214,7 @@ export class SignInComponent implements OnInit {
           },
             err => {
               console.log(err);
-              debugger
+            
               if (err.status) {
                 if (typeof (err.error) != 'undefined' && typeof (err.error.errorMessages) != 'undefined' && err.error.errorMessages.length > 0) {
                   this._re_errorTxt = '';

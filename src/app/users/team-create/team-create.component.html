@@ -71,8 +71,11 @@
               <div class="left-column large-4 medium-3 small-6 columns">
                 <div id="user_image" enctype="multipart/form-data"   >
                   <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  title="Choose a picture"
-                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" ng2FileSelect formControlName="image" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
+                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" ng2FileSelect  class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }" *ngIf="!upload">
+                    <img alt="Choose a picture"   title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" ng2FileSelect  class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }" [src]="  uploadimageSrc" *ngIf="upload" >
                     <span class="mandatoryfld_lbl">
                 
                       <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
@@ -108,7 +111,7 @@
                 border: dashed 1px #43464d;">
                 <img src="../../../assets/img/user.png" style=" height: 50%;
         width: 90%;
-        margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+        margin: 10px;" [src]="imageSrc" >
                 <div class="cr-boundary" aria-dropeffect="none">
         
                   <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -117,8 +120,8 @@
                     </div>
                     <div class="file">
                       <input type="file" name="file" class="file"
-                        style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                      <input type="submit" class="done" value="Done" onclick="show()"  >
+                        style="border: solid 1px #43464d; border-radius: 0px;" formControlName="imageKey" (change)="onFileChange($event)" #fileUpload>
+                      <input type="submit" class="done" value="Done" (click)="show()" (click)="modal.dismiss('Cross click')" (click)="fileUpload.click()" >
                     </div>
                   </div>
                 </div>

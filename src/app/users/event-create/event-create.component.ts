@@ -31,6 +31,8 @@ export class EventCreateComponent implements OnInit {
   imageSrc1:string;
   uploadImage: FormGroup;
   submitted = false;
+  uploadimageSrc:string;
+  upload=false;
   constructor(private formBuilder: FormBuilder,
     private _router: Router,
     private http:HttpClient,
@@ -83,6 +85,12 @@ export class EventCreateComponent implements OnInit {
         this.imageURL = reader.result as string;
       }
       reader.readAsDataURL(file)
+    }
+    show(){
+ 
+      this.uploadimageSrc=this.imageSrc;
+      this.upload=true;
+      
     }
     submitImage(){
       console.log(this.uploadImage.value);

@@ -16,15 +16,17 @@ import { DashboardService } from '../dashboard/dashboard.service';
   styleUrls: [ '../../../assets/css/profile.css']
 })
 export class TeamCreateComponent implements OnInit {
-  newTeamForm: FormGroup = new FormGroup({
-    teamname:new FormControl(''),
-    description:new FormControl(''),
-    location:new FormControl(''),
-    image:new FormControl('')
-  });
+  newTeamForm: FormGroup = new FormGroup({});
+  //   teamname:new FormControl(''),
+  //   description:new FormControl(''),
+  //   location:new FormControl(''),
+  //   image:new FormControl('')
+  // });
   closeResult: string = '';
   imageSrc:string;
   submitted=false;
+  uploadimageSrc:string;
+  upload=false;
 
 
  
@@ -34,7 +36,7 @@ export class TeamCreateComponent implements OnInit {
     private _router: Router, 
     private http:HttpClient,
     private modalService: NgbModal,
-    private _Service:DashboardService,
+    private service:DashboardService,
     private activatedRoute:ActivatedRoute,
    
 
@@ -45,7 +47,7 @@ export class TeamCreateComponent implements OnInit {
       'teamname':new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]),
       'description':new FormControl('', [Validators.required,Validators.minLength(20),Validators.maxLength(100)]),
       'location':new FormControl('', [Validators.required , Validators.minLength(6), Validators.maxLength(20)]),
-      'image':new FormControl('',[Validators.required] ),
+      'imageKey':new FormControl('',[Validators.required] ),
   
     });
     
@@ -55,9 +57,7 @@ export class TeamCreateComponent implements OnInit {
 get f(): { [key: string]: AbstractControl } {
   return this.newTeamForm.controls;
 }
-  public myError = (controlName: string, errorName: string) =>{
-    return this.newTeamForm.controls[controlName].hasError(errorName);
-}
+
 // onSubmit(): void {
 //   this.submitted = true;
 //   if (this.newTeamForm.invalid) {
@@ -76,11 +76,16 @@ onReset(): void {
 
   createTeam(){
     console.log(this.newTeamForm.value);
+    
     this.submitted = true;
-       if (this.newTeamForm.invalid) {
-     return;
-    }
-     console.log(JSON.stringify(this.newTeamForm.value, null, 2));
+    this.service.createTeam(this.newTeamForm.value).subscribe(data =>{
+      if(data){
+        alert("Season Created Successfully");
+      }else((err: any)=>err)
+      alert ("Something Went Wrong");
+    });
+  
+  
   }
   onFileChange(event:any) {
     const reader = new FileReader();
@@ -101,9 +106,13 @@ onReset(): void {
    
     }
   }
-  upload(){
+  show(){
+ 
+    this.uploadimageSrc=this.imageSrc;
+    this.upload=true;
     
   }
+  
   open1(content:any) {
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

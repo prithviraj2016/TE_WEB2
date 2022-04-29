@@ -3,10 +3,10 @@ import { HttpClient, HttpEvent, HttpEventType, HttpResponse } from '@angular/com
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/account/account-service/account.service';
 import { ActivatedRoute } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/internal/Observable';
+import { ImageCroppedEvent} from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-season-create',
@@ -22,31 +22,24 @@ export class SeasonCreateComponent implements OnInit {
   imageInfos?: Observable<any>;
   uploadimageSrc:string;
   upload1=false;
-  
-
   newSeasonsForm: FormGroup = new FormGroup({});
-    
-  //   seasonname:new FormControl(''),
-  //   description:new FormControl(''),
-  //   customurl:new FormControl(''),
-  //     image:new FormControl(''),
-  //     sdate:new FormControl(''),
-  //     edate:new FormControl('')
-   
-  // });
   closeResult: string = '';
   imageSrc:string;
   submitted=false;
   private title: string;
 
+  imgChangeEvt: any = '';
+  cropImgPreview: any = '';
+  
   constructor(private formBuilder: FormBuilder, 
-    private _router: Router, public service:DashboardService, 
+    private _router: Router, 
+    private service:DashboardService, 
     private http:HttpClient,
     private activatedRoute:ActivatedRoute,
     private modalService: NgbModal,) { }
 
   ngOnInit(): void {
-  
+    
   this.newSeasonsForm=this.formBuilder.group({
     'name':new FormControl('', [Validators.required , Validators.minLength(6),Validators.maxLength(20)]),
     'description':new FormControl('', [Validators.required ,Validators.minLength(20),Validators.maxLength(100)]),
@@ -71,7 +64,7 @@ get f(): { [key: string]: AbstractControl } {
     formData.append('startDate', this.newSeasonsForm.value.sdate);
     formData.append('endDate', this.newSeasonsForm.value.edate);
     formData.append('file', this['file']);
-    formData.append('imageKey',this.newSeasonsForm.value.image);
+    formData.append('imageKey',this.newSeasonsForm.value.imageURL);
     
        if (this.newSeasonsForm.invalid) {
       console.log(this.newSeasonsForm.value);
@@ -89,7 +82,27 @@ get f(): { [key: string]: AbstractControl } {
   onReset(): void {
     this.submitted = false;
     this.newSeasonsForm.reset();
+    
+    
   }
+ 
+
+    
+  // saveImage() {
+
+  //   this.angularCropper.cropper.crop();
+  //     this.service.uploadImage(this.imageCrop).subscribe((res: any) => {
+  //       if (res.body) {
+  //        this.imageService.getImageByID(res.body._id).subscribe((t: Image) => {
+  //         this.imageURL = t.imageUrl;
+  //         console.log(this.imageURL);
+  //        });
+  //       }
+  //     }, (err: any) => {
+  //       console.log(err);
+  //     });
+  //   }
+  
   
 
 
@@ -111,23 +124,46 @@ get f(): { [key: string]: AbstractControl } {
 //   }
 //}
 
-onFileChange(event:any) {
-  const reader = new FileReader();
+// onFileChange(event:any) {
+//   const reader = new FileReader();
   
-  if(event.target.files && event.target.files.length) {
-    const [file] = event.target.files;
-    reader.readAsDataURL(file);
+//   if(event.target.files && event.target.files.length) {
+//     const [file] = event.target.files;
+//     reader.readAsDataURL(file);
   
-    reader.onload = () => {
+//     reader.onload = () => {
 
-      this.imageSrc = reader.result as string;
+//       this.imageSrc = reader.result as string;
    
-      this.newSeasonsForm.patchValue({
-        fileSource: reader.result
-      });
+//       this.newSeasonsForm.patchValue({
+//         fileSource: reader.result
+//       });
  
-    }
-  }
+//     }
+//   }
+// }
+
+
+
+onFileChange(event: any): void {
+  this.imgChangeEvt = event;
+}
+cropImg(e: ImageCroppedEvent) {
+  this.cropImgPreview = e.base64;
+}
+
+
+
+imgLoad() {
+  // display cropper tool
+}
+
+initCropper() {
+  // init cropper
+}
+
+imgFailed() {
+  // error msg
 }
 
 show(){

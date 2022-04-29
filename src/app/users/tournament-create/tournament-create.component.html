@@ -11,26 +11,26 @@
           </h2>
           <div class="flex-item">
             <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Tournament Name</label>
-            <input type="text">
+            <input type="text" formControlName="name">
           </div>
           <div class="flex-item">
-            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Game</label>
-            <input type="text" placeholder="Search Games...">
+            <label data-step="2" data-intro="Tournament Name" class="mandatory_field">Game</label>
+            <input type="text" placeholder="Search Games..." formControlName="game">
           </div>
           <div class="flex-item">
-            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Start Date</label>
-            <input type="date" placeholder="MM-DD-YY">
+            <label data-step="3" data-intro="Tournament Name" class="mandatory_field">Start Date</label>
+            <input type="date" placeholder="MM-DD-YY" formControlName="startDate" >
           </div>
           <div class="flex-item">
-            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">End Date</label>
-            <input type="date" placeholder="MM-DD-YYYY">
+            <label data-step="4" data-intro="Tournament Name" class="mandatory_field">End Date</label>
+            <input type="date" placeholder="MM-DD-YYYY" formControlName="endDate">
             <div class="flex-item trnstyle-option" ng-mouseenter="tourType=true" ng-mouseleave="tourType=false"
               ng-disabled="tournament.started">
               <label class="non-floatfld mandatory_field" data-step="5"
                 data-intro="Select Tournament Style from the list">Tournament Style</label>
               <div class="select-field">
 
-                <select name="tournamentType" id="tournamentType" required="">
+                <select name="tournamentType" id="tournamentType" required="" formControlName="tournamentType">
                   <option value="SINGLE_ELIMINATION" selected="selected">Single Elimination</option>
                   <option value="DOUBLE_ELIMINATION">Double Elimination</option>
                   <option value="ROUND_ROBIN">Round Robin</option>
@@ -74,9 +74,20 @@
                   </div>
                   <div id="upload-demo" class="croppie-container" style="margin: 10px;
                     border: dashed 1px #43464d;">
-                    <img src="../../../assets/img/user.png" style=" height: 50%;
-            width: 90%;
-            margin: 10px;" >
+                     <img alt="Choose a picture" [ title="Choose a picture"
+                     width="150" height="150" id="my-account-profile-image"  class="form-control"
+                      (click)="open1(mymodal1)" >
+            <!-- <image-cropper
+          [imageChangedEvent]="imgChangeEvt" 
+          [maintainAspectRatio]="true" 
+          [aspectRatio]="4 / 4"
+          [resizeToWidth]="256" 
+          format="png"
+          (imageCropped)="cropImg($event)" 
+          (imageLoaded)="imgLoad()"
+          (cropperReady)="initCropper()" 
+          (loadImageFailed)="imgFailed()">
+        </image-cropper> -->
                     <div class="cr-boundary" aria-dropeffect="none">
             
                       <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -85,8 +96,10 @@
                         </div>
                         <div class="file">
                           <input type="file" name="file" class="file"
-                            style="border: solid 1px #43464d; border-radius: 0px;">
-                          <input type="submit" class="done" value="Done" onclick="show()"  >
+                            style="border: solid 1px #43464d; border-radius: 0px;" multiple  formControlName="imageKey">
+                          <input type="submit" class="done" value="Done"  (click)="modal.dismiss('Cross click')"  >
+                   
+                            
                         </div>
                       </div>
                     </div>
@@ -110,7 +123,7 @@
                 <label class="flex-label" data-step="7" data-intro="Tournament Description">Tournament
                   Description</label>
                 <textarea name="description" placeholder="" maxlength="1200"
-                  ng-model="tournament.description"></textarea>
+                  ng-model="tournament.description" formControlName="description"></textarea>
               </div>
             </div>
           </div>
@@ -122,7 +135,7 @@
             <h1></h1>
             <h2>Advanced Features</h2>
             <div class="men_toggle">
-              <material-slide-toggle style="float:right;" (change)=" toogleTag()"></material-slide-toggle>
+              <mat-slide-toggle style="float:right;" (change)=" toogleTag()"></mat-slide-toggle>
             </div>
           </div>
           <div class="toggle-slide" *ngIf="showMe">
@@ -136,7 +149,7 @@
                 <div class="input-group">
                   <label class="input-group-label">Tournamentedition.com/tournament/</label>
                   <input type="text" placeholder="" name="event_webUrl" id="event_webUrl"
-                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                    class="input-group-field ng-touched ng-pristine ng-invalid" formControlName="webURL">
                 </div>
                 <span class="mandatoryfld_lbl"></span>
               </div>
@@ -151,7 +164,7 @@
                 <div class="input-group">
                   <label class="input-group-label">www.mixer.com/</label>
                   <input type="text" placeholder="Mixer Channel name" name="event_webUrl" id="event_webUrl"
-                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                    class="input-group-field ng-touched ng-pristine ng-invalid" formControlName="mixerStreamUr">
                 </div>
                 <span class="mandatoryfld_lbl"></span>
               </div>
@@ -166,7 +179,7 @@
                 <div class="input-group">
                   <label class="input-group-label">www.twitch.tv/</label>
                   <input type="text" placeholder="Twitch Channel name" id="event_webUrl"
-                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                    class="input-group-field ng-touched ng-pristine ng-invalid" formControlName="twitchStreamUr">
                 </div>
                 <span class="mandatoryfld_lbl"></span>
               </div>
@@ -183,7 +196,7 @@
                 placeholder="Coming up 'Player1' VS 'Player 2' At (insert event Twitter) In (enter hashtag). On (stream link) via @Te_App #TE"
                 id="twitterMessage" name="twitterMessage"
                 class="twitter_message ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" rows="4"
-                cols="150"></textarea>
+                cols="150" formControlName="twitterMessage"></textarea>
 
               <div ng-show="showTwitterHelp" class="help_pop small_shadow ng-hide" style="display: none; top: -200px;">
                 <p class="showTwitterHelp">
@@ -200,11 +213,11 @@
             <div class="flex-items image-item">
               <label class="flex-label">Notification Message</label>
               <textarea placeholder="Write our own message" rows="4" cols="150"
-                class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength"></textarea>
+                class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" formControlName="notificationMessage"></textarea>
             </div>
             <div class="flex-items">
               <label class="flex-label" style=" color: #3988ba;">Location</label>
-              <input type="text" class="location" placeholder="Search Location...">
+              <input type="text" class="location" placeholder="Search Location..." formControlName="location">
             </div>
           </div>
 
@@ -223,7 +236,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Register</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle></material-slide-toggle>
+                    <material-slide-toggle formControlName="preRegiste"></material-slide-toggle>
                   </div>
 
                 </div>
@@ -231,7 +244,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Consider Teams</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle></material-slide-toggle>
+                    <material-slide-toggle formControlName="considerTeam"></material-slide-toggle>
                   </div>
 
                 </div>
@@ -239,7 +252,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Player Score Submission</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle (change)="toogleTag1()"></material-slide-toggle>
+                    <material-slide-toggle (change)="toogleTag1()" formControlName="allowUserScoreSubmission"></material-slide-toggle>
                   </div>
 
                 </div>
@@ -250,7 +263,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Team Based Tournament</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle></material-slide-toggle>
+                    <material-slide-toggle formControlName="teamBased"></material-slide-toggle>
                   </div>
 
                 </div>
@@ -258,7 +271,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Consider Location</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle></material-slide-toggle>
+                    <material-slide-toggle formControlName="considerLocation"></material-slide-toggle>
                   </div>
 
                 </div>
@@ -269,8 +282,8 @@
                 <label class="label-custom">Check In Time</label>
                 <div class="select-field">
                   <select name="checkinTime" id="checkinTime"
-                    class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty">
-                    <option value="0" selected="selected">Off</option>
+                    class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty" formControlName="checkinTime">
+                    <option value="0" selected="selected" >Off</option>
                     <option value="15">15 min</option>
                     <option value="30">30 min</option>
                     <option value="60">1 hour</option>
@@ -286,7 +299,7 @@
                   <div class="flex-column-space"></div>
                   <label class="label-custom">Auto Advance Timer</label>
                   <div class="select-field">
-                    <select class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty">
+                    <select class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty" formControlName="autoAdvanceTime">
                       <option value="0" selected="selected">None</option>
                       <option value="5">5 min</option>
                       <option value="10">10 min</option>

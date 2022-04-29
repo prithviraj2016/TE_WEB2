@@ -26,8 +26,8 @@ export class DashboardService {
      
   }
   
-  createTeam(){
-    return this.http.post<[]>(environment.apiUrl + 'services/main/team', this.httpOptions);
+  createTeam(userObj:any){
+    return this.http.post<[]>(environment.apiUrl + 'services/main/team',userObj, this.httpOptions);
   }
   createTournament(){
     return this.http.post<[]>(environment.apiUrl + 'services/main/tournament', this.httpOptions);
@@ -45,14 +45,15 @@ getTournament(){
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
 uploadImage(file: File){
-  const formData: FormData = new FormData();
-  formData.append('file', file);
-  return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson', formData ,this.httpOptions);
+  
+  return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson' ,this.httpOptions);
 }
 // getEvent(){
 //   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/events', this.httpOptions);
 // }
-
+getLocation(){
+  return this.http.post<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);
+}
 
 }
 function throwError(err: any): any {

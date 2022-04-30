@@ -58,7 +58,7 @@ get f(): { [key: string]: AbstractControl } {
 
 createTeam(){
   const formData = new FormData();
-  formData.append('name', this.newTeamForm.value.seasonname);
+  formData.append('name', this.newTeamForm.value.name);
   formData.append('description', this.newTeamForm.value.description);
   formData.append('location', this.newTeamForm.value.customurl);
   formData.append('file', this.file);
@@ -123,6 +123,7 @@ show(){
     }
   }
   
+
   
   open1(content:any) {
 

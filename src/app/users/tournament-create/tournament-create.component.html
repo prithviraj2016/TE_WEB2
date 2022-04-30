@@ -1,5 +1,5 @@
 <div class="main">
-  <form>
+  <form [formGroup]="newTournamentForm" (ngSubmit)="createTournaments()">
     <div class="row">
       <div class="large-3">
         <div class="col_one">
@@ -11,19 +11,45 @@
           </h2>
           <div class="flex-item">
             <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Tournament Name</label>
-            <input type="text" formControlName="name">
+            <input type="text" formControlName="name" >
           </div>
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Tournamentname is required</div>
+            <div *ngIf="f['name'].errors['minlength']">Tournamentname must be at least 6 characters</div>
+            <div *ngIf="f['name'].errors['maxlength']">
+              Tournamentname must not exceed 20 characters
+            </div>
+          </div>
+
           <div class="flex-item">
             <label data-step="2" data-intro="Tournament Name" class="mandatory_field">Game</label>
-            <input type="text" placeholder="Search Games..." formControlName="game">
+            <input type="text" placeholder="Search Games..." formControlName="game" (Change)="showGame()">
+           
           </div>
+          <div *ngIf="submitted && f['game'].errors" class="invalid-feedback">
+            <div *ngIf="f['game'].errors['required']">Game is required</div>
+            <div *ngIf="f['game'].errors['minlength']">Game must be at least 6 characters</div>
+            <div *ngIf="f['game'].errors['maxlength']">
+              Game must not exceed 20 characters
+            </div>
+          </div>
+
           <div class="flex-item">
             <label data-step="3" data-intro="Tournament Name" class="mandatory_field">Start Date</label>
             <input type="date" placeholder="MM-DD-YY" formControlName="startDate" >
           </div>
+          <div *ngIf="submitted && f['startDate'].errors" class="invalid-feedback">
+            <div *ngIf="f['startDate'].errors['required']">Start Date is required</div>
+           </div>
+
+
           <div class="flex-item">
             <label data-step="4" data-intro="Tournament Name" class="mandatory_field">End Date</label>
             <input type="date" placeholder="MM-DD-YYYY" formControlName="endDate">
+            <div *ngIf="submitted && f['endDate'].errors" class="invalid-feedback">
+              <div *ngIf="f['endDate'].errors['required']">End Date is required</div>
+             </div>
+
             <div class="flex-item trnstyle-option" ng-mouseenter="tourType=true" ng-mouseleave="tourType=false"
               ng-disabled="tournament.started">
               <label class="non-floatfld mandatory_field" data-step="5"
@@ -217,7 +243,7 @@
             </div>
             <div class="flex-items">
               <label class="flex-label" style=" color: #3988ba;">Location</label>
-              <input type="text" class="location" placeholder="Search Location..." formControlName="location">
+              <input type="text" class="location" placeholder="Search Location..." formControlName="location" (change)="shwoLocations()" autocomplete="on">
             </div>
           </div>
 

@@ -29,8 +29,8 @@ export class DashboardService {
   createTeam(userObj:any){
     return this.http.post<[]>(environment.apiUrl + 'services/main/team',userObj, this.httpOptions);
   }
-  createTournament(){
-    return this.http.post<[]>(environment.apiUrl + 'services/main/tournament', this.httpOptions);
+  createTournament(userObj:any){
+    return this.http.post<[]>(environment.apiUrl + 'services/main/tournament',userObj, this.httpOptions);
   }
   updateProfile(id:any, userObj:any){
 
@@ -52,7 +52,10 @@ uploadImage(file: File){
 //   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/events', this.httpOptions);
 // }
 getLocation(){
-  return this.http.post<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);
+}
+getGame(){
+  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/game?query' ,this.httpOptions);
 }
 
 }

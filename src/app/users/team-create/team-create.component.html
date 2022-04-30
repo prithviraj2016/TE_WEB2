@@ -12,15 +12,15 @@
           <div class="flex-row">
             <div class="flex-item">
                 <label class="mandatory_field"style="color: #747f85;">Team Name</label>
-                <input type="text"  formControlName="teamname" form="season_form_novalidated" name='season_name' placeholder="" id='season_name' class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f['teamname'].errors }"
+                <input type="text"  formControlName="name" form="season_form_novalidated" name='team_name' placeholder="" id='season_name' class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
                   minlength="3" maxlength="50" value="" required /> 
                   <span class="mandatoryfld_lbl">
                 
-                    <div *ngIf="submitted && f['teamname'].errors" class="invalid-feedback">
-                      <div *ngIf="f['teamname'].errors['required']">Teamname is required</div>
-                      <div *ngIf="f['teamname'].errors['minlength']">Teamname must be at least 6 characters</div>
-                      <div *ngIf="f['teamname'].errors['maxlength']">
+                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                      <div *ngIf="f['name'].errors['required']">Teamname is required</div>
+                      <div *ngIf="f['name'].errors['minlength']">Teamname must be at least 6 characters</div>
+                      <div *ngIf="f['name'].errors['maxlength']">
                         Teamname must not exceed 20 characters
                       </div>
                     </div>
@@ -50,7 +50,7 @@
           <div class="flex-item complete">
             <label class="flex-label"   data-step="4" data-intro="Location of your team." for="autoCompleteDivLocationForEvent_value"style="color: #747f85;">Location</label>
             <input  value="" id="hdnLatLong" placeholder="Search Location..."  formControlName="location" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f['location'].errors }"/>
+            [ngClass]="{ 'is-invalid': submitted && f['location'].errors }"  (Change)="shwoLocations()"/>
             <span class="mandatoryfld_lbl">
                 
               <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
@@ -70,12 +70,13 @@
               <div class="row">
               <div class="left-column large-4 medium-3 small-6 columns">
                 <div id="user_image" enctype="multipart/form-data"   >
-                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  title="Choose a picture"
-                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" ng2FileSelect formControlName="image" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
+                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="!upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" class="form-control">
+                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" [src]="uploadimageSrc" (click)="open1(mymodal1)" class="form-control">
                     <span class="mandatoryfld_lbl">
                   </span>
-                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" >
+                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" *ngIf="upload1" >
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -103,7 +104,7 @@
                 border: dashed 1px #43464d;">
                 <img src="../../../assets/img/user.png" style=" height: 50%;
         width: 90%;
-        margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+        margin: 10px;" [src]="imageSrc" >
                 <div class="cr-boundary" aria-dropeffect="none">
         
                   <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -112,8 +113,8 @@
                     </div>
                     <div class="file">
                       <input type="file" name="file" class="file"
-                        style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                      <input type="submit" class="done" value="Done" onclick="show()"  >
+                        style="border: solid 1px #43464d; border-radius: 0px;"  formControlName="imageKey" (change)="onFileChange($event)">
+                      <input type="submit" class="done" value="Done" (click)="show()" (click)="modal.dismiss('Cross click')" >
                     </div>
                   </div>
                 </div>

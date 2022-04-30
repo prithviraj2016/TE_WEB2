@@ -1,6 +1,7 @@
 <div class="row ng-cloak create-event-form" data-ng-init="init()">
   <div class='create-form-section' id="braintree-set">
-    <form name="season_form" style="width: 100%;" [formGroup]="newSeasonsForm" (ngSubmit)=" createSeasons()">
+    <form  name="season_form" style="width: 100%;" [formGroup]="newSeasonsForm" (ngSubmit)=" createSeasons()" 
+    >
       <div class="row">
         <div class="large-4 medium-12 small-12 columns column-first">
           <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
@@ -15,26 +16,26 @@
             <div class="flex-item">
               <!-- <div class="is-floating-label"> -->
                 <label class="mandatory_field" data-step="1" data-intro="Name of the Event." style="color: #747f85;">Season Name</label>
-                <input type="text" formControlName="seasonname" form="season_form_novalidated" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f['seasonname'].errors } "name='season_name' placeholder="" id='season_name'
+                <input type="text" formControlName="name" form="season_form_novalidated" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['name'].errors } "name='season_name' placeholder="" id='season_name'
                   minlength="3" maxlength="50" value="" required />  <span class="mandatoryfld_lbl" >
                 
-                    <div *ngIf="submitted && f['seasonname'].errors" class="invalid-feedback">
-                      <div *ngIf="f['seasonname'].errors['required']">Seasonname is required</div>
-                      <div *ngIf="f['seasonname'].errors['minlength']">Seasonname must be at least 6 characters</div>
-                      <div *ngIf="f['seasonname'].errors['maxlength']">
+                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                      <div *ngIf="f['name'].errors['required']">Seasonname is required</div>
+                      <div *ngIf="f['name'].errors['minlength']">Seasonname must be at least 6 characters</div>
+                      <div *ngIf="f['name'].errors['maxlength']">
                         Seasonname must not exceed 20 characters
                       </div>
                     </div>
                 </span>
-              <!-- </div> -->
+              </div>
             </div>
           </div>
 
 
           <div class="flex-row">
             <div class="flex-item image-item">
-              <!-- <div class="is-floating-label"> -->
+              <div class="is-floating-label">
                 <label class="flex-label" data-step="2" data-intro="Description of the Season.">Description</label>
                 <textarea formControlName="description" id='season_description' form="season_form_novalidated" name='season_description' placeholder="" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
@@ -49,7 +50,7 @@
                       </div>
                     </div>
                 </span>
-              <!-- </div> -->
+              </div>
             </div>
 
             <div class="flex-item">
@@ -59,14 +60,14 @@
               <div class="input-field">
                 <div class="input-group">
                   <label class="input-group-label" for="season_webUrl">Tournamentedition.com/season/</label>
-                  <input type="text"  formControlName="customurl"    [ngClass]="{ 'is-invalid': submitted && f['customurl'].errors }" form="season_form_novalidated" class="input-group-field" minlength="3"
+                  <input type="text"  formControlName="webURL"    [ngClass]="{ 'is-invalid': submitted && f['webURL'].errors }" form="season_form_novalidated" class="input-group-field" minlength="3"
                     maxlength="100" placeholder="" name="season_webUrl" id="season_webUrl" disallow-spaces>
                 </div>
                 <span class="mandatoryfld_lbl">
                  
                 
-                    <div *ngIf="submitted && f['customurl'].errors" class="invalid-feedback">
-                      <div *ngIf="f['customurl'].errors['required']">Web Url must be at least 3 characters</div>
+                    <div *ngIf="submitted && f['webURL'].errors" class="invalid-feedback">
+                      <div *ngIf="f['webURL'].errors['required']">Web Url must be at least 3 characters</div>
                      
                     </div>
                 </span>
@@ -85,15 +86,15 @@
                 for="season_startDate">Start Date</label>
               <div class="is-floating-label">
 
-                <input type="date"  formControlName="sdate"    [ngClass]="{ 'is-invalid': submitted && f['sdate'].errors }"form="season_form_novalidated"  placeholder="MM-DD-YYYY"
+                <input type="date"  formControlName="startDate"    [ngClass]="{ 'is-invalid': submitted && f['startDate'].errors }"form="season_form_novalidated"  placeholder="MM-DD-YYYY"
                   class="date_calender" name="season_startDate" id="season_startDate" ng-model="startDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" future-only required />
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
                 <span class="mandatoryfld_lbl">
                  
                 
-                  <div *ngIf="submitted && f['sdate'].errors" class="invalid-feedback">
-                    <div *ngIf="f['sdate'].errors['required']">Start Date is required</div>
+                  <div *ngIf="submitted && f['startDate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['startDate'].errors['required']">Start Date is required</div>
                    
                   </div>
               </span>
@@ -107,7 +108,7 @@
               <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Season"
                 for="season_endDate">End Date</label>
               <div class="is-floating-label">
-                <input type="date" formControlName="edate"    [ngClass]="{ 'is-invalid': submitted && f['edate'].errors } "form="season_form_novalidated"  placeholder="MM-DD-YYYY"
+                <input type="date" formControlName="endDate"    [ngClass]="{ 'is-invalid': submitted && f['endDate'].errors } "form="season_form_novalidated"  placeholder="MM-DD-YYYY"
                   class="date_calender" name="season_endDate" id="season_endDate" ng-model="endDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" required />
 
@@ -115,8 +116,8 @@
                 <span class="mandatoryfld_lbl">
                  
                 
-                  <div *ngIf="submitted && f['edate'].errors" class="invalid-feedback">
-                    <div *ngIf="f['edate'].errors['required']">Start Date is required</div>
+                  <div *ngIf="submitted && f['endDate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['endDate'].errors['required']">Start Date is required</div>
                    
                   </div>
               </span>
@@ -132,17 +133,21 @@
               <div class="row">
               <div class="left-column large-4 medium-3 small-6 columns">
                 <div id="user_image">
-                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
-                    width="150" height="150" id="my-account-profile-image"  formControlName="image" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }" (click)="open1(mymodal1)">
-                    <span class="mandatoryfld_lbl">
+                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="!upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image"   class="form-control"
+                     (click)="open1(mymodal1)" >
+                    <img alt="Choose a picture" [src]="cropImgPreview" *ngIf="upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image"  class="form-control"
+                     (click)="open1(mymodal1)" >
+                    <!-- <span class="mandatoryfld_lbl">
                 
-                      <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
-                        <div *ngIf="f['image'].errors['required']">Image is required</div>
+                      <div *ngIf="submitted && f['imageKey'].errors" class="invalid-feedback">
+                        <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
                       
-                      </div> -->
-                  </span>
-                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                      </div>
+                  </span> -->
+                  
+                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  *ngIf="upload1">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -168,9 +173,20 @@
               </div>
               <div id="upload-demo" class="croppie-container" style="margin: 10px;
                 border: dashed 1px #43464d;">
-                <img src="../../../assets/img/user.png" style=" height: 50%;
+                <!-- <img src="../../../assets/img/user.png" style=" height: 50%;
         width: 90%;
-        margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+        margin: 10px;" [src]="imageSrc" *ngIf="imageSrc" > -->
+        <image-cropper
+      [imageChangedEvent]="imgChangeEvt" 
+      [maintainAspectRatio]="true" 
+      [aspectRatio]="4 / 4"
+      [resizeToWidth]="256" 
+      format="png"
+      (imageCropped)="cropImg($event)" 
+      (imageLoaded)="imgLoad()"
+      (cropperReady)="initCropper()" 
+      (loadImageFailed)="imgFailed()">
+    </image-cropper>
                 <div class="cr-boundary" aria-dropeffect="none">
         
                   <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -179,8 +195,12 @@
                     </div>
                     <div class="file">
                       <input type="file" name="file" class="file"
-                        style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                      <input type="submit" class="done" value="Done" onclick="show()"  >
+                        style="border: solid 1px #43464d; border-radius: 0px;" multiple (change)="onFileChange($event)" formControlName="imageKey">
+                      <input type="submit" class="done" value="Done" (click)="show()"  (click)="modal.dismiss('Cross click')"  >
+                      <div *ngIf="submitted && f['imageKey'].errors" class="invalid-feedback">
+                        <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
+                        </div>
+                        
                     </div>
                   </div>
                 </div>
@@ -195,7 +215,7 @@
               <button title="Cancel" type="button" class="btn-block red"  (click)="onReset()">
                 <span>Cancel</span>
               </button>
-              <button title="ok" type="submit" class="btn-block">
+              <button title="ok" type="submit" class="btn-block" (click)="this.uploadFiles()" >
                 <span>Create</span>
               </button>
             </div>

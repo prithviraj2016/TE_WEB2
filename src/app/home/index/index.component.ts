@@ -105,8 +105,9 @@ export class IndexComponent implements OnInit {
   ngOnInit(){
       $(document).foundation();
       this._service.getTournament().subscribe(res =>{
-        this.tournamentList=res;
-        console.log(this.tournamentList);
+      this.tournamentList=Object.values(res);
+       for (var i=2; i<this.tournamentList.length; i++);
+      console.log(this.tournamentList[i]);
       });
      this.signinForm = this.frmbuilder.group({
       'UserName':new FormControl ('', [Validators.required]),
@@ -300,7 +301,7 @@ export class IndexComponent implements OnInit {
 
 
     resendVerification() {
-      // debugger
+      
       if (this.forgetForm.value.email != "" || this.forgetForm.value.email != undefined) {
         this.service.resendverification(this.forgetForm.value.email).subscribe(data => {
           this._re_errorTxt = "Account is already Active";
@@ -314,7 +315,7 @@ export class IndexComponent implements OnInit {
         },
           err => {
             console.log(err);
-            // debugger
+            
             if (err.status) {
               if (typeof (err.error) != 'undefined' && typeof (err.error.errorMessages) != 'undefined' && err.error.errorMessages.length > 0) {
                 this._re_errorTxt = '';

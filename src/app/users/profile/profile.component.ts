@@ -13,6 +13,7 @@ show:boolean = false;
 userID:any;
 userName:any;
 userDetails:any;
+image_url: any;
 
 title = 'appBootstrap';
 closeResult: string = '';
@@ -22,7 +23,8 @@ public showPassword1: boolean;
 public showPassword2: boolean;
 imageSrc: string = '';
 loggedinUser:any;
-  email: any;
+email: any;
+  
 
 
   constructor(
@@ -30,7 +32,7 @@ loggedinUser:any;
     private modalService: NgbModal) {}
 
   ngOnInit(): void {
-   
+ 
     this.loggedinUser = localStorage.getItem('loggeduser');
     this.loggedinUser = JSON.parse(this.loggedinUser);
     this.userName=this.loggedinUser.username;

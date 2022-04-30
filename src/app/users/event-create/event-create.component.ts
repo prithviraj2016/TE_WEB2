@@ -16,21 +16,12 @@ export class EventCreateComponent implements OnInit {
   showMe:boolean=false;
   title = 'appBootstrap';
   closeResult: string = '';
-  newEventForm: FormGroup = new FormGroup({
-    eventname:new FormControl(''),
-    description:new FormControl(''),
-    customurl:new FormControl(''),
-      image:new FormControl(''),
-      sdate:new FormControl(''),
-      edate:new FormControl(''),
-      location:new FormControl(''),
-      paidevent:new FormControl('')
-  });
   imageURL: string;
   imageSrc: string = '';
   imageSrc1:string;
   uploadImage: FormGroup;
   submitted = false;
+  newEventForm:FormGroup=new FormGroup({});
   constructor(private formBuilder: FormBuilder,
     private _router: Router,
     private http:HttpClient,
@@ -83,6 +74,12 @@ export class EventCreateComponent implements OnInit {
         this.imageURL = reader.result as string;
       }
       reader.readAsDataURL(file)
+    }
+    show(){
+ 
+      this.uploadimageSrc=this.imageSrc;
+      this.upload=true;
+      
     }
     submitImage(){
       console.log(this.uploadImage.value);

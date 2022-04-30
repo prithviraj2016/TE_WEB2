@@ -16,36 +16,36 @@ import { DashboardService } from '../dashboard/dashboard.service';
   styleUrls: [ '../../../assets/css/profile.css']
 })
 export class TeamCreateComponent implements OnInit {
-  newTeamForm: FormGroup = new FormGroup({
-    teamname:new FormControl(''),
-    description:new FormControl(''),
-    location:new FormControl(''),
-    image:new FormControl('')
-  });
+  newTeamForm: FormGroup = new FormGroup({});
   closeResult: string = '';
   imageSrc:string;
   submitted=false;
-
+  location: any;
+  uploadimageSrc:string;
+  upload1=false;
 
  
   private title: string;
+  file: string | Blob;
   
   constructor(private formBuilder: FormBuilder, 
     private _router: Router, 
     private http:HttpClient,
     private modalService: NgbModal,
-    private _Service:DashboardService,
+    private service:DashboardService,
     private activatedRoute:ActivatedRoute,
    
 
    ) { }
 
   ngOnInit(): void {
+    this.shwoLocations();
+
     this.newTeamForm=this.formBuilder.group({
-      'teamname':new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]),
+      'name':new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]),
       'description':new FormControl('', [Validators.required,Validators.minLength(20),Validators.maxLength(100)]),
       'location':new FormControl('', [Validators.required , Validators.minLength(6), Validators.maxLength(20)]),
-      'image':new FormControl('',[Validators.required] ),
+      'imageKey':new FormControl('',[Validators.required] ),
   
     });
     
@@ -55,33 +55,54 @@ export class TeamCreateComponent implements OnInit {
 get f(): { [key: string]: AbstractControl } {
   return this.newTeamForm.controls;
 }
-  public myError = (controlName: string, errorName: string) =>{
-    return this.newTeamForm.controls[controlName].hasError(errorName);
+
+createTeam(){
+  const formData = new FormData();
+  formData.append('name', this.newTeamForm.value.seasonname);
+  formData.append('description', this.newTeamForm.value.description);
+  formData.append('location', this.newTeamForm.value.customurl);
+  formData.append('file', this.file);
+  formData.append('imageKey',this.newTeamForm.value.image);
+  
+     if (this.newTeamForm.invalid) {
+    console.log(this.newTeamForm.value);
+   this.service.createTeam(JSON.stringify(this.newTeamForm.value)).subscribe(data =>{
+    if(data) {
+       alert("Team Created Successfully");
+     }else(err: any)=>{
+       alert("Something went wrong");
+     }
+   });
+  }
 }
-// onSubmit(): void {
-//   this.submitted = true;
-//   if (this.newTeamForm.invalid) {
-//     return;
-//   }
-//   console.log(JSON.stringify(this.newTeamForm.value, null, 2));
-// }
+  
+
+
 onReset(): void {
   this.submitted = false;
   this.newTeamForm.reset();
 }
-
-
-
-
-
-  createTeam(){
-    console.log(this.newTeamForm.value);
-    this.submitted = true;
-       if (this.newTeamForm.invalid) {
-     return;
+shwoLocations() {
+  this.service.getLocation().subscribe((data: any) => {
+    if(data){
+    console.log(data);
+    this.location = data;
     }
-     console.log(JSON.stringify(this.newTeamForm.value, null, 2));
-  }
+    // console.log(this.countries);
+  });
+}
+show(){
+ 
+  this.uploadimageSrc=this.imageSrc;
+  this.upload1=true;
+  
+}
+
+
+
+
+
+  
   onFileChange(event:any) {
     const reader = new FileReader();
     
@@ -101,9 +122,13 @@ onReset(): void {
    
     }
   }
-  upload(){
+  show(){
+ 
+    this.uploadimageSrc=this.imageSrc;
+    this.upload=true;
     
   }
+  
   open1(content:any) {
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

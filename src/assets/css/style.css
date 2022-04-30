@@ -136,7 +136,7 @@ label.label-custom { position: relative;cursor: default;}
 background: none !important;
 padding: 0;
 }
-.removeOldImage i { visibility: hidden;
+.removeOldImage i {
     color: red;
     font-size: 12px;}
 .removeOldImage span { font-size: 12px; display: block;}

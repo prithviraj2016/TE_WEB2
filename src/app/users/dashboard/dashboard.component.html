@@ -143,7 +143,7 @@
                                                     <p>Tournament Type</p>
                                                 </div>
                                             </div>
-                                            <div class="txt-event small-6" *ngFor="let item of tournamentList"> 
+                                            <div class="txt-event small-6" *ngFor="let item of tournamentList; let i = index"> 
                                                 <span class="tgamename">{{item.name}}</span>
                                                 <hr class="shr3">
                                                 <div class="tinfo">Start Date:{{item.startDate}}</div>

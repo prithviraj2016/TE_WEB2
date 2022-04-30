@@ -28,12 +28,14 @@ export class DashboardComponent implements OnInit {
 
    }
    getTournamentdetails(){
-    this._service.getTournament().subscribe(res=>{
+    this._service.getTournament().subscribe(res =>{
       this.tournamentList=Object.values(res);
-      console.log(this.tournamentList);
+       for (var i=2; i<this.tournamentList.length; i++);
+      console.log(this.tournamentList[i]);
+      });
       
         
-      });
+     
   
     }
 helpbutton(){

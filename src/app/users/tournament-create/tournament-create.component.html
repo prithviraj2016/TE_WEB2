@@ -1,25 +1,323 @@
-<div class="main" style="background: #1d262c;
-font-family: 'Roboto', sans-serif;">
-<form style="padding: 0px;">
-  <div class="row" style=" --bs-gutter-x: 0rem;">
+<div class="main">
+  <form>
+    <div class="row">
+      <div class="large-3">
+        <div class="col_one">
+          <h1>CREATE TOURNAMENT</h1>
+          <h2>Basic
+            <a href="#">
+              <mat-icon>info</mat-icon>
+            </a>
+          </h2>
+          <div class="flex-item">
+            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Tournament Name</label>
+            <input type="text">
+          </div>
+          <div class="flex-item">
+            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Game</label>
+            <input type="text" placeholder="Search Games...">
+          </div>
+          <div class="flex-item">
+            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Start Date</label>
+            <input type="date" placeholder="MM-DD-YY">
+          </div>
+          <div class="flex-item">
+            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">End Date</label>
+            <input type="date" placeholder="MM-DD-YYYY">
+            <div class="flex-item trnstyle-option" ng-mouseenter="tourType=true" ng-mouseleave="tourType=false"
+              ng-disabled="tournament.started">
+              <label class="non-floatfld mandatory_field" data-step="5"
+                data-intro="Select Tournament Style from the list">Tournament Style</label>
+              <div class="select-field">
 
-    <div class="col-lg-2" style="width: 20%;">
-      <h5 class="ng-binding">Create Tournament</h5>
-    </div>
-    <div class="col-lg-4" style="width: 30%;">
-     
-    </div>
-    <div class="col-lg-4" style="width:35%;">
-     
-    </div>
+                <select name="tournamentType" id="tournamentType" required="">
+                  <option value="SINGLE_ELIMINATION" selected="selected">Single Elimination</option>
+                  <option value="DOUBLE_ELIMINATION">Double Elimination</option>
+                  <option value="ROUND_ROBIN">Round Robin</option>
+                  <option value="SWISS">Swiss</option>
+                </select>
+                <span class="dropdown-arrow"></span>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="flex-img">
+            <label class="flex-label-one" data-step="8" data-intro="Upload 400px X 400px picture"
+              for="user_image">Tournament Picture</label>
+          </div>
+          <div class="row">
+            <div class="left-column large-6 medium-3 small-6 columns">
+              <div id="user_image" enctype="multipart/form-data">
+                <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' (click)="open1(mymodal1)" title="Choose a picture"
+                  style="width: 100px; height: 100px;" id="my-account-profile-image" class="form-control">
+                <span class="mandatoryfld_lbl">
+                </span>
+                <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
 
-    <div class="col-lg-2">
 
+
+
+            <ng-template #mymodal1 let-modal>
+              <div class="popup-box">
+                <div class="container">
+                  <div class="heading">
+                    <div class="modal-heading">
+                      <h6>Upload Picture</h6>
+                      <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                      </a>
+                    </div>
+                  </div>
+                  <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                    border: dashed 1px #43464d;">
+                    <img src="../../../assets/img/user.png" style=" height: 50%;
+            width: 90%;
+            margin: 10px;" >
+                    <div class="cr-boundary" aria-dropeffect="none">
+            
+                      <div class="cr-viewport cr-vp-square" tabindex="0">
+                        <div class="slide-container">
+                          <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
+                        </div>
+                        <div class="file">
+                          <input type="file" name="file" class="file"
+                            style="border: solid 1px #43464d; border-radius: 0px;">
+                          <input type="submit" class="done" value="Done" onclick="show()"  >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+
+
+
+
+            <div class="large-6 medium-6 small-6 columns">
+              <p class="help-text">Click here to upload picture.</p>
+            </div>
+          </div>
+
+          <div class="flex-row">
+            <div class="flex-item">
+              <div data-step="7" data-intro="Set location so you would be notified of any tournaments in your area.">
+                <label class="flex-label" data-step="7" data-intro="Tournament Description">Tournament
+                  Description</label>
+                <textarea name="description" placeholder="" maxlength="1200"
+                  ng-model="tournament.description"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="large-4">
+        <div class="col_two">
+          <div class="toggle">
+            <h1></h1>
+            <h2>Advanced Features</h2>
+            <div class="men_toggle">
+              <material-slide-toggle style="float:right;" (change)=" toogleTag()"></material-slide-toggle>
+            </div>
+          </div>
+          <div class="toggle-slide" *ngIf="showMe">
+            <div _ngcontent-kho-c228="" class="flex-items">
+              <label class="label-custom">Custom URL
+                <i class="icon-copy">
+                  <img src="../assets/img/icon_copy_url.png">
+                </i>
+              </label>
+              <div class="input-field">
+                <div class="input-group">
+                  <label class="input-group-label">Tournamentedition.com/tournament/</label>
+                  <input type="text" placeholder="" name="event_webUrl" id="event_webUrl"
+                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                </div>
+                <span class="mandatoryfld_lbl"></span>
+              </div>
+            </div>
+            <div _ngcontent-kho-c228="" class="flex-items">
+              <label class="label-custom">Mixer Channel
+                <i class="icon-copy">
+                  <img src="../assets/img/icon_copy_url.png">
+                </i>
+              </label>
+              <div class="input-field">
+                <div class="input-group">
+                  <label class="input-group-label">www.mixer.com/</label>
+                  <input type="text" placeholder="Mixer Channel name" name="event_webUrl" id="event_webUrl"
+                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                </div>
+                <span class="mandatoryfld_lbl"></span>
+              </div>
+            </div>
+            <div class="flex-items">
+              <label class="label-custom">Twitch Channel
+                <i class="icon-copy">
+                  <img src="../assets/img/icon_copy_url.png">
+                </i>
+              </label>
+              <div class="input-field">
+                <div class="input-group">
+                  <label class="input-group-label">www.twitch.tv/</label>
+                  <input type="text" placeholder="Twitch Channel name" id="event_webUrl"
+                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                </div>
+                <span class="mandatoryfld_lbl"></span>
+              </div>
+            </div>
+            <div class="connectTwitter">
+              <label class="label-custom">Share With</label>
+              <a class="social_network_link connected" id="twitter" href="">
+                <i class="fab fa-twitter"></i><i ng-class="{'fa fa-check' : isTwitterConnected}"></i>
+              </a>
+            </div>
+            <div class="flex-items image-item" style="position: relative;">
+              <label class="flex-label">Twitter Message</label>
+              <textarea
+                placeholder="Coming up 'Player1' VS 'Player 2' At (insert event Twitter) In (enter hashtag). On (stream link) via @Te_App #TE"
+                id="twitterMessage" name="twitterMessage"
+                class="twitter_message ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" rows="4"
+                cols="150"></textarea>
+
+              <div ng-show="showTwitterHelp" class="help_pop small_shadow ng-hide" style="display: none; top: -200px;">
+                <p class="showTwitterHelp">
+                  With one press you can tweet out a custom message every time a new match is about to begin. The
+                  twitter names of the players/teams will automatically be populated. In the text box is a suggested
+                  format but You can write whatever you want! Here is one
+                  example...
+                  <br><br>
+                  Coming up, @G4STroy vs @CDMani at @TE_Championships in #mortalkombat. On @twitch.tv/cdjr02
+                  via @te_app #TE
+                </p>
+              </div>
+            </div>
+            <div class="flex-items image-item">
+              <label class="flex-label">Notification Message</label>
+              <textarea placeholder="Write our own message" rows="4" cols="150"
+                class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength"></textarea>
+            </div>
+            <div class="flex-items">
+              <label class="flex-label" style=" color: #3988ba;">Location</label>
+              <input type="text" class="location" placeholder="Search Location...">
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="large-5">
+        <div class="col_three">
+          <div class="toggle-slide" *ngIf="showMe">
+            <div class="setting-item">
+              <h2>Settings</h2>
+            </div>
+            <div class="row" style="padding-left: 17px;">
+              <div class="large-6">
+
+                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
+                  data-intro="Have option for people to register for tournament.">
+                  <label class="flex-label" for="preRegister">Register</label>
+                  <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
+                    <material-slide-toggle></material-slide-toggle>
+                  </div>
+
+                </div>
+                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
+                  data-intro="Have option for people to register for tournament.">
+                  <label class="flex-label" for="preRegister">Consider Teams</label>
+                  <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
+                    <material-slide-toggle></material-slide-toggle>
+                  </div>
+
+                </div>
+                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
+                  data-intro="Have option for people to register for tournament.">
+                  <label class="flex-label" for="preRegister">Player Score Submission</label>
+                  <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
+                    <material-slide-toggle (change)="toogleTag1()"></material-slide-toggle>
+                  </div>
+
+                </div>
+
+              </div>
+              <div class="large-6">
+                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
+                  data-intro="Have option for people to register for tournament.">
+                  <label class="flex-label" for="preRegister">Team Based Tournament</label>
+                  <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
+                    <material-slide-toggle></material-slide-toggle>
+                  </div>
+
+                </div>
+                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
+                  data-intro="Have option for people to register for tournament.">
+                  <label class="flex-label" for="preRegister">Consider Location</label>
+                  <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
+                    <material-slide-toggle></material-slide-toggle>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="row" style="padding-top: 15px;">
+              <div class="large-6" style="padding-left: 17px;">
+                <label class="label-custom">Check In Time</label>
+                <div class="select-field">
+                  <select name="checkinTime" id="checkinTime"
+                    class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty">
+                    <option value="0" selected="selected">Off</option>
+                    <option value="15">15 min</option>
+                    <option value="30">30 min</option>
+                    <option value="60">1 hour</option>
+                    <option value="120">2 hours</option>
+                    <option value="180">3 hours</option>
+                    <option value="360">6 hours</option>
+                    <option value="1440">1 day</option>
+                  </select> <span class="dropdown-arrow"></span>
+                </div>
+              </div>
+              <div class="large-6" style="padding-left: 17px;" *ngIf="showMe1">
+                <div>
+                  <div class="flex-column-space"></div>
+                  <label class="label-custom">Auto Advance Timer</label>
+                  <div class="select-field">
+                    <select class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty">
+                      <option value="0" selected="selected">None</option>
+                      <option value="5">5 min</option>
+                      <option value="10">10 min</option>
+                      <option value="15">15 min</option>
+                      <option value="30">30 min</option>
+                      <option value="60">1 hour</option>
+                    </select> <span class="dropdown-arrow"></span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <br><br>
+          </div>
+          <div class="example-button-row">
+            &nbsp;&nbsp;&nbsp;
+            <button id="cancel" class="btn btn-block red">
+              <span>
+                Cancel
+              </span>
+            </button>
+            &nbsp;&nbsp;&nbsp;
+            <button id="save" class="btn btn-block ">
+              <span>
+                Create
+              </span>
+            </button>
+            &nbsp;&nbsp;&nbsp;
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
 </div>
-
-
-
-

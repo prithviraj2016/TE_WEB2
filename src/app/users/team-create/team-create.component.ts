@@ -122,9 +122,13 @@ show(){
    
     }
   }
-  upload(){
+  show(){
+ 
+    this.uploadimageSrc=this.imageSrc;
+    this.upload=true;
     
   }
+  
   open1(content:any) {
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

@@ -75,6 +75,12 @@ export class EventCreateComponent implements OnInit {
       }
       reader.readAsDataURL(file)
     }
+    show(){
+ 
+      this.uploadimageSrc=this.imageSrc;
+      this.upload=true;
+      
+    }
     submitImage(){
       console.log(this.uploadImage.value);
     }

@@ -203,9 +203,14 @@
                 <div class="left-column large-4 medium-3 small-6 columns">
                   <div id="user_image">
                     <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture" formControlName="image" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
+                    
                       width="100px" height="100px"  (click)="open1(mymodal1)" id="my-account-profile-image" onclick="upload_pic_box(this);">
+                      width="100px" height="100px" id="my-account-profile-image" onclick="upload_pic_box(this);" *ngIf="!upload">
+                      <img alt="Choose a picture"  title="Choose a picture" formControlName="image" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
+                        width="100px" height="100px" id="my-account-profile-image" onclick="upload_pic_box(this);" *ngIf="!upload">
                       <span class="mandatoryfld_lbl">
+                        
                 
                         <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
                           <div *ngIf="f['image'].errors['required']">Image is required</div>

@@ -122,12 +122,7 @@ show(){
    
     }
   }
-  show(){
- 
-    this.uploadimageSrc=this.imageSrc;
-    this.upload=true;
-    
-  }
+  
   
   open1(content:any) {
 

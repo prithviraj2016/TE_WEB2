@@ -28,8 +28,8 @@ export class SeasonCreateComponent implements OnInit {
   submitted=false;
   private title: string;
   // this on
-  uploadimageSrc:string;
-  upload=false;
+  // uploadimageSrc:string;
+  // upload=false;
 
   imgChangeEvt: any = '';
   cropImgPreview: any = '';

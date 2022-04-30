@@ -35,6 +35,7 @@ import { EditTeamComponent } from 'src/app/users/edit-team/edit-team.component';
 import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-script-load-service';
 import { ManageTournamentsComponent } from 'src/app/users/manage-tournaments/manage-tournaments.component';
 import { ManagePlayersComponent } from 'src/app/users/manage-players/manage-players.component';
+import { ImageCropperModule} from 'ngx-image-cropper';
 // import { AngularFileUploaderModule } from "angular-file-uploader";
 
 
@@ -65,7 +66,7 @@ import { ManagePlayersComponent } from 'src/app/users/manage-players/manage-play
     MatNativeDateModule,
     ModalModule.forRoot(),
     HttpClientModule,
-   
+    ImageCropperModule
     // AngularFileUploaderModule,
 
    
@@ -93,7 +94,8 @@ import { ManagePlayersComponent } from 'src/app/users/manage-players/manage-play
     EditSeasonComponent,
     EditTeamComponent,
     ManageTournamentsComponent,
-    ManagePlayersComponent
+    ManagePlayersComponent,
+    
   ],
   providers: [
     DynamicScriptLoaderService

@@ -21,6 +21,8 @@ export class EventCreateComponent implements OnInit {
   imageSrc1:string;
   uploadImage: FormGroup;
   submitted = false;
+  uploadimageSrc:string;
+  upload:any;
   newEventForm:FormGroup=new FormGroup({});
   constructor(private formBuilder: FormBuilder,
     private _router: Router,

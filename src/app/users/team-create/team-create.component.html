@@ -74,11 +74,6 @@
                     width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" ng2FileSelect formControlName="image" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
                     <span class="mandatoryfld_lbl">
-                
-                      <!-- <div *ngIf="submitted && f['image'].errors" class="invalid-feedback">
-                        <div *ngIf="f['image'].errors['required']">Image is required</div>
-                      
-                      </div> -->
                   </span>
                   <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" >
                     <i class="fas fa-trash-alt"></i>

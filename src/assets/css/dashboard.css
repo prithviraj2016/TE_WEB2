@@ -552,6 +552,15 @@ ul.player_follower {
     width: 100%;
     height: 78px;
 }
+#tstyle1 {
+    padding-top: 38px;
+    border-bottom: #6196CC solid 1px;
+    /*
+     position: absolute;
+    top: 0; */
+    width: 100%;
+    height: 78px;
+}
 #tstyle ul.nav-tabs {
 	padding-left: 15px;
 }
@@ -571,7 +580,23 @@ ul.player_follower {
     line-height: normal;
     min-height: 39px;
 }
-
+#tstyle ul.nav-tabs li a span{
+     color:#6196CC;
+    font-size: 14px;
+    padding: 12px 6px 0 6px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 39px;
+}
+#tstyle .active a span{
+    border: solid 1px #6196cc;
+    border-top: solid 1px #6196cc;
+    border-bottom: solid 2px #1d262c!important;
+    color: #fff!important;
+    margin-bottom: -1px;
+    text-decoration: none;
+    box-shadow: 0 -16px 19px -10px #0b141b;
+}
 #tstyle .tabs-title a {
     border-top-left-radius: 5px !important;
     -webkit-border-top-left-radius: 5px;

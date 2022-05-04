@@ -1,0 +1,25 @@
+.list-icon {
+    width: 25px;
+    height: 25px;
+    background: url(../../../assets/img/@2x-listicon.svg) 0 0 no-repeat;
+    float: left;
+}
+.manage-players-search{
+    padding-top: 10px !important;
+}
+.manage-players-search input
+    {
+        border: #3988ba solid 2px;
+        background-color:#1d262c;
+        color:rgb(207, 202, 202);
+        float: left;
+        margin: 0;
+        padding: 3px 5px 3px 35px;
+        height: 29px;
+        width: 200%;
+        outline: 0;
+    }
+    .manage-players-search input::placeholder{
+        color: rgb(207, 202, 202);
+        font-weight:normal;
+    }

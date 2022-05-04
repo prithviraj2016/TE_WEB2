@@ -1,3 +1,4 @@
+
 import { HttpClientModule } from '@angular/common/http';
 import { TournamentCreateComponent} from 'src/app/users/tournament-create/tournament-create.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,6 +37,7 @@ import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-scri
 import { ManageTournamentsComponent } from 'src/app/users/manage-tournaments/manage-tournaments.component';
 import { ManagePlayersComponent } from 'src/app/users/manage-players/manage-players.component';
 import { ImageCropperModule} from 'ngx-image-cropper';
+import { ManagePlayersTeamComponent } from './../../users/manage-players-team/manage-players-team.component';
 // import { AngularFileUploaderModule } from "angular-file-uploader";
 
 
@@ -95,6 +97,7 @@ import { ImageCropperModule} from 'ngx-image-cropper';
     EditTeamComponent,
     ManageTournamentsComponent,
     ManagePlayersComponent,
+    ManagePlayersTeamComponent
     
   ],
   providers: [

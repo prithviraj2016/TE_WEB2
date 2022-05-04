@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit {
     this._service.getTournament().subscribe(res =>{
       this.tournamentList=Object.values(res);
        for (var i=2; i<this.tournamentList.length; i++);
+       this.tournamentList[i]=i+2;
       console.log(this.tournamentList[i]);
       });
       

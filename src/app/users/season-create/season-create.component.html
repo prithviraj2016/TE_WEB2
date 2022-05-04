@@ -1,6 +1,6 @@
 <div class="row ng-cloak create-event-form" data-ng-init="init()">
   <div class='create-form-section' id="braintree-set">
-    <form  name="season_form" style="width: 100%;" [formGroup]="newSeasonsForm" (ngSubmit)=" createSeasons()" 
+    <form  name="season_form" style="width: 100%;" [formGroup]="newSeasonsForm" (ngSubmit)="createSeasons()" 
     >
       <div class="row">
         <div class="large-4 medium-12 small-12 columns column-first">
@@ -147,7 +147,7 @@
                       </div>
                   </span> -->
                   
-                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  *ngIf="upload1">
+                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  *ngIf="upload1" >
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -196,7 +196,7 @@
                     <div class="file">
                       <input type="file" name="file" class="file"
                         style="border: solid 1px #43464d; border-radius: 0px;" multiple (change)="onFileChange($event)" formControlName="imageKey">
-                      <input type="submit" class="done" value="Done" (click)="show()"  (click)="modal.dismiss('Cross click')"  >
+                      <input type="submit" class="done" value="Done" (click)="show()"  (click)="modal.dismiss('Cross click')" (click)="uploadFiles()" >
                       <div *ngIf="submitted && f['imageKey'].errors" class="invalid-feedback">
                         <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
                         </div>

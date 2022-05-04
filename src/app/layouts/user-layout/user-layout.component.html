@@ -110,7 +110,7 @@
                 <br>@{{userID}}
               </span></li>
             <li ><a title="Edit Profile" routerLink="/profile/{{userID}}"  href="" >Edit Profile</a></li>
-            <li><a title="Message Followers" class="" routerLink="/manage-followers"> Message Followers </a></li>
+            <li><a title="Message Followers" class="" (click)="open1(mymodal1)"> Message Followers </a></li>
             <li class="navbar_profile_item ng-cloak"> <a (click)="Logout()" title="Logout" href>Logout</a> </li>
           </ul>
 
@@ -121,6 +121,51 @@
 </section>
 
 <div class="header-margin"></div>
+
+<ng-template #mymodal1 let-modal>
+  <div class="popup-box">
+    <div class="container">
+      <div class="heading">
+        <div class="modal-heading">
+          <h6>
+            Message Followers</h6>
+           
+          <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+          </a>
+        </div>
+      </div>
+      <form>
+      <div class="small-12 mbt15 text-left column">Message</div>
+      <textarea  maxlength="140" class="ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-touched user-error" ></textarea>
+     
+      <div class="toggle-container-mp_message_modal">
+        <div class="row">
+        <div class="large-5 small-5 medium-5 column">
+          <label>Registration approvals
+            <material-slide-toggle></material-slide-toggle>
+          </label>
+          
+        </div>
+        <div class=" large-5 small-5 medium-5 column">
+          <div class="switch round tiny text-left">
+            <label>Registration approvals
+              <material-slide-toggle></material-slide-toggle>
+            </label>
+            
+          </div>
+        </div>
+        <div class="large-2">
+          <input type="submit" >
+        </div>
+        </div>
+     
+    </div>
+  </form>
+    </div>
+  </div>
+</ng-template>
+
 <!-- End Top Bar -->
 
 <router-outlet></router-outlet>

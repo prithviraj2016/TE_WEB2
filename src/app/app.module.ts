@@ -1,3 +1,4 @@
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -19,9 +20,8 @@ import { GlobalErrorHandler } from './shared/services/globalErrorHandler';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { httpInterceptorProviders } from './common/services/httpInterceptorProviders';
 import { AuthGuard } from './common/services/auth-guard.service';
-// import { ManageTournamentsComponent } from './users/manage-tournaments/manage-tournaments.component';
-// import { ManageEventComponent } from './users/manage-event/manage-event.component';
-// import { ManagePlayersComponent } from './users/manage-players/manage-players.component';
+import { SlideToggleModule } from 'ngx-slide-toggle';
+
 
 
 
@@ -36,8 +36,8 @@ import { AuthGuard } from './common/services/auth-guard.service';
     SignUpComponent,
     HomeLayoutComponent,
     UserLayoutComponent,
-    // ManageEventComponent,
-    // ManagePlayersComponent,
+    
+   
   
 
   ],
@@ -54,7 +54,7 @@ import { AuthGuard } from './common/services/auth-guard.service';
     FontAwesomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+    SlideToggleModule,
   ],
   providers:[
     {provide: ErrorHandler, useClass: GlobalErrorHandler},

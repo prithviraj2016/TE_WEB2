@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { Router } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-layout',
   templateUrl: './user-layout.component.html',
-  styleUrls:['../../../assets/css/style.css','../../../assets/css/custom.css','../../../assets/css/dashboard.css'],
+  styleUrls:['../../../assets/css/style.css','../../../assets/css/custom.css','../../../assets/css/dashboard.css','../../../assets/css/profile.css'],
   encapsulation: ViewEncapsulation.None
 })
 
@@ -19,6 +20,8 @@ export class UserLayoutComponent implements OnInit {
   loggedinUser:any;
   userName:String;
   menuVariable:boolean=false;
+  closeResult: string;
+  title = 'appBootstrap';
   openMenu(){
     this.menuVariable= !this.menuVariable;
   }
@@ -26,12 +29,43 @@ export class UserLayoutComponent implements OnInit {
   constructor(
     public location: Location,
     private router: Router,
-    private _service: AccountService
+    private _service: AccountService,
+    private modalService: NgbModal
     ) {}
 
   ngOnInit() {
 
 
+  }
+  open1(content:any) {
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
+  
+      this.closeResult = `Closed with: ${result}`;
+  
+    }, (reason: any) => {
+  
+      this.closeResult = `Dismissed ${this.getDismissReason1(reason)}`;
+  
+    });
+  
+  }
+  private getDismissReason1(reason: any): string {
+  
+    if (reason === ModalDismissReasons.ESC) {
+  
+      return 'by pressing ESC';
+  
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  
+      return 'by clicking on a backdrop';
+  
+    } else {
+  
+      return  `with: ${reason}`;
+  
+    }
+  
   }
 
   ngAfterViewInit() {

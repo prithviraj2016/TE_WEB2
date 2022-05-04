@@ -56,13 +56,16 @@
                 data-intro="Select Tournament Style from the list">Tournament Style</label>
               <div class="select-field">
 
-                <select name="tournamentType" id="tournamentType" required="" formControlName="tournamentType">
+                <select name="tournamentType" id="tournamentType" formControlName="tournamentType">
                   <option value="SINGLE_ELIMINATION" selected="selected">Single Elimination</option>
                   <option value="DOUBLE_ELIMINATION">Double Elimination</option>
                   <option value="ROUND_ROBIN">Round Robin</option>
                   <option value="SWISS">Swiss</option>
                 </select>
                 <span class="dropdown-arrow"></span>
+                <div *ngIf="submitted && f['tournamentType'].errors" class="invalid-feedback">
+                  <div *ngIf="f['tournamentType'].errors['required']">Plaese select tournament type</div>
+                 </div>
               </div>
             </div>
           </div>
@@ -77,6 +80,9 @@
                 <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' (click)="open1(mymodal1)" title="Choose a picture"
                   style="width: 100px; height: 100px;" id="my-account-profile-image" class="form-control">
                 <span class="mandatoryfld_lbl">
+                  <div *ngIf="submitted && f['imageKey'].errors" class="invalid-feedback">
+                    <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
+                   </div>
                 </span>
                 <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
                   <i class="fas fa-trash-alt"></i>
@@ -150,6 +156,9 @@
                   Description</label>
                 <textarea name="description" placeholder="" maxlength="1200"
                   ng-model="tournament.description" formControlName="description"></textarea>
+                  <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                    <div *ngIf="f['description'].errors['required']">Description is required</div>
+                   </div>
               </div>
             </div>
           </div>

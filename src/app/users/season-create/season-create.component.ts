@@ -27,6 +27,7 @@ export class SeasonCreateComponent implements OnInit {
   imageSrc:string;
   submitted=false;
   private title: string;
+  imageurls =[];
   // this on
   // uploadimageSrc:string;
   // upload:false;
@@ -88,6 +89,11 @@ get f(): { [key: string]: AbstractControl } {
     
     
   }
+  removeImage() {
+    this.imageurls.splice(1);
+  }
+
+  
  
 
     

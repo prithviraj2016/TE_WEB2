@@ -1,24 +1,32 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './tournaments.component.html'
 })
 export class TournamentsComponent implements OnInit {
-
+  // public tournamentList:any=[];
+  public hype:any=[];
+  constructor(private _service:DashboardService) {}
 
   ngOnInit() {
 
-
-
-
-
-
-
-
-
-    }
-
+  this.getTournamentdetails()
+}
+getTournamentdetails(){
+  this._service.getTournament().subscribe(res =>{
+    // let tournamentList=Object.values(res);
+    
+     
+     
+   let tournamentList=res;
+    
+    console.log(tournamentList);
+     
+    });
+        
+      }
     openModal(template: TemplateRef<any>) {
       
     }

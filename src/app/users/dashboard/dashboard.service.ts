@@ -41,7 +41,7 @@ export class DashboardService {
     return this.http.get<[]>(environment.apiUrl + 'services/network/user/profile/'+id,this.httpOptions);
 }
 getTournament(){
-   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/tournament', this.httpOptions);
+   return this.http.get<[]>(environment.apiUrl1 + 'services/network/user/profile/web', this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
 uploadImage(file: File){

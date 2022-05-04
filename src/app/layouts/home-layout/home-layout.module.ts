@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContactusComponent } from './../../home/contactus/contactus.component';
 import { NgModule } from '@angular/core';
@@ -27,7 +28,8 @@ import { DynamicScriptLoaderService } from 'src/app/common/services/dynamic-scri
     FormsModule,
     ReactiveFormsModule,
     SlickCarouselModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   declarations: [
     IndexComponent,

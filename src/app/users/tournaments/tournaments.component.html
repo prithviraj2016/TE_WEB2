@@ -28,22 +28,23 @@
           </div>
         </div>
       </div>
-
-      <div class="season-card"  *ngFor="let item of hype">
+      <ngx-slick-carousel  *ngFor="let hypes of hype">
+      <div class="season-card">
         <div class="event_card sha-box card">
           <div class="row">
-            <div class="img-event medium-5 blankImage" style="background-image:url({{item.imageKey}})">
-              <div class="name-event truncate" title=" Event Name">{{item.adminDetails}}</div>
+            <div class="img-event medium-5 blankImage" style="background-image:url({{hypes.imageKey}})">
+              <div class="name-event truncate" title=" Event Name">{{hypes.name}}</div>
             </div>
-            <div class="txt-event medium-5">
-              <span class="tgamename">Tournament INFO.</span>
+            <div class="txt-event medium-5" >
+          
+              <span class="tgamename">{{hypes.game}}</span>
               <hr class="shr3">
               <div class="clear"></div>
               <div class="tinfo">Start Date:</div>
-              <span class="tdata date_start">{{item.startDate}}</span>
+              <span class="tdata date_start">{{hypes.startDate}}</span>
               <div class="clear"></div>
               <div class="tinfo">End Date:</div>
-              <span class="tdata rtxt date_end">{{item.endDate}}</span>
+              <span class="tdata rtxt date_end">{{hypes.endDate}}</span>
             </div>
             <div ng-show="event.hype" class="hype-ribbon-blue"></div>
             <br>
@@ -51,8 +52,10 @@
         </div>
         <hr class="shr1">
       </div>
+    </ngx-slick-carousel>
       <!-- <div style="text-align: center;">No records found</div> -->
     </div>
+    
   </div>
   <!-- Column 3 -->
   <div class="large-7 dashboard_height" id="detail-container">

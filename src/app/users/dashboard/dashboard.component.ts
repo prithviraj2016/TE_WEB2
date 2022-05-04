@@ -14,6 +14,8 @@ declare var introJs: any;
 export class DashboardComponent implements OnInit {
   //introJS = introJs(); // assigning it to variable
   public tournamentList:any=[];
+  public upcoming:any=[];
+  public hype:any=[];
   constructor(private _service:DashboardService) {
 
     //console.log(this.introJS)
@@ -29,16 +31,19 @@ export class DashboardComponent implements OnInit {
    }
    getTournamentdetails(){
     this._service.getTournament().subscribe(res =>{
-      this.tournamentList=Object.values(res);
-       for (var i=2; i<this.tournamentList.length; i++);
-       this.tournamentList[i]=i+2;
-      console.log(this.tournamentList[i]);
-      });
+      // let tournamentList=Object.values(res);
       
-        
-     
-  
-    }
+       
+       
+     var tournamentList=Object.values(res);
+     this.upcoming=JSON.parse(JSON.stringify(tournamentList))[3];
+     this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
+      // console.log(JSON.parse(res.toString())?.hypes);
+      console.log(this.upcoming);
+       
+      });
+          
+        }
 helpbutton(){
   var intro1 = introJs();
       intro1.setOptions({

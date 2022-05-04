@@ -6,7 +6,7 @@ import { DashboardService } from '../dashboard/dashboard.service';
   templateUrl: './tournaments.component.html'
 })
 export class TournamentsComponent implements OnInit {
-  // public tournamentList:any=[];
+  public tournamentList:any=[];
   public hype:any=[];
   constructor(private _service:DashboardService) {}
 
@@ -16,13 +16,9 @@ export class TournamentsComponent implements OnInit {
 }
 getTournamentdetails(){
   this._service.getTournament().subscribe(res =>{
-    // let tournamentList=Object.values(res);
-    
-     
-     
-   let tournamentList=res;
-    
-    console.log(tournamentList);
+  var tournamentList=Object.values(res);
+  this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
+   console.log(this.hype);
      
     });
         
@@ -59,3 +55,7 @@ showtab()
 }
 
 }
+function hyeps(arg0: any, hyeps: any) {
+  throw new Error('Function not implemented.');
+}
+

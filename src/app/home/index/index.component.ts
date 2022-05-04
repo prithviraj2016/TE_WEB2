@@ -36,22 +36,24 @@ export class IndexComponent implements OnInit {
   _errorTxt: string;
   _re_errorTxt: string;
   closeModal: string;
+  public tournamentList:any=[];
+  public hype:any=[];
 
   forgetForm:any;
 
 
 
-  tournamentList: any = [
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'WC 2020' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'Tournament' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'test' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2022' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
-    { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' }
-  ]
+  // tournamentList: any = [
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'WC 2020' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'Tournament' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'test' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2022' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' },
+  //   { src: 'https://tournamentedition.com/assets/images/object1.png', title: 'IPL 2020' }
+  // ]
 
 
   // Trusted By
@@ -104,11 +106,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(){
       $(document).foundation();
-      this._service.getTournament().subscribe(res =>{
-      this.tournamentList=Object.values(res);
-       for (var i=2; i<this.tournamentList.length; i++);
-      console.log(this.tournamentList[i]);
-      });
+      this.getTournamentdetails()
      this.signinForm = this.frmbuilder.group({
       'UserName':new FormControl ('', [Validators.required]),
       // 'RememberMe': [false, [Validators.required]],
@@ -197,6 +195,20 @@ export class IndexComponent implements OnInit {
         })
 
       }
+      getTournamentdetails(){
+        this._service.getTournament().subscribe(res =>{
+          // let tournamentList=Object.values(res);
+          
+           
+           
+         var tournamentList=Object.values(res);
+         this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
+          // console.log(JSON.parse(res.toString())?.hypes);
+          console.log(this.hype);
+           
+          });
+              
+            }
 
 
 

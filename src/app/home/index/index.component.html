@@ -584,17 +584,18 @@
       <h1>RECENT TOURNAMENTS</h1>
     </div>
 
-    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel">
-      <div ngxSlickItem class="slider-content content-1 slide inner-col" *ngFor="let item of tournamentList; let i = index">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" *ngFor="let hypes of hype">
+      <div ngxSlickItem class="slider-content content-1 slide inner-col" >
         
-        <img src="{{i}}/{{tournamentList.length}}.{{item.imageKey}}">
+        <img src="{{hypes.imageKey}}">
         <div class="tour-title">
-          <span class="no_margin ng-binding">{{i+2}}{{item.i.game}}</span>
-          <span id="head-title" class="ng-binding">{{i+2}}{{item.i.startDate}}</span>
+          <span class="no_margin ng-binding">{{hypes.game}}</span>
+          <span id="head-title" class="ng-binding">{{hypes.startDate}}</span>
         </div>
       </div>
     </ngx-slick-carousel>
   </div>
+  
 
   <div class="fixwidth-large ng-scope">
     <div class="block2">

@@ -44,6 +44,12 @@ getTournament(){
    return this.http.get<[]>(environment.apiUrl1 + 'services/network/user/profile/web', this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
+getSeason(){
+  return this.http.get<[]>(environment.apiUrl1 + 'season/list', this.httpOptions);
+ }
+ getTeam(){
+  return this.http.get<[]>(environment.apiUrl1 + 'team/list', this.httpOptions);
+ }
 uploadImage(file: File){
   
   return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson' ,this.httpOptions);

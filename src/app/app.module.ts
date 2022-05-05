@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { httpInterceptorProviders } from './common/services/httpInterceptorProviders';
 import { AuthGuard } from './common/services/auth-guard.service';
 import { SlideToggleModule } from 'ngx-slide-toggle';
+import { ModalModule, TabsModule } from 'ngx-foundation';
 
 
 
@@ -55,6 +56,7 @@ import { SlideToggleModule } from 'ngx-slide-toggle';
     HttpClientModule,
     BrowserAnimationsModule,
     SlideToggleModule,
+    TabsModule.forRoot(),
   ],
   providers:[
     {provide: ErrorHandler, useClass: GlobalErrorHandler},

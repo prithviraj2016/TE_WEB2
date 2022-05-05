@@ -11,7 +11,7 @@
           </h2>
           <div class="flex-item">
             <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Tournament Name</label>
-            <input type="text" formControlName="name" >
+            <input type="text" formControlName="name">
           </div>
           <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
             <div *ngIf="f['name'].errors['required']">Tournamentname is required</div>

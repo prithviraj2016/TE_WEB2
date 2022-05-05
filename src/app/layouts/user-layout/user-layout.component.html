@@ -76,7 +76,8 @@
           </a>
         </li>
         <li>
-          <a title="Tournaments" routerLink="/tournaments" class="menu_item_long" routerLinkActive="active">Tournaments</a>
+          <a title="Tournaments" routerLink="/tournaments" class="menu_item_long"
+            routerLinkActive="active">Tournaments</a>
           <a class="menu_item_short tip-bottom " data-tooltip aria-haspopup="true" routerLink="/tournaments"
             title="Tournaments">
             <i class="fas fa-trophy"></i>
@@ -105,12 +106,14 @@
           <a class="act-avatar">
           </a>
           <ul>
-            <li title="" > <span class="user-name" *ngIf="loggedin()" >
-               {{userName}}
+            <li title=""> <span class="user-name" *ngIf="loggedin()">
+                {{userName}}
                 <br>@{{userID}}
               </span></li>
-            <li ><a title="Edit Profile" routerLink="/profile/{{userID}}"  href="" >Edit Profile</a></li>
+            <li><a title="Edit Profile" routerLink="/profile/{{userID}}" href="">Edit Profile</a></li>
             <li><a title="Message Followers" class="" (click)="open1(mymodal1)"> Message Followers </a></li>
+            <li><a title="Message Followers" class="" (click)="open(mymodal)"> Following </a></li>
+            <li><a title="Message Followers" class="" (click)="open2(mymodal2)"> Followers </a></li>
             <li class="navbar_profile_item ng-cloak"> <a (click)="Logout()" title="Logout" href>Logout</a> </li>
           </ul>
 
@@ -122,46 +125,317 @@
 
 <div class="header-margin"></div>
 
-<ng-template #mymodal1 let-modal>
+<ng-template #mymodal2 let-modal>
   <div class="popup-box">
-    <div class="container">
+    <div class="container" style="width:40%;">
       <div class="heading">
         <div class="modal-heading">
           <h6>
-            Message Followers</h6>
-           
+            Following and Followers
+
+          </h6>
+
           <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
             <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
           </a>
         </div>
       </div>
-      <form>
-      <div class="small-12 mbt15 text-left column">Message</div>
-      <textarea  maxlength="140" class="ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-minlength ng-valid-maxlength ng-touched user-error" ></textarea>
-     
-      <div class="toggle-container-mp_message_modal">
-        <div class="row">
-        <div class="large-5 small-5 medium-5 column">
-          <label>Registration approvals
-            <material-slide-toggle></material-slide-toggle>
-          </label>
-          
+
+
+      <tabset _ngcontent-aol-c226="" id="tstyle" class="tab-container">
+        <div class="tabs-content" style="border-top: solid 1px #6196CC ;">
+          <tab heading="FOLLOWING ">
+            <div class="bar" id="panel2">
+              <div class="upcoming_list">
+                <div class="bar" id="panel3" ng-show="isSet(1)" scrolly="showMoreFollowing()">
+                  <div class="following_list">
+                      <div class="following_list_child">
+                         <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">1</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/ef45dbd5-8b6f-4fcd-9d7a-674ba9e0bc67-1627973565566&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns" >
+                                       
+                                          <p class="player_name ng-binding" title="cool" style="padding-left: 50px;">
+                                              cool</p>
+                                          <span class="player_name_lower ng-binding" style="padding-right: 200px;">@coolgas</span>
+                                          
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                          <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">2</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/b7bdbd6d-0a9c-42d5-8c81-8ce737e4e24e-1528444416788&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns">
+                                          <p class="player_name ng-binding" title="Adil Mohd" style="padding-left: 50px;">
+                                              Adil Mohd</p>
+                                          <span class="player_name_lower ng-binding" style="padding-right: 200px;">@adilmo</span>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                     
+                  </div>
+              </div>
+
+              </div>
+
+            </div>
+          </tab>
+          <tab heading="FOLLOWERS ">
+            <div class="bar" id="panel2">
+              <div class="upcoming_list">
+
+                <div class="bar" id="panel3" ng-show="isSet(1)" scrolly="showMoreFollowing()">
+                  <div class="following_list">
+                      <div class="following_list_child">
+                       <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">1</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/ef45dbd5-8b6f-4fcd-9d7a-674ba9e0bc67-1627973565566&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns">
+                                          <p class="player_name ng-binding" title="cool" style="padding-left: 50px;">
+                                              cool</p>
+                                          <span class="player_name_lower ng-binding" style="padding-right: 200px;"> @coolgas</span>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                          <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">2</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/b7bdbd6d-0a9c-42d5-8c81-8ce737e4e24e-1528444416788&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns">
+                                          <p class="player_name ng-binding" title="Adil Mohd" style="padding-left:50px;">
+                                              Adil Mohd</p>
+                                          <span class="player_name_lower ng-binding" style="padding-right:200px;">@adilmo</span>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                     
+                  </div>
+              </div>
+              </div>
+
+            </div>
+          </tab>
         </div>
-        <div class=" large-5 small-5 medium-5 column">
-          <div class="switch round tiny text-left">
-            <label>Registration approvals
+      </tabset>
+
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mymodal let-modal>
+  <div class="popup-box">
+    <div class="container" style="width:40%;">
+      <div class="heading">
+        <div class="modal-heading">
+          <h6>
+            Following and Followers
+
+          </h6>
+
+          <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+          </a>
+        </div>
+      </div>
+
+
+      <tabset _ngcontent-aol-c226="" id="tstyle" class="tab-container">
+        <div class="tabs-content" style="border-top: solid 1px #6196CC ;">
+          <tab heading="FOLLOWING ">
+            <div class="bar" id="panel2">
+              <div class="upcoming_list">
+
+                <div class="bar" id="panel3" ng-show="isSet(1)" scrolly="showMoreFollowing()">
+                  <div class="following_list">
+                      <div class="following_list_child">
+                          <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 offset-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">1</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/ef45dbd5-8b6f-4fcd-9d7a-674ba9e0bc67-1627973565566&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns">
+                                          <p class="player_name ng-binding" title="cool" style="padding-left: 50px;">
+                                              cool</p>
+                                          <span class="player_name_lower ng-binding"style="padding-right: 200px;">@coolgas</span>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                          <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">2</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/b7bdbd6d-0a9c-42d5-8c81-8ce737e4e24e-1528444416788&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns">
+                                          <p class="player_name ng-binding" title="Adil Mohd" style="padding-left: 50px;">
+                                              Adil Mohd</p>
+                                          <span class="player_name_lower ng-binding" style="padding-right: 200px;">@adilmo</span>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                     
+                  </div>
+              </div>
+              </div>
+
+            </div>
+          </tab>
+          <tab heading="FOLLOWERS ">
+            <div class="bar" id="panel2">
+              <div class="upcoming_list">
+
+                <div class="bar" id="panel3" ng-show="isSet(1)" scrolly="showMoreFollowing()">
+                  <div class="following_list">
+                      <div class="following_list_child">
+                         <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">1</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/ef45dbd5-8b6f-4fcd-9d7a-674ba9e0bc67-1627973565566&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns">
+                                          <p class="player_name ng-binding" title="cool" style="padding-left: 50px;">
+                                              cool</p>
+                                          <span class="player_name_lower ng-binding" style="padding-right: 200px;">@coolgas</span>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                          <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
+  
+                              <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
+                                  <div class="row collapse">
+                                      <div class="small-1 columns">
+                                          <p class="order_no ng-binding" id="followingfollowdialog-dialog-aria-describedby">2</p>
+                                      </div>
+                                      <div class="small-1 thumb-box columns">
+                                          <div class="profile_user_img_sm" ng-style="followingPerson.imageKey &amp;&amp; {'background-image':'url('+imageDownloadUrl + followingPerson.imageKey +')'} || {'background-image':'url(assets/images/guest.png)'}" style="background-image: url(&quot;https://s3.amazonaws.com/vgroup-tournament/b7bdbd6d-0a9c-42d5-8c81-8ce737e4e24e-1528444416788&quot;);">
+                                          </div>
+                                      </div>
+                                      <div class="small-9 follower-card-name columns">
+                                          <p class="player_name ng-binding" title="Adil Mohd" style="padding-left: 50px;">
+                                              Adil Mohd</p>
+                                          <span class="player_name_lower ng-binding" style="padding-right: 200px;">@adilmo</span>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                    
+                  </div>
+              </div>
+              </div>
+
+            </div>
+          </tab>
+        </div>
+      </tabset>
+
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #mymodal1 let-modal>
+  <div class="popup-box">
+    <div class="container" style="width:40%;">
+      <div class="heading">
+        <div class="modal-heading">
+          <h6>
+            Message Followers
+          </h6>
+
+          <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+          </a>
+        </div>
+      </div>
+      <form style="height: 160px ;">
+        <div class="small-12 mbt15 text-left column">
+          <h6>Message</h6>
+          <textarea cols="2" rows="1"></textarea>
+        </div>
+       
+        <div class="row">
+          <div class="large-5 small-5 medium-5 column">
+            <div class="switch round tiny text-left" style="display: flex;">
               <material-slide-toggle></material-slide-toggle>
-            </label>
-            
+              <p for="localF" id="messagetofollwerdialog-dialog-aria-describedby">Everyone</p>
+            </div>
+          </div>
+          <div class=" large-5 small-5 medium-5 column">
+            <div class="switch round tiny text-left" style="display:flex;">
+
+              <material-slide-toggle></material-slide-toggle>
+              <p for="localT">Local Only</p>
+
+            </div>
+          </div>
+          <div class="large-2">
+            <div class="submit-btn">
+              <input type="button" value="Send" class="btn-one btn-primary">
+            </div>
           </div>
         </div>
-        <div class="large-2">
-          <input type="submit" >
-        </div>
-        </div>
-     
-    </div>
-  </form>
+
+       
+      </form>
     </div>
   </div>
 </ng-template>

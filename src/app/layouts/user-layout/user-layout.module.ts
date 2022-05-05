@@ -68,7 +68,8 @@ import { ManagePlayersTeamComponent } from './../../users/manage-players-team/ma
     MatNativeDateModule,
     ModalModule.forRoot(),
     HttpClientModule,
-    ImageCropperModule
+    ImageCropperModule,
+   
     // AngularFileUploaderModule,
 
    

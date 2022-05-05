@@ -69,16 +69,22 @@
                 Picture</label>
               <div class="row">
               <div class="left-column large-4 medium-3 small-6 columns">
-                <div id="user_image" enctype="multipart/form-data"   >
-                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="!upload1" title="Choose a picture"
+                <div id="user_image" enctype="multipart/form-data" >
+                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  *ngIf="!upload1" title="Choose a picture"
                     width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" class="form-control">
-                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="upload1" title="Choose a picture"
-                    width="150" height="150" id="my-account-profile-image" [src]="uploadimageSrc" (click)="open1(mymodal1)" class="form-control">
+                    <img alt="Choose a picture"  *ngIf="upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" [src]="uploadimageSrc" (click)="open1(mymodal1)" class="form-control" >
                     <span class="mandatoryfld_lbl">
+                
                   </span>
-                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" *ngIf="upload1" >
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
+                  <div >
+                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  (click)="removeImage()"  *ngIf="upload1" >
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+
+  
+              
                 </div>
               </div>
               <div class="large-6 medium-6 small-6 columns">

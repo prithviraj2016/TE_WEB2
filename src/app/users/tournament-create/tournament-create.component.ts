@@ -20,6 +20,10 @@ export class TournamentCreateComponent implements OnInit {
   location: any;
   game:any;
   submitted=false;
+  imageSrc:string;
+  uploadimageSrc:string;
+  upload=false;
+  upload1=false;
   
   constructor(private modalService: NgbModal,
     private formBuilder: FormBuilder, 
@@ -130,13 +134,42 @@ export class TournamentCreateComponent implements OnInit {
     this.showMe2=!this.showMe2;
     
   }
+  
+  onFileChange(event:any):void {
+    const reader = new FileReader();
+    
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+    
+      reader.onload = () => {
+   
+        this.imageSrc = reader.result as string;
+     
+        this.newTournamentForm.patchValue({
+          fileSource: reader.result
+        });
+   
+      };
+   
+    }
+   
+  }
+  show(){
+ 
+    this.uploadimageSrc=this.imageSrc;
+    this.upload1=true;
+    
+  }
+ 
+  
   open1(content:any) {
 
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
   
       this.closeResult = `Closed with: ${result}`;
   
-    }, (reason: any) => {
+    }, (reason) => {
   
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   

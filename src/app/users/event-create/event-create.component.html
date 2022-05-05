@@ -56,7 +56,8 @@
             <div class="flex-item">
               <label class="label-custom" data-step="3" data-intro="URL of Event to share on social media."
                 for="event_webUrl">Custom URL <i onclick="copyToClipboard('event_webUrl')" title="Copy URL"
-                  class="icon-copy" aria-hidden="true"><img src="../assets/img/icon_copy_url.png"></i></label>
+                  class="icon-copy" aria-hidden="true">
+                  <img src="../assets/img/icon_copy_url.png"></i></label>
               <div class="input-field">
                 <div class="input-group">
                   <label class="input-group-label" for="event_webUrl">Tournamentedition.com/event/</label>
@@ -115,9 +116,7 @@
                         </div>
                         <div id="upload-demo" class="croppie-container" style="margin: 10px;
                           border: dashed 1px #43464d;">
-                          <img src="../../../assets/img/user.png" style=" height: 50%;
-                  width: 90%;
-                  margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+                          <img src="../../../assets/img/user.png" style=" height: 50%; width: 90%; margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
                           <div class="cr-boundary" aria-dropeffect="none">
                   
                             <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -127,7 +126,7 @@
                               <div class="file">
                                 <input type="file" name="file" class="file"
                                   style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                                <input type="submit" class="done" value="Done" onclick="show()"  >
+                                <input type="submit" class="done" value="Done" (click)="show()"  >
                               </div>
                             </div>
                           </div>
@@ -202,13 +201,11 @@
               <div class="row">
                 <div class="left-column large-4 medium-3 small-6 columns">
                   <div id="user_image">
-                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture" formControlName="image" class="form-control"
+                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  *ngIf="!upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" class="form-control">
                     
-                      width="100px" height="100px"  (click)="open1(mymodal1)" id="my-account-profile-image" onclick="upload_pic_box(this);">
-                      width="100px" height="100px" id="my-account-profile-image" onclick="upload_pic_box(this);" *ngIf="!upload">
-                      <img alt="Choose a picture"  title="Choose a picture" formControlName="image" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f['image'].errors }"
-                        width="100px" height="100px" id="my-account-profile-image" onclick="upload_pic_box(this);" *ngIf="!upload">
+                    <img alt="Choose a picture"  *ngIf="upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" [src]="uploadimageSrc" (click)="open1(mymodal1)" class="form-control" >
                       <span class="mandatoryfld_lbl">
                         
                 
@@ -237,7 +234,7 @@
               <button title="Cancel" type="button" class="btn-block red "  (click)="onReset()">
                 <span>Cancel</span>
               </button>
-              <button title="ok" type="submit" class="btn-block">
+              <button title="ok" type="submit" class="btn-block"  >
                 <span>Create</span>
               </button>
             </div>

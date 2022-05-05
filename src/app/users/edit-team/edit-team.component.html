@@ -1,6 +1,6 @@
 <div class="row ng-cloak create-event-form" data-ng-init="init()">
     <div class='create-form-section' id="braintree-set">
-      <form name="season_form" style="width: 100%;">
+      <form name="season_form" style="width: 100%;" [formGroup]="newEditTeam" (ngSubmit)="editTeam()">
         <div class="row">
           <div class="large-4 medium-12 small-12 columns column-first">
             <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
@@ -15,8 +15,7 @@
                   <input type="text" form="season_form_novalidated" name='season_name' placeholder="" id='season_name'
                     minlength="3" maxlength="50" value="" required /> <span class="mandatoryfld_lbl">
                    
-                    <!-- <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span>
-                      <span class="mandatoryfld_lbl">Event name must be between 3 and 50 characters</span> -->
+                   
                   </span>
               </div>
             </div>
@@ -48,8 +47,8 @@
                   src="../../../assets/img/user.png" title="Choose a picture" class="image_profile_user"
                   id="my-account-profile-image" style="height: 120px;
                   border: 1px solid;
-                  border-radius: 10px;" formControlName="imageUrl" (click)="open1(mymodal1)">
-                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                  border-radius: 10px;" formControlName="imageUrl" >
+                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" >
                       <i class="fas fa-trash-alt"></i>
                     </button>
                   </div>

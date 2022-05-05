@@ -81,17 +81,16 @@ get f(): { [key: string]: AbstractControl } {
      });
     }
   }
-     
-  
+ 
+
   onReset(): void {
     this.submitted = false;
     this.newSeasonsForm.reset();
     
     
   }
-  removeImage() {
-    this.imageurls.splice(1);
-  }
+ 
+
 
   
  
@@ -231,7 +230,10 @@ uploadFiles(): void {
     }
   }
 }
- 
+removeImage(){
+  this.cropImgPreview= '';
+  this.upload1= false;
+}
 
 upload(idx: number, file: File): void {
   this.progressInfos[idx] = { value: 0, fileName: file.name };

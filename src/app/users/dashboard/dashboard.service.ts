@@ -27,7 +27,7 @@ export class DashboardService {
   }
   
   createTeam(userObj:any){
-    return this.http.post<[]>(environment.apiUrl + 'services/main/team',userObj, this.httpOptions);
+    return this.http.post<[]>("https://apis.vgroupinc.com/tournamentapis/web/srf/services/team",userObj, this.httpOptions);
   }
   createTournament(userObj:any){
     return this.http.post<[]>(environment.apiUrl + 'services/main/tournament',userObj, this.httpOptions);

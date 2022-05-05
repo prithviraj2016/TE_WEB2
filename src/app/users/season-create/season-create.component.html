@@ -74,7 +74,7 @@
                 
                
               </div>
-            </div>
+            <!-- </div> -->
 
 
           </div>
@@ -147,7 +147,7 @@
                       </div>
                   </span> -->
                   
-                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  *ngIf="upload1" >
+                  <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  *ngIf="upload1" (click)="removeImage()">
                     <i class="fas fa-trash-alt"></i>
                   </button>
                 </div>
@@ -225,7 +225,7 @@
         </div>
 
       </div>
-      
+      </div>
     </form>
 
   </div>

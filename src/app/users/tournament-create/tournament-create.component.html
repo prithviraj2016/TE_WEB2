@@ -77,8 +77,10 @@
           <div class="row">
             <div class="left-column large-6 medium-3 small-6 columns">
               <div id="user_image" enctype="multipart/form-data">
-                <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' (click)="open1(mymodal1)" title="Choose a picture"
-                  style="width: 100px; height: 100px;" id="my-account-profile-image" class="form-control">
+                <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  *ngIf="!upload1" title="Choose a picture"
+                width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" class="form-control">
+                <img alt="Choose a picture"  *ngIf="upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" [src]="uploadimageSrc" (click)="open1(mymodal1)" class="form-control" >
                 <span class="mandatoryfld_lbl">
                   <div *ngIf="submitted && f['imageKey'].errors" class="invalid-feedback">
                     <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
@@ -89,8 +91,6 @@
                 </button>
               </div>
             </div>
-
-
 
 
             <ng-template #mymodal1 let-modal>
@@ -106,20 +106,9 @@
                   </div>
                   <div id="upload-demo" class="croppie-container" style="margin: 10px;
                     border: dashed 1px #43464d;">
-                     <img alt="Choose a picture" [ title="Choose a picture"
-                     width="150" height="150" id="my-account-profile-image"  class="form-control"
-                      (click)="open1(mymodal1)" >
-            <!-- <image-cropper
-          [imageChangedEvent]="imgChangeEvt" 
-          [maintainAspectRatio]="true" 
-          [aspectRatio]="4 / 4"
-          [resizeToWidth]="256" 
-          format="png"
-          (imageCropped)="cropImg($event)" 
-          (imageLoaded)="imgLoad()"
-          (cropperReady)="initCropper()" 
-          (loadImageFailed)="imgFailed()">
-        </image-cropper> -->
+                    <img src="../../../assets/img/user.png" style=" height: 50%;
+            width: 90%;
+            margin: 10px;" [src]="imageSrc" >
                     <div class="cr-boundary" aria-dropeffect="none">
             
                       <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -128,10 +117,8 @@
                         </div>
                         <div class="file">
                           <input type="file" name="file" class="file"
-                            style="border: solid 1px #43464d; border-radius: 0px;" multiple  formControlName="imageKey">
-                          <input type="submit" class="done" value="Done"  (click)="modal.dismiss('Cross click')"  >
-                   
-                            
+                            style="border: solid 1px #43464d; border-radius: 0px;"  formControlName="imageKey" (change)="onFileChange($event)">
+                          <input type="submit" class="done" value="Done" (click)="show()" (click)="modal.dismiss('Cross click')" >
                         </div>
                       </div>
                     </div>
@@ -140,6 +127,9 @@
               </div>
             </ng-template>
 
+
+
+           
 
 
 
@@ -272,7 +262,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Register</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle formControlName="preRegiste"></material-slide-toggle>
+                    <mat-slide-toggle formControlName="preRegiste"></mat-slide-toggle>
                   </div>
 
                 </div>
@@ -280,7 +270,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Consider Teams</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle formControlName="considerTeam"></material-slide-toggle>
+                    <mat-slide-toggle formControlName="considerTeam"></mat-slide-toggle>
                   </div>
 
                 </div>
@@ -288,7 +278,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Player Score Submission</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle (change)="toogleTag1()" formControlName="allowUserScoreSubmission"></material-slide-toggle>
+                    <mat-slide-toggle (change)="toogleTag1()" formControlName="allowUserScoreSubmission"></mat-slide-toggle>
                   </div>
 
                 </div>
@@ -299,7 +289,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Team Based Tournament</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle formControlName="teamBased"></material-slide-toggle>
+                    <mat-slide-toggle formControlName="teamBased"></mat-slide-toggle>
                   </div>
 
                 </div>
@@ -307,7 +297,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Consider Location</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle formControlName="considerLocation"></material-slide-toggle>
+                    <mat-slide-toggle formControlName="considerLocation"></mat-slide-toggle>
                   </div>
 
                 </div>

@@ -17,13 +17,14 @@ export class EventCreateComponent implements OnInit {
   title = 'appBootstrap';
   closeResult: string = '';
   imageURL: string;
-  imageSrc: string = '';
+  imageSrc: string ;
   imageSrc1:string;
   uploadImage: FormGroup;
   submitted = false;
   uploadimageSrc:string;
-  upload:any;
-  
+ 
+  upload=false;
+  upload1=false;
   newEventForm:FormGroup=new FormGroup({});
   constructor(private formBuilder: FormBuilder,
     private _router: Router,
@@ -45,7 +46,7 @@ export class EventCreateComponent implements OnInit {
       'sdate':new FormControl('',[Validators.required]),
       'edate':new FormControl('',[Validators.required]),
       'paidevent':new FormControl('',[Validators.required]),
-      'image':new FormControl('', [Validators.required])
+      'imageKey':new FormControl('', [Validators.required])
     });
   }
   get f(): { [key: string]: AbstractControl } {
@@ -53,13 +54,27 @@ export class EventCreateComponent implements OnInit {
   }
 
     createEvent(){
-      console.log(this.newEventForm.value);
-      this.submitted = true;
-         if (this.newEventForm.invalid) {
-       return;
-      }
-       console.log(JSON.stringify(this.newEventForm.value, null, 2));
-      // console.log(this.newEventForm.value);
+     const formData = new FormData();
+     formData.append('eventname', this.newEventForm.value.eventname);
+     formData.append('description', this.newEventForm.value.description);
+     formData.append('customurl', this.newEventForm.value.customurl);
+     formData.append('sdate', this.newEventForm.value.sdate);
+     formData.append('edate', this.newEventForm.value.edate);
+     formData.append('paidevent', this.newEventForm.value.paidevent);
+     formData.append('imagekey', this.newEventForm.value.imageUrl);
+
+     if(this.newEventForm.invalid){
+       console.log(this.newEventForm.value)
+       this._service.createSeason(JSON.stringify(this.newEventForm.value)).subscribe(data=>{
+         if(data){
+           alert("Season Created successfuly");
+
+         }else(err:any)=>{
+           alert("Something went wrong");
+         }
+       })
+     }
+
     }
     onReset(): void {
       this.submitted = false;

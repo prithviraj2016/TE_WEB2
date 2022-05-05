@@ -16,14 +16,21 @@ import { DashboardService } from '../dashboard/dashboard.service';
   styleUrls: [ '../../../assets/css/profile.css']
 })
 export class TeamCreateComponent implements OnInit {
+  [x: string]: any;
   newTeamForm: FormGroup = new FormGroup({});
   closeResult: string = '';
   imageSrc:string;
   submitted=false;
   location: any;
   uploadimageSrc:string;
+  upload=false;
   upload1=false;
-
+  ArrayOfSelectedFile = new Array<string>();
+ 
+  cropImgPreview: any = '';
+  
+  
+  
  
   private title: string;
   file: string | Blob;
@@ -75,8 +82,11 @@ createTeam(){
    });
   }
 }
-  
 
+removeImage(){
+  this.cropImgPreview= '';
+  this.upload1= false;
+}
 
 onReset(): void {
   this.submitted = false;
@@ -103,7 +113,7 @@ show(){
 
 
   
-  onFileChange(event:any) {
+  onFileChange(event:any):void {
     const reader = new FileReader();
     
     if(event.target.files && event.target.files.length) {
@@ -121,9 +131,9 @@ show(){
       };
    
     }
+   
   }
-  
-
+ 
   
   open1(content:any) {
 
@@ -158,6 +168,7 @@ show(){
     }
   
   }
+  
 
   }
 

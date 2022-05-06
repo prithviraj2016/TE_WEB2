@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-edit-season',
@@ -9,8 +10,9 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class EditSeasonComponent implements OnInit {
   
   closeResult: string;
-
-  constructor(private modalService: NgbModal) { }
+  content = '';
+  constructor(private modalService: NgbModal,
+    private clipboardApi: ClipboardService) { }
 
   ngOnInit(): void {
   }
@@ -43,6 +45,9 @@ export class EditSeasonComponent implements OnInit {
   
     }
   
+  }
+  copyText() {
+    this.clipboardApi.copyFromContent(this.content)
   }
 
 }

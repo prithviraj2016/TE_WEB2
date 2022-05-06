@@ -86,7 +86,7 @@
                     <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
                    </div>
                 </span>
-                <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                <button type="button" class="removeOldImage msg_button bgradient-red" (click)="removeImage()" *ngIf="upload1" title="Remove Image">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </div>

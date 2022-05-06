@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { NgxCopyPasteModule} from 'ngx-copypaste';
+
 import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -70,7 +72,9 @@ import { ManagePlayersTeamComponent } from './../../users/manage-players-team/ma
     HttpClientModule,
     ImageCropperModule,
    
+    NgxCopyPasteModule
     // AngularFileUploaderModule,
+
 
    
 

@@ -51,6 +51,8 @@
     "ng-image-slider": "^2.8.0",
     "ng2-file-upload": "^1.4.0",
     "ngx-bootstrap": "^8.0.0",
+    "ngx-clipboard": "^15.1.0",
+    "ngx-copypaste": "^10.0.0",
     "ngx-daterangepicker-material": "^2.4.2",
     "ngx-foundation": "^1.0.8",
     "ngx-image-cropper": "^6.1.0",

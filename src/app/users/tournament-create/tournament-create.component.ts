@@ -24,6 +24,7 @@ export class TournamentCreateComponent implements OnInit {
   uploadimageSrc:string;
   upload=false;
   upload1=false;
+  cropImgPreview: any = '';
   
   constructor(private modalService: NgbModal,
     private formBuilder: FormBuilder, 
@@ -154,6 +155,10 @@ export class TournamentCreateComponent implements OnInit {
    
     }
    
+  }
+  removeImage(){
+    this.cropImgPreview= '';
+    this.upload1= false;
   }
   show(){
  

@@ -1,10 +1,10 @@
 <img src="" style="display:none" id="imgforumlogin">
-<div class="row restrict_to_window" id="dashboard-container">
+<div class="row restrict_to_window" id="dashboard-container" style="height: 533px;">
     <!-- <div ng-include="'home/side_bar.html'" class="sidebar left"></div> -->
     <!-- Column 2 -->
     <div class="large-5 cdiv" id="step1" data-step="1"
         data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
-        <div class="notification_column restrict_to_window">
+        <div class="notification_column restrict_to_window" style="height: 550px;" >
             <div class="toptitle">
                 <div class="small-12 columns title">
                   <!-- <h1 data-step="1" data-intro="This is a tooltip!" data-position='right'>Basic Usage</h1> -->
@@ -15,7 +15,7 @@
                 </div>
 
             </div>
-            <div class="bar" scrolly="showMoreNotifications()">
+            <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px;" >
                 <div class="" id="notification_list">
 
                     <div class='notification'>
@@ -77,9 +77,9 @@
 
         <div class="info_column">
 
-            <tabset id="tstyle">
-                <tab heading="HYPED">
-                    <div class="bar is-active" id="panel1" scrolly="showMoreHypes()">
+            <tabset id="tstyle" >
+                <tab heading="HYPED" >
+                    <div class="bar is-active" id="panel1" scrolly="showMoreHypes()" style="overflow: scroll; height: 457px;">
                         <div class="hype_list">
                             <div class="hype_list_child">
                                 <a href="/">
@@ -115,17 +115,18 @@
                                 </a>
                             </div>
                             <div id="loaders_hype">
-                                <div id="loader_image_hype" align="center"><img src="assets/img/ajax-loader.gif"
-                                        alt="Loading next records" title="Loading next records" width="25"
-                                        height="25">Loading new hypes, please wait...</div>
+                                <div id="loader_image_hype" align="center">
+                                    <img src="assets/img/ajax-loader.gif"
+                                        alt="Loading next records" title="Loading next records" 
+                                       >Loading new hypes, please wait...</div>
                                 <div id="loader_message_hype" align="right"></div>
                             </div>
                         </div>
                     </div>
                 </tab>
                 <tab heading="UPCOMING">
-                    <div class="bar" id="panel2" scrolly="showMoreUpcomings()">
-                        <div class="upcoming_list">
+                    <div class="bar" id="panel2" scrolly="showMoreUpcomings()" >
+                        <div class="upcoming_list" >
                             <div class="upcoming_list_child">
                                 <a href='/tournament/id/'>
                                     <div class="event_card sha-box card" *ngFor="let item of upcoming">

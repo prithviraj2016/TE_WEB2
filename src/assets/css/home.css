@@ -523,9 +523,7 @@ box-shadow: 0 0 10px rgba(0,0,0,0.4);
         width: 100%;
   }
   }
-  input[placeholder].reset_email {
-    background: #8c8c8c;
-  }
+ 
   input[type="email"]{
     font-family: robotolight,sans-serif;
     width: 100%;

@@ -28,7 +28,7 @@ font-family: 'Roboto', sans-serif;">
           margin-bottom: 0;
           margin-bottom: 20px;">User Name:
             <b class="ng-binding">
-              {{userName}}
+              {{adminDetails.username}}
             </b>
           </label>
         </div>
@@ -45,14 +45,25 @@ font-family: 'Roboto', sans-serif;">
             margin-bottom: 20px;
             transform: translateY(-15px) scale(0.7);">Display Name</label>
             <br>
-            <input type="text" name="profile_name" id="profile_name" required="" style=" box-shadow: none;
+            <input formControlName="name" type="text" id="profile_name" style="box-shadow: none;
             background: 0 0;
             border: 0;
-            border-bottom: #676d75 solid 1px;" formControlName="name">
+            border-bottom: #676d75 solid 1px;" class="form-control">
+            <span class="mandatoryfld_lbl">
+              <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">Display Name is required</div>
+                <div *ngIf="f['name'].errors['minlength']">Display Name must be at least 5 characters</div>
+                <div *ngIf="f['name'].errors['maxlength']">
+                  Display Name must not exceed 20 characters
+                </div>
+              </div>
+            </span>
           </div>
         </div>
+        
+
         <div class="flex-item" style=" padding: 10px 0 10px;">
-          <div class="is-floating-label is-focused" style="   position: relative;
+          <div class="is-floating-label is-focused" style="position: relative;
           height: 54px;">
             <label style="  font-size: 0.875rem;
             color: #4d4d4d;
@@ -67,9 +78,21 @@ font-family: 'Roboto', sans-serif;">
             <input type="text" name="profile_email" id="profile_email" required="" style=" box-shadow: none;
             background: 0 0;
             border: 0;
-            border-bottom: #676d75 solid 1px;" formControlName="email" >
+            border-bottom: #676d75 solid 1px;" formControlName="email">
+             <span class="mandatoryfld_lbl" >
+              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['minlength']">Email must be at least 6 characters</div>
+                <div *ngIf="f['email'].errors['maxlength']">
+                  Email must not exceed 20 characters
+                </div>
+              </div>
+            </span>
           </div>
         </div>
+       
+
+
         <div class="flex-item" style=" padding: 10px 0 10px;">
           <div class="is-floating-label is-focused" style="   position: relative;
           height: 54px;">
@@ -87,8 +110,21 @@ font-family: 'Roboto', sans-serif;">
             background: 0 0;
             border: 0;
             border-bottom: #676d75 solid 1px;" formControlName="phoneNumber">
+            <span class="mandatoryfld_lbl" >
+              <div *ngIf="submitted && f['phoneNumber'].errors" class="invalid-feedback">
+                <div *ngIf="f['phoneNumber'].errors['required']">Phone Number is required</div>
+                <div *ngIf="f['phoneNumber'].errors['minlength']">Phone Number be at least 10 characters</div>
+                <div *ngIf="f['phoneNumber'].errors['maxlength']">
+                  Email must not exceed 10 characters
+                </div>
+              </div>
+            </span>
           </div>
         </div>
+
+        
+
+
         <div class="flex-item" style=" padding: 10px 0 10px;">
           <div class="is-floating-label" style="   position: relative;
           height: 54px;">
@@ -105,8 +141,20 @@ font-family: 'Roboto', sans-serif;">
             background: 0 0;
             border: 0;
             border-bottom: #676d75 solid 1px;" formControlName="age">
+            <span class="mandatoryfld_lbl" >
+              <div *ngIf="submitted && f['age'].errors" class="invalid-feedback">
+                <div *ngIf="f['age'].errors['required']">Age is required</div>
+                <div *ngIf="f['age'].errors['minlength']">Age be at least 1 character</div>
+                <div *ngIf="f['age'].errors['maxlength']">
+                  Email must not exceed 2 characters
+                </div>
+              </div>
+            </span>
           </div>
         </div>
+        
+
+
         <div class="flex-row">
           <div class=" image-item large-6 medium-6 small-6 columns">
             <label style="font-size: 16px;
@@ -122,11 +170,21 @@ font-family: 'Roboto', sans-serif;">
                   src="../../../assets/img/user.png" title="Choose a picture" class="image_profile_user"
                   id="my-account-profile-image" style="height: 120px;
                   border: 1px solid;
-                  border-radius: 10px;" formControlName="imageUrl" (click)="open1(mymodal1)" [src]="imageSrc">
+                  border-radius: 10px;"  (click)="open1(mymodal1)" *ngIf="!upload1">
+                   <img alt="Choose a picture"
+                   src="../../../assets/img/user.png" title="Choose a picture" class="image_profile_user"
+                   id="my-account-profile-image" style="height: 120px;
+                   border: 1px solid;
+                   border-radius: 10px;"  (click)="open1(mymodal1)" *ngIf="upload1" [src]="uploadimageSrc">
+                   <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" *ngIf="upload1" >
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
               </div>
             </div>
           </div>
         </div>
+
+
         <div class="social-row flex-row">
           <label class="label-custom" style="font-size: 16px;
           color: #3988ba;
@@ -164,12 +222,21 @@ font-family: 'Roboto', sans-serif;">
               <input type="text" name="location" id="location" style=" box-shadow: none;
               background: 0 0;
               border: 0;
-              border-bottom: #676d75 solid 1px;" formControlName="location">
+              border-bottom: #676d75 solid 1px;" formControlName="location" (change)="shwoLocations()">
             </div>
           </div>
+          <span class="mandatoryfld_lbl" >
+            <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
+              <div *ngIf="f['location'].errors['required']">Location required</div>
+              
+              
+            </div>
+          </span>
         </div>
       </div>
     </div>
+
+
     <div class="col-lg-4" style="width: 30%;">
       <div class="col_two" style=" background-color: #070c10;
       color: #fff;
@@ -185,15 +252,22 @@ font-family: 'Roboto', sans-serif;">
           color: #3988ba;
           cursor: default;
 
-      ">Messaging</label>
-          <material-slide-toggle (change)="toggle()" style="float:right;" formControlName="messagingSetting"></material-slide-toggle>
+          ">Messaging</label>
+          <mat-slide-toggle (change)="toggle()" style="float:right;" formControlName="messagingSetting"></mat-slide-toggle>
 
         </div>
+        <span class="mandatoryfld_lbl" >
+          <div *ngIf="submitted && f['messagingSetting'].errors" class="invalid-feedback">
+            <div *ngIf="f['messagingSetting'].errors['required']">Message Setting Should be on</div>
+            
+            
+          </div>
+        </span>
         <hr>
-        <div class="toggle" *ngIf="show" style="display: grid;">
+        <div class="toggle" *ngIf="show" style="display: grid;" >
           <label>
             New followers
-            <material-slide-toggle></material-slide-toggle>
+            <material-slide-toggle ></material-slide-toggle>
           </label>
           <br>
           <label>Registration approvals
@@ -318,7 +392,7 @@ font-family: 'Roboto', sans-serif;">
                   border: dashed 1px #43464d;">
                   <img src="../../../assets/img/user.png" style=" height: 50%;
       width: 90%;
-      margin: 10px;" [src]="imageSrc" *ngIf="imageSrc" >
+      margin: 10px;" [src]="imageSrc" >
                   <div class="cr-boundary" aria-dropeffect="none">
 
                     <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -327,8 +401,17 @@ font-family: 'Roboto', sans-serif;">
                       </div>
                       <div class="file">
                         <input type="file" name="file" class="file"
-                          style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                        <input type="submit" class="done" value="Done" (click)="onFileChange($event)">
+                          style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)" formControlName="imageKey"
+                          >
+                          <span class="mandatoryfld_lbl" >
+                            <div *ngIf="submitted && f['imageUrl'].errors" class="invalid-feedback">
+                              <div *ngIf="f['imageUrl'].errors['required']">Image is required</div>
+                              
+                              
+                            </div>
+                          </span>
+
+                        <input type="submit" class="done" value="Done" (click)="showImage()">
                       </div>
                     </div>
                   </div>

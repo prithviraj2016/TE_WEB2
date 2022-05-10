@@ -1,6 +1,8 @@
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
 
 @Component({
@@ -9,11 +11,12 @@ import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
   styleUrls: ['../../../assets/css/profile.css']
 })
 export class ProfileComponent implements OnInit {
-show:boolean = false;
+show:boolean =true;
 userID:any;
 userName:any;
 userDetails:any;
 image_url: any;
+submitted=false;
 
 title = 'appBootstrap';
 closeResult: string = '';
@@ -24,71 +27,102 @@ public showPassword2: boolean;
 imageSrc: string = '';
 loggedinUser:any;
 email: any;
-  
+public dataList:any=[];
+public adminDetails:any=[];
+location: any;
+uploadimageSrc:string;
+upload1=false;
+message: string[] = [];
+selectedFiles?: FileList;
+progressInfos: any[] = [];
+  file: string | Blob;
 
 
-  constructor(
+  constructor(private activatedRoute:ActivatedRoute,
     private formBuilder:FormBuilder,
-    private modalService: NgbModal) {}
+    private modalService: NgbModal,
+    private service:DashboardService) {}
 
   ngOnInit(): void {
+    this.shwoLocations();
  
-    this.loggedinUser = localStorage.getItem('loggeduser');
-    this.loggedinUser = JSON.parse(this.loggedinUser);
-    this.userName=this.loggedinUser.username;
-    this.email=this.loggedinUser.email;
-    this.userID=this.loggedinUser.userID;
+    // this.loggedinUser = localStorage.getItem('loggeduser');
+    // this.loggedinUser = JSON.parse(this.loggedinUser);
+    // this.userName=this.loggedinUser.username;
+    // this.email=this.loggedinUser.email;
+    // this.userID=this.loggedinUser.userID;
 
-    console.log(this.userID)
-    // this._Service.userProfile(this.userID).subscribe( data=>{
+    // console.log(this.userID)
+   this.service.getTournament().subscribe(data=>{
+     var dataList=Object.values(data);
+     this.adminDetails=JSON.parse(JSON.stringify(dataList))[0];
+     console.log(this.adminDetails);
+     this.userprofileupdateForm = this.formBuilder.group({
+      
+      'name': new FormControl(this.adminDetails.name, [Validators.required,Validators.minLength(5),Validators.maxLength(20)]),
+      'email': new FormControl(this.adminDetails.email,[Validators.email]),
+      'phoneNumber': new FormControl(this.adminDetails.phoneNumber,[Validators.required]),
+      'age': new FormControl(this.adminDetails.age, [Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+      'imageKey': new FormControl(this.adminDetails.imageKey, [Validators.required]),
+      'location': new FormControl(this.adminDetails.location, [Validators.required]),
+      'messagingSetting': new FormControl(this.adminDetails.messagingSetting, [Validators.required]),
+      
+     })
+   });
+    
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.userprofileupdateForm.controls;
+  }
 
-    // });
-
-  //   this.userprofileupdateForm=this.formBuilder.group({
-
-  //     // 'id':new FormControl(""),
-  //     // 'username': new FormControl(this.userDetails.username),
-  //     'name': new FormControl(this.userDetails.name),
-  //     'email': new FormControl(this.userDetails.email),
-  //     'phoneNumber':new FormControl(this.userDetails.phonenumber),
-  //     'location':new FormControl(this.userDetails.location),
-  //     'age':new FormControl(this.userDetails.age),
-  //     'imagimageUrleUrl':new FormControl(this.userDetails.imageUrl),
-  //     'messagingSetting':new FormControl(this.userDetails.messagingSetting),
-  //  });
 
 
-//    this.userprofileupdateForm=this.formBuilder.group({
 
-//     // 'id':new FormControl(""),
-//     // 'username': new FormControl(this.userDetails.username),
-//     'name': [''],
-//     'email': [''],
-//     'phoneNumber':[''],
-//     'location':[''],
-//     'age':[''],
-//     'imagimageUrleUrl':[''],
-//     'messagingSetting':[''],
-//  });
-
-}
 
 updateUserProfile(){
+  const formData = new FormData();
+    
+    formData.append('email',this.userprofileupdateForm.value.email);
+    formData.append('phoneNumber',this.userprofileupdateForm.value.phoneNumber);
+    formData.append('age',this.userprofileupdateForm.value.age);
+    formData.append('name',this.userprofileupdateForm.value.name);
+    formData.append('imageKey',this.userprofileupdateForm.value.imageKey);
+    formData.append('file',this.file);
+    formData.append('location',this.userprofileupdateForm.value.location);
+    formData.append('messagingSetting',this.userprofileupdateForm.value.messagingSetting);
+
   console.log(this.userprofileupdateForm.value);
-//  this._Service.updateProfile(this.userID, this.userprofileupdateForm.value).subscribe(data =>{
-//    console.log(data);
-//    if(data){
-//      alert("User Updated Successfully");
-//    }
-//    else{
-//      alert("User not updated");
-//    }
-//  })
+  this.service.updateProfile(this.userID, this.userprofileupdateForm.value).subscribe(data =>{
+   console.log(data);
+   if(data){
+     alert("User Updated Successfully");
+   }
+   else{
+     alert("User not updated");
+   }
+ })
 
 
 
 
 }
+showImage(){
+ 
+  this.uploadimageSrc=this.imageSrc;
+  this.upload1=true;
+  
+}
+shwoLocations() {
+  this.service.getLocation().subscribe((data: any) => {
+    if(data){
+    console.log(data);
+    this.location = data;
+    }
+    // console.log(this.countries);
+  });
+}
+
+
 // getToken() {
 //   return localStorage.getItem('access_token');
 // }
@@ -180,5 +214,37 @@ private getDismissReason1(reason: any): string {
   }
 
 }
+uploadFiles(): void {
+  this.message = [];
+  if (this.selectedFiles) {
+    for (let i = 0; i < this.selectedFiles.length; i++) {
+      this.upload(i, this.selectedFiles[i]);
+    }
+  }
+}
+ 
+
+upload(idx: number, file: File): void {
+  this.progressInfos[idx] = { value: 0, fileName: file.name };
+  if (file) {
+    this.service.uploadImage(file).subscribe({
+      next: (event: any) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          const msg = 'Uploaded the file successfully: ' + file.name;
+          this.message.push(msg);
+          // this.imageInfos = this.service.getFiles();
+        }
+      },
+      error: (err: any) => {
+        this.progressInfos[idx].value = 0;
+        const msg = 'Could not upload the file: ' + file.name;
+        this.message.push(msg);
+      }});
+  }
+}
+
 
 }
+

@@ -2,11 +2,14 @@ import { catchError, Observable } from 'rxjs';
 import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import * as AWS from 'aws-sdk/global';
+import * as S3 from 'aws-sdk/clients/s3';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
+  
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -16,6 +19,8 @@ export class DashboardService {
     })
   }
   constructor(private http: HttpClient) { }
+
+  
 
   createEvent() {
     return this.http.post<[]>(environment.apiUrl + 'services/main/event', this.httpOptions);
@@ -27,7 +32,7 @@ export class DashboardService {
   }
   
   createTeam(userObj:any){
-    return this.http.post<[]>("https://apis.vgroupinc.com/tournamentapis/web/srf/services/team",userObj, this.httpOptions);
+    return this.http.post<[]>(environment.apiUrl + 'services/main/team',userObj, this.httpOptions);
   }
   createTournament(userObj:any){
     return this.http.post<[]>(environment.apiUrl + 'services/main/tournament',userObj, this.httpOptions);
@@ -44,25 +49,32 @@ getTournament(){
    return this.http.get<[]>(environment.apiUrl1 + 'services/network/user/profile/web', this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
-getSeason(){
-  return this.http.get<[]>(environment.apiUrl1 + 'season/list', this.httpOptions);
+getSeason(userId:String){
+  return this.http.get<[]>(environment.apiUrl1 + 'services/main/season/user/'+userId, this.httpOptions);
  }
- getTeam(){
-  return this.http.get<[]>(environment.apiUrl1 + 'team/list', this.httpOptions);
+ getTeam(userId:String){
+  return this.http.get<[]>(environment.apiUrl1 + 'services/main/team/user/'+userId, this.httpOptions);
  }
 uploadImage(file: File){
   
   return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson' ,this.httpOptions);
 }
-// getEvent(){
-//   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/events', this.httpOptions);
-// }
+getEvent(userId:String){
+  return this.http.get<[]>(environment.apiUrl1 + 'services/main/event/user/'+userId, this.httpOptions);
+}
 getLocation(){
-  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query=' ,this.httpOptions);
 }
 getGame(){
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/game?query' ,this.httpOptions);
 }
+getFiles(){
+  
+  return this.http.get<[]>("https://s3.amazonaws.com/vgroup-tournament/");
+}
+  
+
+
 
 }
 function throwError(err: any): any {

@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   //introJS = introJs(); // assigning it to variable
   public tournamentList:any=[];
   public upcoming:any=[];
+  slide:boolean=true;
   public hype:any=[];
   constructor(private _service:DashboardService) {
 
@@ -28,6 +29,9 @@ export class DashboardComponent implements OnInit {
    ngOnInit() {
     this.getTournamentdetails();
 
+   }
+   toggle(){
+     this.slide = !this.slide;
    }
    getTournamentdetails(){
     this._service.getTournament().subscribe(res =>{
@@ -44,6 +48,7 @@ export class DashboardComponent implements OnInit {
       });
           
         }
+        
 helpbutton(){
   var intro1 = introJs();
       intro1.setOptions({
@@ -80,6 +85,7 @@ helpbutton(){
     //introJs()// Start introjs tour
 
     }
+    
 }
 
 

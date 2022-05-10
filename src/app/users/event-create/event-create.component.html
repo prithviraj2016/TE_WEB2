@@ -83,6 +83,13 @@
               <input type="hidden" value="event latLong" id="hdnLatLong" />
               <input type="input" class="input-group-field" id="hdnformatedAdress" placeholder="Search Location..."
                 formControlName="location" />
+                <span class="mandatoryfld_lbl">
+                
+                  <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
+                    <div *ngIf="f['location'].errors['required']">Location is required</div>
+                    
+                  </div>
+              </span>
             </div>
           </div>
 
@@ -98,7 +105,14 @@
                   date-only date-format="MM-dd-yyyy" future-only required />
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
                 <span class="mandatoryfld_lbl">
-                 
+                
+                  <div *ngIf="submitted && f['sdate'].errors" class="invalid-feedback">
+                    <div *ngIf="f['sdate'].errors['required']">Start Date is required</div>
+                    
+                  </div>
+              </span>
+            </div>
+          </div>  
 
 
 
@@ -126,7 +140,7 @@
                               <div class="file">
                                 <input type="file" name="file" class="file"
                                   style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                                <input type="submit" class="done" value="Done" (click)="show()"  >
+                                <input type="submit" class="done" value="Done" (click)="show()">
                               </div>
                             </div>
                           </div>
@@ -138,13 +152,8 @@
 
 
                 
-                  <div *ngIf="submitted && f['sdate'].errors" class="invalid-feedback">
-                    <div *ngIf="f['sdate'].errors['required']">Start Date is required</div>
-                   
-                  </div>
-              </span>
-              </div>
-            </div>
+                  
+              
 
             <div class="flex-item right-column large-6 medium-6 small-12 columns">
               <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Event"

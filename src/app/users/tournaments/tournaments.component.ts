@@ -7,22 +7,55 @@ import { DashboardService } from '../dashboard/dashboard.service';
 })
 export class TournamentsComponent implements OnInit {
   public tournamentList:any=[];
+  public tournamentList1:any=[];
   public hype:any=[];
+  public hype1:any=[];
+  userID:String="";
+  loggedinUser:any;
+  userName:String;
+  files:any;
   constructor(private _service:DashboardService) {}
 
   ngOnInit() {
-
-  this.getTournamentdetails()
+  this.getFiles();
+  this.getTournamentdetails();
+  this.getLatestTournamentdetails();
 }
 getTournamentdetails(){
   this._service.getTournament().subscribe(res =>{
   var tournamentList=Object.values(res);
   this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
+
    console.log(this.hype);
      
     });
         
       }
+getLatestTournamentdetails(){
+  this._service.getTournament().subscribe(res =>{
+  var tournamentList1=Object.values(res);
+  this.hype1=JSON.parse(JSON.stringify(tournamentList1))[2][0];
+      
+  console.log(this.hype1);
+           
+   });
+              
+ }
+ 
+  loggedin(){
+        this.loggedinUser = localStorage.getItem('loggeduser');
+       this.userName=JSON.parse(this.loggedinUser).username;
+       this.userID=JSON.parse(this.loggedinUser).userID;
+       console.log(this.userName);
+       return this.loggedinUser;
+     }
+     getFiles(){
+      this._service.getFiles().subscribe(res=>{
+        if(res){
+          this.files=Object.values(res);
+        }
+      });
+    }
     openModal(template: TemplateRef<any>) {
       
     }

@@ -71,6 +71,7 @@ import { ManagePlayersTeamComponent } from './../../users/manage-players-team/ma
     ModalModule.forRoot(),
     HttpClientModule,
     ImageCropperModule,
+    
    
     NgxCopyPasteModule
     // AngularFileUploaderModule,

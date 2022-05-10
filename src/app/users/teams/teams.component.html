@@ -34,20 +34,20 @@
       </div>
 
       <div class="season-card">
-        <div class="event_card sha-box card">
+        <div class="event_card sha-box card" *ngFor="let item of teamList">
           <div class="row">
-            <div class="img-event medium-5 blankImage" style="background-image:url(assets/img/object1.png)">
-              <div class="name-event truncate" title=" Team Name">Team Name</div>
+            <div class="img-event medium-5 blankImage" style="background-image:url({{item.imageKey}})">
+              <div class="name-event truncate" title=" Team Name">{{item.name}}</div>
             </div>
             <div class="txt-event medium-5">
               <span class="tgamename">TEAM INFO.</span>
               <hr class="shr3">
               <div class="clear"></div>
               <div class="tinfo">Start Date:</div>
-              <span class="tdata date_start">10/10/2020</span>
+              <span class="tdata date_start">{{item.startDateTime}}</span>
               <div class="clear"></div>
               <div class="tinfo">End Date:</div>
-              <span class="tdata rtxt date_end">10/10/2020</span>
+              <span class="tdata rtxt date_end">{{item.endDateTime}</span>
             </div>
             <div ng-show="event.hype" class="hype-ribbon-blue"></div>
             <br>
@@ -95,7 +95,7 @@
                     <div class="player-sm"   data-step="4" data-intro="See your admin list for your team">
                         <a href="/user/view/Team10">
                             <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png)"></div>
-                        </a> <span class="pname" title="Team Name"><a href="/user/view/10">Team Name</a></span>
+                        </a> <span class="pname" title="Team Name"><a href="">{{userName}}</a></span>
                     </div>
                     <div class="description_title" data-step="5" data-intro="Information about your team is posted here">About Team</div>
                     <div class="word-wrap description">

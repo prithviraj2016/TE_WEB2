@@ -1,5 +1,5 @@
 <img src="" style="display:none" id="imgforumlogin">
-<div class="row restrict_to_window" id="dashboard-container" style="height: 533px;">
+<div class="row restrict_to_window" id="dashboard-container">
   <!-- <div ng-include="'home/side_bar.html'" class="sidebar left"></div> -->
 
 
@@ -31,21 +31,21 @@
         </div>
       </div>
 
-      <div class="season-card">
-        <div class="event_card sha-box card">
-          <div class="row" *ngFor="let item of tournamentList">
-           <img src="{{item.guid}}">
-              <div class="name-event truncate" title=" Event Name">{{item.game}}</div>
-           
+      <div class="season-card" >
+        <div class="event_card sha-box card" *ngFor="let item of eventList">
+          <div class="row" >
+            <div class="img-event medium-5 blankImage" style="background-image:url({{item.imageKey}})">
+              <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
+           </div>
             <div class="txt-event medium-5">
               <span class="tgamename">EVENT INFO.</span>
               <hr class="shr3">
               <div class="clear"></div>
-              <div class="tinfo">Start Date:{{item.startDate}}</div>
-              <span class="tdata date_start"></span>
+              <div class="tinfo">Start Date:</div>
+              <span class="tdata date_start">{{item.startDateTime}}</span>
               <div class="clear"></div>
-              <div class="tinfo">End Date:{{item.endDate}}</div>
-              <span class="tdata rtxt date_end"></span>
+              <div class="tinfo">End Date:</div>
+              <span class="tdata rtxt date_end">{{item.endDateTime}}</span>
             </div>
             <div ng-show="event.hype" class="hype-ribbon-blue"></div>
             <br>
@@ -106,8 +106,8 @@
                   </div>
                 </a>
 
-                <a href="/#!/user/view/sEvent.creatorUserId"> <span class="pname" title="Event Admin Details Name">Event
-                    Admin Details Name</span>
+                <a href=""> <span class="pname" title="Event Admin Details Name">
+                    {{userName}}</span>
                 </a>
               </div>
               <hr>

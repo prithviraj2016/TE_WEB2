@@ -7,21 +7,60 @@ import { DashboardService } from '../dashboard/dashboard.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
- public tournamentList:any[]=[];
-  constructor(private _service:DashboardService) { }
+ public eventList:any[]=[];
+ public eventList1:any[]=[];
+ hype:any;
+ hype1:any;
+ userID:String="";
+ userName:String="";
+loggedinUser:any;
+files:any;
+  
+
+constructor(private _service:DashboardService) { }
 
   ngOnInit(): void {
-   this.getTournamentdetails();
+   this.getEventdetails();
+   this.getLatestEventdetails();
+   this.getFiles();
   }
-  getTournamentdetails(){
-    this._service.getTournament().subscribe(res=>{
-      this.tournamentList=Object.values(res);
-      console.log(this.tournamentList);
+  getEventdetails(){
+    this.loggedinUser = localStorage.getItem('loggeduser');
+    this.userID=JSON.parse(this.loggedinUser).userID;
+    this.userName=JSON.parse(this.loggedinUser).username;
+    this._service.getEvent(this.userID).subscribe(res=>{
+      if(res){
+      this.eventList=Object.values(res)[2];
       
+      console.log(this.hype);
+      }
         
       });
-  
     }
+  
+      getLatestEventdetails(){
+        this.loggedinUser = localStorage.getItem('loggeduser');
+        this.userID=JSON.parse(this.loggedinUser).userID;
+        this.userName=JSON.parse(this.loggedinUser).username;
+        this._service.getEvent(this.userID).subscribe(res=>{
+          if(res){
+          this.eventList1=Object.values(res)[2][0];
+       
+          console.log(this.hype1);
+          }
+            
+          });
+      
+        }
+    
+    getFiles(){
+      this._service.getFiles().subscribe(res=>{
+        if(res){
+          this.files=Object.values(res);
+        }
+      });
+    }
+    
   }
 
 

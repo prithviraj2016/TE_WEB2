@@ -16,10 +16,14 @@
     <div class="top-bar-right" [class.menuClass]="menuVariable">
       <ul class="right" id="navbar_main_menu">
 
-        <li id="search-bar" class="ng-cloak" click-outside="closeThis()" outside-if-not="loaderOverlay">
+        <li id="search-bar" class="ng-cloak"  (click)="searchbox(mymodal)" outside-if-not="loaderOverlay">
           <form autocomplete="off">
-            <input placeholder="Search" class="search-style globalSearch" type="text" maxlength="50">
+            <input placeholder="Search" class="search-style globalSearch"   type="text" maxlength="50">
           </form>
+         
+        </li>
+        <ng-template #mymodal let-modal>
+        
           <div class="search_pop small_shadow ng-cloak hide">
             <div class="search_pop_header">
               <a class="search_type" href="" data-id="1">
@@ -58,7 +62,8 @@
               <div id="loader_message_search" align="right"></div>
             </div>
           </div>
-        </li>
+        </ng-template>
+        
 
         <li class="navbar_profile_item ng-cloak">
           <a title="Dashboard" routerLink="/dashboard" class="menu_item_long" routerLinkActive="active">Dashboard</a>

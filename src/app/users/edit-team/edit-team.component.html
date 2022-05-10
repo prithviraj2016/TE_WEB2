@@ -1,6 +1,6 @@
 <div class="row ng-cloak create-event-form" data-ng-init="init()">
   <div class='create-form-section' id="braintree-set">
-    <form name="season_form" style="width: 100%;" [formGroup]="newEditTeam" (ngSubmit)="editTeam()">
+    <form name="season_form" style="width: 100%;" [formGroup]="newEditTeamForm">
       <div class="row">
         <div class="large-4 medium-12 small-12 columns column-first">
           <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
@@ -44,21 +44,17 @@
                 <div class="left-column large-4 medium-3 small-6 columns">
                   <div id="user_image" enctype="multipart/form-data">
                     <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="!upload1"
-                      title="Choose a picture" width="150" height="150" id="my-account-profile-image"
-                      (click)="open(mymodal1)" class="form-control">
-                    <img alt="Choose a picture" *ngIf="upload1" title="Choose a picture" width="150" height="150"
-                      id="my-account-profile-image" [src]="uploadimageSrc" (click)="open(mymodal1)"
-                      class="form-control">
+                      title="Choose a picture" width="150" height="150" id="my-account-profile-image" class="form-control"
+                      (click)="open1(mymodal1)">
+                    <img alt="Choose a picture" [src]="cropImgPreview" *ngIf="upload1" title="Choose a picture" width="150"
+                      height="150" id="my-account-profile-image" class="form-control" (click)="open1(mymodal1)">
                     <span class="mandatoryfld_lbl">
-
                     </span>
-                    <button type="button" class="removeOldImage msg_button bgradient-red" (click)="removeImage()"
-                      *ngIf="upload1" title="Remove Image">
+                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" *ngIf="upload1" (click)="removeImage()">
                       <i class="fas fa-trash-alt"></i>
                     </button>
                   </div>
                 </div>
-
 
                 <ng-template #mymodal1 let-modal>
                   <div class="popup-box">
@@ -74,11 +70,15 @@
                       </div>
                       <div id="upload-demo" class="croppie-container" style="margin: 10px;
                         border: dashed 1px #43464d;">
-                        <img src="../../../assets/img/user.png" style=" height: 50%;
+                        <!-- <img src="../../../assets/img/user.png" style=" height: 50%;
                 width: 90%;
-                margin: 10px;" [src]="imageSrc">
+                margin: 10px;" [src]="imageSrc" *ngIf="imageSrc" > -->
+                        <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                          [resizeToWidth]="256" format="png" (imageCropped)="cropImg($event)" (imageLoaded)="imgLoad()"
+                          (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()">
+                        </image-cropper>
                         <div class="cr-boundary" aria-dropeffect="none">
-
+      
                           <div class="cr-viewport cr-vp-square" tabindex="0">
                             <div class="slide-container">
                               <input type="range" min="1" max="100" value="50" class="slider" id="myRange"
@@ -86,10 +86,12 @@
                             </div>
                             <div class="file">
                               <input type="file" name="file" class="file"
-                                style="border: solid 1px #43464d; border-radius: 0px;" formControlName="imageKey"
-                                (change)="onFileChange($event)">
+                                style="border: solid 1px #43464d; border-radius: 0px;" multiple
+                                (change)="onFileChange($event)" formControlName="imageKey">
                               <input type="submit" class="done" value="Done" (click)="show()"
-                                (click)="modal.dismiss('Cross click')">
+                                (click)="modal.dismiss('Cross click')" (click)="uploadFiles()">
+                              
+      
                             </div>
                           </div>
                         </div>

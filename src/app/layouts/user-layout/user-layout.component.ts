@@ -37,6 +37,19 @@ export class UserLayoutComponent implements OnInit {
 
 
   }
+  searchbox(content:any) {
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
+  
+      this.closeResult = `Closed with: ${result}`;
+  
+    }, (reason: any) => {
+  
+      this.closeResult = `Dismissed ${this.getDismissReason1(reason)}`;
+  
+    });
+  
+  }
   open1(content:any) {
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {

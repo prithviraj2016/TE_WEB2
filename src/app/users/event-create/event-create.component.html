@@ -55,11 +55,11 @@
           <div class="flex-row">
             <div class="flex-item">
               <label class="label-custom" data-step="3" data-intro="URL of Event to share on social media."
-                for="event_webUrl">Custom URL <i onclick="copyToClipboard('event_webUrl')" title="Copy URL"
+                for="event_webUrl">Custom URL <i title="Copy URL" (click)="cp.copy()" 
                   class="icon-copy" aria-hidden="true">
                   <img src="../assets/img/icon_copy_url.png"></i></label>
               <div class="input-field">
-                <div class="input-group">
+                <div class="input-group" ngxCopyPaste #cp="copy">
                   <label class="input-group-label" for="event_webUrl">Tournamentedition.com/event/</label>
                   <input type="text" formControlName="customurl"    [ngClass]="{ 'is-invalid': submitted && f['customurl'].errors }"form="event_form_novalidated" class="input-group-field" minlength="3"
                     maxlength="100" placeholder="" name="event_webUrl" id="event_webUrl" disallow-spaces formControlName="customurl">

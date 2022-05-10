@@ -1,27 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { ImageCroppedEvent} from 'ngx-image-cropper';
+import { DashboardService } from '../dashboard/dashboard.service';
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-event',
   templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
+  styleUrls: ['./edit-event.component.css','../../../assets/css/profile.css']
 })
 export class EditEventComponent implements OnInit {
-  modalService: any;
-  closeResult: string;
-  // getDismissReason: any;
-imgeSrc:any;
-  constructor() { }
+  [x: string]: any;
+  upload1=false;
+  closeResult: string = '';
+  cropImgPreview: any = '';
+  imgChangeEvt: any = '';
+  imageSrc:string;
+  message: string[] = [];
+  selectedFiles?: FileList;
+  uploadimageSrc:string;
+  progressInfos: any[] = [];
+  previews: string[] = [];
+  imageInfos?: Observable<any>;
+  submitted=false;
+  private title: string;
+  imageurls =[];
+  newEditTournamentForm: FormGroup = new FormGroup({});
+
+  constructor(
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder, 
+    private _router: Router, 
+    private service:DashboardService, 
+    private http:HttpClient,
+    private activatedRoute:ActivatedRoute,
+  ) { }
 
   ngOnInit(): void {
   }
+  onFileChange(event: any): void {
+    this.imgChangeEvt = event;
+  }
+  show(){
+ 
+    this.uploadimageSrc=this.imageSrc;
+    this.upload1=false;
+    
+  }
+  cropImg(e: ImageCroppedEvent) {
+    this.cropImgPreview = e.base64;
+  }
+  imgLoad() {
+    // display cropper tool
+  }
+  initCropper() {
+    // init cropper
+  }
+  imgFailed() {
+    // error msg
+  }
+  removeImage(){
+    this.cropImgPreview= '';
+    this.upload1= false;
+  }
   open1(content:any) {
 
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result: any) => {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
   
       this.closeResult = `Closed with: ${result}`;
   
-    }, (reason: any) => {
+    }, (reason) => {
   
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   
@@ -47,6 +99,34 @@ imgeSrc:any;
   
     }
   
+  }
+  uploadFiles(): void {
+    this.message = [];
+    if (this.selectedFiles) {
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        this.upload(i, this.selectedFiles[i]);
+      }
+    }
+  }
+  upload(idx: number, file: File): void {
+    this.progressInfos[idx] = { value: 0, fileName: file.name };
+    if (file) {
+      this.service.uploadImage(file).subscribe({
+        next: (event: any) => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
+          } else if (event instanceof HttpResponse) {
+            const msg = 'Uploaded the file successfully: ' + file.name;
+            this.message.push(msg);
+            // this.imageInfos = this.service.getFiles();
+          }
+        },
+        error: (err: any) => {
+          this.progressInfos[idx].value = 0;
+          const msg = 'Could not upload the file: ' + file.name;
+          this.message.push(msg);
+        }});
+    }
   }
 
 }

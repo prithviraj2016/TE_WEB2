@@ -48,11 +48,14 @@
           <div class="row">
             <div class="left-column large-6 medium-3 small-6 columns">
               <div id="user_image" enctype="multipart/form-data">
-                <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
-                  style="width: 100px; height: 100px;" id="my-account-profile-image" class="form-control">
+                <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="!upload1"
+                  title="Choose a picture" width="150" height="150" id="my-account-profile-image" class="form-control"
+                  (click)="open1(mymodal1)">
+                <img alt="Choose a picture" [src]="cropImgPreview" *ngIf="upload1" title="Choose a picture" width="150"
+                  height="150" id="my-account-profile-image" class="form-control" (click)="open1(mymodal1)">
                 <span class="mandatoryfld_lbl">
                 </span>
-                <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" *ngIf="upload1" (click)="removeImage()">
                   <i class="fas fa-trash-alt"></i>
                 </button>
               </div>
@@ -61,6 +64,52 @@
               <p class="help-text">Click here to upload picture.</p>
             </div>
           </div>
+
+          <ng-template #mymodal1 let-modal>
+            <div class="popup-box">
+              <div class="container">
+                <div class="heading">
+                  <div class="modal-heading">
+                    <h6>Upload Picture</h6>
+                    <a class="close-reveal-modal" title="Close" aria-label="Close"
+                      (click)="modal.dismiss('Cross click')">
+                      <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                    </a>
+                  </div>
+                </div>
+                <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                  border: dashed 1px #43464d;">
+                  <!-- <img src="../../../assets/img/user.png" style=" height: 50%;
+          width: 90%;
+          margin: 10px;" [src]="imageSrc" *ngIf="imageSrc" > -->
+                  <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                    [resizeToWidth]="256" format="png" (imageCropped)="cropImg($event)" (imageLoaded)="imgLoad()"
+                    (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()">
+                  </image-cropper>
+                  <div class="cr-boundary" aria-dropeffect="none">
+
+                    <div class="cr-viewport cr-vp-square" tabindex="0">
+                      <div class="slide-container">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange"
+                          aria-valuenow="100">
+                      </div>
+                      <div class="file">
+                        <input type="file" name="file" class="file"
+                          style="border: solid 1px #43464d; border-radius: 0px;" multiple
+                          (change)="onFileChange($event)" formControlName="imageKey">
+                        <input type="submit" class="done" value="Done" (click)="show()"
+                          (click)="modal.dismiss('Cross click')" (click)="uploadFiles()">
+                        
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+
 
           <div class="flex-row">
             <div class="flex-item">
@@ -86,12 +135,12 @@
           <div class="toggle-slide" *ngIf="showMe">
             <div _ngcontent-kho-c228="" class="flex-items">
               <label class="label-custom">Custom URL
-                <i class="icon-copy">
+                <i class="icon-copy" (click)="cp.copy()">
                   <img src="../assets/img/icon_copy_url.png">
                 </i>
               </label>
               <div class="input-field">
-                <div class="input-group">
+                <div class="input-group" ngxCopyPaste #cp="copy">
                   <label class="input-group-label">Tournamentedition.com/tournament/</label>
                   <input type="text" placeholder="" name="event_webUrl" id="event_webUrl"
                     class="input-group-field ng-touched ng-pristine ng-invalid">
@@ -101,12 +150,12 @@
             </div>
             <div _ngcontent-kho-c228="" class="flex-items">
               <label class="label-custom">Mixer Channel
-                <i class="icon-copy">
+                <i class="icon-copy" (click)="cp1.copy()">
                   <img src="../assets/img/icon_copy_url.png">
                 </i>
               </label>
               <div class="input-field">
-                <div class="input-group">
+                <div class="input-group" ngxCopyPaste #cp1="copy">
                   <label class="input-group-label">www.mixer.com/</label>
                   <input type="text" placeholder="Mixer Channel name" name="event_webUrl" id="event_webUrl"
                     class="input-group-field ng-touched ng-pristine ng-invalid">
@@ -116,12 +165,12 @@
             </div>
             <div class="flex-items">
               <label class="label-custom">Twitch Channel
-                <i class="icon-copy">
+                <i class="icon-copy" (click)="cp2.copy()">
                   <img src="../assets/img/icon_copy_url.png">
                 </i>
               </label>
               <div class="input-field">
-                <div class="input-group">
+                <div class="input-group"  ngxCopyPaste #cp2="copy">
                   <label class="input-group-label">www.twitch.tv/</label>
                   <input type="text" placeholder="Twitch Channel name" id="event_webUrl"
                     class="input-group-field ng-touched ng-pristine ng-invalid">
@@ -197,7 +246,7 @@
                   data-intro="Have option for people to register for tournament.">
                   <label class="flex-label" for="preRegister">Player Score Submission</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
-                    <material-slide-toggle (change)="toogleTag1()" ></material-slide-toggle>
+                    <material-slide-toggle (change)="toogleTag1()"></material-slide-toggle>
                   </div>
 
                 </div>
@@ -240,10 +289,10 @@
                 </div>
               </div>
               <div class="large-6" style="padding-left: 17px;" *ngIf="showMe1">
-                
-                  <div class="flex-column-space" >
+
+                <div class="flex-column-space">
                   <label class="label-custom">Auto Advance Timer</label>
-                  <div class="select-field" >
+                  <div class="select-field">
                     <select class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty">
                       <option value="0" selected="selected">None</option>
                       <option value="5">5 min</option>

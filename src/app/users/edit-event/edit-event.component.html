@@ -36,10 +36,10 @@
           <div class="flex-row">
             <div class="flex-item">
               <label class="label-custom" data-step="3" data-intro="URL of Event to share on social media."
-                for="event_webUrl">Custom URL <i onclick="copyToClipboard('event_webUrl')" title="Copy URL"
+                for="event_webUrl">Custom URL <i (click)="cp.copy()" title="Copy URL"
                   class="icon-copy" aria-hidden="true"><img src="../assets/img/icon_copy_url.png"></i></label>
               <div class="input-field">
-                <div class="input-group">
+                <div class="input-group" ngxCopyPaste #cp="copy">
                   <label class="input-group-label" for="event_webUrl">Tournamentedition.com/event/</label>
                   <input type="text" form="event_form_novalidated" class="input-group-field" minlength="3"
                     maxlength="100" placeholder="" name="event_webUrl" id="event_webUrl" disallow-spaces
@@ -112,64 +112,18 @@
                 Picture</label>
               <div class="row">
                 <div class="left-column large-4 medium-3 small-6 columns">
-                  <div id="user_image">
-                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' title="Choose a picture"
-                      width="150" height="150" (click)="open1(mymodal1)" id="my-account-profile-image" >
-                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                  <div id="user_image" enctype="multipart/form-data">
+                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  *ngIf="!upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" class="form-control">
+                    <img alt="Choose a picture" *ngIf="upload1" title="Choose a picture"
+                    width="150" height="150" id="my-account-profile-image" [src]="uploadimageSrc" (click)="open1(mymodal1)"   class="form-control" >
+                    <span class="mandatoryfld_lbl">
+                    </span>
+                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  (click)="removeImage()">
                       <i class="fas fa-trash-alt"></i>
                     </button>
                   </div>
                 </div>
-
-
-                
-
-
-
-
-
-
-                <ng-template #mymodal1 let-modal>
-                  <div class="popup-box">
-                    <div class="container">
-                      <div class="heading">
-                        <div class="modal-heading">
-                          <h6>Upload Picture</h6>
-                          <a class="close-reveal-modal" title="Close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                            <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
-                          </a>
-                        </div>
-                      </div>
-                      <div id="upload-demo" class="croppie-container" style="margin: 10px;
-                        border: dashed 1px #43464d;">
-                        <img src="../../../assets/img/user.png" style=" height: 50%;
-                width: 90%;
-                margin: 10px;">
-                        <div class="cr-boundary" aria-dropeffect="none">
-                
-                          <div class="cr-viewport cr-vp-square" tabindex="0">
-                            <div class="slide-container">
-                              <input type="range" min="1" max="100" value="50" class="slider" id="myRange" aria-valuenow="100">
-                            </div>
-                            <div class="file">
-                              <input type="file" name="file" class="file"
-                                style="border: solid 1px #43464d; border-radius: 0px;" >
-                              <input type="submit" class="done" value="Done"   >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ng-template>
-
-
-
-
-
-
-
-
 
                 <div class="large-6 medium-6 small-6 columns">
                   <p class="help-text">Click here to upload picture.</p>
@@ -178,6 +132,51 @@
             </div>
           </div>
         </div>
+
+
+        <ng-template #mymodal1 let-modal>
+          <div class="popup-box">
+            <div class="container">
+              <div class="heading">
+                <div class="modal-heading">
+                  <h6>Upload Picture</h6>
+                  <a class="close-reveal-modal" title="Close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')">
+                    <div title="Close" class="closebtn ngdialog-close" style="padding-left: 40px;"></div>
+                  </a>
+                </div>
+              </div>
+              <div id="upload-demo" class="croppie-container" style="margin: 10px;
+                border: dashed 1px #43464d;">
+                <!-- <img src="../../../assets/img/user.png" style=" height: 50%;
+        width: 90%;
+        margin: 10px;" [src]="imageSrc" *ngIf="imageSrc" > -->
+                <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+                  [resizeToWidth]="256" format="png" (imageCropped)="cropImg($event)" (imageLoaded)="imgLoad()"
+                  (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()">
+                </image-cropper>
+                <div class="cr-boundary" aria-dropeffect="none">
+
+                  <div class="cr-viewport cr-vp-square" tabindex="0">
+                    <div class="slide-container">
+                      <input type="range" min="1" max="100" value="50" class="slider" id="myRange"
+                        aria-valuenow="100">
+                    </div>
+                    <div class="file">
+                      <input type="file" name="file" class="file"
+                        style="border: solid 1px #43464d; border-radius: 0px;" multiple
+                        (change)="onFileChange($event)" formControlName="imageKey">
+                      <input type="submit" class="done" value="Done" (click)="show()"
+                        (click)="modal.dismiss('Cross click')" (click)="uploadFiles()">
+                      
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
 
         <div class="large-7 medium-12 small-12 columns column-second">
           <div class="flex-row">

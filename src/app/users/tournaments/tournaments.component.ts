@@ -22,6 +22,9 @@ export class TournamentsComponent implements OnInit {
   this.getLatestTournamentdetails();
 }
 getTournamentdetails(){
+  this.loggedinUser = localStorage.getItem('loggeduser');
+  this.userName=JSON.parse(this.loggedinUser).username;
+  this.userID=JSON.parse(this.loggedinUser).userID;
   this._service.getTournament().subscribe(res =>{
   var tournamentList=Object.values(res);
   this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
@@ -52,7 +55,8 @@ getLatestTournamentdetails(){
      getFiles(){
       this._service.getFiles().subscribe(res=>{
         if(res){
-          this.files=Object.values(res);
+          this.files=(res);
+          console.log(JSON.stringify(res));
         }
       });
     }

@@ -32,10 +32,10 @@ export class DashboardService {
   }
   
   createTeam(userObj:any){
-    return this.http.post<[]>(environment.apiUrl + 'services/main/team',userObj, this.httpOptions);
+    return this.http.post<[]>(environment.apiUrl1 + 'services/team',userObj, this.httpOptions);
   }
   createTournament(userObj:any){
-    return this.http.post<[]>(environment.apiUrl + 'services/main/tournament',userObj, this.httpOptions);
+    return this.http.post<[]>(environment.apiUrl1 + 'services/main/tournament',userObj, this.httpOptions);
   }
   updateProfile(id:any, userObj:any){
 
@@ -53,7 +53,10 @@ getSeason(userId:String){
   return this.http.get<[]>(environment.apiUrl1 + 'services/main/season/user/'+userId, this.httpOptions);
  }
  getTeam(userId:String){
-  return this.http.get<[]>(environment.apiUrl1 + 'services/main/team/user/'+userId, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/team/'+userId, this.httpOptions);
+ }
+ getTeamList(){
+  return this.http.get<[]>(environment.apiUrl1 + 'team/List', this.httpOptions);
  }
 uploadImage(file: File){
   
@@ -63,7 +66,7 @@ getEvent(userId:String){
   return this.http.get<[]>(environment.apiUrl1 + 'services/main/event/user/'+userId, this.httpOptions);
 }
 getLocation(){
-  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query=' ,this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);
 }
 getGame(){
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/game?query' ,this.httpOptions);

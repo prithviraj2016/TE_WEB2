@@ -25,6 +25,7 @@ export class TeamCreateComponent implements OnInit {
   uploadimageSrc:string;
   upload=false;
   upload1=false;
+  id:string;
   ArrayOfSelectedFile = new Array<string>();
  
   cropImgPreview: any = '';
@@ -73,7 +74,7 @@ createTeam(){
   
      if (this.newTeamForm.invalid) {
     console.log(this.newTeamForm.value);
-   this.service.createTeam(JSON.stringify(this.newTeamForm.value)).subscribe(data =>{
+   this.service.createTeam(this.newTeamForm.value).subscribe(data =>{
     if(data) {
        alert("Team Created Successfully");
      }else(err: any)=>{

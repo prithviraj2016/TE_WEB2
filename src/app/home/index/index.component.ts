@@ -105,8 +105,9 @@ export class IndexComponent implements OnInit {
 
 
   ngOnInit(){
+    this.getTournamentdetails();
       $(document).foundation();
-      this.getTournamentdetails()
+      
      this.signinForm = this.frmbuilder.group({
       'UserName':new FormControl ('', [Validators.required]),
       // 'RememberMe': [false, [Validators.required]],

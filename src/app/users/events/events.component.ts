@@ -30,8 +30,8 @@ constructor(private _service:DashboardService) { }
     this.userName=JSON.parse(this.loggedinUser).username;
     this._service.getEvent(this.userID).subscribe(res=>{
       if(res){
-      this.eventList=Object.values(res)[2];
-      
+      this.eventList=Object.values(res);
+      this.hype=JSON.parse(JSON.stringify(this.eventList))[2];
       console.log(this.hype);
       }
         
@@ -44,8 +44,8 @@ constructor(private _service:DashboardService) { }
         this.userName=JSON.parse(this.loggedinUser).username;
         this._service.getEvent(this.userID).subscribe(res=>{
           if(res){
-          this.eventList1=Object.values(res)[2][0];
-       
+          this.eventList1=Object.values(res);
+          this.hype1=JSON.parse(JSON.stringify(this.eventList1))[2][0];
           console.log(this.hype1);
           }
             

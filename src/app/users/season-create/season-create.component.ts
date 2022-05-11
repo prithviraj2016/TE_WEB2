@@ -72,7 +72,7 @@ get f(): { [key: string]: AbstractControl } {
     
        if (this.newSeasonsForm.invalid) {
       console.log(this.newSeasonsForm.value);
-     this.service.createSeason(JSON.stringify(this.newSeasonsForm.value)).subscribe(data =>{
+     this.service.createSeason(JSON.stringify(formData)).subscribe(data =>{
       if(data) {
          alert("Season Created Successfully");
        }else(err: any)=>{

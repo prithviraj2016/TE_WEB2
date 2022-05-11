@@ -32,15 +32,15 @@
           </div>
         </div>
       </div>
-
-      <div class="season-card" *ngFor="let item of seasonList">
+    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
+      <div class="season-card" *ngFor="let item of hype">
         <div class="event_card sha-box card">
           <div class="row">
             <div class="img-event medium-5 blankImage" style="background-image:url({{item.imageKey}})">
               <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
             </div>
             <div class="txt-event medium-5" >
-              <span class="tgamename">EVENT INFO.</span>
+              <span class="tgamename">SEASONS INFO.</span>
               <hr class="shr3">
               <div class="clear"></div>
               <div class="tinfo">Start Date:</div>
@@ -55,6 +55,7 @@
         </div>
         <hr class="shr1">
       </div>
+    </div>
       <!-- <div style="text-align: center;">No records found</div> -->
     </div>
   </div>
@@ -64,7 +65,7 @@
       <div class="detail sha-box p15 flex_box_column eventboxouter">
       <div class="img-event-bg mbot-15" style="background-image:url(assets/images/object1.png)">
         <div class="detail_title">
-          <div class="w64p truncate">Season Name</div>
+          <div class="w64p truncate">{{hype1.name}}</div>
         </div>
 
         <div>
@@ -76,8 +77,8 @@
         <!-- First Column -->
         <div class="bordr medium-7 flex_item flex_box_column" id="season-detail">
           <div class="name-event-bg mbot-15">
-            <div class="tddate">Start Date: <span class="btxt">20/20/2020</span></div>
-            <div class="tddate">End Date: <span class="rtxt">20/20/2020</span></div>
+            <div class="tddate">Start Date: <span class="btxt">{{hype1.startDateTime}}</span></div>
+            <div class="tddate">End Date: <span class="rtxt">{{hype1.endDateTime}}</span></div>
             <a title="Help" href="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
                 aria-hidden="true"></i><span>&nbsp;Help</span></a>
           </div>
@@ -141,25 +142,27 @@
             </div>
           </div>
         </div>
-        <div class="medium-5 left pl15 columns flex_box_column detailElementHeight" id="season-detail-list">
-
-          <div class="name-event-bg">
+        <div class="medium-5 left pl15 columns flex_box_column detailElementHeight" id="season-detail-list" >
+          <!-- <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" > -->
+          <div class="name-event-bg"  >
             <span class="btxt ">EVENTS LIST</span>
             <span class="flrt ">12</span>
           </div>
           <!-- List -->
+          <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 400px;" >
           <div data-step="7" data-intro="See the event list for the season with just a click."
-            class="playerslist list_box_half_mp bar">
-            <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
-              <li class="tournament_list_item">
+            class="playerslist list_box_half_mp bar" *ngFor="let item of hype2" >
+            <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
+              <li class="tournament_list_item" >
                 <a class="tour_item img-event" href="/event/id/eventeventID"
                   style="background-image:url(assets/images/default.jpg)">
-                  <div class="name-event" title="IPL 2019">IPL 2020</div>
-                  <div class="name-event">20/02/2020</div>
+                  <div class="name-event" title="IPL 2019">{{item.name}}</div>
+                  <div class="name-event">{{item.startDateTime}}</div>
                 </a>
               </li>
             </ul>
           </div>
+
 
           <div class="name-event-bg" >
             <span class="btxt ">TOURNAMENTS LIST</span>
@@ -177,7 +180,7 @@
               </li>
             </ul>
           </div>
-
+        
         </div>
       </div>
     </div>

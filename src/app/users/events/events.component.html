@@ -30,13 +30,20 @@
           </div>
         </div>
       </div>
-
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" >
       <div class="season-card" >
-        <div class="event_card sha-box card" *ngFor="let item of eventList">
+        <div class="event_card sha-box card" *ngFor="let item of hype">
           <div class="row" >
             <div class="img-event medium-5 blankImage" style="background-image:url({{item.imageKey}})">
               <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
            </div>
+           <!-- <div class="ribbon_parent2" style="margin-top: -10px;">
+                  <div class="back_ribbon2 bgradient"></div>
+                  <div class="ribbon_child2 bgsolidBlue"></div>
+                  <div class="ribbon_content2">
+                      <p>{{item.hypeType}}</p>
+                  </div>
+              </div> -->
             <div class="txt-event medium-5">
               <span class="tgamename">EVENT INFO.</span>
               <hr class="shr3">
@@ -52,6 +59,7 @@
           </div>
         </div>
         <hr class="shr1">
+      </div>
       </div>
       <!-- <div style="text-align: center;">No records found</div> -->
     </div>
@@ -69,14 +77,14 @@
             <span class="follow_num">22</span>
           </div>
           <div class="detail_title">
-            <div class="truncate" title="Event Name">Event Name</div>
+            <div class="truncate" title="Event Name">{{hype1.name}}</div>
           </div>
           <div id="icons-block">
             <div>
               <a class="follow_icon followed" href="" title="Click to Unfollow this Event"><i
                   class="fa fa-heart"></i></a>
               <a class="follow_icon followicon_heart" href=""><i class="fa fa-heart"
-                  title="Click to Follow this Event"></i></a> <span class="follow_num">22</span>
+                  title="Click to Follow this Event"></i></a> <span class="follow_num">{{hype1.hits}}</span>
             </div>
             <a class="generate-report-modal-event report-exlamation bgradient-orange"
               title="Report Inappropriate Content"><i class="fa fa-exclamation"></i></a>
@@ -88,10 +96,10 @@
           <div id="tournament-detail" class="medium-6 bordr flex_item flex_box_column eventDetails" >
             <div class="name-event-bg mbot-15 evepdfix">
               <div class="tddate">
-                Start Date: <span class="btxt">12/11/2020</span>
+                Start Date: <span class="btxt">{{hype1.startDateTime}}</span>
               </div>
               <div class="tddate">
-                End Date: <span class="rtxt">12/22/2020</span>
+                End Date: <span class="rtxt">{{hype1.endDateTime}}</span>
               </div>
               <a title="Help" href="" onclick="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
                   aria-hidden="true"></i><span>&nbsp;Help</span></a>

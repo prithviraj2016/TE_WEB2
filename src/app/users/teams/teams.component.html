@@ -32,22 +32,22 @@
           </div>
         </div>
       </div>
-
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" >
       <div class="season-card">
-        <div class="event_card sha-box card" *ngFor="let item of teamList">
+        <div class="event_card sha-box card" *ngFor="let item of hype">
           <div class="row">
-            <div class="img-event medium-5 blankImage" style="background-image:url({{item.imageKey}})">
-              <div class="name-event truncate" title=" Team Name">{{item.name}}</div>
+            <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
+              <div class="name-event truncate" title=" Team Name">{{item.teamName}}</div>
             </div>
             <div class="txt-event medium-5">
               <span class="tgamename">TEAM INFO.</span>
               <hr class="shr3">
               <div class="clear"></div>
-              <div class="tinfo">Start Date:</div>
-              <span class="tdata date_start">{{item.startDateTime}}</span>
+              <div class="tinfo">Location:</div>
+              <span class="tdata date_start">{{item.location}}</span>
               <div class="clear"></div>
-              <div class="tinfo">End Date:</div>
-              <span class="tdata rtxt date_end">{{item.endDateTime}</span>
+              <div class="tinfo">Members:</div>
+              <span class="tdata rtxt date_end">{{item.players}}</span>
             </div>
             <div ng-show="event.hype" class="hype-ribbon-blue"></div>
             <br>
@@ -55,7 +55,8 @@
         </div>
         <hr class="shr1">
       </div>
-      <div style="text-align: center;">No records found</div>
+      </div>
+      <!-- <div style="text-align: center;">No records found</div> -->
     </div>
   </div>
   <!-- Column 3 -->
@@ -69,7 +70,7 @@
                 <span class="follow_num">20</span>
             </div>
             <div class="detail_title">
-                <div class="w64p truncate" title="Team Name">Team Name</div>
+                <div class="w64p truncate" title="Team Name">{{hype2.teamName}}</div>
             </div>
     
             <div id="icons-block" >
@@ -99,7 +100,7 @@
                     </div>
                     <div class="description_title" data-step="5" data-intro="Information about your team is posted here">About Team</div>
                     <div class="word-wrap description">
-                        <p class="info_box_mp pre" title="">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also t</p>
+                        <p class="info_box_mp pre" title="">{{hype2.description}}</p>
                     </div>
                 </div>
                 <div  class="tournament_btns">

@@ -86,7 +86,7 @@
                                     <div class="hype_card sha-box card" *ngFor="let item of hype">
                                         <div class="">
                                             <div class="img-event small-6"
-                                                style="background-image: url({{item.imageKey}});">
+                                                style="background-image: url({{imageUrl+item.imageKey}});">
                                                 <div class="name-event" title="hype name">{{item.name}}</div>
                                             </div>
                                             <div class="ribbon_parent2">
@@ -131,8 +131,8 @@
                                 <a href='/tournament/id/'>
                                     <div class="event_card sha-box card" *ngFor="let item of upcoming">
                                         <div class="">
-                                            <div class="img-event small-6">
-                                                <img src="{{item.imageKey}}">
+                                            <div class="img-event small-6" style="background-image: url({{imageUrl+item.imageKey}});">
+                                                
                                                 <div class="name-event truncate" title="tournament name">{{item.name}}
                                                 </div>
                                                 <div></div>

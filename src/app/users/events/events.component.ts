@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { DashboardService } from '../dashboard/dashboard.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
+imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
  public eventList:any[]=[];
  public eventList1:any[]=[];
  hype:any;
@@ -17,12 +19,14 @@ loggedinUser:any;
 files:any;
   
 
-constructor(private _service:DashboardService) { }
+constructor(private _service:DashboardService) {
+  this.imageUrl=environment.imageUrl
+}
 
   ngOnInit(): void {
    this.getEventdetails();
    this.getLatestEventdetails();
-   this.getFiles();
+   
   }
   getEventdetails(){
     this.loggedinUser = localStorage.getItem('loggeduser');
@@ -53,13 +57,7 @@ constructor(private _service:DashboardService) { }
       
         }
     
-    getFiles(){
-      this._service.getFiles().subscribe(res=>{
-        if(res){
-          this.files=Object.values(res);
-        }
-      });
-    }
+   
     
   }
 

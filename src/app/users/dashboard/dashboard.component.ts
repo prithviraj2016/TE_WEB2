@@ -1,6 +1,7 @@
 import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
+import { environment } from 'src/environments/environment';
 declare var introJs: any;
 
 
@@ -12,12 +13,14 @@ declare var introJs: any;
 
 
 export class DashboardComponent implements OnInit {
+  imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
   //introJS = introJs(); // assigning it to variable
   public tournamentList:any=[];
   public upcoming:any=[];
   slide:boolean=true;
   public hype:any=[];
   constructor(private _service:DashboardService) {
+    this.imageUrl=environment.imageUrl
 
     //console.log(this.introJS)
 

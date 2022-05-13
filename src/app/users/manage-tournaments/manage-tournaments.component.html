@@ -37,7 +37,31 @@
                     </div>
                 </div>
                 <div class="" style="border-bottom: 1px solid #6196CC;">
-                    <h5 class="subsubhead ng-binding">User is currently not part of any tournaments</h5>
+                    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
+                        <div class="season-card" >
+                          <div class="event_card sha-box card">
+                            <div class="row">
+                              <div class="img-event medium-5 blankImage" style="background-image:url()">
+                                <div class="name-event truncate" title=" Event Name"></div>
+                              </div>
+                              <div class="txt-event medium-5" >
+                                <span class="tgamename">SEASONS INFO.</span>
+                                <hr class="shr3">
+                                <div class="clear"></div>
+                                <div class="tinfo">Start Date:</div>
+                                <span class="tdata date_start"></span>
+                                <div class="clear"></div>
+                                <div class="tinfo">End Date:</div>
+                                <span class="tdata rtxt date_end"></span>
+                              </div>
+                              <div ng-show="event.hype" class="hype-ribbon-blue"></div>
+                              <br>
+                            </div>
+                          </div>
+                          <hr class="shr1">
+                        </div>
+                      </div>
+                    <!-- <h5 class="subsubhead ng-binding">User is currently not part of any tournaments</h5> -->
                     <div class="small-12 columns tabs-content m0">
                     </div>
                     <div class="border"></div>

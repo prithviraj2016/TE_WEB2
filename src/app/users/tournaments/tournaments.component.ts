@@ -1,11 +1,17 @@
+import { environment } from './../../../environments/environment.prod';
+import { parse } from 'path';
+import { NgxXml2jsonService } from 'ngx-xml2json';
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import * as xml2js from 'xml2js';
 import { DashboardService } from '../dashboard/dashboard.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './tournaments.component.html'
 })
 export class TournamentsComponent implements OnInit {
+  imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
   public tournamentList:any=[];
   public tournamentList1:any=[];
   public hype:any=[];
@@ -14,13 +20,24 @@ export class TournamentsComponent implements OnInit {
   loggedinUser:any;
   userName:String;
   files:any;
-  constructor(private _service:DashboardService) {}
+  xml: string;
+  objs: any = {};
+  List:any=[];
+  
+  constructor(private _service:DashboardService,
+    private ngxXml2jsonService: NgxXml2jsonService,) {
+      this.imageUrl=environment.imageUrl
+    }
 
   ngOnInit() {
-  this.getFiles();
+  
   this.getTournamentdetails();
   this.getLatestTournamentdetails();
+ 
 }
+
+  
+
 getTournamentdetails(){
   this.loggedinUser = localStorage.getItem('loggeduser');
   this.userName=JSON.parse(this.loggedinUser).username;
@@ -28,6 +45,7 @@ getTournamentdetails(){
   this._service.getTournament().subscribe(res =>{
   var tournamentList=Object.values(res);
   this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
+  
 
    console.log(this.hype);
      
@@ -38,7 +56,6 @@ getLatestTournamentdetails(){
   this._service.getTournament().subscribe(res =>{
   var tournamentList1=Object.values(res);
   this.hype1=JSON.parse(JSON.stringify(tournamentList1))[2][0];
-      
   console.log(this.hype1);
            
    });
@@ -52,14 +69,27 @@ getLatestTournamentdetails(){
        console.log(this.userName);
        return this.loggedinUser;
      }
-     getFiles(){
-      this._service.getFiles().subscribe(res=>{
-        if(res){
-          this.files=(res);
-          console.log(JSON.stringify(res));
-        }
-      });
-    }
+    //  getFiles(){
+    //   this._service.getFiles().subscribe(res=>{
+    //     if(res){
+          
+    //     var files=Object.values(res);
+    //     // this.List=JSON.parse(JSON.stringify(files))[2];
+    //     //   const parser = new DOMParser();
+    //     //   const xml = parser.parseFromString( this.List, 'text/xml');
+    //     //   const obj = this.ngxXml2jsonService.xmlToJson(xml);
+    //     //   this.objs = obj
+    //     //   console.log(this.objs);
+          
+          
+         
+    //     }
+    //       });
+        
+    //     }
+      
+    
+    
     openModal(template: TemplateRef<any>) {
       
     }

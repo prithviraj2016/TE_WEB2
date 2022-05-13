@@ -2,8 +2,8 @@ import { catchError, Observable } from 'rxjs';
 import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import * as AWS from 'aws-sdk/global';
-import * as S3 from 'aws-sdk/clients/s3';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,7 @@ export class DashboardService {
      // 'Authorization':'AUTH-KEY'
     })
   }
+  
   constructor(private http: HttpClient) { }
 
   
@@ -53,7 +54,7 @@ getSeason(userId:String){
   return this.http.get<[]>(environment.apiUrl1 + 'services/main/season/user/'+userId, this.httpOptions);
  }
  getTeam(userId:String){
-  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/team/'+userId, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl1 + 'services/team/player/'+userId, this.httpOptions);
  }
  getTeamList(){
   return this.http.get<[]>(environment.apiUrl1 + 'team/List', this.httpOptions);
@@ -71,10 +72,10 @@ getLocation(){
 getGame(){
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/game?query' ,this.httpOptions);
 }
-getFiles(){
+// getFiles(){
   
-  return this.http.get<[]>("https://s3.amazonaws.com/vgroup-tournament/");
-}
+//   return this.http.get<[]>("https://s3.amazonaws.com/vgroup-tournament/");
+// }
   
 
 

@@ -1,5 +1,6 @@
 import { DashboardService } from './../dashboard/dashboard.service';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-seasons',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seasons.component.css']
 })
 export class SeasonsComponent implements OnInit {
+imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
 seasonList:any=[];
 eventList:any=[];
 public hype:any=[];
@@ -17,7 +19,9 @@ userID:String="";
 userName:string="";
 loggedinUser:any;
 
-constructor( private service:DashboardService) { }
+constructor( private service:DashboardService) {
+  this.imageUrl=environment.imageUrl
+ }
 
   ngOnInit(): void {
     this.getSeason();

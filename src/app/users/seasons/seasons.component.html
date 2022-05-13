@@ -36,7 +36,7 @@
       <div class="season-card" *ngFor="let item of hype">
         <div class="event_card sha-box card">
           <div class="row">
-            <div class="img-event medium-5 blankImage" style="background-image:url({{item.imageKey}})">
+            <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
               <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
             </div>
             <div class="txt-event medium-5" >
@@ -155,7 +155,7 @@
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
               <li class="tournament_list_item" >
                 <a class="tour_item img-event" href="/event/id/eventeventID"
-                  style="background-image:url(assets/images/default.jpg)">
+                  style="background-image:url({{imageUrl+item.imageKey}})">
                   <div class="name-event" title="IPL 2019">{{item.name}}</div>
                   <div class="name-event">{{item.startDateTime}}</div>
                 </a>
@@ -173,7 +173,7 @@
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
               <li class="tournament_list_item">
                 <a class="tour_item img-event" href="/tournament/id/20"
-                  style="background-image:url(assets/images/default.jpg)">
+                  style="background-image:url({{imageUrl+hypes.imageKey}})">
                   <div class="name-event" title="IPL 2019">{{hypes.name}}</div>
                   <div class="name-event">{{hypes.startDate}}</div>
                 </a>

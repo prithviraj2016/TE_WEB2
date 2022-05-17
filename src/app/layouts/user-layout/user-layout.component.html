@@ -20,11 +20,11 @@
           <form autocomplete="off">
             <input placeholder="Search" class="search-style globalSearch"   type="text" maxlength="50">
           </form>
-         
+
         </li>
         <ng-template #mymodal let-modal>
-        
-          <div class="search_pop small_shadow ng-cloak hide">
+
+          <div class="search_pop small_shadow ng-cloak">
             <div class="search_pop_header">
               <a class="search_type" href="" data-id="1">
                 Players
@@ -63,7 +63,7 @@
             </div>
           </div>
         </ng-template>
-        
+
 
         <li class="navbar_profile_item ng-cloak">
           <a title="Dashboard" routerLink="/dashboard" class="menu_item_long" routerLinkActive="active">Dashboard</a>
@@ -116,9 +116,9 @@
                 <br>@{{userID}}
               </span></li>
             <li><a title="Edit Profile" routerLink="/profile/{{userID}}" href="">Edit Profile</a></li>
-            <li><a title="Message Followers" class="" (click)="open1(mymodal1)"> Message Followers </a></li>
-            <li><a title="Message Followers" class="" (click)="open(mymodal)"> Following </a></li>
-            <li><a title="Message Followers" class="" (click)="open2(mymodal2)"> Followers </a></li>
+            <li><a title="Message Followers" class="" (click)="messageFollowers(mymodal1)"> Message Followers </a></li>
+            <li><a title="Message Followers" class="" (click)="openFollowing(mymodalFF)"> Following </a></li>
+            <li><a title="Message Followers" class="" (click)="openFollowers(mymodalFF)"> Followers </a></li>
             <li class="navbar_profile_item ng-cloak"> <a (click)="Logout()" title="Logout" href>Logout</a> </li>
           </ul>
 
@@ -130,7 +130,7 @@
 
 <div class="header-margin"></div>
 
-<ng-template #mymodal2 let-modal>
+<!-- <ng-template #mymodal2 let-modal>
   <div class="popup-box">
     <div class="container" style="width:40%;">
       <div class="heading">
@@ -156,7 +156,7 @@
                   <div class="following_list">
                       <div class="following_list_child">
                          <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 columns">
@@ -167,17 +167,17 @@
                                           </div>
                                       </div>
                                       <div class="small-9 follower-card-name columns" >
-                                       
+
                                           <p class="player_name ng-binding" title="cool" style="padding-left: 50px;">
                                               cool</p>
                                           <span class="player_name_lower ng-binding" style="padding-right: 200px;">@coolgas</span>
-                                          
+
                                       </div>
                                   </div>
                               </li>
                           </ul>
                           <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 columns">
@@ -196,7 +196,7 @@
                               </li>
                           </ul>
                       </div>
-                     
+
                   </div>
               </div>
 
@@ -212,7 +212,7 @@
                   <div class="following_list">
                       <div class="following_list_child">
                        <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 columns">
@@ -231,7 +231,7 @@
                               </li>
                           </ul>
                           <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 columns">
@@ -250,7 +250,7 @@
                               </li>
                           </ul>
                       </div>
-                     
+
                   </div>
               </div>
               </div>
@@ -262,9 +262,9 @@
 
     </div>
   </div>
-</ng-template>
+</ng-template> -->
 
-<ng-template #mymodal let-modal>
+<ng-template #mymodalFF let-modal>
   <div class="popup-box">
     <div class="container" style="width:40%;">
       <div class="heading">
@@ -291,7 +291,7 @@
                   <div class="following_list">
                       <div class="following_list_child">
                           <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 offset-1 columns">
@@ -310,7 +310,7 @@
                               </li>
                           </ul>
                           <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 columns">
@@ -329,7 +329,7 @@
                               </li>
                           </ul>
                       </div>
-                     
+
                   </div>
               </div>
               </div>
@@ -344,7 +344,7 @@
                   <div class="following_list">
                       <div class="following_list_child">
                          <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 columns">
@@ -363,7 +363,7 @@
                               </li>
                           </ul>
                           <ul id="followingList" class="followList followList2 ng-scope" ng-repeat="followingPerson in profile.following.followingPerson">
-  
+
                               <li class="sha-box small-card" ng-click="showUserProfile(followingPerson)">
                                   <div class="row collapse">
                                       <div class="small-1 columns">
@@ -382,7 +382,7 @@
                               </li>
                           </ul>
                       </div>
-                    
+
                   </div>
               </div>
               </div>
@@ -416,7 +416,7 @@
           <h6>Message</h6>
           <textarea cols="2" rows="1"></textarea>
         </div>
-       
+
         <div class="row">
           <div class="large-5 small-5 medium-5 column">
             <div class="switch round tiny text-left" style="display: flex;">
@@ -439,7 +439,7 @@
           </div>
         </div>
 
-       
+
       </form>
     </div>
   </div>

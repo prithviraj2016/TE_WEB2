@@ -37,10 +37,6 @@ import { ModalModule, TabsModule } from 'ngx-foundation';
     SignUpComponent,
     HomeLayoutComponent,
     UserLayoutComponent,
-    
-   
-  
-
   ],
   imports: [
     BrowserModule,

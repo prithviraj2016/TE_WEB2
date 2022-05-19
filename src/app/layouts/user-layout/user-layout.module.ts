@@ -40,6 +40,7 @@ import { ManageTournamentsComponent } from 'src/app/users/manage-tournaments/man
 import { ManagePlayersComponent } from 'src/app/users/manage-players/manage-players.component';
 import { ImageCropperModule} from 'ngx-image-cropper';
 import { ManagePlayersTeamComponent } from './../../users/manage-players-team/manage-players-team.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { AngularFileUploaderModule } from "angular-file-uploader";
 
 
@@ -71,15 +72,14 @@ import { ManagePlayersTeamComponent } from './../../users/manage-players-team/ma
     ModalModule.forRoot(),
     HttpClientModule,
     ImageCropperModule,
-    
-   
+    NgbModule,
     NgxCopyPasteModule
     // AngularFileUploaderModule,
 
 
-   
 
-    
+
+
     // MatTabsModule
   ],
   declarations: [
@@ -104,7 +104,7 @@ import { ManagePlayersTeamComponent } from './../../users/manage-players-team/ma
     ManageTournamentsComponent,
     ManagePlayersComponent,
     ManagePlayersTeamComponent
-    
+
   ],
   providers: [
     DynamicScriptLoaderService

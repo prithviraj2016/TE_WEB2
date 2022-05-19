@@ -2,6 +2,7 @@ import { catchError, Observable } from 'rxjs';
 import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Console } from 'console';
 
 
 
@@ -50,6 +51,25 @@ getTournament(){
    return this.http.get<[]>(environment.apiUrl1 + 'services/network/user/profile/web', this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
+
+searchTournament(qr:any){
+    console.log(qr);
+  return this.http.get<[]>(environment.apiUrl1 + 'services/unauthenticated/search/tournament?query='+qr, this.httpOptions);
+ 
+}
+searchEvent(qr:any){
+  console.log(qr);
+  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/Event?q='+qr, this.httpOptions);
+}
+searchSeason(qr:any){
+  console.log(qr);
+  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/Event?q='+qr, this.httpOptions);
+}
+searchTeam(qr:any){
+  console.log(qr);
+  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/Event?q='+qr, this.httpOptions);
+}
+
 getSeason(userId:String){
   return this.http.get<[]>(environment.apiUrl1 + 'services/main/season/user/'+userId, this.httpOptions);
  }
@@ -77,6 +97,9 @@ getGame(){
 //   return this.http.get<[]>("https://s3.amazonaws.com/vgroup-tournament/");
 // }
   
+getPerson(qr:string){
+  return this.http.get<[]>(environment.apiUrl+'services/main/search/Person?'+qr);
+}
 
 
 

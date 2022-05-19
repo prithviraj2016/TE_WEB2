@@ -19,6 +19,10 @@ export class TeamsComponent implements OnInit {
   userID:String="";
   userName:string="";
   loggedinUser:any;
+  public show:boolean =false;
+public searchList : any[];
+public search1:any=[];
+
 
   constructor(private service:DashboardService) { 
     this.imageUrl=environment.imageUrl
@@ -55,5 +59,14 @@ getTeamList(){
      console.log(this.teamList1);
     }
   });
+}
+searchTeam(event:any){
+  console.log(event.target.value);
+  this.service.searchTeam(event.target.value).subscribe(res=>{
+    var searchList = Object.values(res);
+    this.search1=JSON.parse(JSON.stringify(searchList))[2];
+    console.log(this.search1);
+    this.show = !this.show;
+  })
 }
 }

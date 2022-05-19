@@ -20,7 +20,7 @@
 
           <div class="small-6 medium-6 large-6 searchb pt15 columns">
             <form autocomplete="off" class="ng-pristine ng-valid">
-              <input autocomplete="off" data-step="1" data-intro="Type here to search for your events in your list."
+              <input autocomplete="off" data-step="1" data-intro="Type here to search for your events in your list." (click)="  searchTeam" (change)="searchTeam($event)"
                 type="search" id="search" placeholder="Search team">
             </form>
           </div>
@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" >
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;"*ngIf="!show">
       <div class="season-card">
         <div class="event_card sha-box card" *ngFor="let item of hype">
           <div class="row">
@@ -56,7 +56,31 @@
         <hr class="shr1">
       </div>
       </div>
-      <!-- <div style="text-align: center;">No records found</div> -->
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;"*ngIf="show">
+        <div class="season-card">
+          <div class="event_card sha-box card" *ngFor="let item of hype">
+            <div class="row">
+              <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
+                <div class="name-event truncate" title=" Team Name">{{item.teamName}}</div>
+              </div>
+              <div class="txt-event medium-5">
+                <span class="tgamename">TEAM INFO.</span>
+                <hr class="shr3">
+                <div class="clear"></div>
+                <div class="tinfo">Location:</div>
+                <span class="tdata date_start">{{item.location}}</span>
+                <div class="clear"></div>
+                <div class="tinfo">Members:</div>
+                <span class="tdata rtxt date_end">{{item.players}}</span>
+              </div>
+              <div ng-show="event.hype" class="hype-ribbon-blue"></div>
+              <br>
+            </div>
+          </div>
+          <hr class="shr1">
+        </div>
+        </div>
+      
     </div>
   </div>
   <!-- Column 3 -->

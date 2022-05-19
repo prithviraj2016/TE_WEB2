@@ -1,6 +1,7 @@
 import { DashboardService } from './../dashboard/dashboard.service';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { HttpClientJsonpModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-seasons',
@@ -18,6 +19,10 @@ public tournamentList:any=[];
 userID:String="";
 userName:string="";
 loggedinUser:any;
+public search1:any=[];
+
+public show:boolean =false;
+public searchList : any[];
 
 constructor( private service:DashboardService) {
   this.imageUrl=environment.imageUrl
@@ -77,4 +82,14 @@ getTournamentdetails(){
     });
         
       }
+
+searchSeason(event:any){
+  console.log(event.target.value);
+  this.service.searchSeason(event.target.value).subscribe(res=>{
+    var searchList = Object.values(res);
+    this.search1=JSON.parse(JSON.stringify(searchList))[2];
+    console.log(this.search1);
+    this.show = !this.show;
+  })
+}
 }

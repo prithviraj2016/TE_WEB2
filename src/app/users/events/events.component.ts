@@ -11,12 +11,15 @@ export class EventsComponent implements OnInit {
 imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
  public eventList:any[]=[];
  public eventList1:any[]=[];
- hype:any;
+ public hype:any [];
+ public search1:any=[];
  hype1:any;
  userID:String="";
  userName:String="";
 loggedinUser:any;
 files:any;
+public show:boolean =false;
+public searchList : any[];
   
 
 constructor(private _service:DashboardService) {
@@ -57,7 +60,15 @@ constructor(private _service:DashboardService) {
       
         }
     
-   
+   searchEvent(event:any){
+     console.log(event.target.value);
+     this._service.searchEvent(event.target.value).subscribe(res=>{
+       var searchList = Object.values(res);
+       this.search1=JSON.parse(JSON.stringify(searchList))[2];
+       console.log(this.search1);
+       this.show = !this.show;
+     })
+   }
     
   }
 

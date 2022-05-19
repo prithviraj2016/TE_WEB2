@@ -1,8 +1,8 @@
 import { environment } from './../../../environments/environment.prod';
 import { parse } from 'path';
-import { NgxXml2jsonService } from 'ngx-xml2json';
+
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import * as xml2js from 'xml2js';
+
 import { DashboardService } from '../dashboard/dashboard.service';
 
 
@@ -16,6 +16,7 @@ export class TournamentsComponent implements OnInit {
   public tournamentList1:any=[];
   public hype:any=[];
   public hype1:any=[];
+  public search1:any=[];
   userID:String="";
   loggedinUser:any;
   userName:String;
@@ -23,16 +24,21 @@ export class TournamentsComponent implements OnInit {
   xml: string;
   objs: any = {};
   List:any=[];
-  
+  upload1=false;
+  public show:boolean =false;
+  public searchList : any[];
   constructor(private _service:DashboardService,
-    private ngxXml2jsonService: NgxXml2jsonService,) {
+    ) {
       this.imageUrl=environment.imageUrl
     }
+  
+ 
 
   ngOnInit() {
   
   this.getTournamentdetails();
   this.getLatestTournamentdetails();
+ 
  
 }
 
@@ -60,6 +66,18 @@ getLatestTournamentdetails(){
            
    });
               
+ }
+
+ searchTouramament(event:any){
+console.log(event.target.value);
+
+ this._service.searchTournament(event.target.value
+ ).subscribe(res=>{
+   var searchList = Object.values(res);
+   this.search1=JSON.parse(JSON.stringify(searchList))[2];
+ console.log(this.search1);
+ this.show = !this.show;
+  })
  }
  
   loggedin(){

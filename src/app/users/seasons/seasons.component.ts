@@ -15,6 +15,7 @@ eventList:any=[];
 public hype:any=[];
 public hype1:any=[];
 public hype2:any=[];
+public hype3:any=[];
 public tournamentList:any=[];
 userID:String="";
 userName:string="";
@@ -23,6 +24,7 @@ public search1:any=[];
 
 public show:boolean =false;
 public searchList : any[];
+selectedSeason:any;
 
 constructor( private service:DashboardService) {
   this.imageUrl=environment.imageUrl
@@ -31,8 +33,9 @@ constructor( private service:DashboardService) {
   ngOnInit(): void {
     this.getSeason();
     this.getTournamentdetails();
-    this.getLatestSeason();
+    // this.getLatestSeason();
     this.getEventdetails();
+    
   }
 getSeason(){
   this.loggedinUser = localStorage.getItem('loggeduser');
@@ -42,22 +45,27 @@ getSeason(){
     if(res){
     this.seasonList = Object.values(res);
     this.hype=JSON.parse(JSON.stringify(this.seasonList))[2];
-    console.log(this.seasonList);
+    console.log(this.hype);
     }
   });
 }
-getLatestSeason(){
-  this.loggedinUser = localStorage.getItem('loggeduser');
-  this.userID=JSON.parse(this.loggedinUser).userID;
-  this.userName=JSON.parse(this.loggedinUser).username;
-  this.service.getSeason(this.userID).subscribe(res =>{
-    if(res){
-    this.seasonList = Object.values(res);
-    this.hype1=JSON.parse(JSON.stringify(this.seasonList))[2][0];
-    console.log(this.seasonList);
-    }
-  });
+onSelect(item:any){
+  this.service.getSeason(item);
+  this.selectedSeason=item;
+  console.log(item);
 }
+// getLatestSeason(){
+//   this.loggedinUser = localStorage.getItem('loggeduser');
+//   this.userID=JSON.parse(this.loggedinUser).userID;
+//   this.userName=JSON.parse(this.loggedinUser).username;
+//   this.service.getSeason(this.userID).subscribe(res =>{
+//     if(res){
+//     this.seasonList = Object.values(res);
+//     this.hype1=JSON.parse(JSON.stringify(this.seasonList))[2][0];
+//     // console.log(this.hype1);
+//     }
+//   });
+// }
 getEventdetails(){
   this.loggedinUser = localStorage.getItem('loggeduser');
   this.userID=JSON.parse(this.loggedinUser).userID;
@@ -66,7 +74,7 @@ getEventdetails(){
     if(res){
     this.eventList=Object.values(res);
     this.hype2=JSON.parse(JSON.stringify(this.eventList))[2];
-    console.log(this.hype2);
+    // console.log(this.hype2);
     }
       
     });
@@ -75,9 +83,9 @@ getEventdetails(){
 getTournamentdetails(){
   this.service.getTournament().subscribe(res =>{
   var tournamentList=Object.values(res);
-  this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
+  this.hype3=JSON.parse(JSON.stringify(tournamentList))[2];
  
-   console.log(this.hype);
+  //  console.log(this.hype3);
      
     });
         

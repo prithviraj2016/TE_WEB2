@@ -34,7 +34,7 @@
       </div>
       <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;"*ngIf="!show">
       <div class="season-card">
-        <div class="event_card sha-box card" *ngFor="let item of hype">
+        <div class="event_card sha-box card" *ngFor="let item of hype" (click)="onSelect(item)">
           <div class="row">
             <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
               <div class="name-event truncate" title=" Team Name">{{item.teamName}}</div>
@@ -94,7 +94,7 @@
                 <span class="follow_num">20</span>
             </div>
             <div class="detail_title">
-                <div class="w64p truncate" title="Team Name">{{hype2.teamName}}</div>
+                <div class="w64p truncate" title="Team Name">{{selectedTeam.teamName}}</div>
             </div>
     
             <div id="icons-block" >

@@ -34,10 +34,10 @@ export class DashboardService {
   }
   
   createTeam(userObj:any){
-    return this.http.post<[]>(environment.apiUrl1 + 'services/team',userObj, this.httpOptions);
+    return this.http.post<[]>(environment.apiUrl + 'services/team',userObj, this.httpOptions);
   }
   createTournament(userObj:any){
-    return this.http.post<[]>(environment.apiUrl1 + 'services/main/tournament',userObj, this.httpOptions);
+    return this.http.post<[]>(environment.apiUrl + 'services/main/tournament',userObj, this.httpOptions);
   }
   updateProfile(id:any, userObj:any){
 
@@ -48,7 +48,7 @@ export class DashboardService {
     return this.http.get<[]>(environment.apiUrl + 'services/network/user/profile/'+id,this.httpOptions);
 }
 getTournament(){
-   return this.http.get<[]>(environment.apiUrl1 + 'services/network/user/profile/web', this.httpOptions);
+   return this.http.get<[]>(environment.apiUrl + 'services/network/user/profile/web', this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
 
@@ -71,20 +71,20 @@ searchTeam(qr:any){
 }
 
 getSeason(userId:String){
-  return this.http.get<[]>(environment.apiUrl1 + 'services/main/season/user/'+userId, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/main/season/user/'+userId, this.httpOptions);
  }
  getTeam(userId:String){
-  return this.http.get<[]>(environment.apiUrl1 + 'services/team/player/'+userId, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/team/player/'+userId, this.httpOptions);
  }
  getTeamList(){
-  return this.http.get<[]>(environment.apiUrl1 + 'team/List', this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'team/List', this.httpOptions);
  }
 uploadImage(file: File){
   
   return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson' ,this.httpOptions);
 }
 getEvent(userId:String){
-  return this.http.get<[]>(environment.apiUrl1 + 'services/main/event/user/'+userId, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/main/event/user/'+userId, this.httpOptions);
 }
 getLocation(){
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);
@@ -96,6 +96,15 @@ getGame(){
   
 //   return this.http.get<[]>("https://s3.amazonaws.com/vgroup-tournament/");
 // }
+getNotifications(){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/notifications' ,this.httpOptions);
+}
+addTournaments(id:any){
+  return this.http.put<[]>(environment.apiUrl + 'services/main/season/add/tournament/'+id, this.httpOptions);
+}
+getSeasonID(){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/season/' ,this.httpOptions);
+}
   
 getPerson(qr:string){
   return this.http.get<[]>(environment.apiUrl+'services/main/search/Person?'+qr);

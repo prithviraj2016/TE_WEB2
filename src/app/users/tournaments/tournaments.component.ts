@@ -20,9 +20,8 @@ export class TournamentsComponent implements OnInit {
   userID:String="";
   loggedinUser:any;
   userName:String;
-  files:any;
-  xml: string;
-  objs: any = {};
+  selectedTournament:any;
+  
   List:any=[];
   upload1=false;
   public show:boolean =false;
@@ -37,7 +36,7 @@ export class TournamentsComponent implements OnInit {
   ngOnInit() {
   
   this.getTournamentdetails();
-  this.getLatestTournamentdetails();
+  // this.getLatestTournamentdetails();
  
  
 }
@@ -58,15 +57,20 @@ getTournamentdetails(){
     });
         
       }
-getLatestTournamentdetails(){
-  this._service.getTournament().subscribe(res =>{
-  var tournamentList1=Object.values(res);
-  this.hype1=JSON.parse(JSON.stringify(tournamentList1))[2][0];
-  console.log(this.hype1);
+  onSelect(item:any){
+    this._service.getTournament();
+    this.selectedTournament=item;
+    console.log(item);
+      }
+// getLatestTournamentdetails(){
+//   this._service.getTournament().subscribe(res =>{
+//   var tournamentList1=Object.values(res);
+//   this.hype1=JSON.parse(JSON.stringify(tournamentList1))[2][0];
+//   console.log(this.hype1);
            
-   });
+//    });
               
- }
+ 
 
  searchTouramament(event:any){
 console.log(event.target.value);
@@ -79,6 +83,7 @@ console.log(event.target.value);
  this.show = !this.show;
   })
  }
+//  }
  
   loggedin(){
         this.loggedinUser = localStorage.getItem('loggeduser');

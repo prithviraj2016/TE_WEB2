@@ -20,13 +20,14 @@
             </div>
         </div>
     </div>
+    </div>
     <div class="manage_players_content">
-        <div class="row">
+         <div class="row">
             <div class="small-6 columns info_column">
                 <div class="small-12 columns addtour-topbox">
                     <h6 class="custheadh6 ng-binding">MY TOURNAMENTS</h6>
                     <a data-step="2" data-intro="Create a new tournament to be added for tournament."
-                        ng-show="showCreateNewOption" href="" routerLink="/event-create" class="action-link">CREATE
+                         href=""  class="action-link">CREATE
                         NEW</a>
                     <div class="small-6 searchb pt15 columns">
                         <form autocomplete="off" class="ng-pristine ng-valid">
@@ -37,15 +38,19 @@
                     </div>
                 </div>
                 <br> 
-                <div class="mani_card">
-                <div class="event_card sha-box card" style="background-image: url(../../../assets/img/object1.png);background-repeat:no-repeat; background-size:cover;">
-                    <div _ngcontent-jqj-c234="" title=" Event Name" class="name-event truncate">ALL TOURNAMENTS</div>
-                    <p class="date ng-binding" >Feb 25, 2022</p>
+                <div class="" style="border-bottom: 1px solid #6196CC;">
+                    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 433px;" >
+                <div class="mani_card" *ngFor="let item of hype">
+                <div class="event_card sha-box card" style="background-image: url({{imageUrl+item.imageKey}}); background-size:cover;">
+                    <div _ngcontent-jqj-c234="" title=" Event Name" class="name-event truncate">{{item.name}}</div>
+                    <p class="date ng-binding" >{{item.startDateTime}}</p>
                     <span class="click add-icon-color ng-hide" ng-show="showAddSpan" title="Click to Add">Click to Add</span>
             </div>
             </div>
             </div>
-            <div id="paticipating-players" class="small-6 columns">
+        </div>
+        </div>
+         <div id="paticipating-players" class="small-6 columns">
                 <div class="row dark_grey pplayers extraheight">
                     <div class="large-6 small-6 columns">
                         <div class="pplayers-title" id="paticate-title">
@@ -58,9 +63,11 @@
                        
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
-</div>
+
+
+
 
 <div class="clear"></div>

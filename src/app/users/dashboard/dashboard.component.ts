@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
 
    ngOnInit() {
     this.getTournamentdetails();
-
+    this.getNotifications();
    }
    toggle(){
      this.slide = !this.slide;
@@ -51,6 +51,12 @@ export class DashboardComponent implements OnInit {
       });
           
         }
+getNotifications(){
+this._service.getNotifications().subscribe(res =>{
+  var notifications = Object.values(res);
+  console.log(notifications);
+});
+}
         
 helpbutton(){
   var intro1 = introJs();

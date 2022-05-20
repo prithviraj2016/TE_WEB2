@@ -23,6 +23,7 @@ export class TeamsComponent implements OnInit {
 public searchList : any[];
 public search1:any=[];
 
+  selectedTeam:any;
 
   constructor(private service:DashboardService) { 
     this.imageUrl=environment.imageUrl
@@ -41,12 +42,17 @@ public search1:any=[];
       var teamList = Object.values(res);
       this.hype = JSON.parse(JSON.stringify(teamList))[0];
       this.hype2 = JSON.parse(JSON.stringify(teamList))[0][0];
-      this.hype3 = JSON.parse(JSON.stringify(teamList))[0][0][3];
+      this.hype3 = JSON.parse(JSON.stringify(teamList))[0];
        console.log(this.hype);
        console.log(this.hype2);
        console.log(this.hype3);
       
     });
+}
+onSelect(item:any){
+  this.service.getTeam(item);
+  this.selectedTeam=item;
+  console.log(item);
 }
 getTeamList(){
   this.loggedinUser = localStorage.getItem('loggeduser');

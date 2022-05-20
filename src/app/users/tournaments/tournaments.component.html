@@ -29,33 +29,33 @@
           </div>
         </div>
       </div>
-      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" *ngIf="!show" >
-        <ngx-slick-carousel  *ngFor="let hypes of hype" >
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" >
+        <ngx-slick-carousel  *ngFor="let item of hype" (click)="onSelect(item)" >
           <div class="season-card">
             <div class="event_card sha-box card">
               <div class="row">
                 
-                <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+hypes.imageKey}})">
-                  <div class="name-event truncate" title=" Event Name">{{hypes.name}}</div>
+                <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
+                  <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
                   
                 </div>
                 <div class="ribbon_parent2" style="margin-top: -10px;">
                   <div class="back_ribbon2 bgradient"></div>
                   <div class="ribbon_child2 bgsolidBlue"></div>
                   <div class="ribbon_content2">
-                      <p>{{hypes.hypeType}}</p>
+                      <p>{{item.hypeType}}</p>
                   </div>
               </div><br>
                 <div class="txt-event medium-5" >
               
-                  <span class="tgamename">{{hypes.game}}</span>
+                  <span class="tgamename">{{item.game}}</span>
                   <hr class="shr3">
                   <div class="clear"></div>
                   <div class="tinfo">Start Date:</div>
-                  <span class="tdata date_start">{{hypes.startDate}}</span>
+                  <span class="tdata date_start">{{item.startDate}}</span>
                   <div class="clear"></div>
                   <div class="tinfo">End Date:</div>
-                  <span class="tdata rtxt date_end">{{hypes.endDate}}</span>
+                  <span class="tdata rtxt date_end">{{item.endDate}}</span>
                 </div>
                 <div ng-show="event.hype" class="hype-ribbon-blue"></div>
                 <br>
@@ -119,7 +119,7 @@
             <span class="follow_num">22</span>
           </div>
           <div class="detail_title">
-            <div class="truncate" title="Event Name">{{hype1.name}}</div>
+            <div class="truncate" title="Event Name">{{selectedTournament.name}}</div>
           </div>
           <div id="icons-block">
             <div>
@@ -127,7 +127,7 @@
                   class="fa fa-heart"></i></a>
               <a class="follow_icon followicon_heart" href=""><i class="fa fa-heart"
                   title="Click to Follow this Event"></i></a> 
-                  <span class="follow_num">{{hype1.hits}}</span>
+                  <span class="follow_num">{{selectedTournament.hits}}</span>
             </div>
             <a class="generate-report-modal-event report-exlamation bgradient-orange"
               title="Report Inappropriate Content"><i class="fa fa-exclamation"></i></a>
@@ -139,10 +139,10 @@
           <div id="tournament-detail" class="medium-6 bordr flex_item flex_box_column eventDetails">
             <div class="name-event-bg mbot-15 evepdfix">
               <div class="tddate">
-                Start Date: <span class="btxt">{{hype1.startDate}}</span>
+                Start Date: <span class="btxt">{{selectedTournament.startDate}}</span>
               </div>
               <div class="tddate">
-                End Date: <span class="rtxt">{{hype1.endDate}}</span>
+                End Date: <span class="rtxt">{{selectedTournament.endDate}}</span>
               </div>
               <a title="Help" href="" onclick="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
                   aria-hidden="true"></i><span>&nbsp;Help</span></a>

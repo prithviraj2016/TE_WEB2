@@ -37,35 +37,16 @@
                     </div>
                 </div>
                 <div class="" style="border-bottom: 1px solid #6196CC;">
-                    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
-                        <div class="season-card" >
-                          <div class="event_card sha-box card" style="background-image:url(../../../assets/img/ajax-loader_dark.gif)">
-                            <div class="row">
-                              <!-- <div class="img-event medium-5 blankImage" >
-                                <div class="name-event truncate" title=" Event Name"></div>
-                              </div> -->
-                              <div class="txt-event medium-12" >
-                                <span class="tgamename">SEASONS INFO.</span>
-                                <hr class="shr3">
-                                <div class="clear"></div>
-                                <div class="tinfo">Start Date:</div>
-                                <span class="tdata date_start"></span>
-                                <div class="clear"></div>
-                                <div class="tinfo">End Date:</div>
-                                <span class="tdata rtxt date_end"></span>
-                              </div>
-                              <div ng-show="event.hype" class="hype-ribbon-blue"></div>
-                              <br>
-                            </div>
-                          </div>
-                          <hr class="shr1">
-                        </div>
-                      </div>
-                    <!-- <h5 class="subsubhead ng-binding">User is currently not part of any tournaments</h5> -->
-                    <div class="small-12 columns tabs-content m0">
-                    </div>
-                    <div class="border"></div>
-                </div>
+                    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 440px;" >
+                <div class="mani_card" *ngFor="let item of hype" >
+                <div class="event_card sha-box card" style="background-image: url({{imageUrl+item.imageKey}}); background-size:cover;" (click)="getSeason()">
+                    <div _ngcontent-jqj-c234="" title=" Event Name" class="name-event truncate">{{item.name}}</div>
+                    <p class="date ng-binding" >{{item.startDateTime}}</p>
+                    <span class="click add-icon-color ng-hide" ng-show="showAddSpan" title="Click to Add">Click to Add {{hype2.seasonID}}</span>
+            </div>
+            </div>
+            </div>
+            </div>
             </div>
             <div id="paticipating-players" class="small-6 columns">
                 <div class="row dark_grey pplayers extraheight">

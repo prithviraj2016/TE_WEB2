@@ -20,6 +20,7 @@ loggedinUser:any;
 files:any;
 public show:boolean =false;
 public searchList : any[];
+
   
 
 constructor(private _service:DashboardService) {

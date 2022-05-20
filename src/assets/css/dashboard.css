@@ -2627,7 +2627,7 @@ padding-top:10px;
 
 .ribbon_child2 {
     position: absolute;
-    min-height: 30px;
+    min-height: 39px;
     border-radius: 5px 0px 0px 5px;
     line-height: 35px;
     -webkit-transform: skew(-10deg);

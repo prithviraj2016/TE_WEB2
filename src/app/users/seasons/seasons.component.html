@@ -58,10 +58,14 @@
     </div>
     <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;"  *ngIf="show">
       <div class="season-card" *ngFor="let item of hype">
+    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
+      <div class="season-card" *ngFor="let item of hype" (click)="onSelect(item)">
+      
         <div class="event_card sha-box card">
-          <div class="row">
-            <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
+          <div class="row" >
+            <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})" >
               <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
+              
             </div>
             <div class="txt-event medium-5" >
               <span class="tgamename">SEASONS INFO.</span>
@@ -89,7 +93,7 @@
       <div class="detail sha-box p15 flex_box_column eventboxouter">
       <div class="img-event-bg mbot-15" style="background-image:url(assets/images/object1.png)">
         <div class="detail_title">
-          <div class="w64p truncate">{{hype1.name}}</div>
+          <div class="w64p truncate">{{selectedSeason.name}}</div>
         </div>
 
         <div>
@@ -101,8 +105,8 @@
         <!-- First Column -->
         <div class="bordr medium-7 flex_item flex_box_column" id="season-detail">
           <div class="name-event-bg mbot-15">
-            <div class="tddate">Start Date: <span class="btxt">{{hype1.startDateTime}}</span></div>
-            <div class="tddate">End Date: <span class="rtxt">{{hype1.endDateTime}}</span></div>
+            <div class="tddate">Start Date: <span class="btxt">{{selectedSeason.startDateTime}}</span></div>
+            <div class="tddate">End Date: <span class="rtxt">{{selectedSeason.endDateTime}}</span></div>
             <a title="Help" href="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
                 aria-hidden="true"></i><span>&nbsp;Help</span></a>
           </div>

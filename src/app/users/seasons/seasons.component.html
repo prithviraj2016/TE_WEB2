@@ -32,8 +32,8 @@
           </div>
         </div>
       </div>
-    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;"  *ngIf="!show">
-      <div class="season-card" *ngFor="let item of hype">
+    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
+      <div class="season-card" *ngFor="let item of seasonList" (click)="onSelect(item)">
         <div class="event_card sha-box card">
           <div class="row">
             <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
@@ -56,10 +56,9 @@
         <hr class="shr1">
       </div>
     </div>
-    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;"  *ngIf="show">
-      <div class="season-card" *ngFor="let item of hype">
-    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
-      <div class="season-card" *ngFor="let item of hype" (click)="onSelect(item)">
+    
+    <!-- <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" *ngIf="show">
+      <div class="season-card" *ngFor="let item of search1" (click)="onSelect(item)">
       
         <div class="event_card sha-box card">
           <div class="row" >
@@ -83,7 +82,7 @@
         </div>
         <hr class="shr1">
       </div>
-    </div>
+    </div> -->
       <!-- <div style="text-align: center;">No records found</div> -->
     </div>
   </div>
@@ -152,10 +151,10 @@
             <div class="ctrlpnl tournament_btns_gradient">
               <ul>
                 <li><a title="Manage Tournaments" class="blkbkg event_btn"
-                    href="" routerLink="/manage-tournaments" ><i class="fas fa-trophy"></i> <span> Manage</span>
+                  routerLink="/manage-tournaments"  ><i class="fas fa-trophy"></i> <span> Manage</span>
                     Tournaments
                   </a></li>
-                <li><a title="Manage Events" class="blkbkg event_btn" href="" routerLink="/manage-event"><i
+                <li><a title="Manage Events" class="blkbkg event_btn" routerLink="/manage-event"><i
                       class="far fa-calendar-alt"></i><span> Manage</span> Events
                   </a></li>
               </ul>
@@ -179,7 +178,7 @@
           <!-- List -->
           <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 400px;" >
           <div data-step="7" data-intro="See the event list for the season with just a click."
-            class="playerslist list_box_half_mp bar" *ngFor="let item of hype2" >
+            class="playerslist list_box_half_mp bar" *ngFor="let item of seasonList" >
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
               <li class="tournament_list_item" >
                 <a class="tour_item img-event" href="/event/id/eventeventID"
@@ -197,7 +196,7 @@
             <span class="flrt ">20</span>
           </div>
           <div data-step="8" data-intro="See the tournament list for the season with a click."
-            class="playerslist list_box_half_mp bar" *ngFor="let hypes of hype">
+            class="playerslist list_box_half_mp bar" *ngFor="let hypes of seasonList">
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
               <li class="tournament_list_item">
                 <a class="tour_item img-event" href="/tournament/id/20"

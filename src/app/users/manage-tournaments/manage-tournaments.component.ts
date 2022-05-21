@@ -27,7 +27,6 @@ export class ManageTournamentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTournamentdetails();
-    this.addTournaments(this.seasonID);
     this.getSeason();
     
     
@@ -57,15 +56,6 @@ export class ManageTournamentsComponent implements OnInit {
       });
           
         }
-  addTournaments(id:any){
-    this._service.addTournaments(id).subscribe(res =>{
-      
-      var tournamentList1=Object.values(res);
-      this.hype1=JSON.parse(JSON.stringify(tournamentList1));
-      
-    
-       console.log(this.hype1);
-      });
-  }
+  
   
 }

@@ -10,13 +10,14 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 })
 export class SeasonsComponent implements OnInit {
 imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
-seasonList:any=[];
+seasonList:any;
 eventList:any=[];
 public hype:any=[];
 public hype1:any=[];
 public hype2:any=[];
 public hype3:any=[];
 public tournamentList:any=[];
+public tournamentList1:any=[];
 userID:String="";
 userName:string="";
 loggedinUser:any;
@@ -25,6 +26,7 @@ public search1:any=[];
 public show:boolean =false;
 public searchList : any[];
 selectedSeason:any;
+selectedSeasonID:any;
 
 constructor( private service:DashboardService) {
   this.imageUrl=environment.imageUrl
@@ -41,19 +43,47 @@ getSeason(){
   this.loggedinUser = localStorage.getItem('loggeduser');
   this.userID=JSON.parse(this.loggedinUser).userID;
   this.userName=JSON.parse(this.loggedinUser).username;
-  this.service.getSeason(this.userID).subscribe(res =>{
+  this.service.getSeason(this.userID).subscribe((res:any) =>{
     if(res){
-    this.seasonList = Object.values(res);
-    this.hype=JSON.parse(JSON.stringify(this.seasonList))[2];
+    this.seasonList = res.list;
     console.log(this.hype);
+      if(this.seasonList.length>0)
+      {
+        this.getSeasonDetail(this.seasonList[0].seasonID);
+      }
+
     }
   });
 }
 onSelect(item:any){
-  this.service.getSeason(item);
+  // this.service.getSeason(item);
   this.selectedSeason=item;
-  console.log(item);
+  this.selectedSeasonID=item.seasonID;
+  console.log(this.selectedSeasonID);
+  this.getSeasonDetail(this.selectedSeasonID);
 }
+
+getSeasonDetail(seasonId:string)
+{
+  this.service.getSeasonID(seasonId).subscribe((res:any)=>{
+    if(res){
+      this.selectedSeason = res;
+      console.log(this.selectedSeason)
+    }
+  });
+
+}
+
+
+// onSelect(item:any){
+//     this.service.getSeasonID().subscribe(res=>{
+//       if(res){
+//         this.selectedSeason = Object.values(res);
+//         console.log
+//       }
+//     });
+    
+//   }
 // getLatestSeason(){
 //   this.loggedinUser = localStorage.getItem('loggeduser');
 //   this.userID=JSON.parse(this.loggedinUser).userID;
@@ -100,4 +130,5 @@ searchSeason(event:any){
     this.show = !this.show;
   })
 }
+
 }

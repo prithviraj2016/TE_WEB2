@@ -52,7 +52,7 @@ getTournamentdetails(){
   this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
   
 
-   console.log(this.hype);
+   console.log(res);
      
     });
         

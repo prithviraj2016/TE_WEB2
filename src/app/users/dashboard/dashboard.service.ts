@@ -54,24 +54,27 @@ getTournament(){
 
 searchTournament(qr:any){
     console.log(qr);
-  return this.http.get<[]>(environment.apiUrl1 + 'services/unauthenticated/search/tournament?query='+qr, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/tournament?query='+qr, this.httpOptions);
  
 }
 searchEvent(qr:any){
   console.log(qr);
-  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/Event?q='+qr, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/Event?q='+qr, this.httpOptions);
 }
 searchSeason(qr:any){
   console.log(qr);
-  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/Event?q='+qr, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/Event?q='+qr, this.httpOptions);
 }
 searchTeam(qr:any){
   console.log(qr);
-  return this.http.get<[]>(environment.apiUrl1 + 'services/main/search/Event?q='+qr, this.httpOptions);
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/Event?q='+qr, this.httpOptions);
 }
 
 getSeason(userId:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/season/user/'+userId, this.httpOptions);
+ }
+ getseasonID(ID:String){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/season/'+ID, this.httpOptions);
  }
  getTeam(userId:String){
   return this.http.get<[]>(environment.apiUrl + 'services/team/player/'+userId, this.httpOptions);
@@ -99,11 +102,11 @@ getGame(){
 getNotifications(){
   return this.http.get<[]>(environment.apiUrl + 'services/main/notifications' ,this.httpOptions);
 }
-addTournaments(id:any){
-  return this.http.put<[]>(environment.apiUrl + 'services/main/season/add/tournament/'+id, this.httpOptions);
+addTournaments(){
+  return this.http.get<[]>(environment.apiUrl + 'add/tournament', this.httpOptions);
 }
-getSeasonID(){
-  return this.http.get<[]>(environment.apiUrl + 'services/main/search/season/' ,this.httpOptions);
+getSeasonID(id:string){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/season/'+id ,this.httpOptions);
 }
   
 getPerson(qr:string){

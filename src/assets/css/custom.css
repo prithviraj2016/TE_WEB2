@@ -4034,7 +4034,7 @@ ul.search_results li a:hover {
 
 
 
-@media only screen and (max-width:768px) {
+/* @media only screen and (max-width:768px) {
 	.top-bar-right {
 		position: absolute;
 		right: -100%;
@@ -4073,4 +4073,4 @@ ul.search_results li a:hover {
 	.menuClass{
 		right: 0;
 	}
-}
+} */

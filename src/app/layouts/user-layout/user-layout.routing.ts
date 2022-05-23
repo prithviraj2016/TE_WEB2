@@ -41,7 +41,7 @@ export const UserLayoutRoutes: Routes = [
     { path:'edit-season', component:EditSeasonComponent},
     { path:'edit-team', component:EditTeamComponent},
     { path:'edit-tournament', component:EditTournamentComponent},
-    {path:'manage-tournaments',component:ManageTournamentsComponent},
+    {path:'manage-tournaments/:id',component:ManageTournamentsComponent},
     {path:'manage-event', component:ManageEventComponent},
     {path:'manage-players',component:ManagePlayersComponent},
     {path:'manage-players-team', component:ManagePlayersTeamComponent}

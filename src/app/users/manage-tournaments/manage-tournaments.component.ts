@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DashboardService } from '../dashboard/dashboard.service';
 
@@ -9,53 +10,22 @@ import { DashboardService } from '../dashboard/dashboard.service';
 })
 export class ManageTournamentsComponent implements OnInit {
   imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
-  public tournamentList:any=[];
-  public tournamentList1:any=[];
-  public seasonList:any=[];
-  seasonID:any;
-  public hype:any=[];
-  public hype1:any=[];
-  public hype2:any=[];
-  List:any=[];
-  userID:String="";
-  loggedinUser:any;
-  userName:String;
+  
+  
 
-  constructor(private _service:DashboardService) { 
+  constructor(private _service:DashboardService,private activatedRoute:ActivatedRoute) { 
     this.imageUrl=environment.imageUrl;
   }
 
   ngOnInit(): void {
-    this.getTournamentdetails();
-    this.getSeason();
-    
-    
-  }
-  getSeason(){
-    this._service.getSeason(this.seasonID).subscribe(res =>{
-      if(res){
-      this.seasonList = Object.values(res);
-      this.List=JSON.parse(JSON.stringify(this.seasonList));
-      console.log(this.hype2);
-      
-      }
-    });
-  }
- 
-  getTournamentdetails(){
-    this.loggedinUser = localStorage.getItem('loggeduser');
-    this.userName=JSON.parse(this.loggedinUser).username;
-    this.userID=JSON.parse(this.loggedinUser).userID;
-    this._service.getTournament().subscribe(res =>{
-    var tournamentList=Object.values(res);
-    this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
-    
   
-     console.log(this.hype);
-       
-      });
-          
-        }
+    this.activatedRoute.queryParams.subscribe(params => {
+      const seasonID = params['id'];
+      console.log(seasonID);
+    });
+    
+}
+ 
   
   
 }

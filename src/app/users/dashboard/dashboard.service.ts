@@ -102,8 +102,8 @@ getGame(){
 getNotifications(){
   return this.http.get<[]>(environment.apiUrl + 'services/main/notifications' ,this.httpOptions);
 }
-addTournaments(){
-  return this.http.get<[]>(environment.apiUrl + 'add/tournament', this.httpOptions);
+addTournaments(userId:String){
+  return this.http.get<[]>(environment.apiUrl + 'add/tournament/'+userId, this.httpOptions);
 }
 getSeasonID(id:string){
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/season/'+id ,this.httpOptions);

@@ -2,6 +2,7 @@ import { DashboardService } from './../dashboard/dashboard.service';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClientJsonpModule } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-seasons',
@@ -11,22 +12,21 @@ import { HttpClientJsonpModule } from '@angular/common/http';
 export class SeasonsComponent implements OnInit {
 imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
 seasonList:any;
-eventList:any=[];
-public hype:any=[];
-public hype1:any=[];
-public hype2:any=[];
-public hype3:any=[];
+
+
 public tournamentList:any=[];
 public tournamentList1:any=[];
 userID:String="";
 userName:string="";
 loggedinUser:any;
 public search1:any=[];
-
+addTournamentList:any=[];
 public show:boolean =false;
 public searchList : any[];
 selectedSeason:any;
 selectedSeasonID:any;
+selectedSeasonEvents:any=[];
+selectedSeasonTournaments:any=[];
 
 constructor( private service:DashboardService) {
   this.imageUrl=environment.imageUrl
@@ -34,11 +34,9 @@ constructor( private service:DashboardService) {
 
   ngOnInit(): void {
     this.getSeason();
-    this.getTournamentdetails();
-    // this.getLatestSeason();
-    this.getEventdetails();
-    
-  }
+   }
+
+
 getSeason(){
   this.loggedinUser = localStorage.getItem('loggeduser');
   this.userID=JSON.parse(this.loggedinUser).userID;
@@ -46,7 +44,9 @@ getSeason(){
   this.service.getSeason(this.userID).subscribe((res:any) =>{
     if(res){
     this.seasonList = res.list;
-    console.log(this.hype);
+   
+    console.log(this.seasonList);
+   
       if(this.seasonList.length>0)
       {
         this.getSeasonDetail(this.seasonList[0].seasonID);
@@ -68,58 +68,26 @@ getSeasonDetail(seasonId:string)
   this.service.getSeasonID(seasonId).subscribe((res:any)=>{
     if(res){
       this.selectedSeason = res;
+      this.selectedSeasonEvents = res.events;
+      this.selectedSeasonTournaments = res.tournaments;
       console.log(this.selectedSeason)
+      console.log(this.selectedSeasonEvents)
+      console.log(this.selectedSeasonTournaments)
     }
   });
-
 }
-
-
-// onSelect(item:any){
-//     this.service.getSeasonID().subscribe(res=>{
-//       if(res){
-//         this.selectedSeason = Object.values(res);
-//         console.log
-//       }
-//     });
-    
-//   }
-// getLatestSeason(){
-//   this.loggedinUser = localStorage.getItem('loggeduser');
-//   this.userID=JSON.parse(this.loggedinUser).userID;
-//   this.userName=JSON.parse(this.loggedinUser).username;
-//   this.service.getSeason(this.userID).subscribe(res =>{
-//     if(res){
-//     this.seasonList = Object.values(res);
-//     this.hype1=JSON.parse(JSON.stringify(this.seasonList))[2][0];
-//     // console.log(this.hype1);
-//     }
-//   });
-// }
-getEventdetails(){
+addTournament(){
   this.loggedinUser = localStorage.getItem('loggeduser');
   this.userID=JSON.parse(this.loggedinUser).userID;
   this.userName=JSON.parse(this.loggedinUser).username;
-  this.service.getEvent(this.userID).subscribe(res=>{
-    if(res){
-    this.eventList=Object.values(res);
-    this.hype2=JSON.parse(JSON.stringify(this.eventList))[2];
-    // console.log(this.hype2);
-    }
-      
-    });
+this.service.addTournaments(this.userID).subscribe(res=>{
+  if(res){
+    this.addTournamentList = res;
+    console.log(this.addTournamentList);
   }
-
-getTournamentdetails(){
-  this.service.getTournament().subscribe(res =>{
-  var tournamentList=Object.values(res);
-  this.hype3=JSON.parse(JSON.stringify(tournamentList))[2];
- 
-  //  console.log(this.hype3);
-     
-    });
-        
-      }
+  
+});
+} 
 
 searchSeason(event:any){
   console.log(event.target.value);

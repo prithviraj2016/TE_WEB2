@@ -121,10 +121,7 @@
             <div data-step="5" data-intro="Information about the Season.">
               <div class="description_title btxt">About Season</div>
               <div class="word-wrap description">
-                <p class="info_box_mp pre" title="Season description">Lorem Ipsum is simply dummy text of the printing
-                  and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-                  1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It
-                  has survived not only five centuries,</p>
+                <p class="info_box_mp pre" title="Season description">{{selectedSeason.description}}</p>
               </div>
             </div>
 
@@ -139,7 +136,7 @@
 
               <div class="">
                 <div id="map"></div>
-                241.0215.001
+                
               </div>
             </div>
 
@@ -151,7 +148,7 @@
             <div class="ctrlpnl tournament_btns_gradient">
               <ul>
                 <li><a title="Manage Tournaments" class="blkbkg event_btn"
-                  routerLink="/manage-tournaments"  ><i class="fas fa-trophy"></i> <span> Manage</span>
+                  routerLink="/manage-tournaments/{{selectedSeason.seasonID}}"  ><i class="fas fa-trophy"></i> <span> Manage</span>
                     Tournaments
                   </a></li>
                 <li><a title="Manage Events" class="blkbkg event_btn" routerLink="/manage-event"><i
@@ -173,12 +170,12 @@
           <!-- <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" > -->
           <div class="name-event-bg">
             <span class="btxt ">EVENTS LIST</span>
-            <span class="flrt ">12</span>
+            <span class="flrt ">{{selectedSeasonEvents.length}}</span>
           </div>
           <!-- List -->
           <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 400px;" >
           <div data-step="7" data-intro="See the event list for the season with just a click."
-            class="playerslist list_box_half_mp bar" *ngFor="let item of seasonList" >
+            class="playerslist list_box_half_mp bar" *ngFor="let item of selectedSeasonEvents" >
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
               <li class="tournament_list_item" >
                 <a class="tour_item img-event" href="/event/id/eventeventID"
@@ -192,10 +189,10 @@
 
           <div class="name-event-bg" >
             <span class="btxt ">TOURNAMENTS LIST</span>
-            <span class="flrt ">20</span>
+            <span class="flrt ">{{selectedSeasonTournaments.length}}</span>
           </div>
           <div data-step="8" data-intro="See the tournament list for the season with a click."
-            class="playerslist list_box_half_mp bar" *ngFor="let hypes of seasonList">
+            class="playerslist list_box_half_mp bar" *ngFor="let hypes of selectedSeasonTournaments">
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
               <li class="tournament_list_item">
                 <a class="tour_item img-event" href="/tournament/id/20"

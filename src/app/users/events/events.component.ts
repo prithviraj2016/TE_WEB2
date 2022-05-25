@@ -11,7 +11,9 @@ export class EventsComponent implements OnInit {
 imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
  public eventList:any[]=[];
  public eventList1:any[]=[];
- public hype:any [];
+ public eventList2:any[]=[];
+ selectedEvent:any;
+ selectedEventID:any;
  public search1:any=[];
  hype1:any;
  userID:String="";
@@ -28,38 +30,44 @@ constructor(private _service:DashboardService) {
 }
 
   ngOnInit(): void {
-   this.getEventdetails();
-   this.getLatestEventdetails();
-   
+   this.getEvent();
   }
-  getEventdetails(){
+
+  getEvent(){
     this.loggedinUser = localStorage.getItem('loggeduser');
     this.userID=JSON.parse(this.loggedinUser).userID;
     this.userName=JSON.parse(this.loggedinUser).username;
-    this._service.getEvent(this.userID).subscribe(res=>{
+    this._service.getEvent(this.userID).subscribe((res:any)=>{
       if(res){
-      this.eventList=Object.values(res);
-      this.hype=JSON.parse(JSON.stringify(this.eventList))[2];
-      console.log(this.hype);
+      this.eventList=res.list;
+      
+      console.log(this.eventList);
       }
         
       });
     }
+
+    onSelect(item:any){
+      this.selectedEvent = item;
+      this.selectedEventID = item.eventID;
+      console.log(this.selectedEvent);
+      this.getEventdetails(this.selectedEventID);
+    }
   
-      getLatestEventdetails(){
-        this.loggedinUser = localStorage.getItem('loggeduser');
-        this.userID=JSON.parse(this.loggedinUser).userID;
-        this.userName=JSON.parse(this.loggedinUser).username;
-        this._service.getEvent(this.userID).subscribe(res=>{
-          if(res){
-          this.eventList1=Object.values(res);
-          this.hype1=JSON.parse(JSON.stringify(this.eventList1))[2][0];
-          console.log(this.hype1);
-          }
-            
-          });
-      
-        }
+getEventdetails(eventID:string)
+{
+  this._service.getEventID(eventID).subscribe((res:any)=>{
+    if(res){
+      this.selectedEvent = res;
+      this.eventList1 = res.adminDetails;
+      this.eventList2 = res.tournaments;
+      console.log(this.selectedEvent);
+      console.log(this.eventList1);
+      console.log(this.eventList2);
+    }
+  });
+}
+
     
    searchEvent(event:any){
      console.log(event.target.value);
@@ -71,8 +79,8 @@ constructor(private _service:DashboardService) {
      })
    }
     
+  
   }
-
 
 
 

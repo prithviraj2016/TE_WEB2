@@ -10,11 +10,10 @@ import { DashboardService } from '../dashboard/dashboard.service';
 export class TeamsComponent implements OnInit {
   imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
   teamList:any=[];
-  teamList1:any=[];
-  public hype:any=[];
-  public hype1:any=[];
-  public hype2:any=[];
-  public hype3:any=[];
+  teamListplayers:any=[];
+  selectedTeamID:any;
+  selectedTeamDetails:any;
+  selectedTeamplayers:any=[];
   public tournamentList:any=[];
   userID:String="";
   userName:string="";
@@ -30,42 +29,46 @@ public search1:any=[];
   }
 
   ngOnInit(): void {
-    this.getTeamDetails();
-    this.getTeamList();
+    this.getTeam();
+   
   }
-  getTeamDetails(){
+  getTeam(){
     this.loggedinUser = localStorage.getItem('loggeduser');
     this.userID=JSON.parse(this.loggedinUser).userID;
     this.userName=JSON.parse(this.loggedinUser).username;
-    this.service.getTeam(this.userID).subscribe(res =>{
-
-      var teamList = Object.values(res);
-      this.hype = JSON.parse(JSON.stringify(teamList))[0];
-      this.hype2 = JSON.parse(JSON.stringify(teamList))[0][0];
-      this.hype3 = JSON.parse(JSON.stringify(teamList))[0];
-       console.log(this.hype);
-       console.log(this.hype2);
-       console.log(this.hype3);
+    this.service.getTeam(this.userID).subscribe((res:any) =>{
+      if(res){
+        this.teamList = res.set;
+        this.teamListplayers = res.players;
+      }
+      console.log( this.teamList);
+      console.log( this.teamListplayers);
       
     });
 }
 onSelect(item:any){
-  this.service.getTeam(item);
+  // this.service.getTeam(item);
   this.selectedTeam=item;
-  console.log(item);
+  this.selectedTeamID = item.teamID;
+  
+  console.log(this.selectedTeam);
+ this.getTeamDetails(this.selectedTeamID);
 }
-getTeamList(){
-  this.loggedinUser = localStorage.getItem('loggeduser');
-  this.userID=JSON.parse(this.loggedinUser).userID;
-  this.userName=JSON.parse(this.loggedinUser).username;
-  this.service.getTeamList().subscribe(res =>{
+
+
+getTeamDetails(teamID:string){
+  this.service.getTeamID(teamID).subscribe((res:any) =>{
     if(res){
-    this.teamList1 = Object.values(res);
-    this.hype1 = JSON.parse(JSON.stringify(this.teamList1));
-     console.log(this.teamList1);
+    this.selectedTeam = res;
+    this.selectedTeamDetails = res.adminDetails;
+    this.selectedTeamplayers = res.players;
+    console.log(this.selectedTeam);
+    console.log(this.selectedTeamDetails);
+    console.log(this.selectedTeamplayers);
     }
   });
 }
+
 searchTeam(event:any){
   console.log(event.target.value);
   this.service.searchTeam(event.target.value).subscribe(res=>{

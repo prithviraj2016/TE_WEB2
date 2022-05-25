@@ -32,9 +32,9 @@
           </div>
         </div>
       </div>
-      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;"*ngIf="!show">
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;">
       <div class="season-card">
-        <div class="event_card sha-box card" *ngFor="let item of hype" (click)="onSelect(item)">
+        <div class="event_card sha-box card" *ngFor="let item of teamList" (click)="onSelect(item)">
           <div class="row">
             <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
               <div class="name-event truncate" title=" Team Name">{{item.teamName}}</div>
@@ -47,7 +47,7 @@
               <span class="tdata date_start">{{item.location}}</span>
               <div class="clear"></div>
               <div class="tinfo">Members:</div>
-              <span class="tdata rtxt date_end">{{item.players}}</span>
+              <span class="tdata rtxt date_end">{{item.players.length}</span>
             </div>
             <div ng-show="event.hype" class="hype-ribbon-blue"></div>
             <br>
@@ -56,9 +56,9 @@
         <hr class="shr1">
       </div>
       </div>
-      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;"*ngIf="show">
+      <!-- <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" *ngIf="show">
         <div class="season-card">
-          <div class="event_card sha-box card" *ngFor="let item of hype">
+          <div class="event_card sha-box card" *ngFor="let item of teamList">
             <div class="row">
               <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
                 <div class="name-event truncate" title=" Team Name">{{item.teamName}}</div>
@@ -79,7 +79,7 @@
           </div>
           <hr class="shr1">
         </div>
-        </div>
+        </div> -->
       
     </div>
   </div>
@@ -120,11 +120,11 @@
                     <div class="player-sm"   data-step="4" data-intro="See your admin list for your team">
                         <a href="/user/view/Team10">
                             <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png)"></div>
-                        </a> <span class="pname" title="Team Name"><a href="">{{userName}}</a></span>
+                        </a> <span class="pname" title="Team Name"><a href="">{{selectedTeamDetails.username}}</a></span>
                     </div>
                     <div class="description_title" data-step="5" data-intro="Information about your team is posted here">About Team</div>
                     <div class="word-wrap description">
-                        <p class="info_box_mp pre" title="">{{hype2.description}}</p>
+                        <p class="info_box_mp pre" title="">{{selectedTeam.description}}</p>
                     </div>
                 </div>
                 <div  class="tournament_btns">
@@ -139,8 +139,8 @@
             <div class="medium-6 left pl15 columns flex_box_column" id="season-detail-list">
                 <!-- Count -->
                 <div class="name-event-bg">
-                    <span class="btxt ">Players</span>
-                    <span class="flrt">10</span>
+                    <span class="btxt ">Players</span>&nbsp;&nbsp;
+                    <span class="flrt">{{selectedTeamplayers.length}}</span>
                 </div>
                  <div class="flex_item flex_box_column" data-step="9" data-intro="See your team players. Click to take to their profile">
                     <div class="bar flex_item_jscrollpane playerslist tmplaylist">
@@ -150,7 +150,7 @@
                                     <a href="user/view/20">
                                         <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png)"></div>
                                     </a>
-                                        <span class="pname" title="John Doe"><a href="/user/view/20">John Doe</a></span>
+                                        <span class="pname" title="John Doe"><a href="/user/view/20">{{selectedTeamplayers.username}}</a></span>
                                 </div>
                             </div>
                         </div>

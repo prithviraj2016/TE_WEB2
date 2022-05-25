@@ -30,10 +30,10 @@
           </div>
         </div>
       </div>
-      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" *ngIf="!show">
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;">
         
       <div class="season-card" >
-        <div class="event_card sha-box card" *ngFor="let item of hype">
+        <div class="event_card sha-box card" *ngFor="let item of eventList"  (click)="onSelect(item)">
           <div class="row" >
             <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
               <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
@@ -64,19 +64,13 @@
       </div>
       <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" *ngIf="show">
         
-        <div class="season-card" >
+        <!-- <div class="season-card" >
           <div class="event_card sha-box card" *ngFor="let item of search1">
             <div class="row" >
               <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
                 <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
              </div>
-             <!-- <div class="ribbon_parent2" style="margin-top: -10px;">
-                    <div class="back_ribbon2 bgradient"></div>
-                    <div class="ribbon_child2 bgsolidBlue"></div>
-                    <div class="ribbon_content2">
-                        <p>{{item.hypeType}}</p>
-                    </div>
-                </div> -->
+             
               <div class="txt-event medium-5">
                 <span class="tgamename">EVENT INFO.</span>
                 <hr class="shr3">
@@ -92,7 +86,7 @@
             </div>
           </div>
           <hr class="shr1">
-        </div>
+        </div> -->
         </div>
       <!-- <div style="text-align: center;">No records found</div> -->
     </div>
@@ -110,14 +104,14 @@
             <span class="follow_num">22</span>
           </div>
           <div class="detail_title">
-            <div class="truncate" title="Event Name">{{hype1.name}}</div>
+            <div class="truncate" title="Event Name">{{selectedEvent.name}}</div>
           </div>
           <div id="icons-block">
             <div>
               <a class="follow_icon followed" href="" title="Click to Unfollow this Event"><i
                   class="fa fa-heart"></i></a>
               <a class="follow_icon followicon_heart" href=""><i class="fa fa-heart"
-                  title="Click to Follow this Event"></i></a> <span class="follow_num">{{hype1.hits}}</span>
+                  title="Click to Follow this Event"></i></a> <span class="follow_num">{{selectedEvent.hits}}</span>
             </div>
             <a class="generate-report-modal-event report-exlamation bgradient-orange"
               title="Report Inappropriate Content"><i class="fa fa-exclamation"></i></a>
@@ -129,10 +123,10 @@
           <div id="tournament-detail" class="medium-6 bordr flex_item flex_box_column eventDetails" >
             <div class="name-event-bg mbot-15 evepdfix">
               <div class="tddate">
-                Start Date: <span class="btxt">{{hype1.startDateTime}}</span>
+                Start Date: <span class="btxt">{{selectedEvent.startDateTime}}</span>
               </div>
               <div class="tddate">
-                End Date: <span class="rtxt">{{hype1.endDateTime}}</span>
+                End Date: <span class="rtxt">{{selectedEvent.endDateTime}}</span>
               </div>
               <a title="Help" href="" onclick="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
                   aria-hidden="true"></i><span>&nbsp;Help</span></a>
@@ -148,7 +142,8 @@
                 </a>
 
                 <a href=""> <span class="pname" title="Event Admin Details Name">
-                    {{userName}}</span>
+                  
+                 username</span>
                 </a>
               </div>
               <hr>
@@ -157,8 +152,7 @@
                   data-intro="Event information provided by event organizer.">About Event</div>
                 <div class="word-wrap description">
                   <p class="info_box_mp pre" title="Event description">
-                    this is test event for testing molude this is test event for testing molude this is test event
-                    for testing molude this is test event for testing molude
+                    {{selectedEvent.description}}
                   </p>
                 </div>
                 <div class="description_title btxt">Staff</div>
@@ -213,25 +207,29 @@
           <div class="medium-6 left pl15 columns flex_box_column eventdetaillist detailElementHeight"
             id="season-detail-list">
             <div class="name-event-bg">
-              <span class="btxt ">Tournaments</span> <span class="flrt"> 12
+              <span class="btxt ">Tournaments</span>&nbsp;&nbsp;&nbsp; <span class="flrt">{{eventList2.length}}
               </span>
             </div>
+            <div class="bar" scrolly="showMoreNotifications()" style="overflow:scroll; height:457px; margin-top:22px;">
             <div data-step="8"
               data-intro="List of tournaments in the event that can be clicked to go to that tournament."
               class="flex_item flex_box_column">
-              <div class="bar flex_item_jscrollpane playerslist" tabindex="0">
-
-                <div class="list_box_mp nobtn_override">
+              <div class="bar flex_item_jscrollpane playerslist" tabindex="0" *ngFor="let item of eventList2">
+                
+                <div class="list_box_mp nobtn_override"  >
+                  
                   <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
-                    <li class="tournament_list_item">
-                      <a class="tour_item img-event" href="/#!/tournament/id/tournament.tournamentID">
-                        <div class="name-event" title=" tournament name ">TOURNAMENT NAME</div>
-                        <div class="name-event">10/10/2020</div>
+                    <li class="tournament_list_item" >
+                     
+                      <a class="tour_item img-event" href=""  style="background-image:url({{imageUrl+item.imageKey}})">
+                        <div class="name-event" title=" tournament name ">{{item.name}}</div>
+                        <div class="name-event">{{item.endDate}}</div>
                       </a>
                     </li>
                   </ul>
                 </div>
               </div>
+            </div>
             </div>
             <div data-step="9" data-intro="Add tournaments to this event if this is your event.">
               <a class="btm" href="/#!/event/add/tournaments/EventeventID">

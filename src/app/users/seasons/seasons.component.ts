@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SeasonsComponent implements OnInit {
 imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
 seasonList:any;
-
+seasonList1:any;
 
 public tournamentList:any=[];
 public tournamentList1:any=[];
@@ -23,6 +23,7 @@ public search1:any=[];
 addTournamentList:any=[];
 public show:boolean =false;
 public searchList : any[];
+
 selectedSeason:any;
 selectedSeasonID:any;
 selectedSeasonEvents:any=[];
@@ -44,8 +45,9 @@ getSeason(){
   this.service.getSeason(this.userID).subscribe((res:any) =>{
     if(res){
     this.seasonList = res.list;
-   
+    
     console.log(this.seasonList);
+    
    
       if(this.seasonList.length>0)
       {
@@ -70,9 +72,11 @@ getSeasonDetail(seasonId:string)
       this.selectedSeason = res;
       this.selectedSeasonEvents = res.events;
       this.selectedSeasonTournaments = res.tournaments;
-      console.log(this.selectedSeason)
-      console.log(this.selectedSeasonEvents)
-      console.log(this.selectedSeasonTournaments)
+      this.seasonList1 = res.adminDetails;
+      console.log(this.selectedSeason);
+      console.log(this.selectedSeasonEvents);
+      console.log(this.selectedSeasonTournaments);
+      console.log(this.seasonList1);
     }
   });
 }

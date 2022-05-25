@@ -21,8 +21,8 @@ export class TournamentsComponent implements OnInit {
   loggedinUser:any;
   userName:String;
   selectedTournament:any;
-  
-  List:any=[];
+  selectedTournamentID:any;
+  selectedTournamentplayers:any=[];
   upload1=false;
   public show:boolean =false;
   public searchList : any[];
@@ -35,33 +35,51 @@ export class TournamentsComponent implements OnInit {
 
   ngOnInit() {
   
-  this.getTournamentdetails();
-  // this.getLatestTournamentdetails();
- 
- 
+  this.getTournament();
+  // this.getLatestTournamentdetails();------------------------
 }
 
-  
-
-getTournamentdetails(){
+getTournament(){
   this.loggedinUser = localStorage.getItem('loggeduser');
   this.userName=JSON.parse(this.loggedinUser).username;
   this.userID=JSON.parse(this.loggedinUser).userID;
-  this._service.getTournament().subscribe(res =>{
-  var tournamentList=Object.values(res);
-  this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
-  
-
-   console.log(res);
+  this._service.getTournament(this.userID).subscribe((res:any) =>{
+  if(res){
+    this.tournamentList = res.list;
+  }
+  console.log(this.tournamentList);
      
+  if(this.tournamentList.length>0){
+    
+  }
     });
         
       }
   onSelect(item:any){
-    this._service.getTournament();
+    // this._service.getTournament(this.userID);
     this.selectedTournament=item;
-    console.log(item);
+    this.selectedTournamentID=item.tournamentID;
+    console.log( this.selectedTournament);
+    this.getTournamentDetail(this.selectedTournamentID);
       }
+
+
+      
+  getTournamentDetail(tournamentId:string)
+{
+  this._service.getTournamentID(tournamentId).subscribe((res:any)=>{
+    if(res){
+      this.selectedTournament = res;
+      this.selectedTournamentplayers = res.players;
+      // this.selectedSeasonTournaments = res.tournaments;
+      this.tournamentList1 = res.adminDetails;
+      console.log(this.selectedTournament);
+      console.log(this.selectedTournamentplayers);
+      // console.log(this.selectedSeasonTournaments);
+      // console.log(this.seasonList1);
+    }
+  });
+}
 // getLatestTournamentdetails(){
 //   this._service.getTournament().subscribe(res =>{
 //   var tournamentList1=Object.values(res);

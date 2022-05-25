@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" >
-        <ngx-slick-carousel  *ngFor="let item of hype" (click)="onSelect(item)" >
+        <ngx-slick-carousel  *ngFor="let item of tournamentList" (click)="onSelect(item)" >
           <div class="season-card">
             <div class="event_card sha-box card">
               <div class="row">
@@ -43,7 +43,7 @@
                   <div class="back_ribbon2 bgradient"></div>
                   <div class="ribbon_child2 bgsolidBlue"></div>
                   <div class="ribbon_content2">
-                      <p>{{item.hypeType}}</p>
+                      <p>{{item.tournamentTypeName}}</p>
                   </div>
               </div><br>
                 <div class="txt-event medium-5" >
@@ -158,7 +158,7 @@
                 </a>
 
                 <a href="/#!/user/view/sEvent.creatorUserId"> <span class="pname" title="Event Admin Details Name">
-                    {{userName}}</span>
+                    {{tournamentList1.username}}</span>
                 </a>
               </div>
               <hr>
@@ -167,8 +167,7 @@
                   data-intro="Event information provided by event organizer.">About Tournament</div>
                 <div class="word-wrap description">
                   <p class="info_box_mp pre" title="Event description">
-                    this is test event for testing molude this is test event for testing molude this is test event
-                    for testing molude this is test event for testing molude
+                   {{selectedTournament.description}}
                   </p>
                 </div>
                 <div class="description_title btxt">Staff</div>
@@ -222,8 +221,8 @@
           <div class="medium-6 left pl15 columns flex_box_column eventdetaillist detailElementHeight"
             id="season-detail-list">
             <div class="name-event-bg">
-              <span class="btxt ">Tournaments</span> &nbsp;&nbsp;
-               <span class="flrt"> {{hype.length}}
+              <span class="btxt ">Players</span> &nbsp;&nbsp;
+               <span class="flrt"> {{selectedTournamentplayers.length}}
               </span>
             </div>
             <div data-step="8"
@@ -231,13 +230,13 @@
               class="flex_item flex_box_column">
               <div class="bar flex_item_jscrollpane playerslist" tabindex="0">
 
-                <div class="list_box_mp nobtn_override">
+                <div class="list_box_mp nobtn_override" >
                   <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
                     <li class="tournament_list_item">
-                      <a class="tour_item img-event" href="/#!/tournament/id/tournament.tournamentID">
-                        <div class="name-event" title=" tournament name ">TOURNAMENT NAME</div>
-                        <div class="name-event">10/10/2020</div>
-                      </a>
+                      <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png)">&nbsp;&nbsp;
+                        <div class="name-event" title=" tournament name ">{{selectedTournamentplayers.name}}</div>
+                        <!-- <div class="name-event">10/10/2020</div> -->
+                      </div>
                     </li>
                   </ul>
                 </div>

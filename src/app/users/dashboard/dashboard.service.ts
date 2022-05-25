@@ -47,11 +47,14 @@ export class DashboardService {
 
     return this.http.get<[]>(environment.apiUrl + 'services/network/user/profile/'+id,this.httpOptions);
 }
-getTournament(){
-   return this.http.get<[]>(environment.apiUrl + 'services/network/user/profile/web', this.httpOptions);
+getTournament(id:String){
+   return this.http.get<[]>(environment.apiUrl + 'services/main/tournament/user/'+id, this.httpOptions);
   //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
 }
+getTournamentID(id:String){
+  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/tournament?id='+id, this.httpOptions);
 
+}
 searchTournament(qr:any){
     console.log(qr);
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/tournament?query='+qr, this.httpOptions);
@@ -79,8 +82,8 @@ getSeason(userId:String){
  getTeam(userId:String){
   return this.http.get<[]>(environment.apiUrl + 'services/team/player/'+userId, this.httpOptions);
  }
- getTeamList(){
-  return this.http.get<[]>(environment.apiUrl + 'team/List', this.httpOptions);
+ getTeamID(ID:String){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/team/'+ID, this.httpOptions);
  }
 uploadImage(file: File){
   
@@ -88,6 +91,9 @@ uploadImage(file: File){
 }
 getEvent(userId:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/event/user/'+userId, this.httpOptions);
+}
+getEventID(Id:String){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/event/'+Id, this.httpOptions);
 }
 getLocation(){
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);

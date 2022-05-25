@@ -46,14 +46,14 @@ progressInfos: any[] = [];
   ngOnInit(): void {
     this.shwoLocations();
  
-    // this.loggedinUser = localStorage.getItem('loggeduser');
-    // this.loggedinUser = JSON.parse(this.loggedinUser);
-    // this.userName=this.loggedinUser.username;
-    // this.email=this.loggedinUser.email;
-    // this.userID=this.loggedinUser.userID;
+    this.loggedinUser = localStorage.getItem('loggeduser');
+    this.loggedinUser = JSON.parse(this.loggedinUser);
+    this.userName=this.loggedinUser.username;
+    this.email=this.loggedinUser.email;
+    this.userID=this.loggedinUser.userID;
 
     // console.log(this.userID)
-   this.service.getTournament().subscribe(data=>{
+   this.service.getTournament( this.userID).subscribe(data=>{
      var dataList=Object.values(data);
      this.adminDetails=JSON.parse(JSON.stringify(dataList))[0];
      console.log(this.adminDetails);

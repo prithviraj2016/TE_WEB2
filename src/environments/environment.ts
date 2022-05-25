@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://te-uatapi.vgroupinc.com/tournamentapis/web/srf/',
-  apiUrl1:'https://apis.vgroupinc.com/tournamentapis/web/srf/',
+  //apiUrl:'https://apis.vgroupinc.com/tournamentapis/web/srf/',
   imageUrl:"https://s3.amazonaws.com/vgroup-tournament/"
 };
 

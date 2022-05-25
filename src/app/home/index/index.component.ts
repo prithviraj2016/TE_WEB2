@@ -105,7 +105,7 @@ export class IndexComponent implements OnInit {
 
 
   ngOnInit(){
-    this.getTournamentdetails();
+    // this.getTournamentdetails();
       $(document).foundation();
       
      this.signinForm = this.frmbuilder.group({
@@ -196,20 +196,20 @@ export class IndexComponent implements OnInit {
         })
 
       }
-      getTournamentdetails(){
-        this._service.getTournament().subscribe(res =>{
-          // let tournamentList=Object.values(res);
+      // getTournamentdetails(){
+      //   this._service.getTournament().subscribe(res =>{
+      //     // let tournamentList=Object.values(res);
           
            
            
-         var tournamentList=Object.values(res);
-         this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
-          // console.log(JSON.parse(res.toString())?.hypes);
-          console.log(this.hype);
+      //    var tournamentList=Object.values(res);
+      //    this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
+      //     // console.log(JSON.parse(res.toString())?.hypes);
+      //     console.log(this.hype);
            
-          });
+      //     });
               
-            }
+      //       }
 
 
 

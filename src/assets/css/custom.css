@@ -2782,7 +2782,15 @@ input[type="checkbox"] {
 .tournament_list_item:first-child {
 	margin-left: 0;
 }
-
+.tournament_list_item{
+	display: flex;
+	font-size: 16px;
+	color: #3896d0;
+}
+.name-event{
+	padding-top: 10px;
+	padding-left: 5px;
+}
 .hintTournament {
 	font-size: 14px;
 	bottom: 0px;
@@ -2938,7 +2946,7 @@ a.get-hype.orange, a.register.orange  { padding: 18px 15px;}
 		min-height: 228px;
 	}
 	.nobtn_override {
-		min-height: 236px !important;
+		/* min-height: 236px !important; */
 	}
 }
 

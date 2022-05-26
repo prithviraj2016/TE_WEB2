@@ -47,7 +47,7 @@ export class TeamCreateComponent implements OnInit {
    ) { }
 
   ngOnInit(): void {
-    this.shwoLocations();
+   
 
     this.newTeamForm=this.formBuilder.group({
       'name':new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]),
@@ -93,8 +93,8 @@ onReset(): void {
   this.submitted = false;
   this.newTeamForm.reset();
 }
-shwoLocations() {
-  this.service.getLocation().subscribe((data: any) => {
+shwoLocations(event:any) {
+  this.service.getLocation(event.target.value).subscribe((data: any) => {
     if(data){
     console.log(data);
     this.location = data;

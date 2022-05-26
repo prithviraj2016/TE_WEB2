@@ -6,13 +6,20 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/internal/Observable';
-import { ImageCroppedEvent} from 'ngx-image-cropper';
+import { ImageCroppedEvent, ImageTransform} from 'ngx-image-cropper';
+
+export interface Form {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-season-create',
   templateUrl: './season-create.component.html',
   styleUrls: ['./season-create.component.css', '../../../assets/css/profile.css']
 })
+
+
 export class SeasonCreateComponent implements OnInit {
   [x: string]: any;
   selectedFiles?: FileList;
@@ -31,9 +38,17 @@ export class SeasonCreateComponent implements OnInit {
   // this on
   // uploadimageSrc:string;
   // upload:false;
-
-  imgChangeEvt: any = '';
+  req: any;
+  img: any;
+  res: any;
+  Form: any;
+  isShow = false;
+  selectedValue:any;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
   cropImgPreview: any = '';
+  transform: ImageTransform = {};
+  scale: number = 1;
   
   constructor(private formBuilder: FormBuilder, 
     private _router: Router, 
@@ -69,11 +84,18 @@ get f(): { [key: string]: AbstractControl } {
     formData.append('endDate', this.newSeasonsForm.value.edate);
     formData.append('file', this['file']);
     formData.append('imageKey',this.newSeasonsForm.value.imageURL);
-    
+    console.log(this.newSeasonsForm.value);
+
+
        if (this.newSeasonsForm.invalid) {
       console.log(this.newSeasonsForm.value);
-     this.service.createSeason(JSON.stringify(formData)).subscribe(data =>{
+
+     this.service.createSeason(JSON.stringify(formData)).subscribe((data:any) =>{
+
       if(data) {
+        this.Form =  data;
+        console.log("Season Created Successfully", this.Form)
+
          alert("Season Created Successfully");
        }else(err: any)=>{
          alert("Something went wrong");
@@ -151,16 +173,31 @@ get f(): { [key: string]: AbstractControl } {
 //   }
 // }
 
-
+selectStatus(event:any) {
+    
+  this.selectedValue = event.target.value;
+   
+}
 
 onFileChange(event: any): void {
-  this.imgChangeEvt = event;
+  this.imageSrc = event;
+  this.imageChangedEvent = this.imageSrc;
 }
-cropImg(e: ImageCroppedEvent) {
-  this.cropImgPreview = e.base64;
+// cropImg(e: ImageCroppedEvent) {
+//   this.cropImgPreview = e.base64;
+// }
+
+imageCropped(event: ImageCroppedEvent) {
+
+  this.croppedImage = event.base64;
+  this.uploadimageSrc = this.croppedImage;
+ 
 }
-
-
+removeImage() {
+  this.imageChangedEvent = '';
+  this.cropImgPreview = '';
+  this.upload1 = false;
+}
 
 imgLoad() {
   // display cropper tool
@@ -176,7 +213,7 @@ imgFailed() {
 
 show(){
  
-  this.uploadimageSrc=this.imageSrc;
+  this.uploadimageSrc=this.croppedImage;
   this.upload1=true;
   
 }
@@ -222,37 +259,27 @@ private getDismissReason1(reason: any): string {
 //     }
 //   }
 // }
-uploadFiles(): void {
-  this.message = [];
-  if (this.selectedFiles) {
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      this.upload(i, this.selectedFiles[i]);
+
+upload(){
+
+  this.service.uploadImage(this.uploadimageSrc).subscribe((data: any) => {
+   
+    if (data) {
+      alert("Image uploaded Successfully");
+      //console.log(data);
+  
+      var _imageKey = data.response;
+       
+      this.newSeasonsForm.patchValue({
+        imageKey : _imageKey 
+      })
+
     }
-  }
-}
-removeImage(){
-  this.cropImgPreview= '';
-  this.upload1= false;
+    else (err: any) => {
+      alert("Something went wrong");
+    }
+  });
 }
 
-upload(idx: number, file: File): void {
-  this.progressInfos[idx] = { value: 0, fileName: file.name };
-  if (file) {
-    this.service.uploadImage(file).subscribe({
-      next: (event: any) => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-          const msg = 'Uploaded the file successfully: ' + file.name;
-          this.message.push(msg);
-          // this.imageInfos = this.service.getFiles();
-        }
-      },
-      error: (err: any) => {
-        this.progressInfos[idx].value = 0;
-        const msg = 'Could not upload the file: ' + file.name;
-        this.message.push(msg);
-      }});
-  }
-}
+
   }

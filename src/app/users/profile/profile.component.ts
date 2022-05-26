@@ -44,7 +44,7 @@ progressInfos: any[] = [];
     private service:DashboardService) {}
 
   ngOnInit(): void {
-    this.shwoLocations();
+    
  
     this.loggedinUser = localStorage.getItem('loggeduser');
     this.loggedinUser = JSON.parse(this.loggedinUser);
@@ -112,8 +112,8 @@ showImage(){
   this.upload1=true;
   
 }
-shwoLocations() {
-  this.service.getLocation().subscribe((data: any) => {
+shwoLocations(event:any) {
+  this.service.getLocation(event.target.value).subscribe((data: any) => {
     if(data){
     console.log(data);
     this.location = data;

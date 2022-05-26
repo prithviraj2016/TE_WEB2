@@ -225,22 +225,24 @@
                <span class="flrt"> {{selectedTournamentplayers.length}}
               </span>
             </div>
+            <div class="bar" scrolly="showMoreNotifications()"  style="overflow: scroll; height: 457px; margin-top: 22px;">
             <div data-step="8"
               data-intro="List of tournaments in the event that can be clicked to go to that tournament."
-              class="flex_item flex_box_column">
+              class="flex_item flex_box_column" *ngFor="let item of selectedTournamentplayers">
               <div class="bar flex_item_jscrollpane playerslist" tabindex="0">
 
                 <div class="list_box_mp nobtn_override" >
-                  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
-                    <li class="tournament_list_item">
-                      <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png)">&nbsp;&nbsp;
-                        <div class="name-event" title=" tournament name ">{{selectedTournamentplayers.name}}</div>
+                  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
+                    <li class="tournament_list_item" >
+                      <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png)">&nbsp;&nbsp;                      </div>
+
+                        <div class="name-event" title=" tournament name ">{{item.player.name}}</div>
                         <!-- <div class="name-event">10/10/2020</div> -->
-                      </div>
                     </li>
                   </ul>
                 </div>
               </div>
+            </div>
             </div>
             <div data-step="9" data-intro="Add tournaments to this event if this is your event.">
               <a class="btm" href=""   (click)="onSelect(selectedTournament.id)">

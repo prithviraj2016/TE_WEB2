@@ -23,6 +23,7 @@ export class TournamentsComponent implements OnInit {
   selectedTournament:any;
   selectedTournamentID:any;
   selectedTournamentplayers:any=[];
+  selectedTournamentplayers1:any=[];
   upload1=false;
   public show:boolean =false;
   public searchList : any[];
@@ -71,11 +72,16 @@ getTournament(){
     if(res){
       this.selectedTournament = res;
       this.selectedTournamentplayers = res.players;
+      for (let i = 0; i <  this.selectedTournamentplayers.length; i++) {
+        console.log(this.selectedTournamentplayers[i].player.name)
+        
+      }
+      // this.selectedTournamentplayers1 = this.selectedTournamentplayers.player
       // this.selectedSeasonTournaments = res.tournaments;
       this.tournamentList1 = res.adminDetails;
       console.log(this.selectedTournament);
       console.log(this.selectedTournamentplayers);
-      // console.log(this.selectedSeasonTournaments);
+      // console.log(this.selectedTournamentplayers1);
       // console.log(this.seasonList1);
     }
   });

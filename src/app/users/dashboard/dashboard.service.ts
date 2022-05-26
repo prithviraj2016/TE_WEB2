@@ -85,9 +85,9 @@ getSeason(userId:String){
  getTeamID(ID:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/team/'+ID, this.httpOptions);
  }
-uploadImage(file: File){
-  
-  return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson' ,this.httpOptions);
+ uploadImage(imageString: any){
+  const data = {"request":imageString}
+  return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson',data ,this.httpOptions);
 }
 getEvent(userId:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/event/user/'+userId, this.httpOptions);
@@ -95,11 +95,13 @@ getEvent(userId:String){
 getEventID(Id:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/event/'+Id, this.httpOptions);
 }
-getLocation(){
-  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query' ,this.httpOptions);
+getLocation(qr:any){
+  console.log(qr)
+  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/location?query='+qr ,this.httpOptions);
 }
-getGame(){
-  return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/game?query' ,this.httpOptions);
+getGame(qr:any){
+  console.log(qr)
+  return this.http.get<[]>(environment.apiUrl + 'services/main/games?query='+qr ,this.httpOptions);
 }
 // getFiles(){
   

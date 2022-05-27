@@ -200,8 +200,8 @@
                     href="/#!/event/participants/{{sEvent.eventID}}"><i class="fas fa-users"></i> <span>Participants</span></a>
                   </li>-->
                   
-                  <li><a title="Delete Event" class="blkbkg event_btn deleteEvent"
-                      confirmed-click="DeleteEvent(sEvent.eventID)"><i class="fi-x tip-top" data-tooltip=""
+                  <li><a title="Delete Event" class="blkbkg event_btn deleteEvent" (click)="deleteTournament(selectedTournament.tournamentId)">
+                      <i class="fi-x tip-top" data-tooltip=""
                         aria-haspopup="true" data-selector="tooltip-ixa6tvjm6"
                         aria-describedby="tooltip-ixa6tvjm6"></i><i class="fas fa-trash-alt"></i>
                       <span> Delete</span></a>

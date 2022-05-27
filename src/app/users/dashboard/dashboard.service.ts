@@ -55,6 +55,10 @@ getTournamentID(id:String){
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/tournament?id='+id, this.httpOptions);
 
 }
+deleteTournament(id:String){
+  return this.http.delete<[]>(environment.apiUrl + 'service/main/tournament/'+id, this.httpOptions);
+
+}
 searchTournament(qr:any){
     console.log(qr);
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/tournament?query='+qr, this.httpOptions);

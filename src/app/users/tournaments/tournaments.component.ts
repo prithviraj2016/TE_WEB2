@@ -86,6 +86,20 @@ getTournament(){
     }
   });
 }
+
+deleteTournament(tournamentId:string){
+  if(tournamentId!==""){
+    this._service.deleteTournament(tournamentId).subscribe((res:any)=>{
+      if(res){
+        this.selectedTournament = res;
+        alert("Are You Sure For Delete Tournament");
+      }else{
+        
+      }
+      this.getTournament();
+    })
+  }
+}
 // getLatestTournamentdetails(){
 //   this._service.getTournament().subscribe(res =>{
 //   var tournamentList1=Object.values(res);

@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
+    <div class="bar" scrolly="showMoreNotifications()" style=" height: 500px;" >
       <div class="season-card" *ngFor="let item of seasonList" (click)="onSelect(item)">
         <div class="event_card sha-box card">
           <div class="row">
@@ -173,7 +173,7 @@
             <span class="flrt ">{{selectedSeasonEvents.length}}</span>
           </div>
           <!-- List -->
-          <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 400px;" >
+          <div class="bar" scrolly="showMoreNotifications()" style="height: 400px;" >
           <div data-step="7" data-intro="See the event list for the season with just a click."
             class="playerslist list_box_half_mp bar" *ngFor="let item of selectedSeasonEvents" >
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
@@ -187,7 +187,7 @@
             </ul>
           </div>
           
-          <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 400px;">
+          <div class="bar" scrolly="showMoreNotifications()" style=" height: 400px;">
           <div class="name-event-bg" >
             <span class="btxt ">TOURNAMENTS LIST</span>
             <span class="flrt ">{{selectedSeasonTournaments.length}}</span>

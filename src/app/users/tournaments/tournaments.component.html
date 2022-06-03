@@ -202,6 +202,39 @@
                     href="/#!/event/participants/{{sEvent.eventID}}"><i class="fas fa-users"></i> <span>Participants</span></a>
                   </li>-->
 
+                  
+                  <li><a title="Delete Event" class="blkbkg event_btn deleteEvent" (click)="deleteTournament(selectedTournament.tournamentId)">
+                      <i class="fi-x tip-top" data-tooltip=""
+                        aria-haspopup="true" data-selector="tooltip-ixa6tvjm6"
+                        aria-describedby="tooltip-ixa6tvjm6"></i><i class="fas fa-trash-alt"></i>
+                      <span> Delete</span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
+                <a class="white-link orange paid-register" title="Register"> Register</a>
+              </div>
+              <!-- <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
+                    <a class="white-link orange paid-register already-registered" title="Already registered">Already
+                      registered</a>
+                  </div> -->
+            </div>
+          </div>
+          <!-- Second Column -->
+          <div class="medium-6 left pl15 columns flex_box_column eventdetaillist detailElementHeight"
+            id="season-detail-list">
+            <div class="name-event-bg">
+              <span class="btxt ">Players</span> &nbsp;&nbsp;
+               <span class="flrt"> {{selectedTournamentplayers.length}}
+              </span>
+            </div>
+            <div class="bar" scrolly="showMoreNotifications()"  style="overflow: scroll; height: 457px; margin-top: 22px;">
+            <div data-step="8"
+              data-intro="List of tournaments in the event that can be clicked to go to that tournament."
+              class="flex_item flex_box_column" *ngFor="let item of selectedTournamentplayers">
+              <div class="bar flex_item_jscrollpane playerslist" tabindex="0">
+<ul>
+
                     <li><a title="Delete Event" class="blkbkg event_btn deleteEvent"
                         confirmed-click="DeleteEvent(sEvent.eventID)"><i class="fi-x tip-top" data-tooltip=""
                           aria-haspopup="true" data-selector="tooltip-ixa6tvjm6"

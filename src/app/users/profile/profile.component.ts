@@ -53,7 +53,7 @@ progressInfos: any[] = [];
     this.userID=this.loggedinUser.userID;
 
     // console.log(this.userID)
-   this.service.getTournament( this.userID).subscribe(data=>{
+    this.service.getTournament( this.userID).subscribe(data=>{
      var dataList=Object.values(data);
      this.adminDetails=JSON.parse(JSON.stringify(dataList))[0];
      console.log(this.adminDetails);

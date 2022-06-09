@@ -2,7 +2,7 @@
 <div>
 <img src="" style="display:none" id="imgforumlogin">
 <div class="row restrict_to_window" id="dashboard-container" style="height: 533px;">
-  <div class="large-5 cdiv" id="step1" data-step="1" data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
+  <div class="large-5 cdiv" id="step1">
     <div class="notification_column restrict_to_window">
       <div class="sha-box control_box">
         <div class="row">
@@ -24,13 +24,13 @@
           </div>
         </div>
         <div class="tabs-bar">
-          <div id="myListMenu" data-tab="">
-            <a class="create-new ng-scope" data-step="2" data-intro="Create new tournament." title="Create New" routerLink="/tournament-create"><img src="assets/img/icon_create.svg"><i>CREATE NEW</i></a>
+          <div id="myListMenu" data-tab="" data-step="2" data-intro="Create new tournament.">
+            <a class="create-new ng-scope" title="Create New" routerLink="/tournament-create"><img src="assets/img/icon_create.svg"><i>CREATE NEW</i></a>
           </div>
         </div>
       </div>
-      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" >
-        <ngx-slick-carousel  *ngFor="let item of tournamentList" (click)="onSelect(item)" >
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;"data-step="3" data-intro="Click to see relevant information about your tournament.">
+        <ngx-slick-carousel  *ngFor="let item of tournamentList" (click)="onSelect(item)">
           <div class="season-card">
             <div class="event_card sha-box card">
               <div class="row">
@@ -112,7 +112,9 @@
       <div class="detail sha-box p15 flex_box_column eventboxouter" id="tdetail-container">
         <!-- Ribbion -->
         <div class="img-event-bg mbot-15" data-step="4"
-          data-intro="Allow you to report, name, follow, and see what platforms is being used for the tournament.">
+          data-intro="Report if inappropriate conduct.<br>
+          1. Follow this tournament.<br>
+          2. Delete this tournament..">
           <div>
             <a class="follow_icon followed" href="" title="Event Follower(s)" style="cursor:text;"><i
                 class="fas fa-heart"></i></a> 
@@ -144,14 +146,15 @@
               <div class="tddate">
                 End Date: <span class="rtxt">{{selectedTournament.endDate | date}}</span>
               </div>
-              <a title="Help" href="" onclick="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+              <a title="Help" id="login_box_button" class="help_button" (click)="helpButton()"><i class="fa fa-info-circle"
                   aria-hidden="true"></i><span>&nbsp;Help</span></a>
             </div>
             <!-- Description -->
             <!-- Staff -->
             <div class="bar flex_item_jscrollpane tinfotitle" tabindex="0">
               <div class="description_title btxt">Admin</div>
-              <div data-step="5" data-intro="Admin list for the event." class="player-sm">
+              <div data-step="5" data-intro="Admin list for the event." class="player-sm" data-step="5"
+              data-intro=" Admin list of Tournament.">
                 <a href="/#!/user/view/sEvent.creatorUserId">
                   <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png">
                   </div>
@@ -164,7 +167,7 @@
               <hr>
               <div>
                 <div class="description_title btxt" data-step="6"
-                  data-intro="Event information provided by event organizer.">About Tournament</div>
+                  data-intro="Tournament Information usually Rules and Pot amount.">About Tournament</div>
                 <div class="word-wrap description">
                   <p class="info_box_mp pre" title="Event description">
                    {{selectedTournament.description}}
@@ -188,7 +191,14 @@
                 <a class="orange get-hype" href="javascript:;" data-reveal-id="hype" title="Hype Event"><i class="fas fa-fire"></i>
                   <span>Hype</span></a>
               </div> -->
-              <div class="ctrlpnl tournament_btns_gradient">
+              <div class="ctrlpnl tournament_btns_gradient" data-step="8"
+              data-intro="Register for tournament.<br>
+              1. Hype allows users to advertise your tournament.<br>
+              2. Click to begin your tournament.<br>
+              3. Message player's updates about the tournaments.<br>
+              4. Add staff to the tournament.<br>
+              5. Edit your tournament.<br>
+              6. See Results.">
                 <ul class="wrapbtnbox">
                   <li><a title="Edit Event" class="blkbkg event_btn" href="" routerLink="/edit-tournament/{{selectedTournament.tournamentID}}"><i
                         class="fas fa-edit"></i> <span> Edit</span></a></li>
@@ -219,7 +229,8 @@
           </div>
           <!-- Second Column -->
           <div class="medium-6 left pl15 columns flex_box_column eventdetaillist detailElementHeight"
-            id="season-detail-list">
+            id="season-detail-list" data-step="7"
+            data-intro="List of players participating in the tournament.">
             <div class="name-event-bg">
               <span class="btxt ">Players</span> &nbsp;&nbsp;
                <span class="flrt"> {{selectedTournamentplayers.length}}
@@ -246,7 +257,7 @@
               </div>
             </div>
             </div>
-            <div data-step="9" data-intro="Add tournaments to this event if this is your event.">
+            <div data-step="9" data-intro="Manage Teams or Players.">
               <a class="btm" (click)="onSelect(selectedTournament.id)" routerLink="/manage-players/{{selectedTournament.tournamentID}}">
                 <div class="poolsb bgradient bordr-all mp-btn" title="Add Tournaments"> Manage Players
                 </div>

@@ -16,9 +16,12 @@ export class DashboardComponent implements OnInit {
   imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
   //introJS = introJs(); // assigning it to variable
   public tournamentList:any=[];
-  public upcoming:any=[];
+  public upcomingList:any=[];
   slide:boolean=true;
   public hype:any=[];
+  userID:String="";
+  loggedinUser:any;
+  userName:String;
   constructor(private _service:DashboardService) {
     this.imageUrl=environment.imageUrl
 
@@ -30,27 +33,22 @@ export class DashboardComponent implements OnInit {
    }
 
    ngOnInit() {
-    // this.getTournamentdetails();
+    this.getTournamentdetails();
     this.getNotifications();
    }
    toggle(){
      this.slide = !this.slide;
    }
-  //  getTournamentdetails(){
-  //   this._service.getTournament().subscribe(res =>{
-  //     // let tournamentList=Object.values(res);
-      
-       
-       
-  //    var tournamentList=Object.values(res);
-  //    this.upcoming=JSON.parse(JSON.stringify(tournamentList))[3];
-  //    this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
-  //     // console.log(JSON.parse(res.toString())?.hypes);
-  //     console.log(this.upcoming);
-       
-  //     });
+   getTournamentdetails(){
+    
+    this._service.getUpcomingTournaments().subscribe((res:any) =>{
+   if(res){
+    this.upcomingList=res.upcoming;
+    console.log(this.upcomingList);
+      }
+      });
           
-  //       }
+        }
 getNotifications(){
 this._service.getNotifications().subscribe(res =>{
   var notifications = Object.values(res);
@@ -59,41 +57,8 @@ this._service.getNotifications().subscribe(res =>{
 }
         
 helpbutton(){
-  var intro1 = introJs();
-      intro1.setOptions({
-        steps: [
-          {
-            intro: "Hello world!"
-          },
-          {
-            //element: document.querySelector('#step1'),
-            intro: "This is a tooltip."
-          },
-          {
-           // element: document.querySelectorAll('#step2')[0],
-            intro: "Ok, wasn't that fun?",
-            position: 'right'
-          },
-          {
-            //element: '#step3',
-            intro: 'More features, more fun.',
-            position: 'left'
-          },
-          {
-            ///element: '#step4',
-            intro: "Another step.",
-            position: 'bottom'
-          },
-          {
-           // element: '#step5',
-            intro: 'Get it, use it.'
-          }
-        ]
-      });
-      intro1.start();
-    //introJs()// Start introjs tour
-
-    }
+     introJs().start();
+            }
     
 }
 

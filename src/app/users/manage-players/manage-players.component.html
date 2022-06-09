@@ -2,8 +2,8 @@
     <div>
         <div class="large-12 columns">
             <ul class="breadcrumbs mp_breadcrumbs">
-                <li><a href="entityId">SEASON1</a></li>
-                <li class="current">ADD TOURNAMENTS
+                <li><a routerLink="/tournaments" style="color:#397F9A;font-size: 15px;">{{playersList1.name}}</a></li>
+                <li class="current">Player Management
                 </li>
             </ul>
         </div>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="large-4">
                     <div class="help">
-                        <a>
+                        <a (click)="helpButton()">
                             <i class="fa fa-info-circle" aria-hidden="true"></i>
                             <span>&nbsp;Help</span>
                         </a>
@@ -33,13 +33,15 @@
                 </div>
                 <div class="large-4">
                     <div class=searchb>
-                        <input type="search" id="search" placeholder="Search">
+                        <input type="search" id="search" placeholder="Search" data-step="6" data-intro="
+                        Search for players in your tournament.">
                     </div>
                 </div>
                 <div class="large-4">
                     <div class="">
                         <div class="tddate right pt15 psides10 ng-scope">
-                            <a class="blkbkg pool_button sqbtn tsize12 bgradient talignc ng-binding">GENERATE POOLS</a>
+                            <a class="blkbkg pool_button sqbtn tsize12 bgradient talignc ng-binding" data-step="7" data-intro="
+                            Generate/View pools for the tournament.">GENERATE POOLS</a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +55,7 @@
                 <div _ngcontent-aol-c226="" class="info_column">
                     <tabset _ngcontent-aol-c226="" id="tstyle" class="tab-container">
                         <div class="tabs-content">
-                            <tab heading="INVITE">
+                            <tab heading="INVITE" data-step="1" data-intro="Invite players that have a TE account.">
                                 <div class="bar" id="panel2">
                                     <div class="upcoming_list">
                                         <div class="upcoming_list_child">
@@ -74,22 +76,25 @@
 
                                 </div>
                             </tab>
-                            <tab heading="BULK">
-                                <div class="bar" id="panel2">
+                            
+                            <tab heading="BULK"  >
+                                <div class="bar" id="panel2" data-step="2" data-intro="Add Players in Bulk (with new line OR commas separated).">
                                     <div class="upcoming_list">
-                                        <div class="upcoming_list_child">
+                                        <form [formGroup]="managePlayersForm">
+                                        <div class="upcoming_list_child" style="width:100%">
                                             <h6 id="invite-search-player">Bulk Textbox</h6>
                                             <textarea required=""
                                                 class="bulk_textbox ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-pattern"
-                                                placeholder="Enter Player name to add">
+                                                placeholder="Enter Player name to add" formControlName="bulkPlayers">
                                             </textarea>
                                             <span class="small-text">Add Players in Bulk (with new line OR commas
                                                 separated) </span>
                                             <div class="pull-right">
                                                 <input type="submit" value="Add Players"
-                                                    class="button bulk_button btn-manage bgradient mtop-10 right">
+                                                    class="button bulk_button btn-manage bgradient mtop-10 right" (click)="addBulkPlayers()">
                                             </div>
                                         </div>
+                                        </form>
                                         <div id="loaders_upcoming">
                                             <div id="loader_image_upcoming" align="center">
                                                 <img src="assets/img/ajax-loader.gif" alt="Loading next records"
@@ -102,7 +107,8 @@
 
                                 </div>
                             </tab>
-                            <tab heading="TEAM">
+                        
+                            <tab heading="TEAM" data-step="3" data-intro="Invite teams to the tournament.">
                                 <div class="bar" id="panel2">
                                     <div class="upcoming_list">
                                         <div class="upcoming_list_child">
@@ -123,7 +129,7 @@
 
                                 </div>
                             </tab>
-                            <tab heading="REQUEST">
+                            <tab heading="REQUEST" data-step="3" data-intro="Accept/Decline registration of players">
                                 <div class="bar" id="panel2">
                                     <div class="upcoming_list">
                                         <div class="upcoming_list_child">
@@ -185,7 +191,7 @@
                         </div>
                     </div>
                     <div class=" large-5 small-3 medium-6 pplayers-actions right ng-scope">
-                        <a href="" class="right" id="btn-swap-seeds">
+                        <a href="" class="right" id="btn-swap-seeds"  data-step="8" data-intro="Shuffle the layout of the pool.">
                             <div class="left">
                                 <i class="fa fa-random">
                                 </i>
@@ -194,7 +200,7 @@
                             <span class="left">Shuffle</span>
 
                         </a>
-                        <a data-step="8" data-intro="Shuffle the layout of the pool."
+                        <a data-step="9" data-intro="Swap layout of particular players."
                             ng-click="shufflePlayers(tournament.tournamentID)" class="right" id="shuffle_seeds"
                             title="Shuffle">
                             <div class="left">
@@ -205,8 +211,24 @@
                     </div>
                 </div>
                 <div id="paticipating-pl" class="row dark_grey pl15 pad-top-0">
-                    <div class="bar dradAndDrop">
-
+                    <div class="bar dradAndDrop" data-step="5" data-intro="Participating players list.<br>
+                    a. Set seed ranking.<br>
+                    b. Lock seed so player ranking doesn't change.<br>
+                    c. Remove player from tournament.">
+                    <ol >
+                    <div class="row collaspse" *ngFor="let item of playersList" style="width: 650px; height: 88px;margin-top: 16px;">
+                   
+                    <li class="sha-box small-card" >
+                    <a><img src="assets/img/guest.png" width="25" height="25" style="margin-top: 20px; margin-left: 28px;"></a>
+                    <p class="player-name" style="margin-left: 99px; margin-bottom: -18px; margin-top: -30px;">{{item.player.name}}<br><span style="font-size: 13px;color: #397F9A;">{{item.player.username}}</span>
+                    <a class="btn-primary" style="margin-left: 149px;font-size: 16px;padding: 6px;">Set Seed</a>
+                    <a class="btn-primary" style="margin-left: 11px; font-size: 16px;padding: 6px;">Lock Seed</a>
+                    <a class="btn-danger" style="margin-left: 11px; font-size: 16px;padding: 6px;">Remove</a>
+                    </p>
+                    </li>   
+                   
+                </div>
+            </ol>
                     </div>
                 </div>
             </div>

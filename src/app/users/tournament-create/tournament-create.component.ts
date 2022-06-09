@@ -1,3 +1,4 @@
+import { filter } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -5,6 +6,7 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
 import { DashboardService } from '../dashboard/dashboard.service';
+
 
 export interface Form {
   value: string;
@@ -25,9 +27,12 @@ export class TournamentCreateComponent implements OnInit {
   title = 'appBootstrap';
   location: any;
   game: any;
+  hideShowselect: string = "true";
   submitted = false;
+  myInputVariable: string = '';
   imageSrc: string;
   uploadimageSrc: string="";
+  latLong: string = "";
   //upload = false;
   upload1 = false;
   cropImgPreview: any = '';
@@ -35,6 +40,7 @@ export class TournamentCreateComponent implements OnInit {
   croppedImage: any = '';
   transform: ImageTransform = {};
   scale: number = 1;
+  filterTerm !: string;
   //value: number = 0;
   //public scaleFactor: number = 1;
   //public lastNumber: number = 1;
@@ -93,6 +99,8 @@ export class TournamentCreateComponent implements OnInit {
     return this.newTournamentForm.controls;
   }
   createTournaments() {
+    console.log("Creating Tournament");
+    console.log(this.newTournamentForm.value);
     const formData = new FormData();
     formData.append('name', this.newTournamentForm.value.name);
     formData.append('game', this.newTournamentForm.value.game);
@@ -120,58 +128,96 @@ export class TournamentCreateComponent implements OnInit {
     formData.append('considerLocation', this.newTournamentForm.value.considerLocation);
     formData.append('checkinTime', this.newTournamentForm.value.location);
     formData.append('autoAdvanceTime', this.newTournamentForm.value.autoAdvanceTime);
-      
-    if (this.newTournamentForm.invalid) {
-     
     
-      console.log(this.newTournamentForm.value);
-      this.service.createTournament(JSON.stringify(this.newTournamentForm.value)).subscribe((res:any) => {
-        
-        if (res) {
-          
-          //for(var i=0;i< this.newTournamentForm.value; i++)
-          this.Form = res;
-         //res = this.newTournamentForm 
-         //this.newTournamentForm;
-          console.log("Added data successfully"  , this.Form);
-          alert("Team Created Successfully");
-        } else (err: any) => {
-          alert("Something went wrong");
+
+    var createTournamentData = {
+      "allowUserScoreSubmission": this.newTournamentForm.value.allowUserScoreSubmission,
+      "preRegister": this.newTournamentForm.value.preRegiste,
+      "considerTeam": this.newTournamentForm.value.considerTeam,
+      "considerLocation": this.newTournamentForm.value.considerLocation,
+      "tournamentType": {
+        "tournamentTypeName": this.newTournamentForm.value.tournamentType
+      },
+      "twitterMessage": this.newTournamentForm.value.twitterMessage,
+      "notificationMessage": this.newTournamentForm.value.notificationMessage,
+      "checkinTime": this.newTournamentForm.value.checkinTime,
+      "name": this.newTournamentForm.value.name,
+      "description": this.newTournamentForm.value.description,
+      "webURL": this.newTournamentForm.value.webURL,
+      "twitchStreamUrl": this.newTournamentForm.value.twitchStreamUr,
+      "teamBased": this.newTournamentForm.value.teamBased,
+      "latLong": this.latLong,
+      "venue": this.newTournamentForm.value.venue,
+      "imageKey": this.newTournamentForm.value.imageKey,
+      "paid": false,
+      "startDate": this.newTournamentForm.value.startDate,
+      "endDate": this.newTournamentForm.value.endDate,
+      "game": {
+        "name": this.newTournamentForm.value.game
+      },
+      "acceptAttachments": 0,
+      "sequentialPairings": 0,
+      "openSignup": 1,
+      "started": 0,
+      "completed": 0
+    }
+
+      // console.log(temp);
+      this.service.createTournament(JSON.stringify(createTournamentData)).subscribe({
+        next:(res)=>{
+          alert("Tournament Created Sucessfully")
+          this._router.navigate(['/tournaments']);
+        },
+        error:(err)=>{
+          console.log(err);
         }
       });
     
     }
+  // }
+
+  mySelectClick(value:any){
+    this.hideShowselect = "false";
+    this.myInputVariable = value;
   }
 
   shwoLocations(event:any) {
+    this.hideShowselect = "true";
     const req = this.newTournamentForm.value.location
     this.service.getLocation(event.target.value).subscribe((data: any) => {
       if (data) {
-        console.log(data);
-        // var _location = data.response;
-        
-        // this.newTournamentForm.patchValue({
-        //   game : _location 
-        // })
-       this.location = data.list;
+        this.location = data.list;
+        this.latLong = this.location[0].geometry.location.lat;
+        this.latLong += ","+ this.location[0].geometry.location.lng;
+        // console.log(this.latLong);
       } 
       else (err: any) => {
         alert("Something went wrong");
       }
-      // console.log(this.countries);
     });
   }
 
   showGame(event:any) {
-    console.log(event.target.value);
     const request = this.newTournamentForm.value.game;
-    this.service.getGame(event.target.value).subscribe((res:any)=>{
+    console.log(event.target.value);
+    if(event.target.value != undefined && event.target.value != "" && event.target.value != "undefined"){
+      this.service.getGame(event.target.value).subscribe((res:any)=>{
       if(res){
         console.log(res);
       this.Game = res.list;
-      }
       
-    });
+      }
+      });
+    }
+    else{
+      this.service.getGame("").subscribe((res:any)=>{
+        if(res){
+          console.log(res);
+        this.Game = res.list;
+        }
+        });
+    }
+    
     // this.service.getGame().subscribe((data: any) => {
     //   if (data) {
        

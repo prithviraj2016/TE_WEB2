@@ -7666,7 +7666,7 @@ label.mandatory_field.non-floatfld:after{ color: #ef050b; font-size: 13px;}
     border: 0;
     border-bottom: #676d75 solid 1px;
     color: white;}
-#braintree-set textarea{padding-top: 9px;}
+#braintree-set textarea{padding-top: 47px;}
 span.prefix, label.prefix { background: transparent; border: none; border-bottom: #676d75 solid 1px; height: 40px; text-align: left; font-family: '"Roboto"', sans-serif;color: rgba(255, 255, 255, 0.25);}
 .prefix-input-field .columns { padding: 0;}
 
@@ -11981,6 +11981,16 @@ label.lbl-override
 }
 .add-player-modal{overflow:scroll !important;}
 }
+.introjs-tooltip{min-width: 200px;min-height: 100px;}
+.introjs-tooltiptext {color:#2e617f !important; font-size: 16px;}
+.introjs-progress {
+    box-sizing: content-box;
+    overflow: hidden;
+    height: 10px;
+    margin: 10px 0 5px 0;
+    border-radius: 4px;
+    background-color: #ecf0f1;
+}
 
 @media only screen and (max-width: 640px)
 {
@@ -11988,7 +11998,7 @@ label.lbl-override
 }
 @media only screen and (min-width: 768px) and (max-width:1366px)
 {
-.introjs-tooltiptext{font-size:13px;}
+.introjs-tooltiptext{font-size:13px;color:#2e617f!important;}
 
 	}
 @media only screen and (min-width: 768px) and (max-width:1024px)

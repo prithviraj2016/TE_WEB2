@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { DashboardService } from '../dashboard/dashboard.service';
+declare var introJs: any;
 
 @Component({
   selector: 'app-manage-event',
@@ -33,5 +34,8 @@ export class ManageEventComponent implements OnInit {
       }
         
       });
+    }
+    helpButton(){
+      introJs().start();
     }
 }

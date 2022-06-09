@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DashboardService } from '../dashboard/dashboard.service';
+declare var introJs: any;
 
 @Component({
   selector: 'app-manage-tournaments',
@@ -24,6 +25,12 @@ export class ManageTournamentsComponent implements OnInit {
       console.log(seasonID);
     });
     
+}
+// addTournaments(){
+//   this._service.addTournaments(seasonID).subscribe(){}
+// }
+helpButton(){
+  introJs().start();
 }
  
   

@@ -1,23 +1,23 @@
 <div class="row ng-cloak create-event-form" data-ng-init="init()">
     <div class='create-form-section' id="braintree-set">
-      <form name="season_form" style="width: 100%;">
+      <form [formGroup]="editSeasonForm"  (submit)="editSeason()" name="season_form" style="width: 100%;">
         <div class="row">
           <div class="large-4 medium-12 small-12 columns column-first">
             <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
             <h1>Edit Season </h1>
-            <a title="Help" href=""
-              onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
-              id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+            <a title="Help" (click)="helpButton()"
+            id="login_box_button" class="help_button"><i class="fa fa-info-circle"
                 aria-hidden="true"></i>&nbsp;<span>Help</span></a>
   
   
             <div class="flex-row">
               <div class="flex-item">
                 <!-- <div class="is-floating-label"> -->
-                  <label class="mandatory_field" data-step="1" data-intro="Name of the Event." style="color: #747f85;">Season Name</label>
+                  <label class="mandatory_field"  style="color: #747f85;">Season Name</label>
                   <input type="text" form="season_form_novalidated" name='season_name' placeholder="" id='season_name'
-                    minlength="3" maxlength="50" value="" required />
+                     formControlName="name" data-step="1" data-intro="Season Name." />
                 <!-- </div> -->
+                
               </div>
             </div>
   
@@ -25,22 +25,22 @@
             <div class="flex-row">
               <div class="flex-item image-item">
                 <!-- <div class="is-floating-label"> -->
-                  <label class="flex-label" data-step="2" data-intro="Description of the Season.">Description</label>
+                  <label class="flex-label" >Description</label>
                   <textarea id='season_description' form="season_form_novalidated" name='season_description' placeholder=""
-                    maxlength='420' value="event description"></textarea>
+                    maxlength='420' value="event description" formControlName="description" data-step="2" data-intro="Season Description"></textarea>
                 
                 <!-- </div> -->
               </div>
   
               <div class="flex-item">
-                <label class="label-custom" data-step="3" data-intro="URL of Event to share on social media."
+                <label class="label-custom" data-step="3" data-intro="URL to Season page"
                   for="season_webUrl">Custom URL <i (click)="cp.copy()" title="Copy URL"
                     class="icon-copy" aria-hidden="true"><img src="../assets/img/icon_copy_url.png"></i></label>
                 <div class="input-field">
                   <div class="input-group" ngxCopyPaste #cp="copy">
                     <label class="input-group-label" for="season_webUrl">Tournamentedition.com/season/</label>
-                    <input #formInputText type="text" form="season_form_novalidated" class="input-group-field" minlength="3"
-                      maxlength="100" placeholder="" name="season_webUrl" id="season_webUrl" disallow-spaces>
+                    <input type="text" form="season_form_novalidated" class="input-group-field" minlength="3"
+                      maxlength="100" placeholder="" name="season_webUrl" id="season_webUrl"  formControlName="webURL">
                   </div>
                  
                 </div>
@@ -52,13 +52,14 @@
   
             <div class="flex-row">
               <div class="flex-item">
-                <label class="mandatory_field fixed-label" data-step="5" data-intro="Start date of Season"
+                <label class="mandatory_field fixed-label" data-step="4" data-intro="
+                Season Start Date"
                   for="season_startDate">Start Date</label>
                 <div class="is-floating-label">
   
-                  <input type="text" form="season_form_novalidated" readonly="readonly" placeholder="MM-DD-YYYY"
-                    class="date_calender" name="season_startDate" id="season_startDate" ng-model="startDate" datetime-picker
-                    date-only date-format="MM-dd-yyyy" future-only required />
+                  <input type="date" form="season_form_novalidated" placeholder="MM-DD-YYYY"
+                    class="date_calender" onkeypress="return false"  name="season_startDate"  min=""  id="season_startDate"  
+                     date-format="MM-dd-yyyy" formControlName="startDate" required />
                   <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
                 </div>
               </div>
@@ -66,12 +67,11 @@
   
             <div class="flex-row">
               <div class="flex-item">
-                <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Season"
+                <label class="mandatory_field fixed-label" data-step="5" data-intro="Season End Date."
                   for="season_endDate">End Date</label>
                 <div class="is-floating-label">
-                  <input type="text" form="season_form_novalidated" readonly="readonly" placeholder="MM-DD-YYYY"
-                    class="date_calender" name="season_endDate" id="season_endDate" ng-model="endDate" datetime-picker
-                    date-only date-format="MM-dd-yyyy" required />
+                  <input type="date" form="season_form_novalidated" placeholder="MM-DD-YYYY"
+                    class="date_calender" onkeypress="return false" name="season_endDate"  min=""  id="season_endDate"  date-format="MM-dd-yyyy"  formControlName="endDate" required />
   
                   <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
                 </div>
@@ -81,15 +81,15 @@
   
             <div class="flex-row">
               <div class="flex-item image-item">
-                <label class="flex-label" data-step="8" data-intro="Upload 400px X 400px picture" for="user_image">Upload
+                <label class="flex-label" data-step="6" data-intro="Season Picture" for="user_image">Upload
                   Picture</label>
                 <div class="row">
                 <div class="left-column large-4 medium-3 small-6 columns">
                   <div id="user_image" enctype="multipart/form-data">
-                    <img alt="Choose a picture" src='assets/img/my-account-placeholder.png' *ngIf="!upload1"
+                    <img alt="Choose a picture" src={{tempImgSrc}} *ngIf="!upload1"
                       title="Choose a picture" width="150" height="150" id="my-account-profile-image" class="form-control"
                       (click)="open1(mymodal1)">
-                    <img alt="Choose a picture" [src]="cropImgPreview" *ngIf="upload1" title="Choose a picture" width="150"
+                    <img alt="Choose a picture"  [src]="uploadimageSrc" *ngIf="upload1" title="Choose a picture" width="150"
                       height="150" id="my-account-profile-image" class="form-control" (click)="open1(mymodal1)">
                     <span class="mandatoryfld_lbl">
                     </span>
@@ -120,13 +120,18 @@
                 </div>
                 <div id="upload-demo" class="croppie-container" style="margin: 10px;
                   border: dashed 1px #43464d;">
-                  <!-- <img src="../../../assets/img/user.png" style=" height: 50%;
+                  <img src="../../../assets/img/user.png" style=" height: 50%;
           width: 90%;
-          margin: 10px;" [src]="imageSrc" *ngIf="imageSrc" > -->
-                  <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
-                    [resizeToWidth]="256" format="png" (imageCropped)="cropImg($event)" (imageLoaded)="imgLoad()"
-                    (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()">
-                  </image-cropper>
+          margin: 10px;" [src]="imageSrc" >
+          <image-cropper 
+          [imageChangedEvent]="imageChangedEvent" 
+          [maintainAspectRatio]="true"
+          [aspectRatio]="4 / 4"
+          [resizeToWidth]="256" 
+          format="png" 
+          (imageCropped)="imageCropped($event)"
+          >
+          </image-cropper>
                   <div class="cr-boundary" aria-dropeffect="none">
 
                     <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -139,7 +144,7 @@
                           style="border: solid 1px #43464d; border-radius: 0px;" multiple
                           (change)="onFileChange($event)" formControlName="imageKey">
                         <input type="submit" class="done" value="Done" (click)="show()"
-                          (click)="modal.dismiss('Cross click')" (click)="uploadFiles()">
+                          (click)="modal.dismiss('Cross click')" (click)="upload()">
                         
 
                       </div>
@@ -153,7 +158,7 @@
           <div class="large-7 medium-12 small-12 columns column-second">
             <div class="flex-row">
               <div class="" id="buttonset">
-                <button title="Cancel" type="button" class="btn-block red">
+                <button title="Cancel" type="button" class="btn-block red" routerLink="/seasons">
                   <span>Cancel</span>
                 </button>
                 <button title="ok" type="submit" class="btn-block">

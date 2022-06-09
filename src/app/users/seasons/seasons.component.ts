@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+declare var introJs: any;
+
 
 @Component({
   selector: 'app-seasons',
@@ -80,6 +82,21 @@ getSeasonDetail(seasonId:string)
     }
   });
 }
+
+deleteSeason(seasonId:string){
+  if(this.selectedSeasonID!==""){
+    this.service.deleteSeason(this.selectedSeasonID).subscribe((res:any)=>{
+      console.log(this.selectedSeasonID);
+      if(res){
+        alert("Are You Sure For Delete Season");
+        this.getSeason();
+      }else{
+        alert("something went wrong");
+      }
+    })
+  }
+}
+
 addTournament(){
   this.loggedinUser = localStorage.getItem('loggeduser');
   this.userID=JSON.parse(this.loggedinUser).userID;
@@ -102,5 +119,8 @@ searchSeason(event:any){
     this.show = !this.show;
   })
 }
+helpButton(){
+  introJs().start();
+         }
 
 }

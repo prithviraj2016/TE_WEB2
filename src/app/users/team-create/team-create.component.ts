@@ -4,8 +4,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from '../dashboard/dashboard.service';
-
-
+import { ImageCroppedEvent, ImageTransform } from 'ngx-image-cropper';
+import { getMatFormFieldMissingControlError } from '@angular/material/form-field';
 
 
 
@@ -17,18 +17,30 @@ import { DashboardService } from '../dashboard/dashboard.service';
 })
 export class TeamCreateComponent implements OnInit {
   [x: string]: any;
+  showMe: boolean = false;
   newTeamForm: FormGroup = new FormGroup({});
   closeResult: string = '';
   imageSrc:string;
   submitted=false;
   location: any;
   uploadimageSrc:string;
-  upload=false;
+  // upload=false;
   upload1=false;
-  id:string;
-  ArrayOfSelectedFile = new Array<string>();
- 
+  croppedImage: any = '';
   cropImgPreview: any = '';
+  imageChangedEvent: any = '';
+  showCropper: any = false;
+  hideShowselect: string = "true";
+  transform: ImageTransform = {};
+  img: any;
+  myInputVariable: string = '';
+  filterTerm !: string;
+  selectedValue:any;
+  ArrayOfSelectedFile = new Array<string>();
+  req: any;
+  res: any;
+  Form: any;
+
   
   
   
@@ -50,10 +62,11 @@ export class TeamCreateComponent implements OnInit {
    
 
     this.newTeamForm=this.formBuilder.group({
-      'name':new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]),
+      'teamName':new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]),
       'description':new FormControl('', [Validators.required,Validators.minLength(20),Validators.maxLength(100)]),
       'location':new FormControl('', [Validators.required , Validators.minLength(6), Validators.maxLength(20)]),
       'imageKey':new FormControl('',[Validators.required] ),
+      // 'teamSport':new FormControl('',[Validators.required] ),
   
     });
     
@@ -65,23 +78,50 @@ get f(): { [key: string]: AbstractControl } {
 }
 
 createTeam(){
+  this.submitted=true;
+  if(this.newTeamForm.value.teamName=="" || this.newTeamForm.value.teamName==undefined){
+    alert("Please enter team name. ");
+    return; 
+   };
+   if(this.newTeamForm.value.description=="" || this.newTeamForm.value.description== undefined){
+    alert("Please enter description. ");
+    return; 
+   };
+   if(this.newTeamForm.value.location=="" || this.newTeamForm.value.location== undefined){
+    alert("Please enter location.");
+    return; 
+   };
+   if(this.newTeamForm.value.imageKey=="" || this.newTeamForm.value.imageKey== undefined){
+    alert("Please upload image. ");
+    return; 
+   }
+  console.log(this.newTeamForm.value.location)
   const formData = new FormData();
-  formData.append('name', this.newTeamForm.value.name);
+  formData.append('teamName', this.newTeamForm.value.teamName);
   formData.append('description', this.newTeamForm.value.description);
-  formData.append('location', this.newTeamForm.value.customurl);
-  formData.append('file', this.file);
-  formData.append('imageKey',this.newTeamForm.value.image);
+  formData.append('location', this.newTeamForm.value.loaction);
+  // formData.append('file', this.file);
+  formData.append('imageKey',this.newTeamForm.value.imageKey);
   
-     if (this.newTeamForm.invalid) {
-    console.log(this.newTeamForm.value);
-   this.service.createTeam(this.newTeamForm.value).subscribe(data =>{
-    if(data) {
-       alert("Team Created Successfully");
-     }else(err: any)=>{
-       alert("Something went wrong");
+
+  var data = {
+    "teamName": this.newTeamForm.value.teamName,
+    "description": this.newTeamForm.value.description,
+    "teamSport": true,
+    "location": this.newTeamForm.value.location,
+    "imageKey": this.newTeamForm.value.imageKey
+  }
+  console.log(data);
+   this.service.createTeam(JSON.stringify(data)).subscribe({
+     next:(res)=>{
+       alert("Team Created Sucessfully")
+       this._router.navigate(['/teams']);
+     },
+     error:(err)=>{
+       console.log(err);
      }
    });
-  }
+   
 }
 
 removeImage(){
@@ -89,50 +129,73 @@ removeImage(){
   this.upload1= false;
 }
 
+toogleTag(){
+  this.showMe=!this.showMe;
+  
+}
 onReset(): void {
   this.submitted = false;
   this.newTeamForm.reset();
 }
+mySelectClick(value:any){
+  this.hideShowselect = "false";
+  // console.log("select ki value = ", value);
+  //  this.newTournamentForm.value.location.setValue(value)?
+  this.myInputVariable = value;
+}
 shwoLocations(event:any) {
-  this.service.getLocation(event.target.value).subscribe((data: any) => {
-    if(data){
-    console.log(data);
-    this.location = data;
-    }
-    // console.log(this.countries);
-  });
+ this.hideShowselect="true";
+ console.log(event.target.value);
+ const req = this.newTeamForm.value.location
+ this.service.getLocation(event.target.value).subscribe((data: any) => {
+  if (data) {
+    this.location = data.list;
+    console.log(this.location[0].formatted_address);
+    // this.newTournamentForm.patchValue({
+    //   location : data.list[0].formatted_address
+    // })
+  
+  } 
+  else (err: any) => {
+    alert("Something went wrong");
+  }
+});
+  
 }
 show(){
  
-  this.uploadimageSrc=this.imageSrc;
+  this.uploadimageSrc=this.croppedImage;
   this.upload1=true;
   
 }
+upload(){
+   this.service.uploadImage(this.uploadimageSrc).subscribe((data:any)=>{
+     if(data){
+       alert("Image Upload Successfully");
+       var _imageKey = data.response;
+       this.newTeamForm.patchValue({
+        imageKey : _imageKey 
+    
+   })
+  }
+   else(err:any)=>{
+     alert("Something went wrong");
 
-
+   }
+  });
+  
+}
+imageCropped(event:ImageCroppedEvent){
+  this.croppedImage = event.base64;
+  this.uploadimageSrc = this.croppedImage;
+}
 
 
 
   
   onFileChange(event:any):void {
-    const reader = new FileReader();
-    
-    if(event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-    
-      reader.onload = () => {
-   
-        this.imageSrc = reader.result as string;
-     
-        this.newTeamForm.patchValue({
-          fileSource: reader.result
-        });
-   
-      };
-   
-    }
-   
+  this.imageSrc = event;
+  this.imageChangedEvent = this.imageSrc;
   }
  
   

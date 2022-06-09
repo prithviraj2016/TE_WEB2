@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/internal/Observable';
 import { ImageCroppedEvent, ImageTransform} from 'ngx-image-cropper';
+declare var introJs: any;
+
 
 export interface Form {
   value: string;
@@ -49,6 +51,7 @@ export class SeasonCreateComponent implements OnInit {
   cropImgPreview: any = '';
   transform: ImageTransform = {};
   scale: number = 1;
+
   
   constructor(private formBuilder: FormBuilder, 
     private _router: Router, 
@@ -58,7 +61,10 @@ export class SeasonCreateComponent implements OnInit {
     private modalService: NgbModal,) { }
 
   ngOnInit(): void {
-    
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("season_startDate")[0].setAttribute('min', today);
+document.getElementsByName("season_endDate")[0].setAttribute('min', today);
+
   this.newSeasonsForm=this.formBuilder.group({
     'name':new FormControl('', [Validators.required , Validators.minLength(6),Validators.maxLength(20)]),
     'description':new FormControl('', [Validators.required ,Validators.minLength(20),Validators.maxLength(100)]),
@@ -76,41 +82,74 @@ get f(): { [key: string]: AbstractControl } {
 
 
   createSeasons(){
+    this.submitted=true;
+  if(this.newSeasonsForm.value.name=="" || this.newSeasonsForm.value.name==undefined){
+    alert("Please enter season name. ");
+    return; 
+   };
+   if(this.newSeasonsForm.value.description=="" || this.newSeasonsForm.value.description== undefined){
+    alert("Please enter description. ");
+    return; 
+   };
+   if(this.newSeasonsForm.value.webURL=="" || this.newSeasonsForm.value.webURL== undefined){
+    alert("Please enter customurl");
+    return; 
+   };
+   if(this.newSeasonsForm.value.startDate=="" || this.newSeasonsForm.value.startDate== undefined){
+    alert("Please enter start date.");
+    return; 
+   };
+   if(this.newSeasonsForm.value.endDate=="" || this.newSeasonsForm.value.endDate== undefined){
+    alert("Please enter end date.");
+    return; 
+   };
+   if(this.newSeasonsForm.value.imageKey=="" || this.newSeasonsForm.value.imageKey== undefined){
+    alert("Please upload image. ");
+    return; 
+   }
     const formData = new FormData();
-    formData.append('name', this.newSeasonsForm.value.seasonname);
+    formData.append('name', this.newSeasonsForm.value.name);
     formData.append('description', this.newSeasonsForm.value.description);
-    formData.append('webURL', this.newSeasonsForm.value.customurl);
-    formData.append('startDate', this.newSeasonsForm.value.sdate);
-    formData.append('endDate', this.newSeasonsForm.value.edate);
-    formData.append('file', this['file']);
-    formData.append('imageKey',this.newSeasonsForm.value.imageURL);
+    formData.append('webURL', this.newSeasonsForm.value.webURL);
+    formData.append('startDate', this.newSeasonsForm.value.startDate);
+    formData.append('endDate', this.newSeasonsForm.value.endDate);
+    formData.append('imageKey',this.newSeasonsForm.value.imageKey);
     console.log(this.newSeasonsForm.value);
 
+    var temp ={
+      "description":this.newSeasonsForm.value.description,
+      "endDate": this.newSeasonsForm.value.endDate,
+      "imageKey": this.newSeasonsForm.value.imageKey,
+      "latLong": "",
+      "name": this.newSeasonsForm.value.name,
+      "startDate": this.newSeasonsForm.value.startDate,
+      "webURL": this.newSeasonsForm.value.webURL,
+    }
+      
+      console.log(temp);
 
-       if (this.newSeasonsForm.invalid) {
-      console.log(this.newSeasonsForm.value);
-
-     this.service.createSeason(JSON.stringify(formData)).subscribe((data:any) =>{
+     this.service.createSeason(JSON.stringify(temp)).subscribe((data:any) =>{
 
       if(data) {
-        this.Form =  data;
-        console.log("Season Created Successfully", this.Form)
+        // this.Form =  data;
+        // console.log("Season Created Successfully", this.Form)
 
          alert("Season Created Successfully");
+         this._router.navigate(['/seasons']);
        }else(err: any)=>{
          alert("Something went wrong");
        }
      });
-    }
+    
   }
  
 
-  onReset(): void {
-    this.submitted = false;
-    this.newSeasonsForm.reset();
+  // onReset(): void {
+  //   this.submitted = false;
+  //   this.newSeasonsForm.reset();
     
     
-  }
+  // }
  
 
 
@@ -281,5 +320,8 @@ upload(){
   });
 }
 
+helpButton(){
+  introJs().start();
+}
 
   }

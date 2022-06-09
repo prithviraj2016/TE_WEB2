@@ -13,7 +13,7 @@ font-family: 'Roboto', sans-serif;">
         <h2 style=" font-size: 22px;
         color: #3988ba;
         margin-bottom: 42px;">Account
-          <a href="#" style="  float: right;">
+          <a style="float: right;" class="help_button" (click)="helpButton()">
             <mat-icon style="color:#3988ba;">info</mat-icon>
           </a>
         </h2>
@@ -43,12 +43,13 @@ font-family: 'Roboto', sans-serif;">
             line-height: 1.5;
             margin-bottom: 0;
             margin-bottom: 20px;
-            transform: translateY(-15px) scale(0.7);">Display Name</label>
+            transform: translateY(-15px) scale(0.7);" 
+            >Display Name</label>
             <br>
             <input formControlName="name" type="text" id="profile_name" style="box-shadow: none;
             background: 0 0;
             border: 0;
-            border-bottom: #676d75 solid 1px;" class="form-control">
+            border-bottom: #676d75 solid 1px;" class="form-control" data-step="1" data-intro="Change the name you want to be known as. As long as it is available.">
             <span class="mandatoryfld_lbl">
               <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                 <div *ngIf="f['name'].errors['required']">Display Name is required</div>
@@ -78,7 +79,7 @@ font-family: 'Roboto', sans-serif;">
             <input type="text" name="profile_email" id="profile_email" required="" style=" box-shadow: none;
             background: 0 0;
             border: 0;
-            border-bottom: #676d75 solid 1px;" formControlName="email">
+            border-bottom: #676d75 solid 1px;" formControlName="email" data-step="2" data-intro="Email account link to TE. Can be changed.">
              <span class="mandatoryfld_lbl" >
               <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                 <div *ngIf="f['email'].errors['required']">Email is required</div>
@@ -193,24 +194,27 @@ font-family: 'Roboto', sans-serif;">
           padding:0px">
           <a href="https://www.facebook.com/">
             <li title="Facebook" style=" list-style-type: none;">
-              <img src="../../../assets/img/high-res/@2x-facebook.svg">
+              <img src="../../../assets/img/high-res/@2x-facebook.svg" data-step="3" data-intro="
+              Link your Facebook to TE.">
             </li>
           </a>
             <a href="https://www.google.com/">
             <li title="Google" style=" list-style-type: none;">
-              <img src="../../../assets/img/@2x-gplus.png">
+              <img src="../../../assets/img/@2x-gplus.png" data-step="4" data-intro="
+              Link your Google to TE.">
             </li>
           </a>
             <a href="https://twitter.com/">
             <li title="Twitter" style=" list-style-type: none;">
-              <img src="../../../assets/img/high-res/@2x-twitter.svg">
+              <img src="../../../assets/img/high-res/@2x-twitter.svg" data-step="5" data-intro="
+              Link your Twitter Account to TE.">
             </li>
           </a>
           </ul>
         </div>
         <div class="flex-row">
           <div class="flex-item">
-            <div data-step="7" data-intro="Set location so you would be notified of any tournaments in your area.">
+            <div data-step="6" data-intro="Set location so you would be notified of any tournaments in your area.">
               <label class="flex-label" style="font-size: 0.875rem;
               color: #4d4d4d;
               cursor: pointer;
@@ -264,7 +268,7 @@ font-family: 'Roboto', sans-serif;">
           </div>
         </span>
         <hr>
-        <div class="toggle" *ngIf="show" style="display: grid;" >
+        <div class="toggle" *ngIf="show" style="display: grid;" data-step="7" data-intro="Control what notifications you receive for TE App.">
           <label>
             New followers
             <material-slide-toggle ></material-slide-toggle>
@@ -305,7 +309,8 @@ font-family: 'Roboto', sans-serif;">
           </label>
 
         </div>
-        <div class="delete" style="padding-top: 30px;">
+        <div class="delete" style="padding-top: 30px;" data-step="8" data-intro="
+        Block/Unblock users here.">
           <a href="#">
             <i class="fa-solid fa-ban"></i>
             Block/Unblock Users
@@ -427,7 +432,7 @@ font-family: 'Roboto', sans-serif;">
             height: 34px;
             font-size: .975rem;
             font-size: 15px;
-            color: #fff;">Cancel</span>
+            color: #fff;" routerLink="/dashboard">Cancel</span>
           </button>&nbsp;&nbsp;&nbsp;
           <button id="save" class="btn btn-block " >
             <span style="  padding: 4px 20px 0;

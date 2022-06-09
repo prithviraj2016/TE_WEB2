@@ -24,13 +24,14 @@ export class DashboardService {
 
   
 
-  createEvent() {
-    return this.http.post<[]>(environment.apiUrl + 'services/main/event', this.httpOptions);
+  createEvent(userObj:any) {
+    return this.http.post<[]>(environment.apiUrl + 'services/main/event',userObj, this.httpOptions);
   }
   createSeason(userObj:any){
     return this.http.post<[]>(environment.apiUrl + 'services/main/season',userObj, this.httpOptions);
-    
-     
+  }
+  updateSeason(userObj:any){
+    return this.http.put<[]>(environment.apiUrl + 'services/main/season',userObj, this.httpOptions);
   }
   
   createTeam(userObj:any){
@@ -49,16 +50,30 @@ export class DashboardService {
 }
 getTournament(id:String){
    return this.http.get<[]>(environment.apiUrl + 'services/main/tournament/user/'+id, this.httpOptions);
-  //return this.http.get<[]>('https://apis.vgroupinc.com/tournamentapis/web/srf/services/unauthenticated/top/tournament', this.httpOptions);
+  
 }
-getTournamentID(id:String){
+getRecentTournaments(){
+   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/top/tournament', this.httpOptions);
+}
+
+getTournamentID(id:any){
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/tournament?id='+id, this.httpOptions);
 
 }
+getUpcomingTournaments(){
+  return this.http.get<[]>(environment.apiUrl + 'services/network/user/profile/web', this.httpOptions);
+}
 deleteTournament(id:String){
-  return this.http.delete<[]>(environment.apiUrl + 'service/main/tournament/'+id, this.httpOptions);
+  return this.http.delete<[]>(environment.apiUrl + 'services/main/tournament/'+id, this.httpOptions);
 
 }
+addBulkPlayers(bulkPlayers:any){
+  return this.http.post<[]>(environment.apiUrl + 'services/main/tournament/players',bulkPlayers, this.httpOptions);
+}
+getBulkPlayers(id:String){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/search/tournament/'+id, this.httpOptions);
+}
+
 searchTournament(qr:any){
     console.log(qr);
   return this.http.get<[]>(environment.apiUrl + 'services/unauthenticated/search/tournament?query='+qr, this.httpOptions);
@@ -68,6 +83,11 @@ searchEvent(qr:any){
   console.log(qr);
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/Event?q='+qr, this.httpOptions);
 }
+
+deleteEvent(id:String){
+  return this.http.delete<[]>(environment.apiUrl + 'services/main/event/'+id, this.httpOptions);
+}
+
 searchSeason(qr:any){
   console.log(qr);
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/Event?q='+qr, this.httpOptions);
@@ -76,19 +96,26 @@ searchTeam(qr:any){
   console.log(qr);
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/Event?q='+qr, this.httpOptions);
 }
-
 getSeason(userId:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/season/user/'+userId, this.httpOptions);
  }
  getseasonID(ID:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/season/'+ID, this.httpOptions);
  }
+ deleteSeason(id:String){
+  return this.http.delete<[]>(environment.apiUrl + 'services/main/season/'+id, this.httpOptions);
+}
+
  getTeam(userId:String){
   return this.http.get<[]>(environment.apiUrl + 'services/team/player/'+userId, this.httpOptions);
  }
  getTeamID(ID:String){
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/team/'+ID, this.httpOptions);
  }
+
+ deleteTeam(id:String){
+  return this.http.delete<[]>(environment.apiUrl + 'services/team/'+id, this.httpOptions);
+}
  uploadImage(imageString: any){
   const data = {"request":imageString}
   return this.http.post<[]>(environment.apiUrl + 'services/file/uploadjson',data ,this.httpOptions);
@@ -114,10 +141,10 @@ getGame(qr:any){
 getNotifications(){
   return this.http.get<[]>(environment.apiUrl + 'services/main/notifications' ,this.httpOptions);
 }
-addTournaments(userId:String){
-  return this.http.get<[]>(environment.apiUrl + 'add/tournament/'+userId, this.httpOptions);
+addTournaments(Id:String){
+  return this.http.get<[]>(environment.apiUrl + 'services/main/season/Id/add/tournament/', this.httpOptions);
 }
-getSeasonID(id:string){
+getSeasonID(id:any){
   return this.http.get<[]>(environment.apiUrl + 'services/main/search/season/'+id ,this.httpOptions);
 }
   

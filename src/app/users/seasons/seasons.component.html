@@ -4,8 +4,7 @@
 
 
   <!-- Column 2 -->
-  <div class="large-5 cdiv" id="step1" data-step="1"
-    data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
+  <div class="large-5 cdiv" id="step1">
     <div class="notification_column restrict_to_window">
       <div class="sha-box control_box">
         <div class="row">
@@ -18,22 +17,22 @@
             </div>
           </div>    
 
-          <div class=" large-6 medium-4 small-6 searchb pt15 columns">
+          <div class=" large-6 medium-4 small-6 searchb pt15 columns" data-step="1" data-intro="Type here to search for your seasons in your list.">
             <form autocomplete="off" class="ng-pristine ng-valid">
-              <input autocomplete="off" data-step="1" data-intro="Type here to search for your events in your list." (click)="searchSeason" (change)="searchSeason($event)"
+              <input autocomplete="off"  (click)="searchSeason" (change)="searchSeason($event)"
                 type="search" id="search" placeholder="Search event">
             </form>
           </div>
         </div>
-        <div class="tabs-bar">
+        <div class="tabs-bar" data-step="2" data-intro="Create new season.">
           <div id="myListMenu" data-tab="">
-            <a class="create-new ng-scope" data-step="2" data-intro="Create new event." title="Create New"
+            <a class="create-new ng-scope"  title="Create New"
               routerLink="/season-create"><img src="assets/img/icon_create.svg"><i>CREATE NEW</i></a>
           </div>
         </div>
       </div>
-    <div class="bar" scrolly="showMoreNotifications()" style=" height: 500px;" >
-      <div class="season-card" *ngFor="let item of seasonList" (click)="onSelect(item)">
+    <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" >
+      <div class="season-card" *ngFor="let item of seasonList" (click)="onSelect(item)" data-step="3" data-intro="Click to see relevant information about your season.">
         <div class="event_card sha-box card">
           <div class="row">
             <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
@@ -44,10 +43,10 @@
               <hr class="shr3">
               <div class="clear"></div>
               <div class="tinfo">Start Date:</div>
-              <span class="tdata date_start">{{item.startDateTime}}</span>
+              <span class="tdata date_start">{{item.startDateTime | date}}</span>
               <div class="clear"></div>
               <div class="tinfo">End Date:</div>
-              <span class="tdata rtxt date_end">{{item.endDateTime}}</span>
+              <span class="tdata rtxt date_end">{{item.endDateTime | date}}</span>
             </div>
             <div ng-show="event.hype" class="hype-ribbon-blue"></div>
             <br>
@@ -104,9 +103,9 @@
         <!-- First Column -->
         <div class="bordr medium-7 flex_item flex_box_column" id="season-detail">
           <div class="name-event-bg mbot-15">
-            <div class="tddate">Start Date: <span class="btxt">{{selectedSeason.startDateTime}}</span></div>
-            <div class="tddate">End Date: <span class="rtxt">{{selectedSeason.endDateTime}}</span></div>
-            <a title="Help" href="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+            <div class="tddate">Start Date: <span class="btxt">{{selectedSeason.startDateTime | date}}</span></div>
+            <div class="tddate">End Date: <span class="rtxt">{{selectedSeason.endDateTime | date}}</span></div>
+            <a title="Help" id="login_box_button" class="help_button" (click)="helpButton()"><i class="fa fa-info-circle"
                 aria-hidden="true"></i><span>&nbsp;Help</span></a>
           </div>
           <div class="bar flex_item_jscrollpane admin_block">
@@ -158,23 +157,22 @@
             </div>
             <div class="ctrlpnl tournament_btns_gradient edit" >
               <ul>
-                <li><a title="Edit" class="blkbkg event_btn" href="" routerLink="/edit-season"><i
+                <li><a title="Edit" class="blkbkg event_btn" href="" routerLink="/edit-season/{{selectedSeason.seasonID}}"><i
                       class="fas fa-edit"></i> Edit</a></li>
-                <li><a title="Delete" class="blkbkg event_btn deleteSeason deleteEvent" click="deleteSeason()"
-                    click="Are you sure you want to delete season?"><i class="fas fa-trash-alt"></i> Delete</a> </li>
+                <li><a title="Delete" class="blkbkg event_btn deleteSeason deleteEvent" (click)="deleteSeason(selectedSeasonID.seasonId)"><i class="fas fa-trash-alt"></i> Delete</a> </li>
               </ul>
             </div>
           </div>
         </div>
         <div class="medium-5 left pl15 columns flex_box_column detailElementHeight" id="season-detail-list" >
           <!-- <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 500px;" > -->
-          <div class="name-event-bg">
+          <div class="name-event-bg" data-step="7" data-intro="See the event list for the season with just a click.">
             <span class="btxt ">EVENTS LIST</span>
             <span class="flrt ">{{selectedSeasonEvents.length}}</span>
           </div>
           <!-- List -->
-          <div class="bar" scrolly="showMoreNotifications()" style="height: 400px;" >
-          <div data-step="7" data-intro="See the event list for the season with just a click."
+          <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 400px;" >
+          <div 
             class="playerslist list_box_half_mp bar" *ngFor="let item of selectedSeasonEvents" >
             <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
               <li class="tournament_list_item" >
@@ -187,7 +185,7 @@
             </ul>
           </div>
           
-          <div class="bar" scrolly="showMoreNotifications()" style=" height: 400px;">
+          <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 400px;">
           <div class="name-event-bg" >
             <span class="btxt ">TOURNAMENTS LIST</span>
             <span class="flrt ">{{selectedSeasonTournaments.length}}</span>

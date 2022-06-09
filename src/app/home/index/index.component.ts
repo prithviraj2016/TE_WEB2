@@ -11,6 +11,7 @@ import { get } from 'http';
 import Validation from 'src/app/shared/helper/validation';
 import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
 import Swal from 'sweetalert2';
+import { environment } from 'src/environments/environment.prod';
 declare var $:any
 
 @Component({
@@ -20,6 +21,7 @@ declare var $:any
 
 })
 export class IndexComponent implements OnInit {
+  imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
   title= 'appBootstrap';
   closeResult: string = '';
   wrongPassword:boolean=false;
@@ -67,7 +69,12 @@ export class IndexComponent implements OnInit {
     { logosrc: '/assets/img/galaxies_of-gaming_sm.png', logotitle: 'Galaxies Of Gaming', logosource: 'http://twingalaxiesarcade.com/' }
   ]
   slideConfig2 = { 'slidesToShow': 5, 'slidesToScroll': 5, 'dots': false, 'arrows': false };
-  slideConfig = { 'slidesToShow': 4, 'slidesToScroll': 4, 'dots': false, 'arrows': false };
+  slideConfig = {
+    "slidesToShow": 4,
+    "slidesToScroll": 1,
+    "dots": true,
+    "infinite": false
+  };
 
 
   imagesSlider = {
@@ -101,11 +108,13 @@ export class IndexComponent implements OnInit {
     private router:Router ,
     private  service:AccountService,
     private _service:DashboardService,
-    private http:HttpClient) { }
+    private http:HttpClient) { 
+      this.imageUrl=environment.imageUrl
+    }
 
 
   ngOnInit(){
-    // this.getTournamentdetails();
+    this.getTournamentdetails();
       $(document).foundation();
       
      this.signinForm = this.frmbuilder.group({
@@ -196,20 +205,19 @@ export class IndexComponent implements OnInit {
         })
 
       }
-      // getTournamentdetails(){
-      //   this._service.getTournament().subscribe(res =>{
-      //     // let tournamentList=Object.values(res);
-          
-           
-           
-      //    var tournamentList=Object.values(res);
-      //    this.hype=JSON.parse(JSON.stringify(tournamentList))[2];
-      //     // console.log(JSON.parse(res.toString())?.hypes);
-      //     console.log(this.hype);
-           
-      //     });
+      getTournamentdetails(){
+        this._service.getRecentTournaments().subscribe((res:any) =>{
+          this.tournamentList=res;
+          this.tournamentList1=res.list;
+          for (let i = 0; i <  this.tournamentList1.length; i++) {
+            console.log(this.tournamentList1[i])
+            
+          }
+         
+        
+          });
               
-      //       }
+       }
 
 
 

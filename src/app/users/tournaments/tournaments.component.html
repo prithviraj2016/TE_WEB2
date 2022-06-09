@@ -1,207 +1,204 @@
+
 <div>
-  <img src="" style="display:none" id="imgforumlogin">
-  <div class="row restrict_to_window" id="dashboard-container" style="height: 533px;">
-    <div class="large-5 cdiv" id="step1" data-step="1"
-      data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
-      <div class="notification_column restrict_to_window">
-        <div class="sha-box control_box">
-          <div class="row">
-            <div class="ribbon_parent small-6">
-              <div class="back_ribbon bgradient"></div>
-              <div class="ribbon_child bgradient"></div>
-              <div class="ribbon_content small-4 medium-4 columns">
-                <div class="listimg trophy"></div>
-                <p class="ng-binding">TOURNAMENTS</p>
-              </div>
-            </div>
-
-            <div class="small-6 medium-6 large-6 searchb pt15 columns" style="margin-left: 285px;">
-              <form autocomplete="off" class="ng-pristine ng-valid">
-                <input autocomplete="off" data-step="1"
-                  data-intro="Type here to search for your tournaments in your list." type="search" id="search"
-                  placeholder="Search tournaments" (click)=" searchTouramament" (change)="searchTouramament($event)">
-              </form>
+<img src="" style="display:none" id="imgforumlogin">
+<div class="row restrict_to_window" id="dashboard-container" style="height: 533px;">
+  <div class="large-5 cdiv" id="step1" data-step="1" data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
+    <div class="notification_column restrict_to_window">
+      <div class="sha-box control_box">
+        <div class="row">
+          <div class="ribbon_parent small-6">
+            <div class="back_ribbon bgradient"></div>
+            <div class="ribbon_child bgradient"></div>
+            <div class="ribbon_content small-4 medium-4 columns">
+              <div class="listimg trophy"></div>
+              <p class="ng-binding">TOURNAMENTS</p>
             </div>
           </div>
-          <div class="tabs-bar">
-            <div id="myListMenu" data-tab="">
-              <a class="create-new ng-scope" data-step="2" data-intro="Create new tournament." title="Create New"
-                routerLink="/tournament-create"><img src="assets/img/icon_create.svg"><i>CREATE NEW</i></a>
-            </div>
+
+          <div class="small-6 medium-6 large-6 searchb pt15 columns" style="margin-left: 285px;">
+            <form autocomplete="off" class="ng-pristine ng-valid">
+              <input autocomplete="off" data-step="1" data-intro="Type here to search for your tournaments in your list."
+                type="search" id="search" placeholder="Search tournaments"  (click)=" searchTouramament"
+                (change)="searchTouramament($event)">
+            </form>
           </div>
         </div>
-        <div class="bar" scrolly="showMoreNotifications()" style=" height: 457px; margin-top: 22px;">
-          <ngx-slick-carousel *ngFor="let item of tournamentList" (click)="onSelect(item)">
-            <div class="season-card">
-              <div class="event_card sha-box card">
-                <div class="row">
-
-                  <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
-                    <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
-
-                  </div>
-                  <div class="ribbon_parent2" style="margin-top: -10px;">
-                    <div class="back_ribbon2 bgradient"></div>
-                    <div class="ribbon_child2 bgsolidBlue"></div>
-                    <div class="ribbon_content2">
-                      <p>{{item.tournamentTypeName}}</p>
-                    </div>
-                  </div><br>
-                  <div class="txt-event medium-5">
-
-                    <span class="tgamename">{{item.game}}</span>
-                    <hr class="shr3">
-                    <div class="clear"></div>
-                    <div class="tinfo">Start Date:</div>
-                    <span class="tdata date_start">{{item.startDate}}</span>
-                    <div class="clear"></div>
-                    <div class="tinfo">End Date:</div>
-                    <span class="tdata rtxt date_end">{{item.endDate}}</span>
-                  </div>
-                  <div ng-show="event.hype" class="hype-ribbon-blue"></div>
-                  <br>
-                </div>
-              </div>
-              <hr class="shr1">
-            </div>
-          </ngx-slick-carousel>
+        <div class="tabs-bar">
+          <div id="myListMenu" data-tab="">
+            <a class="create-new ng-scope" data-step="2" data-intro="Create new tournament." title="Create New" routerLink="/tournament-create"><img src="assets/img/icon_create.svg"><i>CREATE NEW</i></a>
+          </div>
         </div>
-        <div class="bar" scrolly="showMoreNotifications()" style=" height: 457px; margin-top: 22px;" *ngIf="show">
-          <ngx-slick-carousel *ngFor="let hypes of search1">
-            <div class="season-card">
-              <div class="event_card sha-box card">
-                <div class="row">
-
-                  <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+hypes.imageKey}})">
-                    <div class="name-event truncate" title=" Event Name">{{hypes.name}}</div>
-
-                  </div>
-                  <div class="ribbon_parent2" style="margin-top: -10px;">
-                    <div class="back_ribbon2 bgradient"></div>
-                    <div class="ribbon_child2 bgsolidBlue"></div>
-                    <div class="ribbon_content2">
-                      <p>{{hypes.doc_type}}</p>
-                    </div>
-                  </div><br>
-                  <div class="txt-event medium-5">
-
-                    <span class="tgamename">{{hypes.game}}</span>
-                    <hr class="shr3">
-                    <div class="clear"></div>
-                    <div class="tinfo">Start Date:</div>
-                    <span class="tdata date_start">{{hypes.startDate}}</span>
-                    <div class="clear"></div>
-                    <div class="tinfo">End Date:</div>
-                    <span class="tdata rtxt date_end">{{hypes.endDate}}</span>
-                  </div>
-                  <div ng-show="event.hype" class="hype-ribbon-blue"></div>
-                  <br>
-                </div>
-              </div>
-              <hr class="shr1">
-            </div>
-          </ngx-slick-carousel>
-        </div>
-
-        <!-- <div style="text-align: center;">No records found</div> -->
       </div>
-
-    </div>
-    <!-- Column 3 -->
-    <div class="large-7 dashboard_height" id="detail-container">
-      <div class="main-content" id="detail">
-        <div class="detail sha-box p15 flex_box_column eventboxouter" id="tdetail-container">
-          <!-- Ribbion -->
-          <div class="img-event-bg mbot-15" data-step="4"
-            data-intro="Allow you to report, name, follow, and see what platforms is being used for the tournament.">
-            <div>
-              <a class="follow_icon followed" href="" title="Event Follower(s)" style="cursor:text;"><i
-                  class="fas fa-heart"></i></a>
-              <span class="follow_num">22</span>
-            </div>
-            <div class="detail_title">
-              <div class="truncate" title="Event Name">{{selectedTournament.name}}</div>
-            </div>
-            <div id="icons-block">
-              <div>
-                <a class="follow_icon followed" href="" title="Click to Unfollow this Event"><i
-                    class="fa fa-heart"></i></a>
-                <a class="follow_icon followicon_heart" href=""><i class="fa fa-heart"
-                    title="Click to Follow this Event"></i></a>
-                <span class="follow_num">{{selectedTournament.hits}}</span>
+      <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;" >
+        <ngx-slick-carousel  *ngFor="let item of tournamentList" (click)="onSelect(item)" >
+          <div class="season-card">
+            <div class="event_card sha-box card">
+              <div class="row">
+                
+                <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
+                  <div class="name-event truncate" title=" Event Name">{{item.name}}</div>
+                  
+                </div>
+                <div class="ribbon_parent2" style="margin-top: -10px;">
+                  <div class="back_ribbon2 bgradient"></div>
+                  <div class="ribbon_child2 bgsolidBlue"></div>
+                  <div class="ribbon_content2">
+                      <p>{{item.tournamentTypeName}}</p>
+                  </div>
+              </div><br>
+                <div class="txt-event medium-5" >
+              
+                  <span class="tgamename">{{item.game}}</span>
+                  <hr class="shr3">
+                  <div class="clear"></div>
+                  <div class="tinfo">Start Date:</div>
+                  <span class="tdata date_start">{{item.startDate | date}}</span>
+                  <div class="clear"></div>
+                  <div class="tinfo">End Date:</div>
+                  <span class="tdata rtxt date_end">{{item.endDate | date}}</span>
+                </div>
+                <div ng-show="event.hype" class="hype-ribbon-blue"></div>
+                <br>
               </div>
-              <a class="generate-report-modal-event report-exlamation bgradient-orange"
-                title="Report Inappropriate Content"><i class="fa fa-exclamation"></i></a>
             </div>
+            <hr class="shr1">
           </div>
-          <!-- Main Body -->
-          <div class="row flex_box" id="tourna-detail-col2">
-            <!-- First Column -->
-            <div id="tournament-detail" class="medium-6 bordr flex_item flex_box_column eventDetails">
-              <div class="name-event-bg mbot-15 evepdfix">
-                <div class="tddate">
-                  Start Date: <span class="btxt">{{selectedTournament.startDate}}</span>
+        </ngx-slick-carousel>
+      </div>
+      <div class="bar" scrolly="showMoreNotifications()"  style="overflow: scroll; height: 457px; margin-top: 22px;" *ngIf="show" >
+        <ngx-slick-carousel  *ngFor="let hypes of search1" >
+          <div class="season-card">
+            <div class="event_card sha-box card">
+              <div class="row">
+                
+                <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+hypes.imageKey}})">
+                  <div class="name-event truncate" title=" Event Name">{{hypes.name}}</div>
+                  
                 </div>
-                <div class="tddate">
-                  End Date: <span class="rtxt">{{selectedTournament.endDate}}</span>
-                </div>
-                <a title="Help" href="" onclick="" id="login_box_button" class="help_button"><i
-                    class="fa fa-info-circle" aria-hidden="true"></i><span>&nbsp;Help</span></a>
-              </div>
-              <!-- Description -->
-              <!-- Staff -->
-              <div class="bar flex_item_jscrollpane tinfotitle" tabindex="0">
-                <div class="description_title btxt">Admin</div>
-                <div data-step="5" data-intro="Admin list for the event." class="player-sm">
-                  <a href="/#!/user/view/sEvent.creatorUserId">
-                    <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png">
-                    </div>
-                  </a>
-
-                  <a href="/#!/user/view/sEvent.creatorUserId"> <span class="pname" title="Event Admin Details Name">
-                      {{tournamentList1.username}}</span>
-                  </a>
-                </div>
-                <hr>
-                <div>
-                  <div class="description_title btxt" data-step="6"
-                    data-intro="Event information provided by event organizer.">About Tournament</div>
-                  <div class="word-wrap description">
-                    <p class="info_box_mp pre" title="Event description">
-                      {{selectedTournament.description}}
-                    </p>
+                <div class="ribbon_parent2" style="margin-top: -10px;">
+                  <div class="back_ribbon2 bgradient"></div>
+                  <div class="ribbon_child2 bgsolidBlue"></div>
+                  <div class="ribbon_content2">
+                      <p>{{hypes.doc_type}}</p>
                   </div>
-                  <div class="description_title btxt">Staff</div>
-                  <div class="player-sm">
-                    <a href="/#!/user/view/staffInfo.userID">
-                      <div class="profile_user_img_sm playerimg"></div>
-                    </a> <a href="/#!/user/view/taffInfo.userID"> <span class="pname"
-                        title="staffInfo name">staffInfo.name</span>
-                    </a>
+              </div><br>
+                <div class="txt-event medium-5" >
+              
+                  <span class="tgamename">{{hypes.game}}</span>
+                  <hr class="shr3">
+                  <div class="clear"></div>
+                  <div class="tinfo">Start Date:</div>
+                  <span class="tdata date_start">{{hypes.startDate | date}}</span>
+                  <div class="clear"></div>
+                  <div class="tinfo">End Date:</div>
+                  <span class="tdata rtxt date_end">{{hypes.endDate | date}}</span>
+                </div>
+                <div ng-show="event.hype" class="hype-ribbon-blue"></div>
+                <br>
+              </div>
+            </div>
+            <hr class="shr1">
+          </div>
+        </ngx-slick-carousel>
+      </div>
+     
+      <!-- <div style="text-align: center;">No records found</div> -->
+    </div>
+    
+  </div>
+  <!-- Column 3 -->
+  <div class="large-7 dashboard_height" id="detail-container">
+    <div class="main-content" id="detail">
+      <div class="detail sha-box p15 flex_box_column eventboxouter" id="tdetail-container">
+        <!-- Ribbion -->
+        <div class="img-event-bg mbot-15" data-step="4"
+          data-intro="Allow you to report, name, follow, and see what platforms is being used for the tournament.">
+          <div>
+            <a class="follow_icon followed" href="" title="Event Follower(s)" style="cursor:text;"><i
+                class="fas fa-heart"></i></a> 
+            <span class="follow_num">22</span>
+          </div>
+          <div class="detail_title">
+            <div class="truncate" title="Event Name">{{selectedTournament.name}}</div>
+          </div>
+          <div id="icons-block">
+            <div>
+              <a class="follow_icon followed" href="" title="Click to Unfollow this Event"><i
+                  class="fa fa-heart"></i></a>
+              <a class="follow_icon followicon_heart" href=""><i class="fa fa-heart"
+                  title="Click to Follow this Event"></i></a> 
+                  <span class="follow_num">{{selectedTournament.hits}}</span>
+            </div>
+            <a class="generate-report-modal-event report-exlamation bgradient-orange"
+              title="Report Inappropriate Content"><i class="fa fa-exclamation"></i></a>
+          </div>
+        </div>
+        <!-- Main Body -->
+        <div class="row flex_box" id="tourna-detail-col2">
+          <!-- First Column -->
+          <div id="tournament-detail" class="medium-6 bordr flex_item flex_box_column eventDetails">
+            <div class="name-event-bg mbot-15 evepdfix">
+              <div class="tddate">
+                Start Date: <span class="btxt">{{selectedTournament.startDate | date}}</span>
+              </div>
+              <div class="tddate">
+                End Date: <span class="rtxt">{{selectedTournament.endDate | date}}</span>
+              </div>
+              <a title="Help" href="" onclick="" id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+                  aria-hidden="true"></i><span>&nbsp;Help</span></a>
+            </div>
+            <!-- Description -->
+            <!-- Staff -->
+            <div class="bar flex_item_jscrollpane tinfotitle" tabindex="0">
+              <div class="description_title btxt">Admin</div>
+              <div data-step="5" data-intro="Admin list for the event." class="player-sm">
+                <a href="/#!/user/view/sEvent.creatorUserId">
+                  <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png">
                   </div>
+                </a>
+
+                <a href="/#!/user/view/sEvent.creatorUserId"> <span class="pname" title="Event Admin Details Name">
+                    {{tournamentList1.username}}</span>
+                </a>
+              </div>
+              <hr>
+              <div>
+                <div class="description_title btxt" data-step="6"
+                  data-intro="Event information provided by event organizer.">About Tournament</div>
+                <div class="word-wrap description">
+                  <p class="info_box_mp pre" title="Event description">
+                   {{selectedTournament.description}}
+                  </p>
+                </div>
+                <div class="description_title btxt">Staff</div>
+                <div class="player-sm">
+                  <a href="/#!/user/view/staffInfo.userID">
+                    <div class="profile_user_img_sm playerimg"></div>
+                  </a> <a href="/#!/user/view/taffInfo.userID"> <span class="pname"
+                      title="staffInfo name">staffInfo.name</span>
+                  </a>
                 </div>
               </div>
-              <!-- The Buttons -->
-              <div data-step="7"
-                data-intro="Advertise event with the Hype Feature, Edit event, add staff, delete event, register for the event, Participants and see who registered for the event."
-                class="tournament_btns">
-                <div class="ctrlpnl tournament_btns_gradient pbt5">
-                  <a class="orange get-hype" href="javascript:;" data-reveal-id="hype" title="Hype Event"><i
-                      class="fas fa-fire"></i>
-                    <span>Hype</span></a>
-                </div>
-                <div class="ctrlpnl tournament_btns_gradient">
-                  <ul class="wrapbtnbox">
-                    <li><a title="Edit Event" class="blkbkg event_btn" href="" routerLink="/edit-tournament"><i
-                          class="fas fa-edit"></i> <span> Edit</span></a></li>
-                    <li><a title="Manage Staff" class="blkbkg event_btn" routerLink="/manage-staff"><i
-                          class="fas fa-users"></i> <span> Staff</span></a>
-                    </li>
+            </div>
+            <!-- The Buttons -->
+            <div data-step="7"
+              data-intro="Advertise event with the Hype Feature, Edit event, add staff, delete event, register for the event, Participants and see who registered for the event."
+              class="tournament_btns">
+              <!-- <div class="ctrlpnl tournament_btns_gradient pbt5">
+                <a class="orange get-hype" href="javascript:;" data-reveal-id="hype" title="Hype Event"><i class="fas fa-fire"></i>
+                  <span>Hype</span></a>
+              </div> -->
+              <div class="ctrlpnl tournament_btns_gradient">
+                <ul class="wrapbtnbox">
+                  <li><a title="Edit Event" class="blkbkg event_btn" href="" routerLink="/edit-tournament/{{selectedTournament.tournamentID}}"><i
+                        class="fas fa-edit"></i> <span> Edit</span></a></li>
+                  <li><a title="Manage Staff" class="blkbkg event_btn" routerLink="/manage-staff"><i
+                        class="fas fa-users"></i> <span> Staff</span></a>
+                  </li>
 
-                    <!-- <li><a class="blkbkg event_btn" title="Manage Participants"
+                  <!-- <li><a class="blkbkg event_btn" title="Manage Participants"
                     href="/#!/event/participants/{{sEvent.eventID}}"><i class="fas fa-users"></i> <span>Participants</span></a>
                   </li>-->
-
                   
                   <li><a title="Delete Event" class="blkbkg event_btn deleteEvent" (click)="deleteTournament(selectedTournament.tournamentId)">
                       <i class="fi-x tip-top" data-tooltip=""
@@ -211,9 +208,9 @@
                   </li>
                 </ul>
               </div>
-              <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
+              <!-- <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
                 <a class="white-link orange paid-register" title="Register"> Register</a>
-              </div>
+              </div> -->
               <!-- <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
                     <a class="white-link orange paid-register already-registered" title="Already registered">Already
                       registered</a>
@@ -228,71 +225,40 @@
                <span class="flrt"> {{selectedTournamentplayers.length}}
               </span>
             </div>
-            <div class="bar" scrolly="showMoreNotifications()"  style="overflow: scroll; height: 457px; margin-top: 22px;">
+            <div class="bar" scrolly="showMoreNotifications()"  style="overflow: scroll; 
+                height: auto;;
+         margin-top: 22px;">
             <div data-step="8"
               data-intro="List of tournaments in the event that can be clicked to go to that tournament."
               class="flex_item flex_box_column" *ngFor="let item of selectedTournamentplayers">
               <div class="bar flex_item_jscrollpane playerslist" tabindex="0">
-<ul>
 
-                    <li><a title="Delete Event" class="blkbkg event_btn deleteEvent"
-                        confirmed-click="DeleteEvent(sEvent.eventID)"><i class="fi-x tip-top" data-tooltip=""
-                          aria-haspopup="true" data-selector="tooltip-ixa6tvjm6"
-                          aria-describedby="tooltip-ixa6tvjm6"></i><i class="fas fa-trash-alt"></i>
-                        <span> Delete</span></a>
+                <div class="list_box_mp nobtn_override" >
+                  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl" >
+                    <li class="tournament_list_item" >
+                      <div class="profile_user_img_sm playerimg" style="background-image:url(assets/images/guest.png)">&nbsp;&nbsp;                      </div>
+
+                        <div class="name-event" title=" tournament name ">{{item.player.name}}</div>
+                        <!-- <div class="name-event">10/10/2020</div> -->
                     </li>
                   </ul>
                 </div>
-                <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
-                  <a class="white-link orange paid-register" title="Register"> Register</a>
-                </div>
-                <!-- <div class="ctrlpnl tournament_btns_gradient pbt5 register_bar">
-                    <a class="white-link orange paid-register already-registered" title="Already registered">Already
-                      registered</a>
-                  </div> -->
               </div>
             </div>
-            <!-- Second Column -->
-            <div class="medium-6 left pl15 columns flex_box_column eventdetaillist detailElementHeight"
-              id="season-detail-list">
-              <div class="name-event-bg">
-                <span class="btxt ">Players</span> &nbsp;&nbsp;
-                <span class="flrt"> {{selectedTournamentplayers.length}}
-                </span>
-              </div>
-              <div class="bar" scrolly="showMoreNotifications()" style=" height: 389px; ">
-                <div data-step="8"
-                  data-intro="List of tournaments in the event that can be clicked to go to that tournament."
-                  class="flex_item flex_box_column" *ngFor="let item of selectedTournamentplayers">
-                  <div class="bar flex_item_jscrollpane playerslist" tabindex="0">
-
-                    <div class="list_box_mp nobtn_override">
-                      <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4 teamsUl">
-                        <li class="tournament_list_item">
-                          <div class="profile_user_img_sm playerimg"
-                            style="background-image:url(assets/images/guest.png)">&nbsp;&nbsp;</div>
-
-                          <div class="name-event" title=" tournament name ">{{item.player.name}}</div>
-
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div data-step="9" data-intro="Add tournaments to this event if this is your event.">
-                <a class="btm" href="" (click)="onSelect(selectedTournament.id)">
-                  <div class="poolsb bgradient bordr-all mp-btn" title="Add Tournaments"> Manage Players
-                  </div>
-                </a>
-              </div>
             </div>
-
+            <div data-step="9" data-intro="Add tournaments to this event if this is your event.">
+              <a class="btm" (click)="onSelect(selectedTournament.id)" routerLink="/manage-players/{{selectedTournament.tournamentID}}">
+                <div class="poolsb bgradient bordr-all mp-btn" title="Add Tournaments"> Manage Players
+                </div>
+              </a>
+            </div>
           </div>
+
         </div>
-
-
       </div>
+
+
     </div>
   </div>
+</div>
 </div>

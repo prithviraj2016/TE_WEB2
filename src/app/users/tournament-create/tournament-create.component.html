@@ -23,8 +23,8 @@
 
           <div class="flex-item">
             <label data-step="2" data-intro="Tournament Name" class="mandatory_field" >Game</label>
-            <select type="text" placeholder="Search Games..."  formControlName="game"  (click)="showGame($event)">
-            <option *ngFor="let item of Game" [value]="item.id">{{item.name}}</option>
+            <select type="text" minlength="3" maxlength="50" placeholder="Search Games..."  formControlName="game"  (click)="showGame($event)" style="background-color: #0e161b">
+            <option *ngFor="let item of Game" [value]="item.name" >{{item.name}}</option>
           </select>
           </div>
           <div *ngIf="submitted && f['game'].errors" class="invalid-feedback">
@@ -312,9 +312,17 @@
             </div>
             <div class="flex-items">
               <label class="flex-label" style=" color: #3988ba;">Location</label>
-              <input type="text" class="location" placeholder="Search Location..." formControlName="venue"
-                (click)="shwoLocations($event)">
-                <option *ngFor="let item of location" [value]="item.id">{{item.formatted_address}}</option>
+              <input type="text" class="location" [value]="myInputVariable" placeholder="Search Location..." formControlName="venue"
+              (keyup)="shwoLocations($event)" >
+              
+              <span *ngIf="hideShowselect == 'true'">
+              <select *ngFor="let item of location" (click)="mySelectClick(item.formatted_address)">
+                <option [value]="item.formatted_address">{{item.formatted_address}}</option>
+                </select>
+                </span>
+                
+              
+
             </div>
           </div>
 
@@ -415,7 +423,7 @@
           </div>
           <div class="example-button-row">
             &nbsp;&nbsp;&nbsp;
-            <button id="cancel" class="btn btn-block red">
+            <button id="cancel" class="btn btn-block red" routerLink="/tournaments">
               <span>
                 Cancel
               </span>

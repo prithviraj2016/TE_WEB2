@@ -400,16 +400,15 @@
       <h1>RECENT TOURNAMENTS</h1>
     </div>
 
-    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" *ngFor="let hypes of hype">
-      <div ngxSlickItem class="slider-content content-1 slide inner-col" >
-        
-        <img src="{{hypes.imageKey}}">
-        <div class="tour-title">
-          <span class="no_margin ng-binding">{{hypes.game}}</span>
-          <span id="head-title" class="ng-binding">{{hypes.startDate}}</span>
-        </div>
-      </div>
-    </ngx-slick-carousel>
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+  <div ngxSlickItem *ngFor="let item of tournamentList1" class="slide">
+    <span class="name">{{item.name }}</span>
+    <span>{{item.startDate | date}}</span>
+    <img src="{{imageUrl+item.imageKey}}" alt="" width="70%">
+    
+  </div>
+</ngx-slick-carousel>
+
   </div>
   
 

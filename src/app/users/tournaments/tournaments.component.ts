@@ -1,10 +1,8 @@
 import { environment } from './../../../environments/environment.prod';
 import { parse } from 'path';
-
 import { Component, OnInit, TemplateRef } from '@angular/core';
-
 import { DashboardService } from '../dashboard/dashboard.service';
-
+declare var introJs: any;
 
 @Component({
   selector: 'app-home',
@@ -27,17 +25,14 @@ export class TournamentsComponent implements OnInit {
   upload1=false;
   public show:boolean =false;
   public searchList : any[];
-  constructor(private _service:DashboardService,
-    ) {
+  constructor(private _service:DashboardService) {
       this.imageUrl=environment.imageUrl
     }
   
  
 
-  ngOnInit() {
-  
+  ngOnInit(): void  {
   this.getTournament();
-  // this.getLatestTournamentdetails();------------------------
 }
 
 getTournament(){
@@ -48,11 +43,10 @@ getTournament(){
   if(res){
     this.tournamentList = res.list;
   }
-  console.log(this.tournamentList);
-     
-  if(this.tournamentList.length>0){
-    
-  }
+  
+  if(this.tournamentList.length>0) {
+      this.getTournamentDetail(this.tournamentList[0].tournamentID);
+    }
     });
         
       }
@@ -88,15 +82,15 @@ getTournament(){
 }
 
 deleteTournament(tournamentId:string){
-  if(tournamentId!==""){
-    this._service.deleteTournament(tournamentId).subscribe((res:any)=>{
+  if(this.selectedTournamentID!==""){
+    this._service.deleteTournament(this.selectedTournamentID).subscribe((res:any)=>{
+      console.log(this.selectedTournamentID);
       if(res){
-        this.selectedTournament = res;
         alert("Are You Sure For Delete Tournament");
+        this.getTournament();
       }else{
-        
+        alert("something went wrong");
       }
-      this.getTournament();
     })
   }
 }
@@ -180,6 +174,9 @@ showtab()
   //       break;
 
   //   }
+}
+helpButton(){
+  introJs().start();
 }
 
 }

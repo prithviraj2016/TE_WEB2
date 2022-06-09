@@ -6,8 +6,8 @@
         <div class="large-4 medium-12 small-12 columns column-first">
           <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
           <h1>New Season </h1>
-          <a title="Help" href=""
-            onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
+          <a title="Help" (click)="helpButton()"
+            
             id="login_box_button" class="help_button"><i class="fa fa-info-circle"
               aria-hidden="true"></i>&nbsp;<span>Help</span></a>
 
@@ -15,7 +15,7 @@
           <div class="flex-row">
             <div class="flex-item">
               <!-- <div class="is-floating-label"> -->
-                <label class="mandatory_field" data-step="1" data-intro="Name of the Event." style="color: #747f85;">Season Name</label>
+                <label class="mandatory_field" data-step="1" data-intro="Name of the Season." style="color: #747f85;">Season Name</label>
                 <input type="text" formControlName="name" form="season_form_novalidated" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f['name'].errors } "name='season_name' placeholder="" id='season_name'
                   minlength="3" maxlength="50" value="" required />  <span class="mandatoryfld_lbl" >
@@ -54,7 +54,7 @@
             </div>
 
             <div class="flex-item">
-              <label class="label-custom" data-step="3" data-intro="URL of Event to share on social media."
+              <label class="label-custom" data-step="3" data-intro="URL of Season to share on social media."
                 for="season_webUrl">Custom URL <i title="Copy URL" (click)="cp.copy()" 
                   class="icon-copy" aria-hidden="true"><img src="../assets/img/icon_copy_url.png"></i></label>
                   
@@ -83,12 +83,12 @@
 
           <div class="flex-row">
             <div class="flex-item">
-              <label class="mandatory_field fixed-label" data-step="5" data-intro="Start date of Season"
+              <label class="mandatory_field fixed-label" data-step="4" data-intro="Start date of Season"
                 for="season_startDate">Start Date</label>
               <div class="is-floating-label">
 
-                <input type="date"  formControlName="startDate"    [ngClass]="{ 'is-invalid': submitted && f['startDate'].errors }"form="season_form_novalidated"  placeholder="MM-DD-YYYY"
-                  class="date_calender" name="season_startDate" id="season_startDate" ng-model="startDate" datetime-picker
+                <input type="date"  formControlName="startDate" onkeypress="return false"  name="season_startDate"  min="" [ngClass]="{ 'is-invalid': submitted && f['startDate'].errors }"form="season_form_novalidated"  placeholder="MM-DD-YYYY"
+                  class="date_calender"  id="season_startDate" ng-model="startDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" future-only required />
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
                 <span class="mandatoryfld_lbl">
@@ -106,11 +106,11 @@
 
           <div class="flex-row">
             <div class="flex-item">
-              <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Season"
+              <label class="mandatory_field fixed-label" data-step="5" data-intro="End date of Season"
                 for="season_endDate">End Date</label>
               <div class="is-floating-label">
-                <input type="date" formControlName="endDate"    [ngClass]="{ 'is-invalid': submitted && f['endDate'].errors } "form="season_form_novalidated"  placeholder="MM-DD-YYYY"
-                  class="date_calender" name="season_endDate" id="season_endDate" ng-model="endDate" datetime-picker
+                <input type="date" formControlName="endDate"  onkeypress="return false" name="season_endDate"  min=""  [ngClass]="{ 'is-invalid': submitted && f['endDate'].errors } "form="season_form_novalidated"  placeholder="MM-DD-YYYY"
+                  class="date_calender"  id="season_endDate" ng-model="endDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" required />
 
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
@@ -129,7 +129,7 @@
 
           <div class="flex-row">
             <div class="flex-item image-item">
-              <label class="flex-label" data-step="8" data-intro="Upload 400px X 400px picture" for="user_image">Upload
+              <label class="flex-label" data-step="6" data-intro="Upload 400px X 400px picture" for="user_image">Upload
                 Picture</label>
               <div class="row">
               <div class="left-column large-4 medium-3 small-6 columns">
@@ -194,8 +194,8 @@
                     </div>
                     <div class="file">
                       <input type="file" name="file" class="file"
-                        style="border: solid 1px #43464d; border-radius: 0px;" multiple (change)="onFileChange($event)" formControlName="imageKey">
-                      <input type="submit" class="done" value="Done" (click)="show()"  (click)="modal.dismiss('Cross click')">
+                        style="border: solid 1px #43464d; border-radius: 0px;" multiple (change)="onFileChange($event)">
+                      <input type="submit" class="done" value="Done" (click)="show()"  (click)="modal.dismiss('Cross click')" (click)="upload()" formControlName="imageKey">
                       <div *ngIf="submitted && f['imageKey'].errors" class="invalid-feedback">
                         <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
                         </div>
@@ -212,7 +212,7 @@
         <div class="large-8  columns column-second">
           <div class="flex-row">
             <div class="" id="buttonset">
-              <button title="Cancel" type="button" class="btn-block red"  (click)="onReset()">
+              <button title="Cancel" type="button" class="btn-block red"  routerLink="/seasons">
                 <span>Cancel</span>
               </button>
               <button title="ok" type="submit" class="btn-block" >

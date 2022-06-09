@@ -1,48 +1,109 @@
 <div class="main">
-  <form>
+  <form name="tournament_form" [formGroup]="editTournamentForm"  (submit)="editTournament()">
     <div class="row">
       <div class="large-3">
         <div class="col_one">
           <h1>EDIT TOURNAMENT</h1>
           <h2>Basic
-            <a href="#">
+            <a (click)="helpButton()">
               <mat-icon>info</mat-icon>
             </a>
           </h2>
           <div class="flex-item">
             <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Tournament Name</label>
-            <input type="text">
+            <input type="text" formControlName="name" required />
+            <span class="mandatoryfld_lbl">
+              <div *ngIf="(submitted || f['name'].touched)  && f['name'].invalid">
+                <div class="validation"*ngIf="f['name'].errors && f['name'].errors['required']">
+                  <br>Tournament Name is required !
+                  
+                </div>
+                <div class="validation"*ngIf="f['name'].errors && f['name'].errors['minlength']">
+                  <br>Tournament Name must be at least 6 characters !
+                  
+                </div>
+                <div class="validation"*ngIf="f['name'].errors && f['name'].errors['maxlength']">
+                  <br> Tournament Name  must not exceed 20 characters!
+                  
+                </div>
+                <br>
+              </div>
+              </span>
           </div>
           <div class="flex-item">
-            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Game</label>
-            <input type="text" placeholder="Search Games...">
+            <label data-step="2" data-intro="Select Game from the auto populate list" class="mandatory_field">Game</label>
+            <input type="text" placeholder="Search Games..." formControlName="game_name"  required />
+            <span class="mandatoryfld_lbl">
+              <div *ngIf="(submitted || f['game_name'].touched)  && f['game_name'].invalid">
+                <div class="validation"*ngIf="f['game_name'].errors && f['game_name'].errors['required']">
+                  <br>Tournament Game is required !
+                  
+                </div>
+                <div class="validation"*ngIf="f['game_name'].errors && f['game_name'].errors['minlength']">
+                  <br>Tournament Game must be at least 6 characters !
+                  
+                </div>
+                <div class="validation"*ngIf="f['game_name'].errors && f['game_name'].errors['maxlength']">
+                  <br> Tournament Game  must not exceed 20 characters!
+                  
+                </div>
+                <br>
+              </div>
+              </span>
           </div>
           <div class="flex-item">
-            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">Start Date</label>
-            <input type="date" placeholder="MM-DD-YY">
+            <label data-step="3" data-intro="Tournament Start Date" class="mandatory_field">Start Date</label>
+            <input type="date" placeholder="MM-DD-YY" formControlName="startDate"   required />
+            <span class="mandatoryfld_lbl">
+              <div *ngIf="(submitted || f['startDate'].touched)  && f['startDate'].invalid">
+                <div class="validation"*ngIf="f['startDate'].errors && f['startDate'].errors['required']">
+                  <br>Tournament start Date is required !
+                  
+                </div>
+                <br>
+              </div>
+              </span>
           </div>
           <div class="flex-item">
-            <label data-step="1" data-intro="Tournament Name" class="mandatory_field">End Date</label>
-            <input type="date" placeholder="MM-DD-YYYY">
+            <label data-step="4" data-intro="Tournament End Date" class="mandatory_field">End Date</label>
+            <input type="date" placeholder="MM-DD-YYYY" formControlName="endDate" required />
+            <span class="mandatoryfld_lbl">
+              <div *ngIf="(submitted || f['endDate'].touched)  && f['endDate'].invalid">
+                <div class="validation"*ngIf="f['endDate'].errors && f['endDate'].errors['required']">
+                  <br>Tournament End Date is required !
+                </div>
+                <br>
+              </div>
+              </span>
+            
             <div class="flex-item trnstyle-option" ng-mouseenter="tourType=true" ng-mouseleave="tourType=false"
               ng-disabled="tournament.started">
               <label class="non-floatfld mandatory_field" data-step="5"
                 data-intro="Select Tournament Style from the list">Tournament Style</label>
               <div class="select-field">
 
-                <select name="tournamentType" id="tournamentType" required="">
+                <select name="tournamentType" id="tournamentType" required="" formControlName="tournamentType"   required >
                   <option value="SINGLE_ELIMINATION" selected="selected">Single Elimination</option>
                   <option value="DOUBLE_ELIMINATION">Double Elimination</option>
                   <option value="ROUND_ROBIN">Round Robin</option>
                   <option value="SWISS">Swiss</option>
                 </select>
+                <span class="mandatoryfld_lbl">
+                  <div *ngIf="(submitted || f['tournamentType'].touched)  && f['tournamentType'].invalid">
+                    <div class="validation"*ngIf="f['tournamentType'].errors && f['tournamentType'].errors['required']">
+                      <br>Tournament Type is required !
+                    </div>
+                    <br>
+                  </div>
+                  </span>
+
                 <span class="dropdown-arrow"></span>
               </div>
             </div>
           </div>
           <br>
           <div class="flex-img">
-            <label class="flex-label-one" data-step="8" data-intro="Upload 400px X 400px picture"
+            <label class="flex-label-one" data-step="6" data-intro="Upload Tournament Picture"
               for="user_image">Tournament Picture</label>
           </div>
           <div class="row">
@@ -96,7 +157,19 @@
                       <div class="file">
                         <input type="file" name="file" class="file"
                           style="border: solid 1px #43464d; border-radius: 0px;" multiple
-                          (change)="onFileChange($event)" formControlName="imageKey">
+                          (change)="onFileChange($event)" formControlName="imageKey"  required>
+                          <span class="mandatoryfld_lbl">
+                            <div *ngIf="(submitted || f['imageKey'].touched)  && f['imageKey'].invalid">
+                              <div class="validation"*ngIf="f['imageKey'].errors && f['imageKey'].errors['required']">
+                                <br>Tournament image is required !
+                              </div>
+                              <br>
+                            </div>
+                            </span>
+                             
+                              
+                       
+                     
                         <input type="submit" class="done" value="Done" (click)="show()"
                           (click)="modal.dismiss('Cross click')" (click)="uploadFiles()">
                         
@@ -113,11 +186,28 @@
 
           <div class="flex-row">
             <div class="flex-item">
-              <div data-step="7" data-intro="Set location so you would be notified of any tournaments in your area.">
+              <div data-step="7" data-intro="Tournament Description.">
                 <label class="flex-label" data-step="7" data-intro="Tournament Description">Tournament
                   Description</label>
-                <textarea name="description" placeholder="" maxlength="1200"
-                  ng-model="tournament.description"></textarea>
+                <textarea name="description" placeholder="" maxlength="1200" formControlName="description"
+                 required></textarea>
+                  <span class="mandatoryfld_lbl">
+                    <div *ngIf="(submitted || f['description'].touched)  && f['description'].invalid">
+                      <div class="validation"*ngIf="f['description'].errors && f['description'].errors['required']">
+                        <br>Tournament Description required !
+                        
+                      </div>
+                      <div class="validation"*ngIf="f['description'].errors && f['description'].errors['minlength']">
+                        <br>Tournament Description must be at least 6 characters !
+                        
+                      </div>
+                      <div class="validation"*ngIf="f['description'].errors && f['description'].errors['maxlength']">
+                        <br> Tournament Description must not exceed 20 characters!
+                        
+                      </div>
+                      <br>
+                    </div>
+                    </span>
               </div>
             </div>
           </div>
@@ -134,7 +224,7 @@
           </div>
           <div class="toggle-slide" *ngIf="showMe">
             <div _ngcontent-kho-c228="" class="flex-items">
-              <label class="label-custom">Custom URL
+              <label class="label-custom" data-step="8" data-intro="Custom URL for the tournament. Use any words not previously used." >Custom URL
                 <i class="icon-copy" (click)="cp.copy()">
                   <img src="../assets/img/icon_copy_url.png">
                 </i>
@@ -142,14 +232,25 @@
               <div class="input-field">
                 <div class="input-group" ngxCopyPaste #cp="copy">
                   <label class="input-group-label">Tournamentedition.com/tournament/</label>
-                  <input type="text" placeholder="" name="event_webUrl" id="event_webUrl"
-                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                  <input type="text" placeholder="" name="event_webUrl" id="event_webUrl" formControlName="custom_webUrl"
+                    class="input-group-field ng-touched ng-pristine ng-invalid" required>
+                    <span class="mandatoryfld_lbl">
+                      <div *ngIf="(submitted || f['event_webUrl'].touched)  && f['event_webUrl'].invalid">
+                        <div class="validation"*ngIf="f['event_webUrl'].errors && f['event_webUrl'].errors['required']">
+                          <br>Tournament Event WebUrl required !
+                          
+                        </div>
+                      
+                      
+                        <br>
+                      </div>
+                      </span>
                 </div>
                 <span class="mandatoryfld_lbl"></span>
               </div>
             </div>
             <div _ngcontent-kho-c228="" class="flex-items">
-              <label class="label-custom">Mixer Channel
+              <label class="label-custom" data-step="9" data-intro="Mixer Channel for the tournament. Use any words not previously used.">Mixer Channel
                 <i class="icon-copy" (click)="cp1.copy()">
                   <img src="../assets/img/icon_copy_url.png">
                 </i>
@@ -158,13 +259,24 @@
                 <div class="input-group" ngxCopyPaste #cp1="copy">
                   <label class="input-group-label">www.mixer.com/</label>
                   <input type="text" placeholder="Mixer Channel name" name="event_webUrl" id="event_webUrl"
-                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                    class="input-group-field ng-touched ng-pristine ng-invalid" formControlName="mixer_webUrl" required>
+                    <span class="mandatoryfld_lbl">
+                      <div *ngIf="(submitted || f['webUrl'].touched)  && f['webUrl'].invalid">
+                        <div class="validation"*ngIf="f['webUrl'].errors && f['webUrl'].errors['required']">
+                          <br>Tournament Event WebUrl required !
+                          
+                        </div>
+                      
+                      
+                        <br>
+                      </div>
+                      </span>
                 </div>
                 <span class="mandatoryfld_lbl"></span>
               </div>
             </div>
             <div class="flex-items">
-              <label class="label-custom">Twitch Channel
+              <label class="label-custom" data-step="10" data-intro="Link Twitch Channel to Tournament.">Twitch Channel
                 <i class="icon-copy" (click)="cp2.copy()">
                   <img src="../assets/img/icon_copy_url.png">
                 </i>
@@ -173,24 +285,54 @@
                 <div class="input-group"  ngxCopyPaste #cp2="copy">
                   <label class="input-group-label">www.twitch.tv/</label>
                   <input type="text" placeholder="Twitch Channel name" id="event_webUrl"
-                    class="input-group-field ng-touched ng-pristine ng-invalid">
+                    class="input-group-field ng-touched ng-pristine ng-invalid" formControlName="twitch_webUrl"    required>
+                    <span class="mandatoryfld_lbl">
+                      <div *ngIf="(submitted || f['webUrl_two'].touched)  && f['webUrl_two'].invalid">
+                        <div class="validation"*ngIf="f['webUrl_two'].errors && f['webUrl_two'].errors['required']">
+                          <br>Tournament Event WebUrl required !
+                          
+                        </div>
+                      
+                      
+                        <br>
+                      </div>
+                      </span>
                 </div>
                 <span class="mandatoryfld_lbl"></span>
-              </div>
+              </div> 
             </div>
             <div class="connectTwitter">
-              <label class="label-custom">Share With</label>
+              <label class="label-custom" data-step="11" data-intro="Link Social Media options to share to.">Share With</label>
               <a class="social_network_link connected" id="twitter" href="">
                 <i class="fab fa-twitter"></i><i ng-class="{'fa fa-check' : isTwitterConnected}"></i>
               </a>
             </div>
             <div class="flex-items image-item" style="position: relative;">
-              <label class="flex-label">Twitter Message</label>
+              <label class="flex-label" data-step="12" data-intro="Format of Tweet notifications (@Player1 vs @player2 in Tekken).">Twitter Message</label>
               <textarea
                 placeholder="Coming up 'Player1' VS 'Player 2' At (insert event Twitter) In (enter hashtag). On (stream link) via @Te_App #TE"
                 id="twitterMessage" name="twitterMessage"
                 class="twitter_message ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" rows="4"
-                cols="150"></textarea>
+                cols="150" formControlName="twitterMessage"   required></textarea>
+                <span class="mandatoryfld_lbl">
+                  <div *ngIf="(submitted || f['twitterMessage'].touched)  && f['twitterMessage'].invalid">
+                    <div class="validation"*ngIf="f['twitterMessage'].errors && f['twitterMessage'].errors['required']">
+                      <br>Tournament Twitter Message is required !
+                      
+                    </div>
+                    <div class="validation"*ngIf="f['twitterMessage'].errors && f['twitterMessage'].errors['minlength']">
+                      <br>Tournament Twitter Message  must be at least 6 characters !
+                      
+                    </div>
+                    <div class="validation"*ngIf="f['twitterMessage'].errors && f['twitterMessage'].errors['maxlength']">
+                      <br>Tournament Twitter Message must not exceed 20 characters!
+                      
+                    </div>
+                    <br>
+                  </div>
+                  </span>
+
+
 
               <div ng-show="showTwitterHelp" class="help_pop small_shadow ng-hide" style="display: none; top: -200px;">
                 <p class="showTwitterHelp">
@@ -205,13 +347,48 @@
               </div>
             </div>
             <div class="flex-items image-item">
-              <label class="flex-label">Notification Message</label>
+              <label class="flex-label" data-step="12" data-intro="Sends particular notification of when the tournament begins and/or other information you want.">Notification Message</label>
               <textarea placeholder="Write our own message" rows="4" cols="150"
-                class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength"></textarea>
+                class="ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" formControlName="message" required></textarea>
+                <span class="mandatoryfld_lbl">
+                  <div *ngIf="(submitted || f['message'].touched)  && f['message'].invalid">
+                    <div class="validation"*ngIf="f['message'].errors && f['message'].errors['required']">
+                      <br>Tournament Notifiction Message is required !
+                      
+                    </div>
+                    <div class="validation"*ngIf="f['message'].errors && f['message'].errors['minlength']">
+                      <br>Tournament Notifiction Message  must be at least 6 characters !
+                      
+                    </div>
+                    <div class="validation"*ngIf="f['message'].errors && f['message'].errors['maxlength']">
+                      <br>Tournament  Notifiction Message must not exceed 20 characters!
+                      
+                    </div>
+                    <br>
+                  </div>
+                  </span>
             </div>
             <div class="flex-items">
-              <label class="flex-label" style=" color: #3988ba;">Location</label>
-              <input type="text" class="location" placeholder="Search Location...">
+              <label class="flex-label" data-step="13" data-intro="Location of tournament.">Notification Message</label>
+              <label class="flex-label" style=" color: #3988ba;" >Location</label>
+              <input type="text" class="location" placeholder="Search Location..." formControlName="location"  required>
+              <span class="mandatoryfld_lbl">
+                <div *ngIf="(submitted || f['location'].touched)  && f['location'].invalid">
+                  <div class="validation"*ngIf="f['location'].errors && f['location'].errors['required']">
+                    <br>Tournament Location is required !
+                    
+                  </div>
+                  <div class="validation"*ngIf="f['location'].errors && f['location'].errors['minlength']">
+                    <br>Tournament Location must be at least 6 characters !
+                    
+                  </div>
+                  <div class="validation"*ngIf="f['location'].errors && f['location'].errors['maxlength']">
+                    <br>Tournament Location must not exceed 20 characters!
+                    
+                  </div>
+                  <br>
+                </div>
+                </span>
             </div>
           </div>
 
@@ -228,7 +405,7 @@
 
                 <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
                   data-intro="Have option for people to register for tournament.">
-                  <label class="flex-label" for="preRegister">Register</label>
+                  <label class="flex-label" for="preRegister" data-step="14" data-intro="Have option for people to register for tournament.">Register</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
                     <material-slide-toggle></material-slide-toggle>
                   </div>
@@ -236,7 +413,7 @@
                 </div>
                 <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
                   data-intro="Have option for people to register for tournament.">
-                  <label class="flex-label" for="preRegister">Consider Teams</label>
+                  <label class="flex-label" for="preRegister" data-step="15" data-intro="On allows TE to more likely put players on same team on separate pools. Off disables this feature.">Consider Teams</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
                     <material-slide-toggle></material-slide-toggle>
                   </div>
@@ -244,7 +421,7 @@
                 </div>
                 <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
                   data-intro="Have option for people to register for tournament.">
-                  <label class="flex-label" for="preRegister">Player Score Submission</label>
+                  <label class="flex-label" for="preRegister" data-step="16" data-intro="Allows players to submit personal score and move on if both player's scores match. If there is a discrepancy TO/Staff are alerted via notification.">Player Score Submission</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
                     <material-slide-toggle (change)="toogleTag1()"></material-slide-toggle>
                   </div>
@@ -253,16 +430,16 @@
 
               </div>
               <div class="large-6">
-                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
-                  data-intro="Have option for people to register for tournament.">
+                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="17"
+                  data-intro="Tournament will allow teams.">
                   <label class="flex-label" for="preRegister">Team Based Tournament</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
                     <material-slide-toggle></material-slide-toggle>
                   </div>
 
                 </div>
-                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="15"
-                  data-intro="Have option for people to register for tournament.">
+                <div class="flex-row input-block ng-scope" ng-if="!tournament.started" data-step="18"
+                  data-intro="If players are from same area TE will try to put them in separate side of the pools/brackets.">
                   <label class="flex-label" for="preRegister">Consider Location</label>
                   <div class="switch round tiny" ng-mouseenter="register=true" ng-mouseleave="register=false">
                     <material-slide-toggle></material-slide-toggle>
@@ -273,10 +450,11 @@
             </div>
             <div class="row" style="padding-top: 15px;">
               <div class="large-6" style="padding-left: 17px;">
-                <label class="label-custom">Check In Time</label>
+                <label class="label-custom" data-step="19"
+                data-intro="If on -allows You to send notification and allow check in from players. Off disables feature and auto advance timer.">Check In Time</label>
                 <div class="select-field">
                   <select name="checkinTime" id="checkinTime"
-                    class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty">
+                    class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty" formControlName="checkinTime" required>
                     <option value="0" selected="selected">Off</option>
                     <option value="15">15 min</option>
                     <option value="30">30 min</option>
@@ -285,22 +463,47 @@
                     <option value="180">3 hours</option>
                     <option value="360">6 hours</option>
                     <option value="1440">1 day</option>
+                   
                   </select> <span class="dropdown-arrow"></span>
+                  <span class="mandatoryfld_lbl">
+                    <div *ngIf="(submitted || f['checkinTime'].touched)  && f['checkinTime'].invalid">
+                      <div class="validation"*ngIf="f['checkinTime'].errors && f['checkinTime'].errors['required']">
+                        <br>Tournament CheckTime is required !
+                        
+                      </div>
+                     
+                     
+                      <br>
+                    </div>
+                    </span>
                 </div>
               </div>
               <div class="large-6" style="padding-left: 17px;" *ngIf="showMe1">
 
                 <div class="flex-column-space">
-                  <label class="label-custom">Auto Advance Timer</label>
+                  <label class="label-custom" data-step="20"
+                  data-intro="If on- players do not send notification opponents will auto advance.">Auto Advance Timer</label>
                   <div class="select-field">
-                    <select class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty">
+                    <select class="aot-type ng-pristine ng-untouched ng-valid ng-not-empty" formControlName="time"   required>
                       <option value="0" selected="selected">None</option>
                       <option value="5">5 min</option>
                       <option value="10">10 min</option>
                       <option value="15">15 min</option>
                       <option value="30">30 min</option>
                       <option value="60">1 hour</option>
+
                     </select> <span class="dropdown-arrow"></span>
+                    <span class="mandatoryfld_lbl">
+                      <div *ngIf="(submitted || f['time'].touched)  && f['time'].invalid">
+                        <div class="validation"*ngIf="f['time'].errors && f['time'].errors['required']">
+                          <br>Tournament OutTime is required !
+                          
+                        </div>
+                       
+                       
+                        <br>
+                      </div>
+                      </span>
                   </div>
 
                 </div>
@@ -316,7 +519,8 @@
               </span>
             </button>
             &nbsp;&nbsp;&nbsp;
-            <button id="save" class="btn btn-block ">
+            <button id="save" type="submit"class="btn btn-block " data-step="21"
+            data-intro="Create/Save your tournaments.">
               <span>
                 Save
               </span>

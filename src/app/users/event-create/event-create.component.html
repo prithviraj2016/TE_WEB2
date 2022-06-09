@@ -5,9 +5,7 @@
         <div class="large-4 medium-12 small-12 columns column-first">
           <input type="radio" class="hidden" checked="checked" name="sign" id="new-season">
           <h1>New Event </h1>
-          <a title="Help" href=""
-            onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
-            id="login_box_button" class="help_button"><i class="fa fa-info-circle"
+          <a title="Help" id="login_box_button" class="help_button" (click)="helpButton()"><i class="fa fa-info-circle"
               aria-hidden="true"></i>&nbsp;<span>Help</span></a>
 
 
@@ -78,10 +76,10 @@
 
           <div class="flex-row">
             <div class="flex-item  input-block complete">
-              <label class="flex-label" data-step="4" data-intro="Location of your event."
-                for="autoCompleteDivLocationForEvent_value">Location</label>
-              <input type="hidden" value="event latLong" id="hdnLatLong" />
-              <input type="input" class="input-group-field" id="hdnformatedAdress" placeholder="Search Location..."
+              <label class="flex-label" style=" color: #3988ba;" data-step="4" data-intro="Location of your event."
+                >Location</label>
+              
+              <input type="text" class="location"  placeholder="Search Location..."
                 formControlName="location" />
                 <span class="mandatoryfld_lbl">
                 
@@ -100,8 +98,8 @@
                 
               <div class="is-floating-label">
 
-                <input type="date"  formControlName="sdate"    [ngClass]="{ 'is-invalid': submitted && f['sdate'].errors }"form="event_form_novalidated"  placeholder="MM-DD-YYYY"
-                  class="date_calender" name="event_startDate" id="event_startDate" ng-model="startDate" datetime-picker
+                <input type="date"  formControlName="sdate"  onkeypress="return false" name="event_startDate"  min=""  [ngClass]="{ 'is-invalid': submitted && f['sdate'].errors }"form="event_form_novalidated"  placeholder="MM-DD-YYYY"
+                  class="date_calender"  id="event_startDate" ng-model="startDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" future-only required />
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
                 <span class="mandatoryfld_lbl">
@@ -130,7 +128,17 @@
                         </div>
                         <div id="upload-demo" class="croppie-container" style="margin: 10px;
                           border: dashed 1px #43464d;">
-                          <img src="../../../assets/img/user.png" style=" height: 50%; width: 90%; margin: 10px;" [src]="imageSrc" *ngIf="imageSrc">
+                          <img src="../../../assets/img/user.png" style=" height: 50%; width: 90%; margin: 10px;" [src]="imageSrc">
+                          <image-cropper 
+                          [imageChangedEvent]="imageChangedEvent" 
+                          [maintainAspectRatio]="true"
+                          [aspectRatio]="4 / 4"
+                          [resizeToWidth]="256" 
+                          format="png" 
+                          (imageCropped)="imageCropped($event)"
+                          [transform]="transform" >
+                          </image-cropper>
+                         
                           <div class="cr-boundary" aria-dropeffect="none">
                   
                             <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -140,7 +148,8 @@
                               <div class="file">
                                 <input type="file" name="file" class="file"
                                   style="border: solid 1px #43464d; border-radius: 0px;" (change)="onFileChange($event)">
-                                <input type="submit" class="done" value="Done" (click)="show()">
+                                <input type="submit" class="done" value="Done" (click)="show()" (click)="submitImage()" formControlName="imageKey"
+                                (click)="modal.dismiss('Cross click')">
                               </div>
                             </div>
                           </div>
@@ -159,8 +168,8 @@
               <label class="mandatory_field fixed-label" data-step="6" data-intro="End date of Event"
                 for="event_endDate">End Date</label>
               <div class="is-floating-label">
-                <input type="date" form="event_form_novalidated"   formControlName="edate"    [ngClass]="{ 'is-invalid': submitted && f['edate'].errors } "placeholder="MM-DD-YYYY"
-                  class="date_calender" name="event_endDate" id="event_endDate" ng-model="endDate" datetime-picker
+                <input type="date" form="event_form_novalidated"   formControlName="edate" onkeypress="return false" name="event_endDate" min=""   [ngClass]="{ 'is-invalid': submitted && f['edate'].errors } "placeholder="MM-DD-YYYY"
+                  class="date_calender"  id="event_endDate" ng-model="endDate" datetime-picker
                   date-only date-format="MM-dd-yyyy" required />
 
                 <span class="icon-calendar"><img src="../assets/img/icon_calendar.png"></span>
@@ -223,7 +232,7 @@
                         
                         </div> -->
                     </span>
-                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image">
+                    <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image" *ngIf="upload1" (click)="removeImage()">
                       <i class="fas fa-trash-alt"></i>
                     </button>
                   </div>
@@ -240,7 +249,7 @@
         <div class="large-4 medium-12 small-12 columns column-second">
           <div class="flex-row">
             <div class="" id="buttonset">
-              <button title="Cancel" type="button" class="btn-block red "  (click)="onReset()">
+              <button title="Cancel" type="button" class="btn-block red " routerLink="/events">
                 <span>Cancel</span>
               </button>
               <button title="ok" type="submit" class="btn-block"  >

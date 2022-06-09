@@ -2,25 +2,25 @@
 <div class="row restrict_to_window" id="dashboard-container" style="height: 533px;">
     <!-- <div ng-include="'home/side_bar.html'" class="sidebar left"></div> -->
     <!-- Column 2 -->
-    <div class="large-5 cdiv" id="step1" data-step="1"
-        data-intro="Notification list of who recently followed you, tournaments participations, registrations, etc.">
+    <div class="large-5 cdiv" id="step1" data-step="1" data-intro="
+    Notification list of who recently followed you, tournaments participations, registrations, etc.">
         <div class="notification_column restrict_to_window" style="height: 550px;" >
             <div class="toptitle">
                 <div class="small-12 columns title">
                   <!-- <h1 data-step="1" data-intro="This is a tooltip!" data-position='right'>Basic Usage</h1> -->
-                    <i  class="fa fa-bell"></i> NOTIFICATIONS <a title="Help" href=""
-                        onclick=" javascript:introJs().setOptions({'showProgress': true, 'showStepNumbers': false}).start();"
+                    <i  class="fa fa-bell"></i> NOTIFICATIONS <a title="Help" 
+                       
                         id="login_box_button" class="help_button" (click)="helpbutton()"><i class="fa fa-info-circle"
                             aria-hidden="true"></i>&nbsp;<span>Help</span></a>
                 </div>
-
+`
             </div>
             <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px;" >
                 <div class="" id="notification_list">
 
                     <div class='notification'>
                         <div class="row">
-                            <div class="small-2 columns">
+                            <div class="small-2 columns">   
                                 <a href="user/view/">
                                     <div class="profile_user_img_sm"></div>
                                 </a>
@@ -60,14 +60,6 @@
                     </div>
 
                 </div>
-                <div id="loaders">
-                    <div id="loader_image" align="center">
-                        <img src="assets/img/ajax-loader.gif" alt="Loading next records" title="Loading next records"
-                            width="25" height="25">Loading
-                        new notifications, please wait...
-                    </div>
-                    <div id="loader_message" align="right"></div>
-                </div>
             </div>
         </div>
     </div>
@@ -78,7 +70,7 @@
         <div class="info_column">
 
             <tabset id="tstyle" >
-                <tab heading="HYPED" >
+                <!-- <tab heading="HYPED" >
                     <div class="bar is-active" id="panel1" scrolly="showMoreHypes()" style="overflow: scroll; height: 457px;">
                         <div class="hype_list">
                             <div class="hype_list_child">
@@ -123,13 +115,14 @@
                             </div>
                         </div>
                     </div>
-                </tab>
-                <tab heading="UPCOMING">
+                </tab> -->
+                <tab heading="UPCOMING" id="step2" data-step="2" data-intro="
+                Upcoming tournaments in your local area.!" >
                     <div class="bar" id="panel2" scrolly="showMoreUpcomings()" style="overflow: scroll; height: 457px;" >
                         <div class="upcoming_list" >
                             <div class="upcoming_list_child">
                                 <a href='/tournament/id/'>
-                                    <div class="event_card sha-box card" *ngFor="let item of upcoming">
+                                    <div class="event_card sha-box card" *ngFor="let item of upcomingList">
                                         <div class="">
                                             <div class="img-event small-6" style="background-image: url({{imageUrl+item.imageKey}});">
                                                 
@@ -148,7 +141,7 @@
                                                 <span class="tgamename">{{item.game}}</span>
                                                 <hr class="shr3">
                                                 <div class="tinfo">Start Date:</div>
-                                                <span class="tdata btxt">{{item.startDate}}</span>
+                                                <span class="tdata btxt">{{item.startDate | date}}</span>
                                                 <div class="clear"></div>
                                                 <div class="tinfo tinfo-location" style="color: #fff;">Location:</div>
                                                 <span class="tdata btxt" title="">{{item.venue}}</span>

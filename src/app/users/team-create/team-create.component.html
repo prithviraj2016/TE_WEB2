@@ -12,15 +12,15 @@
           <div class="flex-row">
             <div class="flex-item">
                 <label class="mandatory_field"style="color: #747f85;">Team Name</label>
-                <input type="text"  formControlName="name" form="season_form_novalidated" name='team_name' placeholder="" id='season_name' class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+                <input type="text"  formControlName="teamName" form="season_form_novalidated" name='teamName' placeholder="" id='season_name' class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['teamName'].errors }"
                   minlength="3" maxlength="50" value="" required /> 
                   <span class="mandatoryfld_lbl">
                 
-                    <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-                      <div *ngIf="f['name'].errors['required']">Teamname is required</div>
-                      <div *ngIf="f['name'].errors['minlength']">Teamname must be at least 6 characters</div>
-                      <div *ngIf="f['name'].errors['maxlength']">
+                    <div *ngIf="submitted && f['teamName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['teamName'].errors['required']">Teamname is required</div>
+                      <div *ngIf="f['teamName'].errors['minlength']">Teamname must be at least 6 characters</div>
+                      <div *ngIf="f['teamName'].errors['maxlength']">
                         Teamname must not exceed 20 characters
                       </div>
                     </div>
@@ -46,23 +46,19 @@
                
             </div>
           </div>
-          <div class="flex-row">
-          <div class="flex-item complete">
-            <label class="flex-label"   data-step="4" data-intro="Location of your team." for="autoCompleteDivLocationForEvent_value"style="color: #747f85;">Location</label>
-            <input  value="" id="hdnLatLong" placeholder="Search Location..." formControlName="location" class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f['location'].errors }" (click)="shwoLocations($event)"/>
-            <span class="mandatoryfld_lbl">
-                
-              <div *ngIf="submitted && f['location'].errors" class="invalid-feedback">
-                <div *ngIf="f['location'].errors['required']">Location is required</div>
-                <div *ngIf="f['location'].errors['minlength']">Location must be at least 6 characters</div>
-                <div *ngIf="f['location'].errors['maxlength']">
-                 Location must not exceed 20 characters
-                </div>
-              </div>
-          </span>
-        </div>
+          <div class="flex-items">
+            <label class="flex-label" style=" color: #3988ba;">Location</label>
+            <input type="text" class="location" [value]="myInputVariable" placeholder="Search Location..." formControlName="location"
+            (keyup)="shwoLocations($event)" >
+            <span *ngIf="hideShowselect == 'true'">
+              <select *ngFor="let item of location" (click)="mySelectClick(item.formatted_address)">
+                <option [value]="item.formatted_address">{{item.formatted_address}}</option>
+                </select>
+            </span>
+           
           </div>
+         
+           
           <div class="flex-row">
             <div class="flex-item image-item">
               <label class="flex-label" data-step="8" data-intro="Upload 400px X 400px picture" for="user_image">Upload
@@ -70,13 +66,15 @@
               <div class="row">
               <div class="left-column large-4 medium-3 small-6 columns">
                 <div id="user_image" enctype="multipart/form-data" >
-                  <img alt="Choose a picture" src='assets/img/my-account-placeholder.png'  *ngIf="!upload1" title="Choose a picture"
-                    width="150" height="150" id="my-account-profile-image" (click)="open1(mymodal1)" class="form-control">
+                  <img  src='assets/img/my-account-placeholder.png'  *ngIf="!upload1" 
+                     id="my-account-profile-image" (click)="open1(mymodal1)" class="form-control">
                     <img alt="Choose a picture"  *ngIf="upload1" title="Choose a picture"
                     width="150" height="150" id="my-account-profile-image" [src]="uploadimageSrc" (click)="open1(mymodal1)" class="form-control" >
                     <span class="mandatoryfld_lbl">
-                
-                  </span>
+                      <div *ngIf="submitted && f['imageKey'].errors" class="invalid-feedback">
+                        <div *ngIf="f['imageKey'].errors['required']">Image is required</div>
+                      </div>
+                    </span>
                   <div >
                     <button type="button" class="removeOldImage msg_button bgradient-red" title="Remove Image"  (click)="removeImage()"  *ngIf="upload1" >
                       <i class="fas fa-trash-alt"></i>
@@ -111,6 +109,15 @@
                 <img src="../../../assets/img/user.png" style=" height: 50%;
         width: 90%;
         margin: 10px;" [src]="imageSrc" >
+         <image-cropper 
+         [imageChangedEvent]="imageChangedEvent" 
+         [maintainAspectRatio]="true"
+         [aspectRatio]="4 / 4"
+         [resizeToWidth]="256" 
+         format="png" 
+         (imageCropped)="imageCropped($event)"
+         [transform]="transform" >
+         </image-cropper>
                 <div class="cr-boundary" aria-dropeffect="none">
         
                   <div class="cr-viewport cr-vp-square" tabindex="0">
@@ -120,7 +127,7 @@
                     <div class="file">
                       <input type="file" name="file" class="file"
                         style="border: solid 1px #43464d; border-radius: 0px;"  formControlName="imageKey" (change)="onFileChange($event)">
-                      <input type="submit" class="done" value="Done" (click)="show()" (click)="modal.dismiss('Cross click')" >
+                      <input type="submit" class="done" value="Done" (click)="show()" (click)="upload()" (click)="modal.dismiss('Cross click')" formControlName="imageKey" >
                     </div>
                   </div>
                 </div>
@@ -128,18 +135,19 @@
             </div>
           </div>
         </ng-template>
-
+    
+      
         <div class="large-7 medium-12 small-12 columns column-second">
           <div class="flex-row">
             <div class="" id="buttonset">
-              <button title="Cancel" type="button" class="btn-block red" style="color:white;" (click)="onReset()">
+              <button title="Cancel" type="button" class="btn-block red" style="color:white;" routerLink="/teams">
                 <span>Cancel</span>
 
               </button>
               <button title="ok" type="submit" class="btn-block" style="color:white;">
 
               </button> &nbsp;&nbsp;
-              <button title="ok" type="submit" class="btn-block">
+              <button title="ok" type="submit" class="btn-block" >
 
                 <span>Create</span>
               </button>

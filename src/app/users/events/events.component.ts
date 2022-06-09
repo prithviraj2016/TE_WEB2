@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { DashboardService } from '../dashboard/dashboard.service';
+declare var introJs: any;
+
 
 @Component({
   selector: 'app-events',
@@ -43,6 +45,10 @@ constructor(private _service:DashboardService) {
       
       console.log(this.eventList);
       }
+
+      if(this.eventList.length>0) {
+        this.getEventdetails(this.eventList[0].eventID);
+      }
         
       });
     }
@@ -67,6 +73,22 @@ getEventdetails(eventID:string)
     }
   });
 }
+deleteEvent(eventID:string){
+  if(this.selectedEventID!==""){
+    this._service.deleteEvent(this.selectedEventID).subscribe((res:any)=>{
+      console.log("qwertyuiop");
+      console.log(this.selectedEventID);
+      if(res){
+        
+        alert("Are You Sure For Delete Event");
+        this.getEvent();
+      }else{
+        alert("something went wrong");
+      }
+      
+    })
+  }
+}
 
     
    searchEvent(event:any){
@@ -78,6 +100,10 @@ getEventdetails(eventID:string)
        this.show = !this.show;
      })
    }
+
+   helpButton(){
+    introJs().start();
+           }
     
   
   }

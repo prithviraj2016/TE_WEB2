@@ -18,22 +18,22 @@
             </div>
           </div>
 
-          <div class="small-6 medium-6 large-6 searchb pt15 columns">
+          <div class="small-6 medium-6 large-6 searchb pt15 columns" data-step="1" data-intro="Type here to search for your teams in your list.">
             <form autocomplete="off" class="ng-pristine ng-valid">
-              <input autocomplete="off" data-step="1" data-intro="Type here to search for your events in your list." (click)="  searchTeam" (change)="searchTeam($event)"
+              <input autocomplete="off" (click)="  searchTeam" (change)="searchTeam($event)"
                 type="search" id="search" placeholder="Search team">
             </form>
           </div>
         </div>
-        <div class="tabs-bar">
+        <div class="tabs-bar" data-step="2" data-intro="Create new team." >
           <div id="myListMenu" data-tab="">
-            <a class="create-new ng-scope" data-step="2" data-intro="Create new event." title="Create New"
+            <a class="create-new ng-scope" title="Create New"
               routerLink="/team-create"><img src="assets/img/icon_create.svg"><i>CREATE NEW</i></a>
           </div>
         </div>
       </div>
       <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 457px; margin-top: 22px;">
-      <div class="season-card">
+      <div class="season-card" data-step="3" data-intro="Click to see relevant information about your team.">
         <div class="event_card sha-box card" *ngFor="let item of teamList" (click)="onSelect(item)">
           <div class="row">
             <div class="img-event medium-5 blankImage" style="background-image:url({{imageUrl+item.imageKey}})">
@@ -47,7 +47,7 @@
               <span class="tdata date_start">{{item.location}}</span>
               <div class="clear"></div>
               <div class="tinfo">Members:</div>
-              <span class="tdata rtxt date_end">{{item.players.length}</span>
+              <span class="tdata rtxt date_end">{{item.players.length}}</span>
             </div>
             <div ng-show="event.hype" class="hype-ribbon-blue"></div>
             <br>
@@ -111,7 +111,7 @@
             <!-- First Column -->
             <div class="medium-6 bordr flex_item flex_box_column teamDetails" id="tournament-detail">
                 <div class="name-event-bg mbot-15">
-                    <a title="Help" href="" id="login_box_button" class="help_button"><i class="fa fa-info-circle" aria-hidden="true"></i><span>&nbsp;Help</span></a>
+                    <a title="Help" id="login_box_button" class="help_button" (click)="helpButton()"><i class="fa fa-info-circle" aria-hidden="true"></i><span>&nbsp;Help</span></a>
                 </div> 
     
                 <!-- Description -->
@@ -131,7 +131,7 @@
                     <div  class="ctrlpnl tournament_btns_gradient" >
                         <ul> 
                             <li><a class="blkbkg" href="" title="Edit"   data-step="6" data-intro="Click here to edit your team information."  routerLink="/edit-team"><i class="fas fa-edit"></i> Edit</a></li>
-                            <li><a class="blkbkg event_btn deleteSeason deleteEvent"    data-step="7" data-intro="Delete this team" title="Delete"><i class="fas fa-trash-alt"></i> Delete</a> </li>
+                            <li><a class="blkbkg event_btn deleteSeason deleteEvent"    data-step="7" data-intro="Delete this team" title="Delete" (click)="deleteTeam(selectedTeamID.teamID)"><i class="fas fa-trash-alt"></i> Delete</a> </li>
                         </ul>
                     </div>
                 </div>

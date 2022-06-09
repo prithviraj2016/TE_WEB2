@@ -38,12 +38,12 @@ export const UserLayoutRoutes: Routes = [
     { path: 'manage-staff', component: ManageStaffComponent},
     { path: 'pools', component: PoolsComponent},
     { path:'edit-event', component:EditEventComponent},
-    { path:'edit-season', component:EditSeasonComponent},
+    { path:'edit-season/:id', component:EditSeasonComponent},
     { path:'edit-team', component:EditTeamComponent},
-    { path:'edit-tournament', component:EditTournamentComponent},
+    { path:'edit-tournament/:id', component:EditTournamentComponent},
     {path:'manage-tournaments/:id',component:ManageTournamentsComponent},
     {path:'manage-event', component:ManageEventComponent},
-    {path:'manage-players',component:ManagePlayersComponent},
+    {path:'manage-players/:id',component:ManagePlayersComponent},
     {path:'manage-players-team', component:ManagePlayersTeamComponent}
 
 ];

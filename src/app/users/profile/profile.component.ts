@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardService } from 'src/app/users/dashboard/dashboard.service';
+declare var introJs: any;
 
 @Component({
   selector: 'app-profile',
@@ -244,7 +245,9 @@ upload(idx: number, file: File): void {
       }});
   }
 }
-
+helpButton(){
+  introJs().start();
+}
 
 }
 

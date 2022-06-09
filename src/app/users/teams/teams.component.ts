@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { DashboardService } from '../dashboard/dashboard.service';
+declare var introJs: any;
 
 @Component({
   selector: 'app-teams',
@@ -41,8 +42,9 @@ public search1:any=[];
         this.teamList = res.set;
         this.teamListplayers = res.players;
       }
-      console.log( this.teamList);
-      console.log( this.teamListplayers);
+      if(this.teamList.length>0) {
+        this.getTeamDetails(this.teamList[0].teamID);
+      }
       
     });
 }
@@ -69,6 +71,20 @@ getTeamDetails(teamID:string){
   });
 }
 
+deleteTeam(teamID:string){
+  if(this.selectedTeamID!==""){
+    this.service.deleteTeam(this.selectedTeamID).subscribe((res:any)=>{
+      console.log(this.selectedTeamID);
+      if(res){
+        alert("Are You Sure For Delete Team");
+        this.getTeam();
+      }else{
+        alert("something went wrong");
+      }
+    })
+  }
+}
+
 searchTeam(event:any){
   console.log(event.target.value);
   this.service.searchTeam(event.target.value).subscribe(res=>{
@@ -78,4 +94,7 @@ searchTeam(event:any){
     this.show = !this.show;
   })
 }
+helpButton(){
+  introJs().start();
+         }
 }

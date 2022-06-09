@@ -2,7 +2,7 @@
     <div>
         <div class="large-12 columns">
             <ul class="breadcrumbs mp_breadcrumbs">
-                <li><a href="entityId">season</a></li>
+                <li><a data-step="1" data-intro="Goes back to Season Page.">season</a></li>
                 <li class="current">ADD TOURNAMENTS
                 </li>
             </ul>
@@ -10,6 +10,8 @@
     </div>
 </div>
 <div class="sha-box manage_players_wrapper" id="addStaffSection">
+    <a title="Help" id="login_box_button" class="help_button" style="margin: 23px 33px -36px 0px;" (click)="helpButton()"><i class="fa fa-info-circle"
+        aria-hidden="true"></i><span>&nbsp;Help</span></a>
     <div class="row ribbonheighfix">
         <div class="manage_players_ribbon_parent">
             <div class="manage_players_back_ribbon bgradient"></div>
@@ -17,6 +19,7 @@
             <div class="manage_players_ribbon_content">
                 <div class="trophy"></div>
                 <p class="ng-binding">ADD TOURNAMENT</p>
+                
             </div>
         </div>
     </div>
@@ -38,7 +41,7 @@
                 </div>
                 <div class="" style="border-bottom: 1px solid #6196CC;">
                     <div class="bar" scrolly="showMoreNotifications()" style="overflow: scroll; height: 440px;" >
-                <div class="mani_card" >
+                <div class="mani_card" data-step="4" data-intro="Click or drag to add tournament to tournament page.">
                 <div class="event_card sha-box card" style="background-image: url(image); background-size:cover;">
                     <div _ngcontent-jqj-c234="" title=" Event Name" class="name-event truncate">name</div>
                     <p class="date ng-binding" >startDateTime</p>
@@ -57,7 +60,8 @@
                     </div>
                 </div>
                 <div id="paticipating-pl" class="row dark_grey pl15 pad-top-0">
-                    <div class="bar dradAndDrop">
+                    <div class="bar dradAndDrop" data-step="5" data-intro="
+                    Click or drag to remove tournament to tournament page.">
                        
                     </div>
                 </div>

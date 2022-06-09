@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ImageCroppedEvent} from 'ngx-image-cropper';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
-
+declare var introJs: any;
 
 @Component({
   selector: 'app-edit-team',
@@ -138,7 +138,9 @@ export class EditTeamComponent implements OnInit {
         }});
     }
   }
- 
+  helpButton(){
+    introJs().start();
+  }
   
   
 }

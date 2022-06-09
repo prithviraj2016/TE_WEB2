@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ImageCroppedEvent} from 'ngx-image-cropper';
 import { DashboardService } from '../dashboard/dashboard.service';
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
+declare var introJs: any;
+
 
 @Component({
   selector: 'app-edit-event',
@@ -128,5 +130,9 @@ export class EditEventComponent implements OnInit {
         }});
     }
   }
+  helpButton(){
+    introJs().start();
+  }
+  
 
 }

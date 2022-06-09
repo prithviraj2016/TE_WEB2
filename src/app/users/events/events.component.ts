@@ -12,8 +12,8 @@ declare var introJs: any;
 export class EventsComponent implements OnInit {
 imageUrl:string="https://s3.amazonaws.com/vgroup-tournament/";
  public eventList:any[]=[];
- public eventList1:any[]=[];
- public eventList2:any[]=[];
+ public eventList1:any=[];
+ public eventList2:any=[];
  selectedEvent:any;
  selectedEventID:any;
  public search1:any=[];
